@@ -75,12 +75,34 @@
 	
 	
 	\section{Introduction}
-	The aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is most commonly used in safety-critical areas, such as air traffic control, railway routing, or medical cyber-physical systems, or where testing is too costly or puts the users at risk. It allows for certifying that a given piece of software works as intended, and is error-free.
+	\IEEEPARstart{T}{he} aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is most commonly used in safety-critical areas, such as air traffic control, railway routing, or medical cyber-physical systems, or where testing is too costly or puts the users at risk. It allows for certifying that a given piece of software works as intended, and is error-free.
 	
-	Various methods and approaches have been developed. In this project, we shall focus on the B-method, allowing for formal specification through refinement of abstract machines.
+	Various methods and approaches have been developed. In this project, we shall focus on the classical B-method, allowing for formal specification through refinement of abstract machines. It provides much more than just a means of writing software specification in a formal manner; the B-method allows us to refine those specifications stage by stage, and then even implement them. The implementation stage can be done to a certain extent automatically, however the generated code is rarely of good quality.
+	
+	\subsection{AtelierB tool}
+	The tool to support all stages of software development with B-method is AtelierB, created by ClearSy. In particular it includes a powerful automated prover. We will inspect it and the proof process very closely, as the work in this project is expected to rely on it entirely.
+	
+	After creating the specification, we can generate proof obligations (POs). They are statements that must be demonstrated to be true. If there is a PO that can't be proved by any means, it indicates that there exists an error in the specification.
+	
+	It is expected that at least 90\% of the POs will be proven automatically [cite], and some may need a semi-automatic approach.
+	
+	
+	\subsection{Limitations of the prover}
+	It is important to understand that the prover can only generate proof obligations and demonstrate that they are satisfied, but is incapable of proving that they are not. In other words, each proof obligation can only be proved or unproved, and the latter can happen for one of two reasons. It is quite likely that a PO is true, but the program cannot prove it automatically because of its complexity. However, the unproved obligations also include the ones that are false and point to errors in the specification. According to ClearSy, no automated prover exists that is capable of demonstrating that a PO is false, and "the Prover has not been designed to do so"\cite{Prover guide}.
+	
+	Finally, it has to be stressed that adding user-created rules is not advised, and should be avoided, however that may not always be possible. The tools available are not perfect and additionally may not be tailored to the particular scenario. All added rules must be proven to be correct, before one can rely on them.
 	\section{Related Works}
 	
 	\subsection{Applications of B-method}
+	B-method is commonly used in European Railway industry, from traffic management systems to developing platform door controllers\cite{Door controller}.
+	
+	An example of using classical B-method in a large scale industrial project is given by F.~Badeau and A. Amelot\cite{airport shuttle}. They have aided Siemens Transportation Systems to develop an shuttle rail service at Paris-Charles de Gaulle Airport. The fully automatic metro line began its operation in April 2007, and has been functioning since then, with one more metro line added in June 2007.
+	
+	This example is the most illustrative one, as the authors provide a clear breakdown of what work went into proving both the abstract and the concrete models. They have generated over 43 thousand proof obligations, 97\% of which were proven automatically. While it is a quite good result, at this scale it leaves over 700 POs to be proven by hand, and according to the authors, their average rate was proving manually around 15 obligations per day. It demonstrates just how time consuming it is to work with a tool that isn't as automatic as one claims to be.
+	
+	More importantly, the authors had the need for 290 new proof rules. They have discovered that the Predicate Prover in AtelierB was very useful in validating them. 84\% have been done by the tool. It is a pity that more details on this aren't provided.
+	
+	In the formal model of railway stations proposed by K.~Reichl \emph{et al.}\cite{Railway routing}, an evolution of B-method called Event-B is used, as it allows for modelling systems as a whole, including hardware. Nevertheless the underpinning theory and relying on first order logic and set theory is common to both B and Event-B. Event-B also requires Rodin tool, rather than AtelierB, however in their work, the authors have used AtelierB prover in addition to Rodin's one.
 	
 	\subsection{Available models}
 	
@@ -134,6 +156,7 @@
 	
 	\subsection{Constraints and Risks}
 	\subsubsection{Copyrights for AtelierB software}
+	Atelier B is a closed source project, however it is distributed free of charge, for any purpose including teaching and research. ClearSy does not forbid users from making modifications to their software, however any modified software will be excluded from their maintenance service policy.
 	
 	\subsubsection{Requirement for knowledge outside the subject area}
 	The B-method relies heavily on first order logic and Zermelo-Fraenkel set theory, and especially the latter is beyond the scope of the course (MSc in Computer Science). Fortunately, this area has been covered in depth during my previous degree (BA in Mathematics).
@@ -157,6 +180,16 @@
 	\begin{thebibliography}{1}
 		\bibitem{survey}
 		S.~Conchon and M.~ Iguernlala, "Increasing Proofs Automation Rate	of Atelier-B Thanks to Alt-Ergo" in \emph{Proc.~1st Int.~Conf.~Reliability, Safety and Security of Railway Systems} (RSSRail 2016), Springer, 2016, pp.~243-253
+		\bibitem{Prover guide}
+		\emph{Interactive Prover User Manual}, v.~3.7, ClearSy Sys.~Eng., Aix-en-Provence, France, p.~13
+		\bibitem{Railway routing}
+		K.~Reichl et al., "Using Formal Methods for Verification and Validation in Railway" in \emph{Proc.~10th Int.~Conf.~Tests and Proofs}, Springer, 2016, pp.~3-13
+		\bibitem{Door controller}
+		T.~Lecomte et al., "Formal Methods in Safety-Critical Railway Systems" in \emph{Proc.~Brazilian Symp.~Formal Methods} (SMBF 2007), 2007, pp.~26-30
+		\bibitem{Rodin handbook}
+		M.~Jastram, "Rodin User's Handbook v.2.8", D\"{u}sseldorf, 2012
+		\bibitem{airport shuttle}
+		F.~Badeau and A. Amelot, "Using B as a High Level Programming Language in an Industrial Project: Roissy VAL" in \emph{Proc. 4th Int. Conf. Z and B Users}, Springer, 2005, pp. 334-353
 		
 		
 	\end{thebibliography}
