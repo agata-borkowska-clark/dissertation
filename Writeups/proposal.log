@@ -1,10 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.11.6)  9 FEB 2017 01:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  12 FEB 2017 12:11
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **proposal.tex
-(proposal.tex
-LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 68 languages loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\ieeetran\IEEEtran.cls"
+(./proposal.tex
+LaTeX2e <2016/03/31> patch level 3
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(./IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -17,7 +19,7 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 503.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -106,24 +108,23 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEPARstartletwidth=\dimen125
 \c@IEEEbiography=\count93
 \@IEEEtranrubishbin=\box27
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\breakurl\breakurl.sty"
+) (/usr/share/texmf-dist/tex/latex/breakurl/breakurl.sty
 Package: breakurl 2013/04/10 v1.40 Breakable hyperref URLs
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+(/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
-("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
+(/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks15
 \XKV@tempa@toks=\toks16
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex"))
+(/usr/share/texmf-dist/tex/generic/xkeyval/keyval.tex))
 \XKV@depth=\count94
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
 
 Package breakurl Warning: You are using breakurl while processing via pdflatex.
@@ -131,15 +132,17 @@ Package breakurl Warning: You are using breakurl while processing via pdflatex.
 (breakurl)                \burl will be just a synonym of \url.
 (breakurl)                 on input line 48.
 
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+) (/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\cite\cite.sty"
+(/usr/share/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (proposal.aux)
+) (./proposal.aux)
+\openout1 = `proposal.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
@@ -158,42 +161,40 @@ LaTeX Font Info:    ... okay on input line 19.
 IEEEtitleabstractindextext instead.
 ** ATTENTION: \IEEEdisplaynotcompsoctitleabstractindextext is deprecated (line 
 60). Use \IEEEdisplaynontitleabstractindextext instead.
-[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 83.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <11> on input line 83.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7.69997> on input line 83.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5.5> on input line 83.
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 144.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <11> on input line 144.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7.69997> on input line 144.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5.5> on input line 144.
+] [2]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.69997> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
- [2]
-** WARNING: IEEEPARstart drop letter has zero height! (line 178)
- Forcing the drop letter font size to 10pt.
-[3
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 154.
 
-] (proposal.aux) ) 
+** WARNING: IEEEPARstart drop letter has zero height! (line 188)
+ Forcing the drop letter font size to 10pt.
+[3] (./proposal.aux) ) 
 Here is how much of TeX's memory you used:
- 1488 strings out of 493698
- 25431 string characters out of 3144412
- 85532 words of memory out of 3000000
- 4845 multiletter control sequences out of 15000+200000
- 44138 words of font info for 77 fonts, out of 3000000 for 9000
- 1028 hyphenation exceptions out of 8191
- 27i,6n,19p,857b,202s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
-rw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.
-pfb>
-Output written on proposal.pdf (3 pages, 79266 bytes).
+ 1480 strings out of 493013
+ 25111 string characters out of 6139316
+ 87623 words of memory out of 5000000
+ 5056 multiletter control sequences out of 15000+600000
+ 44138 words of font info for 77 fonts, out of 8000000 for 9000
+ 1144 hyphenation exceptions out of 8191
+ 27i,5n,19p,856b,216s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dis
+t/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times
+/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/shar
+e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on proposal.pdf (3 pages, 76574 bytes).
 PDF statistics:
- 33 PDF objects out of 1000 (max. 8388607)
+ 35 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
