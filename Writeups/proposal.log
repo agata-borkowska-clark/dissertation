@@ -1,12 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  12 FEB 2017 18:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.11.6)  13 FEB 2017 22:28
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
 **proposal.tex
-(./proposal.tex
-LaTeX2e <2016/03/31> patch level 3
-Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
-(./IEEEtran.cls
+(proposal.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 68 languages loaded.
+(IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -19,7 +17,7 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 503.
 
-(/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -108,23 +106,24 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEPARstartletwidth=\dimen125
 \c@IEEEbiography=\count93
 \@IEEEtranrubishbin=\box27
-) (/usr/share/texmf-dist/tex/latex/breakurl/breakurl.sty
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\breakurl\breakurl.sty"
 Package: breakurl 2013/04/10 v1.40 Breakable hyperref URLs
 
-(/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-(/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
 \XKV@toks=\toks15
 \XKV@tempa@toks=\toks16
 
-(/usr/share/texmf-dist/tex/generic/xkeyval/keyval.tex))
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex"))
 \XKV@depth=\count94
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 
 Package breakurl Warning: You are using breakurl while processing via pdflatex.
@@ -132,11 +131,11 @@ Package breakurl Warning: You are using breakurl while processing via pdflatex.
 (breakurl)                \burl will be just a synonym of \url.
 (breakurl)                 on input line 48.
 
-) (/usr/share/texmf-dist/tex/latex/url/url.sty
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(/usr/share/texmf-dist/tex/latex/listings/listings.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
 \lst@mode=\count95
 \lst@gtempboxa=\box28
 \lst@token=\toks17
@@ -150,94 +149,145 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \lst@lineno=\count100
 \lst@maxwidth=\dimen129
 
-(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count101
 \lst@skipnumbers=\count102
 \lst@framebox=\box29
 )
-(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(/usr/share/texmf-dist/tex/latex/psnfss/courier.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\courier.sty"
 Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-(/usr/share/texmf-dist/tex/latex/cite/cite.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count103
+))
+\Gin@req@height=\dimen130
+\Gin@req@width=\dimen131
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (./proposal.aux)
-\openout1 = `proposal.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+) (proposal.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 -- Lines per column: 52 (exact).
-\c@lstlisting=\count103
-** ATTENTION: \IEEEcompsoctitleabstractindextext is deprecated (line 33). Use \
+\c@lstlisting=\count104
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count105
+\scratchdimen=\dimen132
+\scratchbox=\box30
+\nofMPsegments=\count106
+\nofMParguments=\count107
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count108
+\MPscratchDim=\dimen133
+\MPnumerator=\count109
+\makeMPintoPDFobject=\count110
+\everyMPtoPDFconversion=\toks19
+)
+** ATTENTION: \IEEEcompsoctitleabstractindextext is deprecated (line 34). Use \
 IEEEtitleabstractindextext instead.
 ** ATTENTION: \IEEEdisplaynotcompsoctitleabstractindextext is deprecated (line 
-62). Use \IEEEdisplaynontitleabstractindextext instead.
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 85.
+63). Use \IEEEdisplaynontitleabstractindextext instead.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 86.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <11> on input line 85.
+(Font)              <11> on input line 86.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7.69997> on input line 85.
+(Font)              <7.69997> on input line 86.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5.5> on input line 85.
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(Font)              <5.5> on input line 86.
+[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
-] [2]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 146.
+] [2] [3]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 175.
 
 
-(/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.69997> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 188.
- [3]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 208.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 208.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 208.
+) [4]
 
-** WARNING: IEEEPARstart drop letter has zero height! (line 231)
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 226.
+
+<gantt_chart.png, id=19, 1005.7575pt x 525.46312pt>
+File: gantt_chart.png Graphic file (type png)
+ <use gantt_chart.png>
+Package pdftex.def Info: gantt_chart.png used on input line 227.
+(pdftex.def)             Requested size: 516.0pt x 269.58623pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.69997> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 231.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 257.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 257.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 257.
+
+[5]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./gantt_chart.png>]
+** WARNING: IEEEPARstart drop letter has zero height! (line 283)
  Forcing the drop letter font size to 10pt.
-[4] (./proposal.aux) ) 
+[7] (proposal.aux) ) 
 Here is how much of TeX's memory you used:
- 2735 strings out of 493013
- 43473 string characters out of 6139316
- 108819 words of memory out of 5000000
- 6284 multiletter control sequences out of 15000+600000
- 47554 words of font info for 86 fonts, out of 8000000 for 9000
- 1144 hyphenation exceptions out of 8191
- 27i,8n,33p,856b,228s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/
-share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dis
-t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/sh
-are/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/ty
-pe1/urw/times/utmri8a.pfb>
-Output written on proposal.pdf (4 pages, 90593 bytes).
+ 3630 strings out of 493698
+ 55716 string characters out of 3144412
+ 123064 words of memory out of 3000000
+ 6932 multiletter control sequences out of 15000+200000
+ 47554 words of font info for 86 fonts, out of 3000000 for 9000
+ 1028 hyphenation exceptions out of 8191
+ 27i,8n,33p,857b,252s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.en
+c}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr
+8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on proposal.pdf (7 pages, 141086 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

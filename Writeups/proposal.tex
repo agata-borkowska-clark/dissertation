@@ -5,6 +5,7 @@
 \usepackage{url}
 \usepackage{listings}
 \usepackage{courier}
+\usepackage{graphicx}
 \ifCLASSOPTIONcompsoc
 % IEEE Computer Society needs nocompress option
 % requires cite.sty v4.0 or later (November 2003)
@@ -116,12 +117,36 @@
 	
 	In the formal model of railway stations proposed by K.~Reichl \emph{et al.}\cite{Railway routing}, an evolution of B-method called Event-B is used, as it allows for modelling systems as a whole, including hardware. Nevertheless the underpinning theory and relying on first order logic and set theory is common to both B and Event-B. Event-B also requires Rodin tool, rather than AtelierB, however in their work, the authors have used AtelierB prover in addition to Rodin's one.
 	
-	K. Reichl \emph{et al.} have achieved a similar proportion of proved POs to Badeau and Amelot - 97.6\% of their POs were discharged  by the prover. This number seems to be quite consistent. E. Bernard \emph{et al.} in their B model of GSM 11-11 smart cards had 377 proof obligations generated, and all but one of them were discharged automatically (the last one requiring the interactive prover)\cite{GSM}
+	K. Reichl \emph{et al.} have achieved a similar proportion of proved POs to Badeau and Amelot - 97.6\% of their POs were discharged  by the prover. This number seems to be quite consistent. E. Bernard \emph{et al.} in their B model of GSM 11-11 smart cards had 377 proof obligations generated, and all but one of them were discharged automatically (the last one requiring the interactive prover)\cite{GSM}. D. Mentr\'{e} \emph{et al.} also got over 90\% of POs discharged by the prover in their use of pure Atelier B for benchmarking.\cite{discharging}
+	
+	Unfortunately, in neither of this paper it is stated if any measures were taken during the writing of the specification, to make the proof process easier. For example, it is possible that certain constructs were avoided, or logical statements were simplified from the start. Also, it is possible that the majority of the POs generated are very similar and simple, such as type checking for each variable, and once one of them is discharged, the rest will follow in a similar fashion.
 	
 	
-	\subsection{Methods for verifying proof rules}
-	The Atelier B Maintenance edition includes a tool for validating mathematical rules. Unfortunately
-	SMT and deep embedding goes here
+	\subsection{Methods for verifying provers}
+	
+	As mentioned earlier, adding proof rules requires a thorough verification of them by the user, and is generally discouraged. However it may be unavoidable, and event more importantly one might ask why we trust the rules provided by Atelier B. 
+	
+	There are multiple automated theorem provers and proof assistants, not made specifically for the B-method. One of the more common ones is Coq. It has been developed over 20 years ago, and have been used to formalize B semantics since then.\cite{Coq and PVS}.
+	
+	There was also an attempt by P. Chartier to formally validate B using Isabelle/HOL\cite{Isabelle}. The aim of this work was to verify methods of automatically generated proof obligations and check their consistency.
+		
+	Both Coq and Isabelle/HOL use embedding to reason about B. In the case of Coq, the method lies between deep and shallow embedding, where B is translated into objects that are semantically equivalent, however not all of the properties of B can be stated in the target langauge\cite{Coq and PVS}. In the case of Isabelle/HOL, only semantic embedding of the core elements of B is described.
+	
+	Zenon theorem prover has been developed more recently with first order logic in mind.\cite{Zenon} It uses truth trees, which make it much easier to add rules outside the core collection, such as is often required in B, and to check that the proof is correct. It generates proofs that can be then analysed by Coq.
+	
+	M. Jacquel \emph{et al.} have formally developed a framework based on Zenon, for verifying proof rules that are beyond the capabilities of the Atelier B's prover.\cite{embedding and theorem proving}. On top of that they very clearly describe the step-by-step process they have used in developing B proof rules, and present the benchmarks used. Both of these aspects of their work can become very helpful as we work on this project.
+	
+	Another part of verification using B is demonstrating the generated proof obligations. Ideally we want to prove all of them to hold, however this problem is undecidable.
+	
+	The currently predominant approach to improving the power of the interactive prover in Atelier B is using SMT solvers. Satisfiability Modulo Theories are a generalised form of SAT, taking into account some underpinning theory for the formulae. This results to generally undecidable problems being much simpler in a particular scenario.\cite{SMT handbook}
+	
+	D\'{e}harbe explains in detail how to use SMT to discharge proof obligations for B and Event-B, including those that are not limited to simple types and logic constructs. While his work focuses primarily on Event-B and Rodin, he speculates that it should be possible to apply his work to classical B and Atelier B in a very similar way.\cite{SMT} This is an avenue we would definitely want to explore in our project.
+	
+	Multiple SMT solvers exist, the most popular one being Why3. D. Mentr\'{e} \emph{et al.} have developed a method to use them to discharge proof obligations that Atelier B cannot cope with. More specifically, they rigorously translate B proof obligations into Why3. It required modelling the B set theory in Why language. Unfortunately, their work is incomplete, and their are some questions about confidence in their embedding of B into Why3.
+	
+	Alt-Ergo is another solver, which has been used to discharge Atelier B's POs.\cite{Alt-Ergo} Alt-Ergo is an open source project by Conchon and Igernelala. The focus of their work is efficiency and improvement of heuristics. Interestingly, they have discovered that an SMT solver on its own will not do better than the Atelier B's interactive prover. It required some tuning specifically for B method, after which there was a noticable improvement in performance.
+	
+	It should also be pointed out that the Atelier B Maintenance edition includes a tool for validating mathematical rules. Unfortunately we are unable to gain access to it. It is not a great loss however, as in this project we will focus on other aspects of the tool as well as the proof rule base, and additionally there are almost no references to the tool that assess its usefulness.
 	
 	\subsection{Plugins, extensions and other software}
 	
@@ -129,27 +154,33 @@
 	
 	A reason for creating extensions and modificatons to the software was discussed by M. Leuschel \emph{et al.} in their paper on case studies of large scale models of metro lines in various cities\cite{San Juan metro}. They found that AtelierB was not optimised very well and tended to run out of memory, when working on real-life models.
 	
-	\begin{itemize}
-		\item BWare
-		\item Dedukit
-		\item Beval
-		\item Coq
-		\item Isabelle
-	\end{itemize}
+	Other reasons include lack of functions that cover testing and animating the models in Atelier B and perhaps most importantly Atelier B's prover not changing much over the last two decades, despite advances in the methods for automated theorem proving.
+	
+	The most popular program to aid with development using Atelier B, is the ProB tool, which animates the models and tests them on the case by case basis.\cite{ProB} It has also been used in industry alongside Atelier B \cite{San Juan metro}. It is often called a 'disprover' for Atelier B's prover. The name is perhaps misleading; while we cannot prove that a statement is false in the same way we prove it to hold, we can disprove it by counterexamples, and this is exactly what ProB does.
+	
+	ProB allows for enumerating the states of the machine, and simulating the operations. It is also quick to detect when the rules are violated, thus saving time that otherwise would be wasted on futile attempts to demonstrate the false PO with the interactive prover of Atelier B.\cite{Prob intro} However, as a result of the enumeration, it will not provide counterexamples in the cases when the cardinality of a set is not fixed, which is the case with deferred sets, or when a PO contains an integer which has a value independent of the rest of the statement. Therefore ProB cannot be used as a prover, but only as a tool to find counterexamples\cite{ProB for eventb}.
+	
+	Medeiros and D\'{e}harbe\cite{BEval} have made an attempt to create a plug-in for Atelier B to combine it with ProB. It allows for communication between the two tools, such as picking expressions from Atelier B and passing them to ProB, then generating further (and hopefully simpler) statements in B notation, which may be discharged by the interactive prover. It is even intended to generate proof rules that can be automatically used by either prover. The latter is useful especially for well-definedness POs, which Atelier B's interactive prover does not discharge for unclear reasons.
+	
+	The BEval plugin is available online and is completely open source, and it would be interesting to experiment with it, especially that the authors say very little about the limitation of their work. They only mention expected problems caused by the dissimilarities between the Atelier B and ProB syntax.
+	
+	Another project worth noting is called BWare, created by D. Delahaye \emph{et al.}.\cite{BWare} As it is very recent, the presented results are preliminary. They have opted to use multiple tools to achieve their end goal of discharging more POs than the interactive prover of Atelier B is capable of. The foundation of their project is the Why3 platform, and used Alt-Ergo SMT solver, having also considered Zenon.
 
-
+	While in this project we want to avoid creating or using extension, inspecting the existing ones more closely will definitely be helpful. They can serve as an inspiration or help with testing and benchmarking.
 	
 	\subsection{Shortcomings of Atelier B}
 	
 	As mentioned before, M. Leuschel \emph{et al.} were very critical about Atelier B, and it is worth looking closely at the issues they have raised. Their main problem with the tool and the focus of their paper was lack of optimisation, however they listed others as well. They noted that in the case of undischarged POs, it was "difficult to find out why the proof has failed".
 	
-	An important warning to be taken out of their paper is concerned with the \textsc{Definitions} section of an abstract machine. Their behaviour is almost identical to that of macros, and may be prone to errors if not inspected properly. The example given in the aforementioned paper is a definition \texttt{sum(x,y) == x+y} which AtelierB will use as is. Thus an expression \texttt{sum(1,1)*2} will result in \texttt{1+1*2}, which is clearly not the intended outcome. [NOTE: WILL TRY TO REPLICATE ON LAB MACHINES OR PC. LAPTOP's ATELIERB STOPPED WORKING]
+	An important warning to be taken out of their paper is concerned with the \textsc{Definitions} section of an abstract machine. Their behaviour is almost identical to that of macros, and may be prone to errors if not inspected properly. The example given in the aforementioned paper is a definition \texttt{sum(x,y) == x+y} which AtelierB will use as is. Thus an expression \texttt{sum(1,1)*2} will result in \texttt{1+1*2}, which is clearly not the intended outcome. [NOTE: WILL TRY TO REPLICATE ON LAB MACHINES. NEED PROB]
 	
 	The issues mentioned above are quite general and in line with our own experience. We will not go into the details of bugs raised in the paper, as the authors have been using Atelier B version 3.6.2, while the one we use 4.2.1, released in December 2014. According to the release notes, more than 150 bugs have been fixed since the previous version. However, no list of known bugs and issues has been found for the newest version.\cite{release notes}
 	
-	Other problems are mentioned by XYZ...
+	Another issue is mentioned by Medeiros and D\'{e}harbe\cite{BEval}. They point out that Atelier B is falling behind the developments made by researchers in the area of automated theorem proving. It is unsurprising, as the tool's development process is slow due to the need for certification of every update, without which it could not be used in an industrial setting.
 	
-	While we will not aim to fix these issues, it is necessary for us to be aware of them. 
+	While we will not aim to fix these issues, it is necessary for us to be aware of them. It should also be pointed out that despite all its shortcomings, Atelier B is the most popular and the best developed tool. It has been around for over 20 years, and has the largest user base out of all software for development in B. The plugins and software listed in the previous sections, although may have better design and functionality, are not yet up to industry standards, while Atelier B has been certified to be up to it.
+	
+	On top of that all of them rely on on Atelier B. All of the papers discussed in this section mention using Atelier B for the first pass of type checking and discharging proof obligations. It is at the core of the formal specification of many industrial projects. Therefore we will focus on this tool only, and avoid introducing changes that would result in the same problem as the custom extensions - lack of resources for development leading to inferior quality.
 	
 	
 	
@@ -158,7 +189,7 @@
 	
 	We shall also look at different ways of writing and phrasing the specification to make it more prover-friendly. Some of the questions we would like to answer are: are there any ways of expressing commonly found points that will make them faster to prove automatically? How much impact does the complexity of expressions have on the prover's ability to discharge POs? If any of the items found above are non-intuitive, can we create tactics that will bridge the gap between the prover's ability and the user's way of thinking?
 	
-	A secondary aim of the project is to analyse the user-friendly aspects of the AtelierB tool or lack thereof. The difficulty to understand why a proof has failed was brought up by M. Leuschel \emph{et al.} in their broad case study\cite{San Juan metro}, among others.
+	A secondary aim of the project is to analyse the user-friendly aspects of the AtelierB tool or lack thereof. The difficulty to understand why a proof has failed was brought up by M. Leuschel \emph{et al.} in their broad case study\cite{San Juan metro}, among others. 
 	
 	It is expected that over the course of this project, new questions and ideas will arise. Some, but not all may be pursued, while others will be identified as areas for further research.
 	
@@ -171,19 +202,31 @@
 	
 	Thus, the railway industry will be the primary focus, however we will compare the improvements made across a range of scenarios, not limited to this area.
 	
-	\subsection{Metrics}
-	
 	\subsection{Expected learning outcomes}
+	The key outcome is a deeper understanding of methods and tactics for formal verification and validation through refinement, the underlying theories and the reasonings. 
 	
-	\subsection{Appropriateness of Research Methods}
+	Additionally, we hope to become very familiar with writing formal specification in B, knowing the pitfalls and gaining practice and experience.	
+	
+	We hope that the outcome of this project will help future students and other people hoping to understand the workings of Atelier B's automated prover.
+		
+	\subsection{Methodology}
+
+	Given that the aims of the projects can be summarised as "explorations and discovery", the overall approach to the project will be agile. 
+	
+	To ensure that the methods chosen are not misleading or very suboptimal, we will cross-reference them with existing works, which will serve as inspiration. However, rather than repeating what other people have done, we will focus on synthesizing their methods and experimenting with various combinations thereof. 
+	
+	We will also use a range of scenarios, from some 
 	
 	\section{Project Management}
-	
-	\subsection{Methodology}
+
 	
 	\subsection{Timeline}
 	Key dates, as listed by the CS907 Dissertation Project website, are:
-	
+
+	\begin{figure*}[]
+		\includegraphics[width=\textwidth]{gantt_chart.png}
+		\caption{Gantt chart with the rough timeline of the project}
+	\end{figure*}
 	\begin{itemize}
 		\item \textbf{19\textsuperscript{th} January:} Registration of dissertation topics
 		\item \textbf{16\textsuperscript{th} February:} Submission of project proposals
@@ -191,12 +234,18 @@
 		\item \textbf{6\textsuperscript{th} July:} Submission of interim reports
 		\item \textbf{14\textsuperscript{th} September:} Submission of dissertation
 	\end{itemize}
+	
 
 	It is also important to take into account dates of terms, which are 9\textsuperscript{th} January to 18\textsuperscript{th}March for the Spring Term, and 24\textsuperscript{th} April to 1\textsuperscript{st} July for the Summer term, with the university examinations commencing on or after the 15\textsuperscript{th} May, and being spread over a period of about two weeks. Therefore, it is to be expected that little progress will be made during Spring Term and especially in May, with the bulk of the work being done over holiday and after the examination period.
 	
-	The Gantt chart in Fig. X shows an estimate of the project's timeline. 
+	The Gantt chart in Fig. 1 shows an estimate of the project's timeline. 	
+
+
 		
 	\subsection{Progress}
+	To make sure that a sufficient progress will be made, some of the actions listed above will be identified as milestones. 
+	
+	Additionally, regular meetings with the Supervisor have been scheduled to monitor progress.  
 	
 	\subsection{Constraints and Risks}
 	\subsubsection{Copyrights for AtelierB software}
@@ -227,12 +276,15 @@
 	Therefore, mistakes in the estimates of time taken to complete tasks are not a severe issue.
 	
 	\section{Concluding remarks}
+	This project will focus on improving the performance of the Atelier B automated prover in discharging the generated proof obligations. It is aimed both at academics, including students in the areas of formal development and verification.
+	
+	It is experimental in nature, with the methodology necessarily being flexible and adaptable. The work is inspired especially by D\'{e}harbe's discussion of integrating SMT solvers into B development environments, and Medeiros' and D\'{e}harbe's BEval project.
 	
 	\IEEEPARstart{}{} 
 	
 	\begin{thebibliography}{1}
 		\bibitem{survey}
-		S.~Conchon and M.~ Iguernlala, "Increasing Proofs Automation Rate	of Atelier-B Thanks to Alt-Ergo" in \emph{Proc.~1st Int.~Conf.~Reliability, Safety and Security of Railway Systems} (RSSRail 2016), Springer, 2016, pp.~243-253
+		S.~Conchon and M.~ Iguernelala, "Increasing Proofs Automation Rate of Atelier-B Thanks to Alt-Ergo" in \emph{Proc.~1st Int.~Conf.~Reliability, Safety and Security of Railway Systems}. Paris, France, 2016, pp.~243-253
 		
 		\bibitem{railway standard}
 		\emph{Railway applications - Communication, signalling and processing systems}, EN 50128, 2011
@@ -241,25 +293,64 @@
 		\emph{Interactive Prover User Manual}, v.~3.7, ClearSy Sys.~Eng., Aix-en-Provence, France, p.~27
 		
 		\bibitem{Railway routing}
-		K.~Reichl et al., "Using Formal Methods for Verification and Validation in Railway" in \emph{Proc.~10th Int.~Conf.~Tests and Proofs}, Springer, 2016, pp.~3-13
+		K.~Reichl et al., "Using Formal Methods for Verification and Validation in Railway" in \emph{Proc.~10th Int.~Conf.~Tests and Proofs}, Vienna, 2016, pp.~3-13
 		
 		\bibitem{Door controller}
-		T.~Lecomte et al., "Formal Methods in Safety-Critical Railway Systems" in \emph{Proc.~Brazilian Symp.~Formal Methods} (SMBF 2007), 2007, pp.~26-30
+		T.~Lecomte et al., "Formal Methods in Safety-Critical Railway Systems" in \emph{Proc. 10th Brazilian Symp.~Formal Methods}, Ouro Preto, Brasil 2007, pp.~26-30
 		
 		\bibitem{Rodin handbook}
 		M.~Jastram, "Rodin User's Handbook v.2.8", D\"{u}sseldorf, 2012
 		
 		\bibitem{airport shuttle}
-		F.~Badeau and A. Amelot, "Using B as a High Level Programming Language in an Industrial Project: Roissy VAL" in \emph{Proc. 4th Int. Conf. Z and B Users}, Springer, 2005, pp. 334-353
+		F.~Badeau and A. Amelot, "Using B as a High Level Programming Language in an Industrial Project: Roissy VAL" in \emph{Proc. 4th Int. Conf. Z and B Users}, Guildford, UK, 2005, pp. 334-353
 		
 		\bibitem{GSM}
 		E. Bernard et al., "Generation of test sequences from formal specifications: GSM 11-11 standard case study" in \emph{Software: Practice and Experience}, vol.~34, Wiley, 2004, pp.~915-948
 		
+		\bibitem{Coq and PVS}
+		J. Bodeveix et al., "A Forlamization of the B-Method in Coq and PVS" in \emph{Lecture Notes in Comp. Sci.} vol.. 1709, Springer, 1999, pp. 33-49
+		
+		\bibitem{Isabelle}
+		P. Chartier, "Formalisation of B in Isabelle/HOL" in \emph{Proc. 2nd Int. Conf. B Users}, Montpellier, France, Apr. 1998, pp. 6-82
+		
+		\bibitem{Zenon}
+		R. Bonichon et al., "Zenon: An Extensible Automated Theorem Prover Producing Checkable Proofs" in \emph{Proc. 14th Int. Conf. Logic for Programming, Artificial Intelligence, and Reasoning}, Yerevan, Armenia, Oct. 2007, pp. 151-165
+		
+		\bibitem{embedding and theorem proving}
+		M. Jacquel et al., "Verifying B Proof Rules Using Deep Embedding and Automated Theorem Proving" in \emph{Proc. 9th Int. Conf. Software Eng. Formal Methods}, Montevideo, Urugway, Nov. 2011, pp. 253-268
+		
+		\bibitem{discharging}
+		D. Mentr\'{e} et al., "Discharging Proof Obligations from Atelier B Using Multiple Automated Provers" in \emph{Proc. 3rd Int. Conf. Abstract State Machines, Alloy, B, VDM, Z}, Pisa, Italy, June 2012, pp. 238-251
+		
+		\bibitem{SMT handbook}
+		C. Barrett et al., "Satisfiability Modulo Theories" in \emph{Frontiers in Artificial Intelligence and Applications}, vol. 185, IOS Press, 2009, pp. 825-885
+		
+		\bibitem{SMT}
+		D. D\'{e}harbe, "Integration of SMT-solvers in B and Event-B development environments" in \emph{Sci. Comp. Prog.} vol. 78, Elsevier, March 2013, pp. 310-326
+		
+		\bibitem{Alt-Ergo}
+		S. Conchon and M. Iguernelala, "Tuning the Alt-Ergo SMT Solver for B Proof Obligations" in \emph{Proc. 4th Int. Conf. Abstract State Machines, Alloy, B, TLA, VDM, and Z}, Toulouse, France, June 2014, pp. 294-297
+		
+		\bibitem{ProB}
+		M. Leuschel and M. Butler, "ProB: A Model Checker for B" in \emph{Proc. Int. Symp. Formal Methods}, Pisa, Italy, Sept. 2003, pp. 855-574 
+		
+		\bibitem{Prob intro}
+		S. Krings et al., "From Failure to Proof: The ProB Disprover for B and Event-B" in \emph{Proc. 13th Int. Conf. Software Eng. and Formal Methods}, York, UK, 2015, pp. 199-214
+		
+		\bibitem{ProB for eventb}
+		O. Ligot et al., "Debugging Even-B Models using the ProB Disprover Plug-in" in \emph{Proc. Approches formelles dans l'assistance au d\'{e}veloppement de logiciels}, June 2007, pp.1-13
+		
 		\bibitem{San Juan metro}
-		M. Leuschel et al., "Automated property verification for large scale B models with ProB" in \emph{Formal Aspects of Computing}, vol. 23, Springer, 2011, pp.~683-709
+		M. Leuschel et al., "Automated property verification for large scale B models with ProB" in \emph{Proc. 2nd Int. Symp. Formal Methods}, Eindhoven, The Netherlands. 2009, pp.~708-723
 		
 		\bibitem{release notes}
 		\emph{Atelier B version 4.2 release notes}, ClearSy Sys. Eng., Aix-en-Provence, France, 2014
+		
+		\bibitem{BEval}
+		V. Medeiros Jr. and D. D\'{e}harbe, "BEval: A Plug-in to Extend Atelier B with Current Verification Technologies" in \emph{Proc. 1st Latin Amer. Workshop Formal Methods}, Buenos Aires, Argentina, 20014, pp. 53-58
+		
+		\bibitem{BWare}
+		D. Delahaye et al., "The BWare Project: Building a Proof Platform for the Automated Verification of B Proof Obligations" in \emph{Proc. 4th Int. Conf. Abstract State Machines, Alloy, B, TLA, VDM, and Z}, Toulouse, France, June 2014, pp. 290-293
 		
 		
 	\end{thebibliography}
