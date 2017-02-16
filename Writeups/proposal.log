@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.11.6)  13 FEB 2017 22:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.11.6)  16 FEB 2017 03:00
 entering extended mode
 **proposal.tex
 (proposal.tex
@@ -240,54 +240,66 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 ] [2] [3]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 175.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 177.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [4]
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 226.
+               Default added (so using `tbp') on input line 230.
 
 <gantt_chart.png, id=19, 1005.7575pt x 525.46312pt>
 File: gantt_chart.png Graphic file (type png)
  <use gantt_chart.png>
-Package pdftex.def Info: gantt_chart.png used on input line 227.
+Package pdftex.def Info: gantt_chart.png used on input line 231.
 (pdftex.def)             Requested size: 516.0pt x 269.58623pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.69997> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 231.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 257.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 257.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 257.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 235.
 
 [5]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 1902) in paragraph at lines 253--254
+[]\OT1/ptm/m/n/11 If the sec-ond phase does not yield sat-is-fac-tory
+ []
 
- [6 <./gantt_chart.png>]
-** WARNING: IEEEPARstart drop letter has zero height! (line 283)
+[6 <./gantt_chart.png>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 275.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 275.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 275.
+
+Underfull \hbox (badness 10000) in paragraph at lines 275--275
+[][][]$\OT1/ptm/m/n/9 http : / / www . atelierb . eu / en / 2017 / 01 / 13 /$
+ []
+
+** WARNING: IEEEPARstart drop letter has zero height! (line 301)
  Forcing the drop letter font size to 10pt.
-[7] (proposal.aux) ) 
+[7] [8
+
+] (proposal.aux) ) 
 Here is how much of TeX's memory you used:
- 3630 strings out of 493698
- 55716 string characters out of 3144412
- 123064 words of memory out of 3000000
- 6932 multiletter control sequences out of 15000+200000
+ 3631 strings out of 493698
+ 55721 string characters out of 3144412
+ 124068 words of memory out of 3000000
+ 6933 multiletter control sequences out of 15000+200000
  47554 words of font info for 86 fonts, out of 3000000 for 9000
  1028 hyphenation exceptions out of 8191
- 27i,8n,33p,857b,252s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.en
-c}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr
-8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on proposal.pdf (7 pages, 141086 bytes).
+ 27i,8n,33p,857b,266s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on proposal.pdf (8 pages, 145194 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
