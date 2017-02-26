@@ -1,19 +1,24 @@
-/* Bagmch_defferred
+/* Bagmch_enum
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 18/02/2017
+ * Creation date: 26/02/2017
  */
 MACHINE
-    Bagmch_defferred(ITEMS, max_elem)
-CONSTRAINTS
-    // max_elem > 0. If no item can be put in the bag, the machine is useless
-    max_elem : NAT1
+    Bagmch_enum
+SETS
+    // possible items we can put in the bag
+    ITEMS = {foo, bar, bazz}
+CONSTANTS
+    // max number of items that fits in the bag
+    max_elem
+PROPERTIES
+    max_elem = 2
 VARIABLES
-    content // set of items that are currently in the bag
+    // contents of the bag
+    content
 INVARIANT
-    // content is a partial function, from mapping items to the number of the given item in the bag.
-    content <: ITEMS & 
-    card(content) <= max_elem
+    content <: ITEMS & // it's a subset of ITEMS
+    card(content) <= max_elem // it has at most max_elem elements
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
@@ -57,5 +62,4 @@ OPERATIONS
             check := FALSE
         END
     END
-
 END

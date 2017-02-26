@@ -9,12 +9,12 @@ MACHINE
     Bagmch
 SETS
     // possible items we can put in the bag
-    ITEMS = {foo, bar, bazz}
+    ITEMS
 CONSTANTS
-    // max number of items that fits in the bag
+    // max number of items that fit in the bag
     max_elem
 PROPERTIES
-    max_elem = 2
+    max_elem = 3
 VARIABLES
     // contents of the bag
     content
@@ -65,4 +65,6 @@ OPERATIONS
         END
     END
 END
+
+
 

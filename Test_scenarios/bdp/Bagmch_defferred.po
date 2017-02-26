@@ -1,0 +1,23 @@
+THEORY ProofList IS
+_f(1) & _f(2) & WellDefinednessInvariant.1,(_f(9) & _f(10) => _f(11));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {}) & ((max_items) : ((NAT-{0})));
+"Invariant is preserved";
+"Check invariant content : POW( ((ITEMS) +-> ((NAT-{0}))))";
+{} : POW( ((ITEMS) +-> ((NAT-{0}))));
+"Check invariant (card(content) <= max_items)";
+(card({}) <= max_items);
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+content : POW( ((ITEMS) +-> ((NAT-{0}))));
+"Well definedness";
+((content) : (FIN(content)));
+content : POW( ((ITEMS) +-> ((NAT-{0})))) & (card(content) <= max_items)
+END
+&
+THEORY EnumerateX
+END

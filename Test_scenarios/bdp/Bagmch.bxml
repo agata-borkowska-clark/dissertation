@@ -2,11 +2,6 @@
 <Sets>
 <Set>
 <Id value='ITEMS' typref='4185748219'/>
-<Enumerated_Values>
-<Id value='foo' typref='1628806408'/>
-<Id value='bar' typref='1628806408'/>
-<Id value='bazz' typref='1628806408'/>
-</Enumerated_Values>
 </Set>
 </Sets>
 <Concrete_Constants>
@@ -18,7 +13,7 @@
 <Properties>
 <Exp_Comparison op='='>
 <Id value='max_elem' typref='2701647786'/>
-<Integer_Literal value='2' typref='2701647786'/>
+<Integer_Literal value='3' typref='2701647786'/>
 </Exp_Comparison>
 </Properties>
 <Invariant>
@@ -193,9 +188,6 @@
 <Id value='ITEMS'/>
 </Unary_Exp>
 </Type>
-<Type id='1628806408'>
-<Id value='ITEMS'/>
-</Type>
 <Type id='2701647786'>
 <Id value='INTEGER'/>
 </Type>
@@ -203,6 +195,9 @@
 <Unary_Exp op='POW'>
 <Generic_Type/>
 </Unary_Exp>
+</Type>
+<Type id='1628806408'>
+<Id value='ITEMS'/>
 </Type>
 <Type id='2043437594'>
 <Id value='BOOL'/>

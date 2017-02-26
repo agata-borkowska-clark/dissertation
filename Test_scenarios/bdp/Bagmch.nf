@@ -151,16 +151,16 @@ THEORY ListConstantsX IS
 END
 &
 THEORY ListSetsX IS
-  Set_Definition(Machine(Bagmch),ITEMS)==({foo,bar,bazz});
+  Set_Definition(Machine(Bagmch),ITEMS)==(?);
   Context_List_Enumerated(Machine(Bagmch))==(?);
   Context_List_Defered(Machine(Bagmch))==(?);
   Context_List_Sets(Machine(Bagmch))==(?);
-  List_Valuable_Sets(Machine(Bagmch))==(?);
+  List_Valuable_Sets(Machine(Bagmch))==(ITEMS);
   Inherited_List_Enumerated(Machine(Bagmch))==(?);
   Inherited_List_Defered(Machine(Bagmch))==(?);
   Inherited_List_Sets(Machine(Bagmch))==(?);
-  List_Enumerated(Machine(Bagmch))==(ITEMS);
-  List_Defered(Machine(Bagmch))==(?);
+  List_Enumerated(Machine(Bagmch))==(?);
+  List_Defered(Machine(Bagmch))==(ITEMS);
   List_Sets(Machine(Bagmch))==(ITEMS)
 END
 &
@@ -175,7 +175,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Bagmch))==(btrue);
   Context_List_Properties(Machine(Bagmch))==(btrue);
   Inherited_List_Properties(Machine(Bagmch))==(btrue);
-  List_Properties(Machine(Bagmch))==(max_elem = 2 & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
+  List_Properties(Machine(Bagmch))==(max_elem = 3 & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
 END
 &
 THEORY ListSeenInfoX END
@@ -189,7 +189,7 @@ THEORY ListANYVarX IS
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Bagmch)) == (max_elem,ITEMS,foo,bar,bazz | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ? | Bagmch);
+  List_Of_Ids(Machine(Bagmch)) == (max_elem,ITEMS | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ? | Bagmch);
   List_Of_HiddenCst_Ids(Machine(Bagmch)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Bagmch)) == (max_elem);
   List_Of_VisibleVar_Ids(Machine(Bagmch)) == (? | ?);
@@ -197,20 +197,20 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY SetsEnvX IS
-  Sets(Machine(Bagmch)) == (Type(ITEMS) == Cst(SetOf(etype(ITEMS,0,2))))
+  Sets(Machine(Bagmch)) == (Type(ITEMS) == Cst(SetOf(atype(ITEMS,"[ITEMS","]ITEMS"))))
 END
 &
 THEORY ConstantsEnvX IS
-  Constants(Machine(Bagmch)) == (Type(foo) == Cst(etype(ITEMS,0,2));Type(bar) == Cst(etype(ITEMS,0,2));Type(bazz) == Cst(etype(ITEMS,0,2));Type(max_elem) == Cst(btype(INTEGER,?,?)))
+  Constants(Machine(Bagmch)) == (Type(max_elem) == Cst(btype(INTEGER,?,?)))
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Machine(Bagmch)) == (Type(content) == Mvl(SetOf(etype(ITEMS,?,?))))
+  Variables(Machine(Bagmch)) == (Type(content) == Mvl(SetOf(atype(ITEMS,?,?))))
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Bagmch)) == (Type(isin) == Cst(btype(BOOL,?,?),etype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(etype(ITEMS,?,?)),No_type);Type(removeitem) == Cst(No_type,etype(ITEMS,?,?));Type(additem) == Cst(No_type,etype(ITEMS,?,?)));
-  Observers(Machine(Bagmch)) == (Type(isin) == Cst(btype(BOOL,?,?),etype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(etype(ITEMS,?,?)),No_type))
+  Operations(Machine(Bagmch)) == (Type(isin) == Cst(btype(BOOL,?,?),atype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(atype(ITEMS,?,?)),No_type);Type(removeitem) == Cst(No_type,atype(ITEMS,?,?));Type(additem) == Cst(No_type,atype(ITEMS,?,?)));
+  Observers(Machine(Bagmch)) == (Type(isin) == Cst(btype(BOOL,?,?),atype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(atype(ITEMS,?,?)),No_type))
 END
 &
 THEORY TCIntRdX IS

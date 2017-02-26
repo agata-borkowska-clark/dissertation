@@ -37,15 +37,10 @@
 <Define name="lprp">
 <Set>
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:1" typref="4185748219" value="ITEMS"/>
-<Enumerated_Values>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:1" typref="1628806408" value="foo"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:2" typref="1628806408" value="bar"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:3" typref="1628806408" value="bazz"/>
-</Enumerated_Values>
 </Set>
 <Exp_Comparison op="=">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:4:1:1" typref="2701647786" value="max_elem"/>
-<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:4:1:2" typref="2701647786" value="2"/>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:4:1:2" typref="2701647786" value="3"/>
 </Exp_Comparison>
 </Define>
 <Define name="inprp"/>
@@ -401,11 +396,6 @@
 <Hypothesis>
 <Set>
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:1" typref="4185748219" value="ITEMS"/>
-<Enumerated_Values>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:1" typref="1628806408" value="foo"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:2" typref="1628806408" value="bar"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:3" typref="1628806408" value="bazz"/>
-</Enumerated_Values>
 </Set>
 </Hypothesis>
 <Goal>
@@ -812,16 +802,16 @@
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:1:1:1" value="ITEMS"/>
 </Unary_Exp>
 </Type>
-<Type id="1628806408">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:2:1" value="ITEMS"/>
-</Type>
 <Type id="2701647786">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:3:1" value="INTEGER"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:2:1" value="INTEGER"/>
 </Type>
 <Type id="3817003670">
 <Unary_Exp op="POW">
-<Generic_Type tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:4:1:1"/>
+<Generic_Type tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:3:1:1"/>
 </Unary_Exp>
+</Type>
+<Type id="1628806408">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:4:1" value="ITEMS"/>
 </Type>
 <Type id="2043437594">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:5:1" value="BOOL"/>

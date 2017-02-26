@@ -1,14 +1,14 @@
 <Proof_Obligations>
-<Define name="B definitions">
+<Define merge="=" name="B definitions">
 <Nary_Pred op="&amp;" translate="((NAT) = (((0) .. (2147483647)))) &amp; ((INT) = (((-2147483647) .. (2147483647))))">
-<Exp_Comparison op="=" translate="((NAT) = (((0) .. (2147483647))))">
+<Exp_Comparison op="=">
 <Id value="NAT"/>
 <Binary_Exp op="..">
 <Integer_Literal value="0"/>
 <Id value="MAXINT"/>
 </Binary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op="=" translate="((INT) = (((-2147483647) .. (2147483647))))">
+<Exp_Comparison op="=">
 <Id value="INT"/>
 <Binary_Exp op="..">
 <Id value="MININT"/>
@@ -17,15 +17,15 @@
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
-<Define name="ctx"/>
-<Define name="seext"/>
-<Define name="inv">
+<Define merge="=" name="ctx"/>
+<Define merge="=" name="seext"/>
+<Define merge="=" name="inv">
 <Nary_Pred op="&amp;" translate="content : POW( ITEMS) &amp; (card(content) &lt;= max_elem)">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" translate="content : POW( ITEMS)">
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)" translate="(card(content) &lt;= max_elem)">
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
 <Unary_Exp op="card" typref="2701647786">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:2:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
@@ -33,25 +33,20 @@
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
-<Define name="ass"/>
-<Define name="lprp">
-<Set translate="((1..3)*{ITEMS}): FIN(NATURAL*{ITEMS}) &amp; not(((1..3)*{ITEMS}) = {})">
+<Define merge="=" name="ass"/>
+<Define merge="-" name="lprp">
+<Set>
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:1" typref="4185748219" value="ITEMS"/>
-<Enumerated_Values>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:1" typref="1628806408" value="foo"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:2" typref="1628806408" value="bar"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:3" typref="1628806408" value="bazz"/>
-</Enumerated_Values>
 </Set>
-<Exp_Comparison op="=" translate="((max_elem) = (2))">
+<Exp_Comparison op="=" translate="((max_elem) = (3))">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:4:1:1" typref="2701647786" value="max_elem"/>
-<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:4:1:2" typref="2701647786" value="2"/>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:4:1:2" typref="2701647786" value="3"/>
 </Exp_Comparison>
 </Define>
-<Define name="inprp"/>
-<Define name="inext"/>
-<Define name="cst"/>
-<Proof_Obligation>
+<Define merge="=" name="inprp"/>
+<Define merge="=" name="inext"/>
+<Define merge="=" name="cst"/>
+<Proof_Obligation merge="-">
 <Comment>Initialisation dans une machine abstraite</Comment>
 <Tag>Initialisation</Tag>
 <Tag>Invariant</Tag>
@@ -65,7 +60,7 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal>
+<Simple_Goal merge="0">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -77,7 +72,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal>
+<Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -92,7 +87,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>additem</Tag>
 <Tag>INVARIANT</Tag>
@@ -135,7 +130,7 @@
 </Exp_Comparison>
 </Unary_Pred>
 </Local_Hyp>
-<Simple_Goal>
+<Simple_Goal merge="0">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -155,7 +150,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal>
+<Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -177,23 +172,8 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal>
-<Tag>Invariant is preserved</Tag>
-<Goal>
-<Binary_Pred op="=>">
-<Nary_Pred op="&amp;">
-<Ref_Hyp num="4"/>
-<Ref_Hyp num="3"/>
-</Nary_Pred>
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" goalTag="Invariant is preserved">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-</Binary_Pred>
-</Goal>
-</Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>removeitem</Tag>
 <Tag>INVARIANT</Tag>
@@ -215,7 +195,7 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal>
+<Simple_Goal merge="0">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -232,7 +212,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal>
+<Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -252,7 +232,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -269,20 +249,8 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal>
-<Tag>Invariant is preserved</Tag>
-<Goal>
-<Binary_Pred op="=>">
-<Ref_Hyp num="1"/>
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" goalTag="Invariant is preserved">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-</Binary_Pred>
-</Goal>
-</Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -299,20 +267,8 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal>
-<Tag>Invariant is preserved</Tag>
-<Goal>
-<Binary_Pred op="=>">
-<Ref_Hyp num="1"/>
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" goalTag="Invariant is preserved">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-</Binary_Pred>
-</Goal>
-</Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>isin</Tag>
 <Tag>INVARIANT</Tag>
@@ -351,41 +307,11 @@
 </Exp_Comparison>
 </Unary_Pred>
 </Local_Hyp>
-<Simple_Goal>
-<Tag>Invariant is preserved</Tag>
-<Goal>
-<Binary_Pred op="=>">
-<Nary_Pred op="&amp;">
-<Ref_Hyp num="2"/>
-<Ref_Hyp num="1"/>
-</Nary_Pred>
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" goalTag="Invariant is preserved">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-</Binary_Pred>
-</Goal>
-</Simple_Goal>
-<Simple_Goal>
-<Tag>Invariant is preserved</Tag>
-<Goal>
-<Binary_Pred op="=>">
-<Nary_Pred op="&amp;">
-<Ref_Hyp num="4"/>
-<Ref_Hyp num="3"/>
-</Nary_Pred>
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" goalTag="Invariant is preserved">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-</Binary_Pred>
-</Goal>
-</Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="=">
 <Tag>WellDefinednessConstraints</Tag>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="=">
 <Tag>WellDefinednessProperties</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -393,15 +319,10 @@
 <Hypothesis>
 <Set>
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:1" typref="4185748219" value="ITEMS"/>
-<Enumerated_Values>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:1" typref="1628806408" value="foo"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:2" typref="1628806408" value="bar"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:1:1:2:3" typref="1628806408" value="bazz"/>
-</Enumerated_Values>
 </Set>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Tag>WellDefinednessInvariant</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -416,7 +337,7 @@
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Local_Hyp>
-<Simple_Goal>
+<Simple_Goal merge="0">
 <Tag>Well definedness</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -431,7 +352,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Tag>WellDefinednessAssertions</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -442,7 +363,7 @@
 <Definition name="seext"/>
 <Definition name="inv"/>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Tag>WellDefinednessInitialisation</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -452,7 +373,7 @@
 <Definition name="inext"/>
 <Definition name="seext"/>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_additem</Tag>
 <Tag>INVARIANT</Tag>
@@ -466,7 +387,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_additem</Tag>
 <Tag>INVARIANT</Tag>
@@ -503,7 +424,7 @@
 </Exp_Comparison>
 </Unary_Pred>
 </Local_Hyp>
-<Simple_Goal>
+<Simple_Goal merge="0">
 <Tag>Well definedness</Tag>
 <Goal>
 <Exp_Comparison op=":">
@@ -515,7 +436,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_removeitem</Tag>
 <Tag>INVARIANT</Tag>
@@ -529,7 +450,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_removeitem</Tag>
 <Tag>INVARIANT</Tag>
@@ -549,7 +470,7 @@
 </Exp_Comparison>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -563,7 +484,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -578,7 +499,7 @@
 <Definition name="ass"/>
 <Hypothesis/>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -592,7 +513,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -606,7 +527,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 <Hypothesis/>
-<Simple_Goal>
+<Simple_Goal merge="0">
 <Tag>Well definedness</Tag>
 <Goal>
 <Exp_Comparison op=":">
@@ -618,7 +539,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_isin</Tag>
 <Tag>INVARIANT</Tag>
@@ -632,7 +553,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation>
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_isin</Tag>
 <Tag>INVARIANT</Tag>
@@ -666,22 +587,22 @@
 </Unary_Pred>
 </Local_Hyp>
 </Proof_Obligation>
-<TypeInfos>
+<TypeInfos merge="=">
 <Type id="4185748219">
 <Unary_Exp op="POW">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:1:1:1" value="ITEMS"/>
 </Unary_Exp>
 </Type>
-<Type id="1628806408">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:2:1" value="ITEMS"/>
-</Type>
 <Type id="2701647786">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:3:1" value="INTEGER"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:2:1" value="INTEGER"/>
 </Type>
 <Type id="3817003670">
 <Unary_Exp op="POW">
-<Generic_Type tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:4:1:1"/>
+<Generic_Type tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:3:1:1"/>
 </Unary_Exp>
+</Type>
+<Type id="1628806408">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:4:1" value="ITEMS"/>
 </Type>
 <Type id="2043437594">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch.bxml:1:8:5:1" value="BOOL"/>

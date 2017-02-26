@@ -1,0 +1,194 @@
+<Proof_Obligations>
+<Define name="B definitions">
+<Nary_Pred op="&amp;" translate="((NAT) = (((0) .. (2147483647)))) &amp; ((INT) = (((-2147483647) .. (2147483647))))">
+<Exp_Comparison op="=" translate="((NAT) = (((0) .. (2147483647))))">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" translate="((INT) = (((-2147483647) .. (2147483647))))">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ctx"/>
+<Define name="seext"/>
+<Define name="inv">
+<Nary_Pred op="&amp;" translate="content : POW( ((ITEMS) +-> ((NAT-{0})))) &amp; (card(content) &lt;= max_items)">
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ((ITEMS) +-> ((NAT-{0}))))" translate="content : POW( ((ITEMS) +-> ((NAT-{0}))))">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:1" typref="3903554065" value="content"/>
+<Binary_Exp op="+->" typref="3903554065">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:2:1" typref="4185748219" value="ITEMS"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_items)" translate="(card(content) &lt;= max_items)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:1:1" typref="3903554065" value="content"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:2" typref="2701647786" value="max_items"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ass"/>
+<Define name="lprp">
+<Set translate="ITEMS: FIN(INTEGER) &amp; not(ITEMS = {})">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:1:1:1" typref="4185748219" value="ITEMS"/>
+</Set>
+<Exp_Comparison op=":" translate="((max_items) : ((NAT-{0})))">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1" typref="2701647786" value="max_items"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2" typref="3603043417" value="NAT1"/>
+</Exp_Comparison>
+</Define>
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="cst"/>
+<Proof_Obligation>
+<Comment>Initialisation dans une machine abstraite</Comment>
+<Tag>Initialisation</Tag>
+<Tag>Invariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ((ITEMS) +-> ((NAT-{0}))))" goalTag="Invariant is preserved">
+<EmptySet tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:1:1" typref="3903554065"/>
+<Binary_Exp op="+->" typref="3903554065">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:2:1" typref="4185748219" value="ITEMS"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_items)" goalTag="Invariant is preserved">
+<Unary_Exp op="card" typref="2701647786">
+<EmptySet tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:1:1" typref="3903554065"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:2" typref="2701647786" value="max_items"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessConstraints</Tag>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Hypothesis>
+<Set>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:1:1:1" typref="4185748219" value="ITEMS"/>
+</Set>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ((ITEMS) +-> ((NAT-{0}))))">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:1" typref="3903554065" value="content"/>
+<Binary_Exp op="+->" typref="3903554065">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:2:1" typref="4185748219" value="ITEMS"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:1:1" typref="3903554065" value="content"/>
+<Unary_Exp op="FIN">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:1:1" typref="3903554065" value="content"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessAssertions</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+</Proof_Obligation>
+<TypeInfos>
+<Type id="4185748219">
+<Unary_Exp op="POW">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:1:1:1" value="ITEMS"/>
+</Unary_Exp>
+</Type>
+<Type id="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:2:1" value="INTEGER"/>
+</Type>
+<Type id="3903554065">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:3:1:1:1:1" value="ITEMS"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:3:1:1:1:2" value="INTEGER"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:4:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:5:1:1"/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+</Proof_Obligations>

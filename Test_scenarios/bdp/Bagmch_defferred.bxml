@@ -1,0 +1,77 @@
+<Machine name='Bagmch_defferred' type='abstraction'>
+<Sets>
+<Set>
+<Id value='ITEMS' typref='4185748219'/>
+</Set>
+</Sets>
+<Concrete_Constants>
+<Id value='max_items' typref='2701647786'/>
+</Concrete_Constants>
+<Abstract_Variables>
+<Id value='content' typref='3903554065'/>
+</Abstract_Variables>
+<Properties>
+<Exp_Comparison op=':'>
+<Id value='max_items' typref='2701647786'/>
+<Id value='NAT1' typref='3603043417'/>
+</Exp_Comparison>
+</Properties>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op='&lt;:'>
+<Id value='content' typref='3903554065'/>
+<Binary_Exp op='+-&gt;' typref='3903554065'>
+<Id value='ITEMS' typref='4185748219'/>
+<Id value='NAT1' typref='3603043417'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='content' typref='3903554065'/>
+</Unary_Exp>
+<Id value='max_items' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='content' typref='3903554065'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<TypeInfos>
+<Type id='4185748219'>
+<Unary_Exp op='POW'>
+<Id value='ITEMS'/>
+</Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3903554065'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='ITEMS'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>
