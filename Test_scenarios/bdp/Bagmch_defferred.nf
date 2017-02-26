@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_defferred))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_defferred))==(btrue);
   Context_List_Invariant(Machine(Bagmch_defferred))==(btrue);
-  List_Invariant(Machine(Bagmch_defferred))==(content <: ITEMS +-> NAT1 & card(content)<=max_items)
+  List_Invariant(Machine(Bagmch_defferred))==(content <: ITEMS & card(content)<=max_elem)
 END
 &
 THEORY ListAssertionsX IS
@@ -82,51 +82,85 @@ THEORY ListInitialisationX IS
 END
 &
 THEORY ListParametersX IS
-  List_Parameters(Machine(Bagmch_defferred))==(?)
+  List_Parameters(Machine(Bagmch_defferred))==(ITEMS,max_elem)
 END
 &
 THEORY ListInstanciatedParametersX END
 &
 THEORY ListConstraintsX IS
   List_Context_Constraints(Machine(Bagmch_defferred))==(btrue);
-  List_Constraints(Machine(Bagmch_defferred))==(btrue)
+  List_Constraints(Machine(Bagmch_defferred))==(max_elem: NAT1 & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Bagmch_defferred))==(?);
-  List_Operations(Machine(Bagmch_defferred))==(?)
+  Internal_List_Operations(Machine(Bagmch_defferred))==(additem,removeitem,getcontents,howmany,isin);
+  List_Operations(Machine(Bagmch_defferred))==(additem,removeitem,getcontents,howmany,isin)
 END
 &
-THEORY ListInputX END
+THEORY ListInputX IS
+  List_Input(Machine(Bagmch_defferred),additem)==(aa);
+  List_Input(Machine(Bagmch_defferred),removeitem)==(aa);
+  List_Input(Machine(Bagmch_defferred),getcontents)==(?);
+  List_Input(Machine(Bagmch_defferred),howmany)==(?);
+  List_Input(Machine(Bagmch_defferred),isin)==(aa)
+END
 &
-THEORY ListOutputX END
+THEORY ListOutputX IS
+  List_Output(Machine(Bagmch_defferred),additem)==(?);
+  List_Output(Machine(Bagmch_defferred),removeitem)==(?);
+  List_Output(Machine(Bagmch_defferred),getcontents)==(items);
+  List_Output(Machine(Bagmch_defferred),howmany)==(nn);
+  List_Output(Machine(Bagmch_defferred),isin)==(check)
+END
 &
-THEORY ListHeaderX END
+THEORY ListHeaderX IS
+  List_Header(Machine(Bagmch_defferred),additem)==(additem(aa));
+  List_Header(Machine(Bagmch_defferred),removeitem)==(removeitem(aa));
+  List_Header(Machine(Bagmch_defferred),getcontents)==(items <-- getcontents);
+  List_Header(Machine(Bagmch_defferred),howmany)==(nn <-- howmany);
+  List_Header(Machine(Bagmch_defferred),isin)==(check <-- isin(aa))
+END
 &
 THEORY ListOperationGuardX END
 &
-THEORY ListPreconditionX END
+THEORY ListPreconditionX IS
+  List_Precondition(Machine(Bagmch_defferred),additem)==(aa: ITEMS);
+  List_Precondition(Machine(Bagmch_defferred),removeitem)==(aa: ITEMS);
+  List_Precondition(Machine(Bagmch_defferred),getcontents)==(btrue);
+  List_Precondition(Machine(Bagmch_defferred),howmany)==(btrue);
+  List_Precondition(Machine(Bagmch_defferred),isin)==(aa: ITEMS)
+END
 &
-THEORY ListSubstitutionX END
+THEORY ListSubstitutionX IS
+  Expanded_List_Substitution(Machine(Bagmch_defferred),isin)==(aa: ITEMS | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
+  Expanded_List_Substitution(Machine(Bagmch_defferred),howmany)==(btrue | nn:=card(content));
+  Expanded_List_Substitution(Machine(Bagmch_defferred),getcontents)==(btrue | items:=content);
+  Expanded_List_Substitution(Machine(Bagmch_defferred),removeitem)==(aa: ITEMS | content:=content-{aa});
+  Expanded_List_Substitution(Machine(Bagmch_defferred),additem)==(aa: ITEMS | card(content)<max_elem ==> content:=content\/{aa} [] not(card(content)<max_elem) ==> skip);
+  List_Substitution(Machine(Bagmch_defferred),additem)==(IF card(content)<max_elem THEN content:=content\/{aa} END);
+  List_Substitution(Machine(Bagmch_defferred),removeitem)==(content:=content-{aa});
+  List_Substitution(Machine(Bagmch_defferred),getcontents)==(items:=content);
+  List_Substitution(Machine(Bagmch_defferred),howmany)==(nn:=card(content));
+  List_Substitution(Machine(Bagmch_defferred),isin)==(IF aa: content THEN check:=TRUE ELSE check:=FALSE END)
+END
 &
 THEORY ListConstantsX IS
-  List_Valuable_Constants(Machine(Bagmch_defferred))==(max_items);
+  List_Valuable_Constants(Machine(Bagmch_defferred))==(?);
   Inherited_List_Constants(Machine(Bagmch_defferred))==(?);
-  List_Constants(Machine(Bagmch_defferred))==(max_items)
+  List_Constants(Machine(Bagmch_defferred))==(?)
 END
 &
 THEORY ListSetsX IS
-  Set_Definition(Machine(Bagmch_defferred),ITEMS)==(?);
   Context_List_Enumerated(Machine(Bagmch_defferred))==(?);
   Context_List_Defered(Machine(Bagmch_defferred))==(?);
   Context_List_Sets(Machine(Bagmch_defferred))==(?);
-  List_Valuable_Sets(Machine(Bagmch_defferred))==(ITEMS);
+  List_Valuable_Sets(Machine(Bagmch_defferred))==(?);
   Inherited_List_Enumerated(Machine(Bagmch_defferred))==(?);
   Inherited_List_Defered(Machine(Bagmch_defferred))==(?);
   Inherited_List_Sets(Machine(Bagmch_defferred))==(?);
   List_Enumerated(Machine(Bagmch_defferred))==(?);
-  List_Defered(Machine(Bagmch_defferred))==(ITEMS);
-  List_Sets(Machine(Bagmch_defferred))==(ITEMS)
+  List_Defered(Machine(Bagmch_defferred))==(?);
+  List_Sets(Machine(Bagmch_defferred))==(?)
 END
 &
 THEORY ListHiddenConstantsX IS
@@ -140,31 +174,38 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Bagmch_defferred))==(btrue);
   Context_List_Properties(Machine(Bagmch_defferred))==(btrue);
   Inherited_List_Properties(Machine(Bagmch_defferred))==(btrue);
-  List_Properties(Machine(Bagmch_defferred))==(max_items: NAT1 & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
+  List_Properties(Machine(Bagmch_defferred))==(btrue)
 END
 &
 THEORY ListSeenInfoX END
 &
-THEORY ListANYVarX END
+THEORY ListANYVarX IS
+  List_ANY_Var(Machine(Bagmch_defferred),additem)==(?);
+  List_ANY_Var(Machine(Bagmch_defferred),removeitem)==(?);
+  List_ANY_Var(Machine(Bagmch_defferred),getcontents)==(?);
+  List_ANY_Var(Machine(Bagmch_defferred),howmany)==(?);
+  List_ANY_Var(Machine(Bagmch_defferred),isin)==(?)
+END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Bagmch_defferred)) == (max_items,ITEMS | ? | content | ? | ? | ? | ? | ? | Bagmch_defferred);
+  List_Of_Ids(Machine(Bagmch_defferred)) == (? | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ITEMS,max_elem | Bagmch_defferred);
   List_Of_HiddenCst_Ids(Machine(Bagmch_defferred)) == (? | ?);
-  List_Of_VisibleCst_Ids(Machine(Bagmch_defferred)) == (max_items);
+  List_Of_VisibleCst_Ids(Machine(Bagmch_defferred)) == (?);
   List_Of_VisibleVar_Ids(Machine(Bagmch_defferred)) == (? | ?);
   List_Of_Ids_SeenBNU(Machine(Bagmch_defferred)) == (?: ?)
 END
 &
-THEORY SetsEnvX IS
-  Sets(Machine(Bagmch_defferred)) == (Type(ITEMS) == Cst(SetOf(atype(ITEMS,"[ITEMS","]ITEMS"))))
-END
-&
-THEORY ConstantsEnvX IS
-  Constants(Machine(Bagmch_defferred)) == (Type(max_items) == Cst(btype(INTEGER,?,?)))
+THEORY ParametersEnvX IS
+  Parameters(Machine(Bagmch_defferred)) == (Type(max_elem) == Prm(btype(INTEGER,?,?));Type(ITEMS) == Prm(SetOf(atype(ITEMS,?,?))))
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Machine(Bagmch_defferred)) == (Type(content) == Mvl(SetOf(SetOf(atype(ITEMS,?,?)*btype(INTEGER,?,?)))))
+  Variables(Machine(Bagmch_defferred)) == (Type(content) == Mvl(SetOf(atype(ITEMS,?,?))))
+END
+&
+THEORY OperationsEnvX IS
+  Operations(Machine(Bagmch_defferred)) == (Type(isin) == Cst(btype(BOOL,?,?),atype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(atype(ITEMS,?,?)),No_type);Type(removeitem) == Cst(No_type,atype(ITEMS,?,?));Type(additem) == Cst(No_type,atype(ITEMS,?,?)));
+  Observers(Machine(Bagmch_defferred)) == (Type(isin) == Cst(btype(BOOL,?,?),atype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(atype(ITEMS,?,?)),No_type))
 END
 &
 THEORY TCIntRdX IS

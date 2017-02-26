@@ -1,87 +1,13 @@
-I. Bagmch_deferred.mch
-	Simplest version of the Bag machine, which takes no parameters, and 
-	whose ITEMS set is not explicitly defined.
+II. Bagmch_deferred.txt
 
-	Note: content <: ITEMS. I.e. each item from the set can appear only 
-	once in our bag.
+	(Sorry about the misleading name!)
+
+	The only difference from Bagmch is that we pass ITEMS and max_elem as
+	parameters
 
 	Proof obligations:
 	- 9 POs generated
-	- 6 discharged with force 0 
-	- 3 undischarged with any force
+	- 6 discharged with force 0
+	- 3 not discharged automatically
 
-	The discharged POs are:
-	1. INITIALISATION - at initialisation, content <: ITEMS, i.e.
-		{} <: ITEMS
-	
-	2. INITIALISATION - at initialisation, max_elem isn't exceeded, i.e.
-		card({}) <= max_elem
-
-	3. OPERATION additem - after adding an element, content <: ITEMS, i.e.
-		card(content)+1 <= max_elem &
-		"Invariant is preserved" &
-		"Check invariant content : POW(ITEMS)
-	   =>
-		content \/ {aa} <: ITEMS
-
-	  PRE guarantees that aa : ITEMS, so this is discharged.
-
-	4. OPERATION additem - we do not exceed max_elem
-		card(content) + 1 <= max_elem &
-		"Invariant is preserved" &
-		"Check invariant content : POW(ITEMS)
-	   =>
-		card(content\/{aa}) <= max_elem
-
-	5. OPERATION removeitem - after removing an item, content <: ITEMS
-		content-{aa} <: ITEMS
-
-	6. OPERATION removeitem - after removing an item, max_elem not exceeded
-		card(content-{aa}) <= max_elem
-
-	The undischarged POs are concerned with the well-definedness of the
-	invariant, additem and howmany. They are:
-
-	1. Well-definedness of the invariant:
-
-		content <: ITEMS &
-		"Well-definedness"
-	   =>
-		content : FIN(content)
-
-	   I.e. content is a finite subset of itself => content is finite.
-	   This is necessary to hold; otherwise the invariant will be violated
-	   (i.e. max_elem will be exceeded, as it's set to 3).
-
-	Proof attempt:
-	
-
-		content <: ITEMS &
-		"Well-definedness"
-	   =>
-		content : FIN(content)
-	-------------------------------- deduction (dd)
-		content : FIN(content)
-	------------------------------- nothing can movethe proof forwards
-
-
-	2. Well-definedness of additem
-
-		"Well-definedness" => content : FIN(content)
-
-	   We're in exactly the same situation as before
-
-	3. Well-definedness of howmany
-
-		"Well-definedness" => content : FIN(content)
-
-	   As above. 
-	
-
-	WHAT I WOULD LIKE TO SEE
-	From previous proofs:
-		"Invariant not violated"
-	   => 	card(content) <= max_elem &
-		max_elem : NAT
-	   =>	card(content) : NAT
-	   =>	content : FIN(content)
+	The POs (both discharged and not are *exactly* the same as in Bagmch.

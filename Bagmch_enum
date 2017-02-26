@@ -1,0 +1,140 @@
+III. Bacgmch_enum.mch
+
+	This time we enumerate ITEMS set to be ITEMS = {foo, bar, bazz}, and we
+	fix max_elem to be 2.
+
+	Proof obligations:
+	- 14 POs generated
+	- 4 discharged automatically with force 0
+	- 10 not discharged with any force
+
+	The discharged proof obligations were:
+	1. INITIALISATION
+		{} <: ITEMS
+
+	2. INITIALISATION
+		card({}) <= max_elem
+
+	3. OPERATION additem PO2:
+		card(content) + 1 <= max_elem &
+		"Invariant is preserved" &
+		"Check invariant (card(content) <= max_elem)"
+	   =>	
+		card(content\/{aa}) <= max_elem
+
+	4. OPERATION removeitem PO2:
+		"Invariant is preserved" &
+		"Check invariant (card(content) <= max_elem)"
+	   =>	
+		card(content-{aa}) <= max_elem
+
+	The undischarged POs were:
+
+	1. OPERATION additem PO1:
+		PRE ensures that the item we're adding is in ITEMS
+
+		card(content) + 1 <= max_elem &
+		"Invariant is preserved" &
+		"Check invariant content : POW(ITEMS)"
+	   =>
+		content\/{aa} <: ITEMS
+	----------------------------------------------- deduction (dd)
+		content\/{aa} <: ITEMS
+	----------------------------------------------- simplify set (ss)
+		not({foo,bar,bazz} /\ {aa} = {} &
+		content <: {foo, bar, bazz}
+	----------------------------------------------- simplify set (ss)
+		aa : {foo, bar, bazz} &
+		content <: {foo, bar, bazz}
+	[Simplify set from this point will alternate between last 2 lines]
+	----------------------------------------------- prove (pr)
+		content <: {foo, bar, bazz}
+	[Nothing progresses the proof]
+	----------------------------------------------- step back
+		aa : {bazz, bar, foo} &
+		content <: {foo, bar, bazz}
+	----------------------------------------------- mini prove (mp)
+		aa = bazz
+	
+	???
+	Observation: order of the enum gets messed up
+
+	2. OPERATION additem PO3:
+		
+		not(card(content) + 1 <= max_elem) &
+		"Invariant is preserved" &
+		"Check invariant content : POW(ITEMS)"
+	   =>
+		content <: ITEMS
+	---------------------------------------------- deduction (dd)
+		content <: ITEMS
+	---------------------------------------------- simplify set (ss)
+		content <: {foo, bar, bazz}
+	[Nothing progresses the proof]
+
+	3. OPERATION removeitem PO1:
+		The POs wants us to demonstrate that after removing an element
+		from the bag, content is still a subset of ITEMS.
+		Invariant should take care of that.
+		
+		"Invariant is preserved" &
+		"Check invariant content : POW(ITEMS)"
+	   =>
+		content-{aa} <: ITEMS
+	---------------------------------------------- deduction (dd)
+		content-{aa} <: ITEMS
+	---------------------------------------------- prove (pr)
+		dom(content) : FIN(INTEGER)
+	[This makes sense... kind of since enums are partial maps NAT+->things]
+	[This also generates 3 pending goals:
+		- 1 <= min(dom(content))
+		- max(dom(content)) <= 3
+		- ran(content) <: {ITEMS.enum}
+	There is supposedly a way of moving between goals but Ihaven't found it]
+
+	4. OPERATION getcontents PO1:
+
+		"Invariant is preserved" &
+		"Check invariant content : POW(ITEMS)"
+	   =>
+		content <: ITEMS
+	---------------------------------------------- deduction (dd)
+		content <: ITEMS
+	[vide 2]
+	
+	5. OPERATION howmany PO1:
+		exactly as 4.
+
+	6. OPERATION isin PO1:
+		aa : content &
+		"Invariant is preserved" &
+		" Check invariant content : POW(ITEMS)"
+	   =>
+		content <: ITEMS
+	---------------------------------------------- deduction (dd)
+		content <: ITEMS
+
+	7. OPERATION isin PO2:
+		not (aa : content) &
+		"Invariant is preserved" &
+		" Check invariant content : POW(ITEMS)"
+	   =>
+		content <: ITEMS
+
+	8. Well-definedness of invariant
+		content <: ITEMS &
+		"Well definedness"
+	   => 
+		content : FIN(content)
+	----------------------------------------------	deduction (dd)
+		content : FIN(content)
+
+	[Nothing can be done]
+
+	9. Well-definedness of additem
+		"Well definedness" => content : FIN(content)
+
+	[As above]
+
+	10. Well-definedness of howmany
+		exactly as 9.	

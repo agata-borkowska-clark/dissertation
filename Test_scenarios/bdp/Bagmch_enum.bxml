@@ -1,22 +1,26 @@
-<Machine name='Bagmch_defferred' type='abstraction'>
-<Parameters>
-<Id value='ITEMS' typref='4185748219'/>
-<Id value='max_elem' typref='2701647786'/>
-</Parameters>
-<Constraints>
-<Nary_Pred op='&amp;'>
+<Machine name='Bagmch_enum' type='abstraction'>
+<Sets>
 <Set>
 <Id value='ITEMS' typref='4185748219'/>
+<Enumerated_Values>
+<Id value='foo' typref='1628806408'/>
+<Id value='bar' typref='1628806408'/>
+<Id value='bazz' typref='1628806408'/>
+</Enumerated_Values>
 </Set>
-<Exp_Comparison op=':'>
+</Sets>
+<Concrete_Constants>
 <Id value='max_elem' typref='2701647786'/>
-<Id value='NAT1' typref='3603043417'/>
-</Exp_Comparison>
-</Nary_Pred>
-</Constraints>
+</Concrete_Constants>
 <Abstract_Variables>
 <Id value='content' typref='4185748219'/>
 </Abstract_Variables>
+<Properties>
+<Exp_Comparison op='='>
+<Id value='max_elem' typref='2701647786'/>
+<Integer_Literal value='2' typref='2701647786'/>
+</Exp_Comparison>
+</Properties>
 <Invariant>
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op='&lt;:'>
@@ -189,21 +193,16 @@
 <Id value='ITEMS'/>
 </Unary_Exp>
 </Type>
+<Type id='1628806408'>
+<Id value='ITEMS'/>
+</Type>
 <Type id='2701647786'>
 <Id value='INTEGER'/>
-</Type>
-<Type id='3603043417'>
-<Unary_Exp op='POW'>
-<Id value='INTEGER'/>
-</Unary_Exp>
 </Type>
 <Type id='3817003670'>
 <Unary_Exp op='POW'>
 <Generic_Type/>
 </Unary_Exp>
-</Type>
-<Type id='1628806408'>
-<Id value='ITEMS'/>
 </Type>
 <Type id='2043437594'>
 <Id value='BOOL'/>
