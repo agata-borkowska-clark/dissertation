@@ -40,7 +40,7 @@ THEORY MethodList IS
   ?;
   ?;
   pr;
-  ?;
+  dd(0) & pr;
   pr;
   pr
 END

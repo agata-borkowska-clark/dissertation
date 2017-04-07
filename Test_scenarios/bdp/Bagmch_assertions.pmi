@@ -1,10 +1,9 @@
 ﻿THEORY BalanceX IS
-  Bagmch,10,0,0,6,0,0,0;
+  Bagmch_assertions,11,0,0,8,0,0,0;
+  AssertionLemmas,3,0,0,2,0,0,0;
   Initialisation,2,0,0,2,0,0,0;
   WellDefinednessAssertions,1,0,0,0,0,0,0;
   WellDefinednessInvariant,1,0,0,0,0,0,0;
-  WellDefinedness_additem,1,0,0,0,0,0,0;
-  WellDefinedness_howmany,1,0,0,0,0,0,0;
   additem,2,0,0,2,0,0,0;
   removeitem,2,0,0,2,0,0,0
 END
@@ -12,12 +11,13 @@ END
 THEORY ProofState IS
   Unproved;
   Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
   Unproved;
-  Unproved;
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
   Proved(0);
   Proved(0)
 END
@@ -25,12 +25,13 @@ END
 THEORY MethodList IS
   ?;
   ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
   ?;
-  ?;
-  pr;
-  pr;
-  pr;
-  pr;
   pr;
   pr
 END
@@ -38,12 +39,13 @@ END
 THEORY PassList IS
   Force(0),(?;0;1);
   Force(0),(?;0;1);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
   Force(0),(?;0;1);
-  Force(0),(?;0;1);
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
   Force(0),?;
   Force(0),?
 END

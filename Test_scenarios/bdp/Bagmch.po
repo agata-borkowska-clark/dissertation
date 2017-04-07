@@ -1,6 +1,7 @@
 THEORY ProofList IS
 _f(1) & _f(2) & _f(8) & WellDefinedness_howmany.1,(_f(20) => _f(21));
 _f(1) & _f(2) & _f(8) & _f(9) & WellDefinedness_additem.1,(_f(20) => _f(21));
+_f(1) & _f(2) & _f(8) & WellDefinednessAssertions.1,(_f(20) => _f(21));
 _f(1) & _f(2) & WellDefinednessInvariant.1,(_f(19) & _f(20) => _f(21));
 _f(1) & _f(2) & _f(8) & _f(9) & removeitem.2,(_f(3) & _f(6) => _f(15));
 _f(1) & _f(2) & _f(8) & _f(9) & removeitem.1,(_f(3) & _f(4) => _f(14));

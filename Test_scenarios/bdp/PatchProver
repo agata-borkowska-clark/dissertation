@@ -1,0 +1,20 @@
+/* PatchProver
+ * Author: Agata Borkowska
+ * UID: 1690550
+ * Creation date: 16/03/2017
+ */
+
+THEORY asubseta IS
+     btrue
+     =>
+     a : FIN(a)
+END
+
+&
+
+THEORY asubseta2 IS
+    card(a) : NAT
+    =>
+    a : FIN(a)
+END
+

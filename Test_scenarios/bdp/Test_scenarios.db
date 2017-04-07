@@ -9,11 +9,17 @@
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch" suffix="mch" user="agata">
             <component name="Bagmch" type="specification" />
         </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_assertions" suffix="mch" user="agata">
+            <component name="Bagmch_assertions" type="specification" />
+        </component_file>
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_defferred" suffix="mch" user="agata">
             <component name="Bagmch_defferred" type="specification" />
         </component_file>
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_enum" suffix="mch" user="agata">
             <component name="Bagmch_enum" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_unbounded" suffix="mch" user="agata">
+            <component name="Bagmch_unbounded" type="specification" />
         </component_file>
     </project>
 </db_xml>

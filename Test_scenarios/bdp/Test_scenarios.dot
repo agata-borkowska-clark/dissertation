@@ -1,6 +1,8 @@
 digraph {
 Bagmch [ label=" Bagmch " shape= box ]
+Bagmch_assertions [ label=" Bagmch_assertions " shape= box ]
 Bagmch_defferred [ label=" Bagmch_defferred " shape= box ]
 Bagmch_enum [ label=" Bagmch_enum " shape= box ]
+Bagmch_unbounded [ label=" Bagmch_unbounded " shape= box ]
 
 }
