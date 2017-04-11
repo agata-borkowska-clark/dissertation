@@ -18,6 +18,12 @@
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_enum" suffix="mch" user="agata">
             <component name="Bagmch_enum" type="specification" />
         </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_numbers" suffix="mch" user="agata">
+            <component name="Bagmch_numbers" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_numbers_2" suffix="mch" user="agata">
+            <component name="Bagmch_numbers_2" type="specification" />
+        </component_file>
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_unbounded" suffix="mch" user="agata">
             <component name="Bagmch_unbounded" type="specification" />
         </component_file>

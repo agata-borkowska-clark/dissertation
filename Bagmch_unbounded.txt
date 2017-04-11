@@ -1,0 +1,34 @@
+0. Bagmch_unbounded.mch
+	In this variation on the theme we have a machine that is deliberately
+	faulty. We have no limit on the number of items in the bag, and even the
+	set of all items. This is erroneus because in order to implement this 
+	machinewe must be able to show that the set has less than 2^32 elements
+
+	Proof obiglations:
+	- 4 POs generated
+	- 3 proven automatically w/ force 0
+	- 1 not discharged.
+
+	The discharged POs are:
+
+	1. INITIALISATION
+		"Invariant is preserved"
+		=> {} <: ITEMS
+
+	2. OPERATION additem:
+		"Invariant is preserved"
+		=> content\/{aa} <: ITEMS
+
+	3. OPERATION removeitem:
+		"Invariant is preserved"
+		=> content-{aa} <: ITEMS
+
+	The undischarged PO is:
+	1. Well-definedness of howmany:
+		"Well definedness"
+		=> content : FIN(content)
+
+	This is quite correctly undischarged, because in an implementation this
+	operation should return a value of type int, which is bounded by 2^32.
+	Therefore, the cardinality of the set cannot exceed 2^32, and the set
+	has to be finite.

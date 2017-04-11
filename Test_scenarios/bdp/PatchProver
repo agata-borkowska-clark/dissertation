@@ -18,3 +18,19 @@ THEORY asubseta2 IS
     a : FIN(a)
 END
 
+&
+
+
+THEORY finfixp IS
+    FIN(a) : FIN(FIN(a))
+    =>
+    a : FIN(a)
+END
+
+&
+
+THEORY finfixprev IS
+    a : FIN(a)
+    =>
+    FIN(a) : FIN(FIN(a))
+END

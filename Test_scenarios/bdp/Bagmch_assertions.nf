@@ -64,7 +64,7 @@ THEORY ListAssertionsX IS
   Expanded_List_Assertions(Machine(Bagmch_assertions))==(btrue);
   Abstract_List_Assertions(Machine(Bagmch_assertions))==(btrue);
   Context_List_Assertions(Machine(Bagmch_assertions))==(btrue);
-  List_Assertions(Machine(Bagmch_assertions))==(card(content)<=3;card(content): NATURAL;content: FIN(content))
+  List_Assertions(Machine(Bagmch_assertions))==(card(content)<=3;card(content): NATURAL;content: FIN(ITEMS);content: FIN(content))
 END
 &
 THEORY ListCoverageX IS
@@ -108,7 +108,7 @@ END
 THEORY ListOutputX IS
   List_Output(Machine(Bagmch_assertions),additem)==(?);
   List_Output(Machine(Bagmch_assertions),removeitem)==(?);
-  List_Output(Machine(Bagmch_assertions),getcontents)==(items);
+  List_Output(Machine(Bagmch_assertions),getcontents)==(output);
   List_Output(Machine(Bagmch_assertions),howmany)==(nn);
   List_Output(Machine(Bagmch_assertions),isin)==(check)
 END
@@ -116,7 +116,7 @@ END
 THEORY ListHeaderX IS
   List_Header(Machine(Bagmch_assertions),additem)==(additem(aa));
   List_Header(Machine(Bagmch_assertions),removeitem)==(removeitem(aa));
-  List_Header(Machine(Bagmch_assertions),getcontents)==(items <-- getcontents);
+  List_Header(Machine(Bagmch_assertions),getcontents)==(output <-- getcontents);
   List_Header(Machine(Bagmch_assertions),howmany)==(nn <-- howmany);
   List_Header(Machine(Bagmch_assertions),isin)==(check <-- isin(aa))
 END
@@ -134,12 +134,12 @@ END
 THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Bagmch_assertions),isin)==(aa: ITEMS | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
   Expanded_List_Substitution(Machine(Bagmch_assertions),howmany)==(btrue | nn:=card(content));
-  Expanded_List_Substitution(Machine(Bagmch_assertions),getcontents)==(btrue | items:=content);
+  Expanded_List_Substitution(Machine(Bagmch_assertions),getcontents)==(btrue | output:=content);
   Expanded_List_Substitution(Machine(Bagmch_assertions),removeitem)==(aa: ITEMS | content:=content-{aa});
   Expanded_List_Substitution(Machine(Bagmch_assertions),additem)==(aa: ITEMS | card(content)<max_elem ==> content:=content\/{aa} [] not(card(content)<max_elem) ==> skip);
   List_Substitution(Machine(Bagmch_assertions),additem)==(IF card(content)<max_elem THEN content:=content\/{aa} END);
   List_Substitution(Machine(Bagmch_assertions),removeitem)==(content:=content-{aa});
-  List_Substitution(Machine(Bagmch_assertions),getcontents)==(items:=content);
+  List_Substitution(Machine(Bagmch_assertions),getcontents)==(output:=content);
   List_Substitution(Machine(Bagmch_assertions),howmany)==(nn:=card(content));
   List_Substitution(Machine(Bagmch_assertions),isin)==(IF aa: content THEN check:=TRUE ELSE check:=FALSE END)
 END

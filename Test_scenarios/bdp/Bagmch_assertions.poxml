@@ -49,7 +49,13 @@
 <Exp_Comparison op=":">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="content"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:4:1" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" typref="2852175944">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:4:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Define>
@@ -149,7 +155,53 @@
 <Exp_Comparison op=":">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="content"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Assertion dans une machine abstraite</Comment>
+<Tag>AssertionLemmas</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Hypothesis>
+<Exp_Comparison op="&lt;=">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:1:1:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:1:2" typref="2701647786" value="3"/>
+</Exp_Comparison>
+</Hypothesis>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:2:1:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:2:2" typref="3603043417" value="NATURAL"/>
+</Exp_Comparison>
+</Hypothesis>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" typref="2852175944">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Assertion is verified">
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:4:1" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" typref="2852175944">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:4:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Tag>
@@ -342,7 +394,7 @@
 <Sub_Calculus>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:8:3:2:1:1:1" typref="4185748219" value="items"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:8:3:2:1:1:1" typref="4185748219" value="output"/>
 </Variables>
 <Values>
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:8:3:2:1:2:1" typref="4185748219" value="content"/>
@@ -595,6 +647,10 @@
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 <Binary_Pred op="&amp;">

@@ -1,37 +1,30 @@
-﻿/* Bagmch_assertions
+﻿/* Bagmch_numbers_2
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 07/04/2017
+ * Creation date: 11/04/2017
  */
 MACHINE
-    Bagmch_assertions
- SETS
-    // possible items we can put in the bag
-    ITEMS
+    Bagmch_numbers_2
 CONCRETE_CONSTANTS
-    // max number of items that fit in the bag
-    max_elem
+    // max number of items that fits in the bag
+    max_elem ,
+    // possible items we can put in the bag
+    items
 PROPERTIES
-    max_elem = 3
-    // items : FIN(items)
+    max_elem = 2 & items = { 1 , 2 }
 ABSTRACT_VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content <: ITEMS & // it's a subset of items
+    content <: items & // it's a subset of ITEMS
     card ( content ) <= max_elem // it has at most max_elem elements
-ASSERTIONS
-    card ( content ) <= 3 ;
-    card ( content ) : NATURAL ;
-    content : FIN ( ITEMS ) ;
-    content : FIN ( content )
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
-    /* Adds item aa to the bag, if there's space for it. */
+    /* Adds item aa to the bag, if there's space for it*/
     additem ( aa ) =
     PRE
-        aa : ITEMS
+        aa : items
     THEN
         IF
             // only add item if we won't exceed the limit
@@ -44,12 +37,12 @@ OPERATIONS
     /* removes aa from the bag (does nothing if aa not in the bag) */
     removeitem ( aa ) =
     PRE
-        aa : ITEMS
+        aa : items
     THEN
         content := content - { aa }
     END ;
 
-    /* getter for the content */
+    /* getter for the content*/
     output <-- getcontents = output := content ;
 
     /* query how many items are in the bag */
@@ -58,7 +51,7 @@ OPERATIONS
     /* checks if the item aa is in the bag */
     check <-- isin ( aa ) =
     PRE
-        aa : ITEMS
+        aa : items
     THEN
         IF
             aa : content

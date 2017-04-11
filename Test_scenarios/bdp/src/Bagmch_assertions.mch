@@ -5,7 +5,7 @@
  */
 MACHINE
     Bagmch_assertions
-SETS
+ SETS
     // possible items we can put in the bag
     ITEMS
 CONCRETE_CONSTANTS
@@ -13,20 +13,22 @@ CONCRETE_CONSTANTS
     max_elem
 PROPERTIES
     max_elem = 3
+    // items : FIN(items)
 ABSTRACT_VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content <: ITEMS & // it's a subset of ITEMS
+    content <: ITEMS & // it's a subset of items
     card ( content ) <= max_elem // it has at most max_elem elements
 ASSERTIONS
     card ( content ) <= 3 ;
     card ( content ) : NATURAL ;
+    content : FIN ( ITEMS ) ;
     content : FIN ( content )
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
-    /* Adds item aa to the bag, if there's space for it*/
+    /* Adds item aa to the bag, if there's space for it. */
     additem ( aa ) =
     PRE
         aa : ITEMS
@@ -47,8 +49,8 @@ OPERATIONS
         content := content - { aa }
     END ;
 
-    /* getter for the content*/
-    items <-- getcontents = items := content ;
+    /* getter for the content */
+    output <-- getcontents = output := content ;
 
     /* query how many items are in the bag */
     nn <-- howmany = nn := card ( content ) ;

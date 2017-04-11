@@ -12,24 +12,24 @@ END
 &
 THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
-ITEMS: FIN(INTEGER) & not(ITEMS = {}) & ((max_elem) = (3));
+((max_elem) = (2)) & ((items) = ({1}\/{2}\/{3}));
 "Invariant is preserved";
-"Check invariant content : POW( ITEMS)";
-{} : POW( ITEMS);
+"Check invariant content : POW( items)";
+{} : POW( items);
 "Check invariant (card(content) <= max_elem)";
 (card({}) <= max_elem);
-content : POW( ITEMS) & (card(content) <= max_elem);
-((aa) : (ITEMS));
+content : POW( items) & (card(content) <= max_elem);
+((aa) : (items));
 (card(content) +1 <= max_elem);
 not((card(content) +1 <= max_elem));
-((content) \/ ({aa})) : POW( ITEMS);
+((content) \/ ({aa})) : POW( items);
 (card(((content) \/ ({aa}))) <= max_elem);
-(content - {aa}) : POW( ITEMS);
+(content - {aa}) : POW( items);
 (card((content - {aa})) <= max_elem);
 ((aa) : (content));
 not(((aa) : (content)));
-ITEMS: FIN(INTEGER) & not(ITEMS = {});
-content : POW( ITEMS);
+((max_elem) = (2));
+content : POW( items);
 "Well definedness";
 ((content) : (FIN(content)))
 END
