@@ -12,6 +12,9 @@
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_assertions" suffix="mch" user="agata">
             <component name="Bagmch_assertions" type="specification" />
         </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_constant_set" suffix="mch" user="agata">
+            <component name="Bagmch_constant_set" type="specification" />
+        </component_file>
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_defferred" suffix="mch" user="agata">
             <component name="Bagmch_defferred" type="specification" />
         </component_file>

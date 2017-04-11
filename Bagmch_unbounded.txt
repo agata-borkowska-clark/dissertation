@@ -2,7 +2,7 @@
 	In this variation on the theme we have a machine that is deliberately
 	faulty. We have no limit on the number of items in the bag, and even the
 	set of all items. This is erroneus because in order to implement this 
-	machinewe must be able to show that the set has less than 2^32 elements
+	machinewe must be able to show that the set has less than 2^31 elements
 
 	Proof obiglations:
 	- 4 POs generated
@@ -29,6 +29,6 @@
 		=> content : FIN(content)
 
 	This is quite correctly undischarged, because in an implementation this
-	operation should return a value of type int, which is bounded by 2^32.
-	Therefore, the cardinality of the set cannot exceed 2^32, and the set
+	operation should return a value of type int, which is bounded by 2^31.
+	Therefore, the cardinality of the set cannot exceed 2^31, and the set
 	has to be finite.

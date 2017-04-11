@@ -64,7 +64,7 @@ THEORY ListAssertionsX IS
   Expanded_List_Assertions(Machine(Bagmch_assertions))==(btrue);
   Abstract_List_Assertions(Machine(Bagmch_assertions))==(btrue);
   Context_List_Assertions(Machine(Bagmch_assertions))==(btrue);
-  List_Assertions(Machine(Bagmch_assertions))==(card(content)<=3;card(content): NATURAL;content: FIN(ITEMS);content: FIN(content))
+  List_Assertions(Machine(Bagmch_assertions))==(card(content)<=3;card(content): NATURAL;card(content)<=2147483648;content: FIN(content))
 END
 &
 THEORY ListCoverageX IS

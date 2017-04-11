@@ -46,11 +46,11 @@
 </Unary_Exp>
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:2:2" typref="3603043417" value="NATURAL"/>
 </Exp_Comparison>
-<Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+<Exp_Comparison op="&lt;=">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2" typref="2701647786" value="2147483648"/>
 </Exp_Comparison>
 <Exp_Comparison op=":">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:4:1" typref="4185748219" value="content"/>
@@ -152,11 +152,11 @@
 </Hypothesis>
 <Goal>
 <Tag goalTag="Assertion is verified">
-<Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+<Exp_Comparison op="&lt;=">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2" typref="2701647786" value="2147483648"/>
 </Exp_Comparison>
 </Tag>
 </Goal>
@@ -189,11 +189,11 @@
 </Exp_Comparison>
 </Hypothesis>
 <Hypothesis>
-<Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+<Exp_Comparison op="&lt;=">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2" typref="2701647786" value="2147483648"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>
@@ -650,7 +650,15 @@
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 <Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 <Binary_Pred op="&amp;">

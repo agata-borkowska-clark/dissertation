@@ -46,11 +46,11 @@
 </Unary_Exp>
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:2:2" typref="3603043417" value="NATURAL"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" translate="((content) : (FIN(ITEMS)))">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+<Exp_Comparison op="&lt;=" translate="(card(content) &lt;= 2147483648)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2" typref="2701647786" value="2147483648"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" translate="((content) : (FIN(content)))">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:4:1" typref="4185748219" value="content"/>
@@ -135,6 +135,8 @@
 <Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 <Proof_State proofState="Unproved" methodList="?" passList="Force(0),(?; 0)"/>
 <Proof_State proofState="Unproved" methodList="?" passList="Force(0),(?; 0)"/>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),(?; 0)"/>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 <Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 <Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
@@ -166,25 +168,19 @@
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:2:2" typref="3603043417" value="NATURAL"/>
 </Exp_Comparison>
 </Hypothesis>
-<Simple_Goal merge="0">
+<Simple_Goal merge="">
 <Tag>Assertion is verified</Tag>
 <Goal>
-<Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+<Exp_Comparison op="&lt;=">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2" typref="2701647786" value="2147483648"/>
 </Exp_Comparison>
 </Goal>
 <Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 <Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 <Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="-">
@@ -215,14 +211,14 @@
 </Exp_Comparison>
 </Hypothesis>
 <Hypothesis>
-<Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2:1" typref="4185748219" value="ITEMS"/>
+<Exp_Comparison op="&lt;=">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
+<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:2" typref="2701647786" value="2147483648"/>
 </Exp_Comparison>
 </Hypothesis>
-<Simple_Goal merge="">
+<Simple_Goal merge="0">
 <Tag>Assertion is verified</Tag>
 <Goal>
 <Exp_Comparison op=":">
@@ -233,6 +229,8 @@
 </Exp_Comparison>
 </Goal>
 <Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 <Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 <Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
@@ -560,29 +558,13 @@
 <Definition name="inext"/>
 <Definition name="seext"/>
 <Definition name="inv"/>
-<Simple_Goal merge="">
+<Simple_Goal merge="0">
 <Tag>Well definedness</Tag>
 <Goal>
 <Exp_Comparison op=":">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:1:1:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN">
 <Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-</Exp_Comparison>
-</Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
-</Simple_Goal>
-<Simple_Goal merge="">
-<Tag>Well definedness</Tag>
-<Goal>
-<Exp_Comparison op=":">
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Unary_Exp op="FIN">
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_assertions.bxml:1:7:3:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
 </Unary_Exp>
 </Exp_Comparison>
 </Goal>

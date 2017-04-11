@@ -23,7 +23,7 @@ INVARIANT
 ASSERTIONS
     card ( content ) <= 3 ;
     card ( content ) : NATURAL ;
-    content : FIN ( ITEMS ) ;
+    card ( content ) <= 2147483648 ;
     content : FIN ( content )
 INITIALISATION
     content := {} // we start with an empty bag
