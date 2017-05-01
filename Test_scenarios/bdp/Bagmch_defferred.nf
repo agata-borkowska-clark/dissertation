@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_defferred))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_defferred))==(btrue);
   Context_List_Invariant(Machine(Bagmch_defferred))==(btrue);
-  List_Invariant(Machine(Bagmch_defferred))==(content <: ITEMS & card(content)<=max_elem)
+  List_Invariant(Machine(Bagmch_defferred))==(content <: ITEMS & content: FIN(content) & card(content)<=max_elem)
 END
 &
 THEORY ListAssertionsX IS

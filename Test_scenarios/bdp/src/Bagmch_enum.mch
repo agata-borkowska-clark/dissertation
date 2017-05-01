@@ -7,7 +7,7 @@ MACHINE
     Bagmch_enum
 SETS
     // possible items we can put in the bag
-    ITEMS = { foo , bar , bazz }
+    ITEMS = { FOO , BAR , BAZZ }
 CONCRETE_CONSTANTS
     // max number of items that fits in the bag
     max_elem

@@ -151,7 +151,7 @@ THEORY ListConstantsX IS
 END
 &
 THEORY ListSetsX IS
-  Set_Definition(Machine(Bagmch_enum),ITEMS)==({foo,bar,bazz});
+  Set_Definition(Machine(Bagmch_enum),ITEMS)==({FOO,BAR,BAZZ});
   Context_List_Enumerated(Machine(Bagmch_enum))==(?);
   Context_List_Defered(Machine(Bagmch_enum))==(?);
   Context_List_Sets(Machine(Bagmch_enum))==(?);
@@ -189,7 +189,7 @@ THEORY ListANYVarX IS
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Bagmch_enum)) == (max_elem,ITEMS,foo,bar,bazz | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ? | Bagmch_enum);
+  List_Of_Ids(Machine(Bagmch_enum)) == (max_elem,ITEMS,FOO,BAR,BAZZ | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ? | Bagmch_enum);
   List_Of_HiddenCst_Ids(Machine(Bagmch_enum)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Bagmch_enum)) == (max_elem);
   List_Of_VisibleVar_Ids(Machine(Bagmch_enum)) == (? | ?);
@@ -201,7 +201,7 @@ THEORY SetsEnvX IS
 END
 &
 THEORY ConstantsEnvX IS
-  Constants(Machine(Bagmch_enum)) == (Type(foo) == Cst(etype(ITEMS,0,2));Type(bar) == Cst(etype(ITEMS,0,2));Type(bazz) == Cst(etype(ITEMS,0,2));Type(max_elem) == Cst(btype(INTEGER,?,?)))
+  Constants(Machine(Bagmch_enum)) == (Type(FOO) == Cst(etype(ITEMS,0,2));Type(BAR) == Cst(etype(ITEMS,0,2));Type(BAZZ) == Cst(etype(ITEMS,0,2));Type(max_elem) == Cst(btype(INTEGER,?,?)))
 END
 &
 THEORY VariablesEnvX IS

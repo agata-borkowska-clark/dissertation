@@ -23,6 +23,12 @@
 <Id value='content' typref='4185748219'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='content' typref='4185748219'/>
+<Unary_Exp op='FIN' typref='2852175944'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+</Exp_Comparison>
 <Exp_Comparison op='&lt;='>
 <Unary_Exp op='card' typref='2701647786'>
 <Id value='content' typref='4185748219'/>
@@ -195,6 +201,13 @@
 <Type id='3603043417'>
 <Unary_Exp op='POW'>
 <Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='2852175944'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Id value='ITEMS'/>
+</Unary_Exp>
 </Unary_Exp>
 </Type>
 <Type id='3817003670'>

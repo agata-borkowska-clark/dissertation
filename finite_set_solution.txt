@@ -1,0 +1,9 @@
+For all Bag which have ITEMS expressed as a set, not enumerated:
+The problem lies in the Invariant. 'card(content)' is  meaningful only if
+content is a finite set. Therefore, we need to add 'content : FIN(content)'
+**before** 'card(content) <= max_elem'.
+If the statement about finiteness is added later, we arrive at the same problem
+
+Conclusion: the well-definedness of the invariant is proved in a similar way to
+assertions, in order of the statements in it.
+

@@ -18,6 +18,9 @@
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_defferred" suffix="mch" user="agata">
             <component name="Bagmch_defferred" type="specification" />
         </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_detailed" suffix="mch" user="agata">
+            <component name="Bagmch_detailed" type="specification" />
+        </component_file>
         <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_enum" suffix="mch" user="agata">
             <component name="Bagmch_enum" type="specification" />
         </component_file>

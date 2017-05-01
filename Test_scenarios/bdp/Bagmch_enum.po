@@ -40,5 +40,5 @@ not(((aa) : (content)));
 END
 &
 THEORY EnumerateX IS
-ITEMS == {foo,bar,bazz}
+ITEMS == {FOO,BAR,BAZZ}
 END

@@ -3,9 +3,9 @@
 <Set>
 <Id value='ITEMS' typref='4185748219'/>
 <Enumerated_Values>
-<Id value='foo' typref='1628806408'/>
-<Id value='bar' typref='1628806408'/>
-<Id value='bazz' typref='1628806408'/>
+<Id value='FOO' typref='1628806408'/>
+<Id value='BAR' typref='1628806408'/>
+<Id value='BAZZ' typref='1628806408'/>
 </Enumerated_Values>
 </Set>
 </Sets>
