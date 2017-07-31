@@ -1,34 +1,34 @@
-/* Bagmch
+/* Bagmch_enum_more_pos
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 18/02/2017
+ * Creation date: 31/07/2017
  */
- 
-/* The simplest version of the bag example */
 MACHINE
-    Bagmch
+    Bagmch_enum_more_pos
+
 SETS
     // possible items we can put in the bag
-    ITEMS
+    ITEMS = {FOO, BAR, BAZZ}
 CONSTANTS
-    // max number of items that fit in the bag
+    // max number of items that fits in the bag
     max_elem
 PROPERTIES
-    max_elem = 3
+    max_elem = 2
 VARIABLES
     // contents of the bag
     content
 INVARIANT
     content <: ITEMS & // it's a subset of ITEMS
-    content: FIN(content) & // FIX
-    card(content) <= max_elem  // it has at most max_elem elements
+    content : FIN(content) & // FIX
+    card(content) <= max_elem // it has at most max_elem elements
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
     /* Adds item aa to the bag, if there's space for it*/
     additem(aa) =
     PRE
-        aa : ITEMS
+        aa : ITEMS &
+        content : FIN(ITEMS) // FIX
     THEN
         IF
             // only add item if we won't exceed the limit
@@ -41,21 +41,33 @@ OPERATIONS
     /* removes aa from the bag (does nothing if aa not in the bag) */
     removeitem(aa) =
     PRE
-        aa : ITEMS
+        aa : ITEMS &
+        content <: ITEMS // FIX
     THEN
         content := content - {aa}
     END;
     
     /* getter for the content*/
-    items <-- getcontents = items := content;
+    items <-- getcontents = 
+    PRE
+        content <: ITEMS // FIX
+    THEN
+        items := content
+    END;
     
     /* query how many items are in the bag */
-    nn <-- howmany = nn := card(content);
+    nn <-- howmany = 
+    PRE
+        content <: ITEMS // FIX
+    THEN
+        nn := card(content)
+    END;
     
     /* checks if the item aa is in the bag */
     check <-- isin(aa) = 
     PRE
-        aa : ITEMS
+        aa : ITEMS &
+        content <: ITEMS // FIX
     THEN
         IF 
             aa : content

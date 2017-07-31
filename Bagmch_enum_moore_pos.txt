@@ -1,0 +1,40 @@
+Difference from the Bagmch_enum:
+in Bagmch_enum:
+    /* Adds item aa to the bag, if there's space for it*/
+    additem(aa) =
+    PRE
+        aa : ITEMS &
+        content <: ITEMS // FIX
+    THEN
+        IF
+            // only add item if we won't exceed the limit
+            card(content) < max_elem
+        THEN
+            content := content \/ {aa}
+        END
+    END;
+
+in Bagmch_enum_more_pos:
+OPERATIONS
+    /* Adds item aa to the bag, if there's space for it*/
+    additem(aa) =
+    PRE
+        aa : ITEMS &
+        content : FIN(ITEMS) // FIX
+    THEN
+        IF
+            // only add item if we won't exceed the limit
+            card(content) < max_elem
+        THEN
+            content := content \/ {aa}
+        END
+    END;
+
+Which results in an additional PO, discharged automatically:
+
+        not(card(content)+1<=max_elem) &
+        "Invariant is preserved" &
+        "Check invariant content : POW( ITEMS)" 
+=>
+        content <: ITEMS 
+

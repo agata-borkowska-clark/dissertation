@@ -13,15 +13,18 @@ CONSTANTS
     // possible items we can put in the bag
     items
 PROPERTIES
-    max_elem = 3 &
     items <: ITEMS &
-    items : FIN(items) // items is a finite set
+    items : FIN(items) & // items is a finite set
+    max_elem = 3
 VARIABLES
     // contents of the bag
     content
 INVARIANT
     content <: items & // it's a subset of ITEMS
+    content : FIN(content) &
     card(content) <= max_elem // it has at most max_elem elements
+    // Note: items is a finite set, so any subset of it is necessarily finite.
+    // Yet we still need 'content : FIN(content)' to discharge all the POs
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS

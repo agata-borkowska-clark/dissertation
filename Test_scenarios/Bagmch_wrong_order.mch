@@ -1,12 +1,10 @@
-/* Bagmch
+/* Bagmch_wrong_order
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 18/02/2017
+ * Creation date: 31/07/2017
  */
- 
-/* The simplest version of the bag example */
 MACHINE
-    Bagmch
+    Bagmch_wrong_order
 SETS
     // possible items we can put in the bag
     ITEMS
@@ -20,8 +18,8 @@ VARIABLES
     content
 INVARIANT
     content <: ITEMS & // it's a subset of ITEMS
-    content: FIN(content) & // FIX
-    card(content) <= max_elem  // it has at most max_elem elements
+    card(content) <= max_elem  & // it has at most max_elem elements
+    content: FIN(content) // WRONG ORDER
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
