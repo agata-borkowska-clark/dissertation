@@ -34,7 +34,7 @@
 	\IEEEcompsoctitleabstractindextext{%
 		\begin{abstract}
 			%\boldmath
-			AtelierB is a tool for formal software development through refinement, using the B-method. It incorporates an automated prover, which has been recognized as the most thorough prover for B set theory, and has been used as a basis for many others. Nevertheless it has multiple shortcomings. Various approaches have been suggested and taken to improve its performance, including extensions to the proof rule base, created by the users. In this work we aim to create such an extension, ensuring that all added rules are sound and well-reasoned. We also aim to identify any limitations of this approach. The secondary goal is to improve the robustness of the software without straying from pure B method, and taking into account the ease of use. As a metric of our success, we use the benchmarks proposed by Conchon and Iguernala\cite{survey}.
+			AtelierB is a tool for formal software development through refinement, using the B-method. It incorporates an automated prover, which has been recognized as the most thorough prover for B set theory, and has been used as a basis for many others. Nevertheless it has multiple shortcomings. Various approaches have been suggested and taken to improve its performance, including extensions to the proof rule base, created by the users. In this work we aim to create such an extension, ensuring that all added rules are sound and well-reasoned. We also aim to identify any limitations of this approach. The secondary goal is to improve the robustness of the software without straying from pure B method, and taking into account the ease of use. As a metric of our success, we use the benchmarks proposed by Conchon and Iguernlala\cite{survey}.
 	\end{abstract}
 	\begin{IEEEkeywords}
 		B method, formal verification
@@ -146,7 +146,7 @@
 	
 	Multiple SMT solvers exist, the most popular one being Why3. D. Mentr\'{e} \emph{et al.} have developed a method to use them to discharge proof obligations that Atelier B cannot cope with. More specifically, they rigorously translate B proof obligations into Why3. It required modelling the B set theory in Why language. Unfortunately, their work is incomplete, and their are some questions about confidence in their embedding of B into Why3.
 	
-	Alt-Ergo is another solver, which has been used to discharge Atelier B's POs.\cite{Alt-Ergo} Alt-Ergo is an open source project by Conchon and Igernelala. The focus of their work is efficiency and improvement of heuristics. Interestingly, they have discovered that an SMT solver on its own will not do better than the Atelier B's interactive prover. It required some tuning specifically for B method, after which there was a noticable improvement in performance.
+	Alt-Ergo is another solver, which has been used to discharge Atelier B's POs.\cite{Alt-Ergo} Alt-Ergo is an open source project by Conchon and Iguernlala. The focus of their work is efficiency and improvement of heuristics. Interestingly, they have discovered that an SMT solver on its own will not do better than the Atelier B's interactive prover. It required some tuning specifically for B method, after which there was a noticable improvement in performance.
 	
 	It should also be pointed out that the Atelier B Maintenance edition includes a tool for validating mathematical rules. Unfortunately we are unable to gain access to it. It is not a great loss however, as in this project we will focus on other aspects of the tool as well as the proof rule base, and additionally there are almost no references to the tool that assess its usefulness.
 	
@@ -217,7 +217,7 @@
 	
 	We will use a multiple scenarios to test ideas. They will be of varied complexity, and come from different sources to avoid biased results. We will begin with simplest and quite generic ones, and increase their complexity to establish at what point the POs stop being discharged automatically, and then proceed until the interactive prover is not sufficient either. We will pay very close attention to what sort of POs are not discharging, and look for similarities between them. For example, are they concerned with well-definedness or rewrite rules? Do they have some other traits, such as types in common? Finally, are there any seemingly simple POs that require a large number of steps in the prover?
 	
-	The most complex models will be used for benchmarking. The benchmarking process will follow the work of Conchon and Igeurnelala\cite{survey}. We will also be able to compare statistics to those provided by numerous other works cited before.
+	The most complex models will be used for benchmarking. The benchmarking process will follow the work of Conchon and Igeurnlala\cite{survey}. We will also be able to compare statistics to those provided by numerous other works cited before.
 	
 	To ensure that the methods chosen are not misleading or very suboptimal, we will cross-reference them with existing works, which will serve as inspiration. However, rather than repeating what other people have done, we will focus on synthesizing their methods and experimenting with various combinations thereof. 
 	
@@ -302,7 +302,7 @@
 	
 	\begin{thebibliography}{1}
 		\bibitem{survey}
-		S.~Conchon and M.~ Iguernelala, "Increasing Proofs Automation Rate of Atelier-B Thanks to Alt-Ergo" in \emph{Proc.~1st Int.~Conf.~Reliability, Safety and Security of Railway Systems}. Paris, France, 2016, pp.~243-253
+		S.~Conchon and M.~ Iguernlala, "Increasing Proofs Automation Rate of Atelier-B Thanks to Alt-Ergo" in \emph{Proc.~1st Int.~Conf.~Reliability, Safety and Security of Railway Systems}. Paris, France, 2016, pp.~243-253
 		
 		\bibitem{railway standard}
 		\emph{Railway applications - Communication, signalling and processing systems}, EN 50128, 2011
@@ -350,7 +350,7 @@
 		D. D\'{e}harbe, "Integration of SMT-solvers in B and Event-B development environments" in \emph{Sci. Comp. Prog.} vol. 78, Elsevier, March 2013, pp. 310-326
 		
 		\bibitem{Alt-Ergo}
-		S. Conchon and M. Iguernelala, "Tuning the Alt-Ergo SMT Solver for B Proof Obligations" in \emph{Proc. 4th Int. Conf. Abstract State Machines, Alloy, B, TLA, VDM, and Z}, Toulouse, France, June 2014, pp. 294-297
+		S. Conchon and M. Iguernlala, "Tuning the Alt-Ergo SMT Solver for B Proof Obligations" in \emph{Proc. 4th Int. Conf. Abstract State Machines, Alloy, B, TLA, VDM, and Z}, Toulouse, France, June 2014, pp. 294-297
 		
 		\bibitem{ProB}
 		M. Leuschel and M. Butler, "ProB: A Model Checker for B" in \emph{Proc. Int. Symp. Formal Methods}, Pisa, Italy, Sept. 2003, pp. 855-574 

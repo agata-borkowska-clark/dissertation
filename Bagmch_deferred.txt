@@ -1,0 +1,13 @@
+II. Bagmch_deferred.txt
+
+	(Sorry about the misleading name!)
+
+	The only difference from Bagmch is that we pass ITEMS and max_elem as
+	parameters
+
+	Proof obligations:
+	- 9 POs generated
+	- 6 discharged with force 0
+	- 3 not discharged automatically
+
+	The POs (both discharged and not are *exactly* the same as in Bagmch.

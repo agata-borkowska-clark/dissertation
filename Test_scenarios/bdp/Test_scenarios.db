@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<db_xml>
+    <atelierb version="3_7_ubuntu-cvs" />
+    <project decomp_dir="/home/agata/Documents/Dissertation/Test_scenarios/bdp/expand_src" old_decomp_dir="/home/agata/Documents/Dissertation/Test_scenarios/bdp/src">
+        <!-- Definition directory list -->
+        <definition_dir path="/home/agata/Documents/Dissertation/Writeups" />
+        <definition_dir path="/home/agata/Documents/Dissertation/Test_scenarios" />
+        <!-- Component file list -->
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch" suffix="mch" user="agata">
+            <component name="Bagmch" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_assertions" suffix="mch" user="agata">
+            <component name="Bagmch_assertions" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_constant_set" suffix="mch" user="agata">
+            <component name="Bagmch_constant_set" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_defferred" suffix="mch" user="agata">
+            <component name="Bagmch_defferred" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_detailed" suffix="mch" user="agata">
+            <component name="Bagmch_detailed" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_enum" suffix="mch" user="agata">
+            <component name="Bagmch_enum" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_numbers" suffix="mch" user="agata">
+            <component name="Bagmch_numbers" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_numbers_2" suffix="mch" user="agata">
+            <component name="Bagmch_numbers_2" type="specification" />
+        </component_file>
+        <component_file path="/home/agata/Documents/Dissertation/Test_scenarios" name="Bagmch_unbounded" suffix="mch" user="agata">
+            <component name="Bagmch_unbounded" type="specification" />
+        </component_file>
+    </project>
+</db_xml>

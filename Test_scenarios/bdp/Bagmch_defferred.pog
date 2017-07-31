@@ -1,0 +1,674 @@
+<Proof_Obligations>
+<Define merge="=" name="B definitions">
+<Nary_Pred op="&amp;" translate="((NAT) = (((0) .. (2147483647)))) &amp; ((INT) = (((-2147483647) .. (2147483647))))">
+<Exp_Comparison op="=">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define merge="=" name="ctx"/>
+<Define merge="=" name="seext"/>
+<Define merge="+" name="inv">
+<Nary_Pred op="&amp;" translate="content : POW( ITEMS) &amp; ((content) : (FIN(content))) &amp; (card(content) &lt;= max_elem)">
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:1" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" typref="2852175944">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:2:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:3:1:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:3:2" typref="2701647786" value="max_elem"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define merge="=" name="ass"/>
+<Define merge="=" name="lprp"/>
+<Define merge="=" name="inprp"/>
+<Define merge="=" name="inext"/>
+<Define merge="=" name="cst">
+<Nary_Pred op="&amp;" translate="ITEMS: FIN(INTEGER) &amp; not(ITEMS = {}) &amp; ((max_elem) : ((NAT-{0})))">
+<Set>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:2:1:1:1" typref="4185748219" value="ITEMS"/>
+</Set>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:2:1:2:1" typref="2701647786" value="max_elem"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:2:1:2:2" typref="3603043417" value="NAT1"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Proof_Obligation merge="=">
+<Comment>Initialisation dans une machine abstraite</Comment>
+<Tag>Initialisation</Tag>
+<Tag>Invariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal merge="0">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" goalTag="Invariant is preserved">
+<EmptySet tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:1" typref="4185748219"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
+</Simple_Goal>
+<Simple_Goal merge="">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((content) : (FIN(content)))" goalTag="Invariant is preserved">
+<EmptySet tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:1" typref="4185748219"/>
+<Unary_Exp op="FIN" typref="2852175944">
+<EmptySet tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:1" typref="4185748219"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
+</Simple_Goal>
+<Simple_Goal merge="1">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)" goalTag="Invariant is preserved">
+<Unary_Exp op="card" typref="2701647786">
+<EmptySet tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:3:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:5:1:1:1" typref="4185748219"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:3:2" typref="2701647786" value="max_elem"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>additem</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:2:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:2:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Simple_Goal merge="0">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:1:1" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:2:1:1" typref="4185748219" value="content"/>
+<Nary_Exp op="{" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="1628806408" value="aa"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal merge="">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":" initialTag="((content) : (FIN(content)))" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:1:1" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:2:1:1" typref="4185748219" value="content"/>
+<Nary_Exp op="{" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="1628806408" value="aa"/>
+</Nary_Exp>
+</Binary_Exp>
+<Unary_Exp op="FIN" typref="2852175944">
+<Binary_Exp op="\/" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:1:1" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:2:1:1" typref="4185748219" value="content"/>
+<Nary_Exp op="{" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="1628806408" value="aa"/>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+</Simple_Goal>
+<Simple_Goal merge="1">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)" goalTag="Invariant is preserved">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="\/" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:3:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:1:1" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:2:1:1" typref="4185748219" value="content"/>
+<Nary_Exp op="{" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="1628806408" value="aa"/>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:3:2" typref="2701647786" value="max_elem"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>removeitem</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:2:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:2:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal merge="0">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)" goalTag="Invariant is preserved">
+<Binary_Exp op="-" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:1:1" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:2:1:1" typref="4185748219" value="content"/>
+<Nary_Exp op="{" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:2:1:2:1" typref="1628806408" value="aa"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal merge="">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((content) : (FIN(content)))" goalTag="Invariant is preserved">
+<Binary_Exp op="-" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:1:1" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:2:1:1" typref="4185748219" value="content"/>
+<Nary_Exp op="{" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:2:1:2:1" typref="1628806408" value="aa"/>
+</Nary_Exp>
+</Binary_Exp>
+<Unary_Exp op="FIN" typref="2852175944">
+<Binary_Exp op="-" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:1:1" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:2:1:1" typref="4185748219" value="content"/>
+<Nary_Exp op="{" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:2:1:2:1" typref="1628806408" value="aa"/>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+</Simple_Goal>
+<Simple_Goal merge="1">
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)" goalTag="Invariant is preserved">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="-" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:3:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:1:1" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:2:1:1" typref="4185748219" value="content"/>
+<Nary_Exp op="{" typref="4185748219">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:3:1:2:1:2:1" typref="1628806408" value="aa"/>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:3:2" typref="2701647786" value="max_elem"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>getcontents</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>howmany</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>isin</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:3:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:3:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:4:1:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:4:1:1:1:2" typref="4185748219" value="content"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:4:1:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:4:1:1:1:2" typref="4185748219" value="content"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Tag>WellDefinednessConstraints</Tag>
+<Local_Hyp num="1">
+<Set>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:2:1:1:1" typref="4185748219" value="ITEMS"/>
+</Set>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Hypothesis/>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:1" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" typref="2852175944">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:2:2:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Tag>WellDefinednessAssertions</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_additem</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_additem</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:2:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:2:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Unary_Pred op="not">
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
+</Unary_Exp>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_removeitem</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_removeitem</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:2:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:2:2:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_getcontents</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_getcontents</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_howmany</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_howmany</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_isin</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation merge="+">
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_isin</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:3:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:3:1:2" typref="4185748219" value="ITEMS"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:4:1:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:4:1:1:1:2" typref="4185748219" value="content"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:4:1:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:6:5:4:1:1:1:2" typref="4185748219" value="content"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<TypeInfos merge="=">
+<Type id="4185748219">
+<Unary_Exp op="POW">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:1:1:1" value="ITEMS"/>
+</Unary_Exp>
+</Type>
+<Type id="2701647786">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:2:1" value="INTEGER"/>
+</Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:3:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Type>
+<Type id="2852175944">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:4:1:1:1" value="ITEMS"/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:5:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="1628806408">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:6:1" value="ITEMS"/>
+</Type>
+<Type id="2043437594">
+<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_defferred.bxml:1:7:7:1" value="BOOL"/>
+</Type>
+</TypeInfos>
+</Proof_Obligations>

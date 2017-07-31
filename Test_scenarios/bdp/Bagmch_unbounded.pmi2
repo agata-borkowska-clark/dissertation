@@ -1,0 +1,35 @@
+﻿THEORY BalanceX IS
+  Bagmch_unbounded,4,1,0,3,0,0,0;
+  Initialisation,1,0,0,1,0,0,0;
+  WellDefinedness_howmany,1,1,0,0,0,0,0;
+  additem,1,0,0,1,0,0,0;
+  removeitem,1,0,0,1,0,0,0
+END
+&
+THEORY ProofState IS
+  Proved(Util);
+  Proved(0);
+  Proved(0);
+  Proved(0)
+END
+&
+THEORY MethodList IS
+  dd(0) & ar(asubseta);
+  pr;
+  pr;
+  pr
+END
+&
+THEORY PassList IS
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "V4.0-53996")
+END
