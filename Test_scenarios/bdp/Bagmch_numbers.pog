@@ -22,14 +22,14 @@
 <Define name="inv">
 <Nary_Pred op="&amp;" translate="content : POW( items) &amp; (card(content) &lt;= max_elem)">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( items)" translate="content : POW( items)">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:1" typref="3603043417" value="content"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)" translate="(card(content) &lt;= max_elem)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:1:1" typref="3603043417" value="content"/>
 </Unary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
@@ -37,15 +37,15 @@
 <Define name="lprp">
 <Nary_Pred op="&amp;" translate="((max_elem) = (2)) &amp; ((items) = ({1}\/{2}\/{3}))">
 <Exp_Comparison op="=" translate="((max_elem) = (2))">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:3:1:1:1" typref="2701647786" value="max_elem"/>
-<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:3:1:1:2" typref="2701647786" value="2"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:3:1:1:1" typref="2701647786" value="max_elem"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:3:1:1:2" typref="2701647786" value="2"/>
 </Exp_Comparison>
 <Exp_Comparison op="=" translate="((items) = ({1}\/{2}\/{3}))">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:3:1:2:1" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:3:1:2:1" typref="3603043417" value="items"/>
 <Nary_Exp op="{" typref="3603043417">
-<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:3:1:2:2:1" typref="2701647786" value="1"/>
-<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:3:1:2:2:2" typref="2701647786" value="2"/>
-<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:3:1:2:2:3" typref="2701647786" value="3"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:3:1:2:2:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:3:1:2:2:2" typref="2701647786" value="2"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:3:1:2:2:3" typref="2701647786" value="3"/>
 </Nary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -73,8 +73,8 @@
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
 <Exp_Comparison op="&lt;:" initialTag="content : POW( items)" goalTag="Invariant is preserved">
-<EmptySet tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:5:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:5:1:1:1" typref="3603043417"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
+<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:5:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:5:1:1:1" typref="3603043417"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
@@ -86,9 +86,9 @@
 <Ref_Hyp num="1"/>
 <Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)" goalTag="Invariant is preserved">
 <Unary_Exp op="card" typref="2701647786">
-<EmptySet tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:5:1:2:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:5:1:1:1" typref="3603043417"/>
+<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:5:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:5:1:1:1" typref="3603043417"/>
 </Unary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
@@ -109,8 +109,8 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:2:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:2:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:2:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:2:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Hypothesis>
 <Local_Hyp num="1">
@@ -119,9 +119,9 @@
 <Local_Hyp num="2">
 <Exp_Comparison op="&lt;">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
 </Unary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Local_Hyp>
 <Local_Hyp num="3">
@@ -131,9 +131,9 @@
 <Unary_Pred op="not">
 <Exp_Comparison op="&lt;">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
 </Unary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Unary_Pred>
 </Local_Hyp>
@@ -146,13 +146,13 @@
 <Ref_Hyp num="1"/>
 </Nary_Pred>
 <Exp_Comparison op="&lt;:" initialTag="content : POW( items)" goalTag="Invariant is preserved">
-<Binary_Exp op="\/" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:2:1:1:1" typref="3603043417">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:2:1:2:1:1" typref="3603043417" value="content"/>
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:2:1:1:1" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:2:1:2:1:1" typref="3603043417" value="content"/>
 <Nary_Exp op="{" typref="3603043417">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="2701647786" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
@@ -167,14 +167,14 @@
 </Nary_Pred>
 <Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)" goalTag="Invariant is preserved">
 <Unary_Exp op="card" typref="2701647786">
-<Binary_Exp op="\/" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:2:1:1:1" typref="3603043417">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:2:1:2:1:1" typref="3603043417" value="content"/>
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:2:1:1:1" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:2:1:2:1:1" typref="3603043417" value="content"/>
 <Nary_Exp op="{" typref="3603043417">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="2701647786" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
 </Unary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
@@ -195,8 +195,8 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:2:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:2:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:2:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:2:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Hypothesis>
 <Local_Hyp num="1">
@@ -208,13 +208,13 @@
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
 <Exp_Comparison op="&lt;:" initialTag="content : POW( items)" goalTag="Invariant is preserved">
-<Binary_Exp op="-" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:3:1:1:1" typref="3603043417">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:3:1:2:1:1" typref="3603043417" value="content"/>
+<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:3:1:1:1" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:3:1:2:1:1" typref="3603043417" value="content"/>
 <Nary_Exp op="{" typref="3603043417">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:3:1:2:1:2:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:3:1:2:1:2:1" typref="2701647786" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
@@ -226,14 +226,14 @@
 <Ref_Hyp num="1"/>
 <Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)" goalTag="Invariant is preserved">
 <Unary_Exp op="card" typref="2701647786">
-<Binary_Exp op="-" tag=",/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:1:1,/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:3:1:1:1" typref="3603043417">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:3:1:2:1:1" typref="3603043417" value="content"/>
+<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:3:1:1:1" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:3:1:2:1:1" typref="3603043417" value="content"/>
 <Nary_Exp op="{" typref="3603043417">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:3:1:2:1:2:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:3:1:2:1:2:1" typref="2701647786" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
 </Unary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
@@ -290,8 +290,8 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:3:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:3:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:3:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:3:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Hypothesis>
 <Local_Hyp num="1">
@@ -299,8 +299,8 @@
 </Local_Hyp>
 <Local_Hyp num="2">
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:4:1:1:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:4:1:1:1:2" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:4:1:1:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:4:1:1:1:2" typref="3603043417" value="content"/>
 </Exp_Comparison>
 </Local_Hyp>
 <Local_Hyp num="3">
@@ -309,8 +309,8 @@
 <Local_Hyp num="4">
 <Unary_Pred op="not">
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:4:1:1:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:4:1:1:1:2" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:4:1:1:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:4:1:1:1:2" typref="3603043417" value="content"/>
 </Exp_Comparison>
 </Unary_Pred>
 </Local_Hyp>
@@ -326,8 +326,8 @@
 <Hypothesis/>
 <Local_Hyp num="1">
 <Exp_Comparison op="=">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:3:1:1:1" typref="2701647786" value="max_elem"/>
-<Integer_Literal tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:3:1:1:2" typref="2701647786" value="2"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:3:1:1:1" typref="2701647786" value="max_elem"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:3:1:1:2" typref="2701647786" value="2"/>
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
@@ -342,8 +342,8 @@
 <Definition name="seext"/>
 <Local_Hyp num="1">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( items)">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:1" typref="3603043417" value="content"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Local_Hyp>
 <Simple_Goal>
@@ -352,9 +352,9 @@
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:1:1" typref="3603043417" value="content"/>
 <Unary_Exp op="FIN">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:4:1:2:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:4:1:2:1:1" typref="3603043417" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Binary_Pred>
@@ -411,25 +411,25 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:2:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:2:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:2:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:2:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Hypothesis>
 <Local_Hyp num="1">
 <Exp_Comparison op="&lt;">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
 </Unary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Local_Hyp>
 <Local_Hyp num="2">
 <Unary_Pred op="not">
 <Exp_Comparison op="&lt;">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
 </Unary_Exp>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Unary_Pred>
 </Local_Hyp>
@@ -437,9 +437,9 @@
 <Tag>Well definedness</Tag>
 <Goal>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
 <Unary_Exp op="FIN">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:1:3:1:1:1:1:1" typref="3603043417" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Goal>
@@ -474,8 +474,8 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:2:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:2:2:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:2:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:2:2:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Hypothesis>
 </Proof_Obligation>
@@ -540,9 +540,9 @@
 <Tag>Well definedness</Tag>
 <Goal>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:4:2:1:2:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:4:2:1:2:1:1" typref="3603043417" value="content"/>
 <Unary_Exp op="FIN">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:4:2:1:2:1:1" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:4:2:1:2:1:1" typref="3603043417" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Goal>
@@ -577,41 +577,41 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:3:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:3:1:2" typref="3603043417" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:3:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:3:1:2" typref="3603043417" value="items"/>
 </Exp_Comparison>
 </Hypothesis>
 <Local_Hyp num="1">
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:4:1:1:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:4:1:1:1:2" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:4:1:1:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:4:1:1:1:2" typref="3603043417" value="content"/>
 </Exp_Comparison>
 </Local_Hyp>
 <Local_Hyp num="2">
 <Unary_Pred op="not">
 <Exp_Comparison op=":">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:4:1:1:1:1" typref="2701647786" value="aa"/>
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:6:5:4:1:1:1:2" typref="3603043417" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:4:1:1:1:1" typref="2701647786" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:6:5:4:1:1:1:2" typref="3603043417" value="content"/>
 </Exp_Comparison>
 </Unary_Pred>
 </Local_Hyp>
 </Proof_Obligation>
 <TypeInfos>
 <Type id="2701647786">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:7:1:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:7:1:1" value="INTEGER"/>
 </Type>
 <Type id="3603043417">
 <Unary_Exp op="POW">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:7:2:1:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:7:2:1:1" value="INTEGER"/>
 </Unary_Exp>
 </Type>
 <Type id="3817003670">
 <Unary_Exp op="POW">
-<Generic_Type tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:7:3:1:1"/>
+<Generic_Type tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:7:3:1:1"/>
 </Unary_Exp>
 </Type>
 <Type id="2043437594">
-<Id tag="/home/agata/Documents/Dissertation/Test_scenarios/bdp/Bagmch_numbers.bxml:1:7:4:1" value="BOOL"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_numbers.bxml:1:7:4:1" value="BOOL"/>
 </Type>
 </TypeInfos>
 </Proof_Obligations>

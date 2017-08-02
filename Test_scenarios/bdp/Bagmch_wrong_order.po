@@ -1,0 +1,44 @@
+THEORY ProofList IS
+_f(1) & _f(2) & WellDefinednessInvariant.1,(_f(24) & _f(25) => _f(26));
+_f(1) & _f(2) & _f(10) & _f(11) & removeitem.3,(_f(3) & _f(8) => _f(19));
+_f(1) & _f(2) & _f(10) & _f(11) & removeitem.2,(_f(3) & _f(6) => _f(18));
+_f(1) & _f(2) & _f(10) & _f(11) & removeitem.1,(_f(3) & _f(4) => _f(17));
+_f(1) & _f(2) & _f(10) & _f(11) & additem.3,(_f(12) & _f(3) & _f(8) => _f(16));
+_f(1) & _f(2) & _f(10) & _f(11) & additem.2,(_f(12) & _f(3) & _f(6) => _f(15));
+_f(1) & _f(2) & _f(10) & _f(11) & additem.1,(_f(12) & _f(3) & _f(4) => _f(14));
+_f(1) & _f(2) & Initialisation.3,(_f(3) & _f(8) => _f(9));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {}) & ((max_elem) = (3));
+"Invariant is preserved";
+"Check invariant content : POW( ITEMS)";
+{} : POW( ITEMS);
+"Check invariant (card(content) <= max_elem)";
+(card({}) <= max_elem);
+"Check invariant ((content) : (FIN(content)))";
+(({}) : (FIN({})));
+content : POW( ITEMS) & (card(content) <= max_elem) & ((content) : (FIN(content)));
+((aa) : (ITEMS));
+(card(content) +1 <= max_elem);
+not((card(content) +1 <= max_elem));
+((content) \/ ({aa})) : POW( ITEMS);
+(card(((content) \/ ({aa}))) <= max_elem);
+((((content) \/ ({aa}))) : (FIN(((content) \/ ({aa})))));
+(content - {aa}) : POW( ITEMS);
+(card((content - {aa})) <= max_elem);
+(((content - {aa})) : (FIN((content - {aa}))));
+((aa) : (content));
+not(((aa) : (content)));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+(card(content) <= max_elem);
+content : POW( ITEMS);
+"Well definedness";
+((content) : (FIN(content)))
+END
+&
+THEORY EnumerateX
+END

@@ -2,6 +2,9 @@
  * Author: Agata Borkowska
  * UID: 1690550
  * Creation date: 31/07/2017
+ *
+ * This version of the Bagmch demonstrates that putting conjuncts of the 
+ * INVARIANT in a different order may lead to undischarged POs.
  */
 MACHINE
     Bagmch_wrong_order

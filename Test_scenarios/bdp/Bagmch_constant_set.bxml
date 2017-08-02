@@ -13,10 +13,6 @@
 </Abstract_Variables>
 <Properties>
 <Nary_Pred op='&amp;'>
-<Exp_Comparison op='='>
-<Id value='max_elem' typref='2701647786'/>
-<Integer_Literal value='3' typref='2701647786'/>
-</Exp_Comparison>
 <Exp_Comparison op='&lt;:'>
 <Id value='items' typref='4185748219'/>
 <Id value='ITEMS' typref='4185748219'/>
@@ -27,6 +23,10 @@
 <Id value='items' typref='4185748219'/>
 </Unary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op='='>
+<Id value='max_elem' typref='2701647786'/>
+<Integer_Literal value='3' typref='2701647786'/>
+</Exp_Comparison>
 </Nary_Pred>
 </Properties>
 <Invariant>
@@ -34,6 +34,12 @@
 <Exp_Comparison op='&lt;:'>
 <Id value='content' typref='4185748219'/>
 <Id value='items' typref='4185748219'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='content' typref='4185748219'/>
+<Unary_Exp op='FIN' typref='2852175944'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op='&lt;='>
 <Unary_Exp op='card' typref='2701647786'>

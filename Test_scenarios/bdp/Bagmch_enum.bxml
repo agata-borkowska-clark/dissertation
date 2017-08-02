@@ -27,6 +27,12 @@
 <Id value='content' typref='4185748219'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='content' typref='4185748219'/>
+<Unary_Exp op='FIN' typref='2852175944'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+</Exp_Comparison>
 <Exp_Comparison op='&lt;='>
 <Unary_Exp op='card' typref='2701647786'>
 <Id value='content' typref='4185748219'/>
@@ -51,10 +57,16 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
+<Exp_Comparison op='&lt;:'>
+<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+</Nary_Pred>
 </Precondition>
 <Body>
 <If_Sub elseif='no'>
@@ -89,10 +101,16 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
+<Exp_Comparison op='&lt;:'>
+<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+</Nary_Pred>
 </Precondition>
 <Body>
 <Assignement_Sub>
@@ -114,6 +132,12 @@
 <Output_Parameters>
 <Id value='items' typref='4185748219'/>
 </Output_Parameters>
+<Precondition>
+<Exp_Comparison op='&lt;:'>
+<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+</Precondition>
 <Body>
 <Assignement_Sub>
 <Variables>
@@ -129,6 +153,12 @@
 <Output_Parameters>
 <Id value='nn' typref='2701647786'/>
 </Output_Parameters>
+<Precondition>
+<Exp_Comparison op='&lt;:'>
+<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+</Precondition>
 <Body>
 <Assignement_Sub>
 <Variables>
@@ -150,10 +180,16 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
+<Exp_Comparison op='&lt;:'>
+<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+</Nary_Pred>
 </Precondition>
 <Body>
 <If_Sub elseif='no'>
@@ -198,6 +234,13 @@
 </Type>
 <Type id='2701647786'>
 <Id value='INTEGER'/>
+</Type>
+<Type id='2852175944'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Id value='ITEMS'/>
+</Unary_Exp>
+</Unary_Exp>
 </Type>
 <Type id='3817003670'>
 <Unary_Exp op='POW'>

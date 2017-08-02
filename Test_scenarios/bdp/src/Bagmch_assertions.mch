@@ -5,7 +5,7 @@
  */
 MACHINE
     Bagmch_assertions
- SETS
+SETS
     // possible items we can put in the bag
     ITEMS
 CONCRETE_CONSTANTS

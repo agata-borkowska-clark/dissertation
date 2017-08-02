@@ -5,8 +5,12 @@ Bagmch_constant_set [ label=" Bagmch_constant_set " shape= box ]
 Bagmch_defferred [ label=" Bagmch_defferred " shape= box ]
 Bagmch_detailed [ label=" Bagmch_detailed " shape= box ]
 Bagmch_enum [ label=" Bagmch_enum " shape= box ]
+Bagmch_enum_more_pos [ label=" Bagmch_enum_more_pos " shape= box ]
+Bagmch_limited [ label=" Bagmch_limited " shape= box ]
 Bagmch_numbers [ label=" Bagmch_numbers " shape= box ]
 Bagmch_numbers_2 [ label=" Bagmch_numbers_2 " shape= box ]
+Bagmch_relation [ label=" Bagmch_relation " shape= box ]
 Bagmch_unbounded [ label=" Bagmch_unbounded " shape= box ]
+Bagmch_wrong_order [ label=" Bagmch_wrong_order " shape= box ]
 
 }

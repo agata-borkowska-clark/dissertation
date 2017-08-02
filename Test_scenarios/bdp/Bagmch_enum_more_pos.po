@@ -1,0 +1,45 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(10) & _f(18) & removeitem.3,(_f(3) & _f(8) => _f(21));
+_f(1) & _f(2) & _f(10) & _f(18) & removeitem.2,(_f(3) & _f(6) => _f(20));
+_f(1) & _f(2) & _f(10) & _f(18) & removeitem.1,(_f(3) & _f(4) => _f(19));
+_f(1) & _f(2) & _f(10) & _f(11) & additem.4,(_f(13) & _f(3) & _f(4) => _f(17));
+_f(1) & _f(2) & _f(10) & _f(11) & additem.3,(_f(12) & _f(3) & _f(8) => _f(16));
+_f(1) & _f(2) & _f(10) & _f(11) & additem.2,(_f(12) & _f(3) & _f(6) => _f(15));
+_f(1) & _f(2) & _f(10) & _f(11) & additem.1,(_f(12) & _f(3) & _f(4) => _f(14));
+_f(1) & _f(2) & Initialisation.3,(_f(3) & _f(8) => _f(9));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((1..3)*{ITEMS}): FIN(NATURAL*{ITEMS}) & not(((1..3)*{ITEMS}) = {}) & ((max_elem) = (2));
+"Invariant is preserved";
+"Check invariant content : POW( ITEMS)";
+{} : POW( ((1..3)*{ITEMS}));
+"Check invariant ((content) : (FIN(content)))";
+(({}) : (FIN({})));
+"Check invariant (card(content) <= max_elem)";
+(card({}) <= max_elem);
+content : POW( ITEMS) & ((content) : (FIN(content))) & (card(content) <= max_elem);
+((aa) : (((1..3)*{ITEMS}))) & ((content) : (FIN(((1..3)*{ITEMS}))));
+(card(content) +1 <= max_elem);
+not((card(content) +1 <= max_elem));
+((content) \/ ({aa})) : POW( ((1..3)*{ITEMS}));
+((((content) \/ ({aa}))) : (FIN(((content) \/ ({aa})))));
+(card(((content) \/ ({aa}))) <= max_elem);
+content : POW( ((1..3)*{ITEMS}));
+((aa) : (((1..3)*{ITEMS}))) & content : POW( ((1..3)*{ITEMS}));
+(content - {aa}) : POW( ((1..3)*{ITEMS}));
+(((content - {aa})) : (FIN((content - {aa}))));
+(card((content - {aa})) <= max_elem);
+((aa) : (content));
+not(((aa) : (content)));
+((1..3)*{ITEMS}): FIN(NATURAL*{ITEMS}) & not(((1..3)*{ITEMS}) = {});
+((content) : (FIN(content)));
+((aa) : (((1..3)*{ITEMS})))
+END
+&
+THEORY EnumerateX IS
+ITEMS == {FOO,BAR,BAZZ}
+END

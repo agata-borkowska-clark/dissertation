@@ -2,6 +2,9 @@
  * Author: Agata Borkowska
  * UID: 1690550
  * Creation date: 05/04/2017
+ *
+ * This machine demonstrates a simple mistake of asking for the cardinality of 
+ * a set which is not defined to be finite. See: OPERATION howmany
  */
 MACHINE
     Bagmch_unbounded
@@ -12,7 +15,7 @@ VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content <: ITEMS 
+    content <: ITEMS
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS

@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_constant_set))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_constant_set))==(btrue);
   Context_List_Invariant(Machine(Bagmch_constant_set))==(btrue);
-  List_Invariant(Machine(Bagmch_constant_set))==(content <: items & card(content)<=max_elem)
+  List_Invariant(Machine(Bagmch_constant_set))==(content <: items & content: FIN(content) & card(content)<=max_elem)
 END
 &
 THEORY ListAssertionsX IS
@@ -175,7 +175,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Bagmch_constant_set))==(btrue);
   Context_List_Properties(Machine(Bagmch_constant_set))==(btrue);
   Inherited_List_Properties(Machine(Bagmch_constant_set))==(btrue);
-  List_Properties(Machine(Bagmch_constant_set))==(max_elem = 3 & items <: ITEMS & items: FIN(items) & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
+  List_Properties(Machine(Bagmch_constant_set))==(items <: ITEMS & items: FIN(items) & max_elem = 3 & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
 END
 &
 THEORY ListSeenInfoX END

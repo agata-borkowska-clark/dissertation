@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_enum))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_enum))==(btrue);
   Context_List_Invariant(Machine(Bagmch_enum))==(btrue);
-  List_Invariant(Machine(Bagmch_enum))==(content <: ITEMS & card(content)<=max_elem)
+  List_Invariant(Machine(Bagmch_enum))==(content <: ITEMS & content: FIN(content) & card(content)<=max_elem)
 END
 &
 THEORY ListAssertionsX IS
@@ -124,19 +124,19 @@ END
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Bagmch_enum),additem)==(aa: ITEMS);
-  List_Precondition(Machine(Bagmch_enum),removeitem)==(aa: ITEMS);
-  List_Precondition(Machine(Bagmch_enum),getcontents)==(btrue);
-  List_Precondition(Machine(Bagmch_enum),howmany)==(btrue);
-  List_Precondition(Machine(Bagmch_enum),isin)==(aa: ITEMS)
+  List_Precondition(Machine(Bagmch_enum),additem)==(aa: ITEMS & content <: ITEMS);
+  List_Precondition(Machine(Bagmch_enum),removeitem)==(aa: ITEMS & content <: ITEMS);
+  List_Precondition(Machine(Bagmch_enum),getcontents)==(content <: ITEMS);
+  List_Precondition(Machine(Bagmch_enum),howmany)==(content <: ITEMS);
+  List_Precondition(Machine(Bagmch_enum),isin)==(aa: ITEMS & content <: ITEMS)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(Bagmch_enum),isin)==(aa: ITEMS | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
-  Expanded_List_Substitution(Machine(Bagmch_enum),howmany)==(btrue | nn:=card(content));
-  Expanded_List_Substitution(Machine(Bagmch_enum),getcontents)==(btrue | items:=content);
-  Expanded_List_Substitution(Machine(Bagmch_enum),removeitem)==(aa: ITEMS | content:=content-{aa});
-  Expanded_List_Substitution(Machine(Bagmch_enum),additem)==(aa: ITEMS | card(content)<max_elem ==> content:=content\/{aa} [] not(card(content)<max_elem) ==> skip);
+  Expanded_List_Substitution(Machine(Bagmch_enum),isin)==(aa: ITEMS & content <: ITEMS | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
+  Expanded_List_Substitution(Machine(Bagmch_enum),howmany)==(content <: ITEMS | nn:=card(content));
+  Expanded_List_Substitution(Machine(Bagmch_enum),getcontents)==(content <: ITEMS | items:=content);
+  Expanded_List_Substitution(Machine(Bagmch_enum),removeitem)==(aa: ITEMS & content <: ITEMS | content:=content-{aa});
+  Expanded_List_Substitution(Machine(Bagmch_enum),additem)==(aa: ITEMS & content <: ITEMS | card(content)<max_elem ==> content:=content\/{aa} [] not(card(content)<max_elem) ==> skip);
   List_Substitution(Machine(Bagmch_enum),additem)==(IF card(content)<max_elem THEN content:=content\/{aa} END);
   List_Substitution(Machine(Bagmch_enum),removeitem)==(content:=content-{aa});
   List_Substitution(Machine(Bagmch_enum),getcontents)==(items:=content);
