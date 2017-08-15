@@ -175,7 +175,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Bagmch_limited))==(btrue);
   Context_List_Properties(Machine(Bagmch_limited))==(btrue);
   Inherited_List_Properties(Machine(Bagmch_limited))==(btrue);
-  List_Properties(Machine(Bagmch_limited))==(max_elem = 3 & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
+  List_Properties(Machine(Bagmch_limited))==(max_elem: NAT & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
 END
 &
 THEORY ListSeenInfoX END

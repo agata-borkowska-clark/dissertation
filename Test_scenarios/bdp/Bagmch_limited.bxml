@@ -11,9 +11,9 @@
 <Id value='content' typref='4185748219'/>
 </Abstract_Variables>
 <Properties>
-<Exp_Comparison op='='>
+<Exp_Comparison op=':'>
 <Id value='max_elem' typref='2701647786'/>
-<Integer_Literal value='3' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
 </Exp_Comparison>
 </Properties>
 <Invariant>
@@ -188,6 +188,11 @@
 </Type>
 <Type id='2701647786'>
 <Id value='INTEGER'/>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
 </Type>
 <Type id='2852175944'>
 <Unary_Exp op='POW'>

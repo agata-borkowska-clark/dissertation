@@ -12,7 +12,7 @@ END
 &
 THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
-ITEMS: FIN(INTEGER) & not(ITEMS = {}) & ((max_elem) = (3));
+ITEMS: FIN(INTEGER) & not(ITEMS = {}) & ((max_elem) : (NAT));
 "Invariant is preserved";
 "Check invariant ((content) : (FIN(ITEMS)))";
 (({}) : (FIN(ITEMS)));

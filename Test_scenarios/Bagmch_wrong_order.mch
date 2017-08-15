@@ -22,7 +22,7 @@ VARIABLES
 INVARIANT
     content <: ITEMS & // it's a subset of ITEMS
     card(content) <= max_elem  & // it has at most max_elem elements
-    content: FIN(content) // WRONG ORDER
+    content : FIN(content) // WRONG ORDER
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS

@@ -13,10 +13,10 @@ SETS
     // possible items we can put in the bag
     ITEMS
 CONCRETE_CONSTANTS
-    // max number of items that fit in the bag
+   // max number of items that fit in the bag
     max_elem
 PROPERTIES
-    max_elem = 3
+    max_elem : NAT
 ABSTRACT_VARIABLES
     // contents of the bag
     content

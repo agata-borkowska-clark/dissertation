@@ -4,31 +4,21 @@
  * Creation date: 18/02/2017
  */
 MACHINE
-    Bagmch_params(ITEMS, max_elem)
-CONSTRAINTS
-    // max_elem > 0. If no item can be put in the bag, the machine is useless
-    max_elem : NAT1
+    Bagmch_params(ITEMS)
 VARIABLES
     content // set of items that are currently in the bag
 INVARIANT
-    // content is a partial function, from mapping items to the number of the given item in the bag.
-    content <: ITEMS & 
-    //content : FIN(content) &
-    card(content) <= max_elem
+    // content is a finite subset of ITEMS
+    content : FIN(ITEMS)
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
-    /* Adds item aa to the bag, if there's space for it*/
+    /* Adds item aa to the bag*/
     additem(aa) =
     PRE
         aa : ITEMS
     THEN
-        IF
-            // only add item if we won't exceed the limit
-            card(content) < max_elem
-        THEN
-            content := content \/ {aa}
-        END
+        content := content \/ {aa}
     END;
     
     /* removes aa from the bag (does nothing if aa not in the bag) */

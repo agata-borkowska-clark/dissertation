@@ -40,9 +40,9 @@
 <Set>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:1:1:1" typref="4185748219" value="ITEMS"/>
 </Set>
-<Exp_Comparison op="=">
+<Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:4:1:1" typref="2701647786" value="max_elem"/>
-<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:4:1:2" typref="2701647786" value="3"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:4:1:2" typref="3603043417" value="NAT"/>
 </Exp_Comparison>
 </Define>
 <Define name="inprp"/>
@@ -814,23 +814,28 @@
 <Type id="2701647786">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:2:1" value="INTEGER"/>
 </Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:3:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Type>
 <Type id="2852175944">
 <Unary_Exp op="POW">
 <Unary_Exp op="POW">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:3:1:1:1" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:4:1:1:1" value="ITEMS"/>
 </Unary_Exp>
 </Unary_Exp>
 </Type>
 <Type id="3817003670">
 <Unary_Exp op="POW">
-<Generic_Type tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:4:1:1"/>
+<Generic_Type tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:5:1:1"/>
 </Unary_Exp>
 </Type>
 <Type id="1628806408">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:5:1" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:6:1" value="ITEMS"/>
 </Type>
 <Type id="2043437594">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:6:1" value="BOOL"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_limited.bxml:1:8:7:1" value="BOOL"/>
 </Type>
 </TypeInfos>
 </Proof_Obligations>

@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_params))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_params))==(btrue);
   Context_List_Invariant(Machine(Bagmch_params))==(btrue);
-  List_Invariant(Machine(Bagmch_params))==(content <: ITEMS & card(content)<=max_elem)
+  List_Invariant(Machine(Bagmch_params))==(content: FIN(ITEMS))
 END
 &
 THEORY ListAssertionsX IS
@@ -82,14 +82,14 @@ THEORY ListInitialisationX IS
 END
 &
 THEORY ListParametersX IS
-  List_Parameters(Machine(Bagmch_params))==(ITEMS,max_elem)
+  List_Parameters(Machine(Bagmch_params))==(ITEMS)
 END
 &
 THEORY ListInstanciatedParametersX END
 &
 THEORY ListConstraintsX IS
   List_Context_Constraints(Machine(Bagmch_params))==(btrue);
-  List_Constraints(Machine(Bagmch_params))==(max_elem: NAT1 & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
+  List_Constraints(Machine(Bagmch_params))==(ITEMS: FIN(INTEGER) & not(ITEMS = {}))
 END
 &
 THEORY ListOperationsX IS
@@ -136,8 +136,8 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Bagmch_params),howmany)==(btrue | nn:=card(content));
   Expanded_List_Substitution(Machine(Bagmch_params),getcontents)==(btrue | items:=content);
   Expanded_List_Substitution(Machine(Bagmch_params),removeitem)==(aa: ITEMS | content:=content-{aa});
-  Expanded_List_Substitution(Machine(Bagmch_params),additem)==(aa: ITEMS | card(content)<max_elem ==> content:=content\/{aa} [] not(card(content)<max_elem) ==> skip);
-  List_Substitution(Machine(Bagmch_params),additem)==(IF card(content)<max_elem THEN content:=content\/{aa} END);
+  Expanded_List_Substitution(Machine(Bagmch_params),additem)==(aa: ITEMS | content:=content\/{aa});
+  List_Substitution(Machine(Bagmch_params),additem)==(content:=content\/{aa});
   List_Substitution(Machine(Bagmch_params),removeitem)==(content:=content-{aa});
   List_Substitution(Machine(Bagmch_params),getcontents)==(items:=content);
   List_Substitution(Machine(Bagmch_params),howmany)==(nn:=card(content));
@@ -188,7 +188,7 @@ THEORY ListANYVarX IS
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Bagmch_params)) == (? | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ITEMS,max_elem | Bagmch_params);
+  List_Of_Ids(Machine(Bagmch_params)) == (? | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ITEMS | Bagmch_params);
   List_Of_HiddenCst_Ids(Machine(Bagmch_params)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Bagmch_params)) == (?);
   List_Of_VisibleVar_Ids(Machine(Bagmch_params)) == (? | ?);
@@ -196,7 +196,7 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY ParametersEnvX IS
-  Parameters(Machine(Bagmch_params)) == (Type(max_elem) == Prm(btype(INTEGER,?,?));Type(ITEMS) == Prm(SetOf(atype(ITEMS,?,?))))
+  Parameters(Machine(Bagmch_params)) == (Type(ITEMS) == Prm(SetOf(atype(ITEMS,?,?))))
 END
 &
 THEORY VariablesEnvX IS

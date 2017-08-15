@@ -1,35 +1,21 @@
 THEORY ProofList IS
-_f(1) & _f(2) & _f(8) & WellDefinedness_howmany.1,(_f(20) => _f(21));
-_f(1) & _f(2) & _f(8) & _f(9) & WellDefinedness_additem.1,(_f(20) => _f(21));
-_f(1) & _f(2) & WellDefinednessInvariant.1,(_f(19) & _f(20) => _f(21));
-_f(1) & _f(2) & _f(8) & _f(9) & removeitem.2,(_f(3) & _f(6) => _f(15));
-_f(1) & _f(2) & _f(8) & _f(9) & removeitem.1,(_f(3) & _f(4) => _f(14));
-_f(1) & _f(2) & _f(8) & _f(9) & additem.2,(_f(10) & _f(3) & _f(6) => _f(13));
-_f(1) & _f(2) & _f(8) & _f(9) & additem.1,(_f(10) & _f(3) & _f(4) => _f(12));
-_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
-_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+_f(1) & _f(2) & _f(5) & WellDefinedness_howmany.1,(_f(11) => _f(12));
+_f(1) & _f(2) & _f(5) & _f(6) & removeitem.1,(_f(3) => _f(8));
+_f(1) & _f(2) & _f(5) & _f(6) & additem.1,(_f(3) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) => _f(4))
 END
 &
 THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
-ITEMS: FIN(INTEGER) & not(ITEMS = {}) & ((max_elem) : ((NAT-{0})));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
 "Invariant is preserved";
-"Check invariant content : POW( ITEMS)";
-{} : POW( ITEMS);
-"Check invariant (card(content) <= max_elem)";
-(card({}) <= max_elem);
-content : POW( ITEMS) & (card(content) <= max_elem);
+(({}) : (FIN(ITEMS)));
+((content) : (FIN(ITEMS)));
 ((aa) : (ITEMS));
-(card(content) +1 <= max_elem);
-not((card(content) +1 <= max_elem));
-((content) \/ ({aa})) : POW( ITEMS);
-(card(((content) \/ ({aa}))) <= max_elem);
-(content - {aa}) : POW( ITEMS);
-(card((content - {aa})) <= max_elem);
+((((content) \/ ({aa}))) : (FIN(ITEMS)));
+(((content - {aa})) : (FIN(ITEMS)));
 ((aa) : (content));
 not(((aa) : (content)));
-ITEMS: FIN(INTEGER) & not(ITEMS = {});
-content : POW( ITEMS);
 "Well definedness";
 ((content) : (FIN(content)))
 END

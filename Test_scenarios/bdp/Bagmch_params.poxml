@@ -20,18 +20,12 @@
 <Define name="ctx"/>
 <Define name="seext"/>
 <Define name="inv">
-<Nary_Pred op="&amp;">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1" initialTag="content" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
-</Nary_Pred>
 </Define>
 <Define name="ass"/>
 <Define name="lprp"/>
@@ -42,10 +36,6 @@
 <Set>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:2:1:1:1" typref="4185748219" value="ITEMS"/>
 </Set>
-<Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:2:1:2:1" typref="2701647786" value="max_elem"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:2:1:2:2" typref="3603043417" value="NAT1"/>
-</Exp_Comparison>
 </Nary_Pred>
 </Define>
 <Proof_Obligation>
@@ -75,18 +65,12 @@
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1" initialTag="content" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Binary_Pred>
@@ -114,47 +98,29 @@
 </Hypothesis>
 <Goal>
 <Sub_Calculus>
-<If_Sub elseif="no">
-<Condition>
-<Exp_Comparison op="&lt;">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
-</Exp_Comparison>
-</Condition>
-<Then>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:2:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1" typref="4185748219" value="content"/>
 </Variables>
 <Values>
 <Binary_Exp op="\/" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:2:1:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:2:1:1" typref="4185748219" value="content"/>
 <Nary_Exp op="{" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:2:1:2:1:2:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
-</Then>
-</If_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1" initialTag="content" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Binary_Pred>
@@ -199,18 +165,12 @@
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1" initialTag="content" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Binary_Pred>
@@ -245,18 +205,12 @@
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1" initialTag="content" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Binary_Pred>
@@ -293,18 +247,12 @@
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1" initialTag="content" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Binary_Pred>
@@ -364,18 +312,12 @@
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1" initialTag="content" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Binary_Pred>
@@ -389,17 +331,6 @@
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Binary_Pred op="=&gt;">
-<Set>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:2:1:1:1" typref="4185748219" value="ITEMS"/>
-</Set>
-<Nary_Pred op="&amp;">
-<Binary_Pred op="&amp;">
-<Nary_Pred op="&amp;"/>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-</Nary_Pred>
-</Binary_Pred>
 </Nary_Pred>
 </Nary_Pred>
 </Tag>
@@ -429,32 +360,10 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
-<Binary_Pred op="=&gt;">
-<Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:1:2" typref="4185748219" value="ITEMS"/>
-</Exp_Comparison>
-<Nary_Pred op="&amp;">
-<Binary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;"/>
-<Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:4:1:2:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-</Exp_Comparison>
-</Nary_Pred>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-</Nary_Pred>
-</Binary_Pred>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
@@ -539,44 +448,11 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Binary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;"/>
-<Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-</Exp_Comparison>
-</Nary_Pred>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-<Binary_Pred op="=&gt;">
-<Exp_Comparison op="&lt;">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
-</Exp_Comparison>
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
-</Binary_Pred>
-<Binary_Pred op="=&gt;">
-<Unary_Pred op="not">
-<Exp_Comparison op="&lt;">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:6:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
-</Exp_Comparison>
-</Unary_Pred>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
@@ -810,21 +686,23 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:1:1:1" value="ITEMS"/>
 </Unary_Exp>
 </Type>
-<Type id="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:2:1" value="INTEGER"/>
-</Type>
-<Type id="3603043417">
+<Type id="2852175944">
 <Unary_Exp op="POW">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:3:1:1" value="INTEGER"/>
+<Unary_Exp op="POW">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:2:1:1:1" value="ITEMS"/>
+</Unary_Exp>
 </Unary_Exp>
 </Type>
 <Type id="3817003670">
 <Unary_Exp op="POW">
-<Generic_Type tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:4:1:1"/>
+<Generic_Type tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:3:1:1"/>
 </Unary_Exp>
 </Type>
 <Type id="1628806408">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:5:1" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:4:1" value="ITEMS"/>
+</Type>
+<Type id="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:5:1" value="INTEGER"/>
 </Type>
 <Type id="2043437594">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_params.bxml:1:7:6:1" value="BOOL"/>

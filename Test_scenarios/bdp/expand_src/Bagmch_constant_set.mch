@@ -21,7 +21,7 @@ ABSTRACT_VARIABLES
     content
 INVARIANT
     content <: items & // it's a subset of ITEMS
-    content : FIN ( content ) &
+    //content : FIN(content) &
     card ( content ) <= max_elem // it has at most max_elem elements
     // Note: items is a finite set, so any subset of it is necessarily finite.
     // Yet we still need 'content : FIN(content)' to discharge all the POs

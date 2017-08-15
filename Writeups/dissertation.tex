@@ -105,7 +105,9 @@
 	
 	Another reason for this choice is the distinct lack of literature focusing on this stage of development, in comparison to the refinement and implementation stages.[CITE] The latter stages undeniably generate more proof obligations, since on top of the proof obligations which can appear in the abstract machines, we need to consider those related to connection between a refinement machine and the machine being refined.
 	
-	We shall approach it from an academic rather than industrial point of view, focusing on smaller yet more illustrative examples. The main reason for it is to limit the number of factors affecting the number of generated proof obligations and be able to control them more precisely. An industrial-scale project with hundreds of proof obligations would be rather unwieldy for our purposes. Secondly a person new to formal development and the B-method is more likely to be able to follow clear, exemplar scenarios. 
+	Similarly, as can be seen in the literature review, there has been significant amount of work done on verifying user-created proof rules, despite commonly seen advice to use this option as a last resort to prove correctness. We have found little discussion on how to avoid writing user's own proof rules.
+	
+	We shall approach this project from an academic rather than industrial point of view, focusing on smaller yet more illustrative examples. The main reason for it is to limit the number of factors affecting the number of generated proof obligations and be able to control them more precisely. An industrial-scale project with hundreds of proof obligations would be rather unwieldy for our purposes. Secondly a person new to formal development and the B-method is more likely to be able to follow clear, exemplar scenarios. 
 	
 	Nevertheless we hope that not only students and researchers will find our work helpful. Being able to minimise the number of proof obligations to be manually discharged has the potential to reduce the time required to complete any project. The constructs and expressions we discuss are the same ones as those used in industry. In fact, we found that the more complex structures in the B language, such as sequences, are rarely used in large-scale projects, as exemplified by [CITE].
 
@@ -140,10 +142,10 @@
 	
 	There are other ways of describing the relation between the \texttt{ITEMS} and the \texttt{content} of the bag. For example latter can be a mapping from a subset of \texttt{ITEMS} to the number of times a given item appears in the bag.
 	
-	At the level of abstract machines, it is permitted to use set comprehension and other operations and properties of sets, according to the Zermelo-Fraenkel set theory. 
+	At the level of abstract machines, it is permitted to use set comprehension and other operations and properties of sets, according to the Zermelo-Fraenkel set theory. The B language offers abbreviations of some more common expressions, such as domain or range restrictions. Another thing for us to explore is how using these shorthand expressions rather than writing them out fully affects the proof process.
 
 	\subsection{Variants of the Bag Machine}
-	There are various ways of expressing the requirements given in the specification as an abstract machine. The following files are contained in the \emph{Test\_scenarios} archive for reference of the reader. We begin by having \texttt{ITEMS} as a deferred set - a set which will be defined at some later point of the development process, and \texttt{content} as simply a subset of \texttt{ITEMS}, and focus on the relation between them. We then move onto different ways of including the set of \texttt{ITEMS} in our machine, for example as an enumerated set or as a machine parameter. We finally explore various ways of describing the content of the bag, such as using sequences or relations. The reason for this order of tasks is to begin with the most intuitive implementation of the specification, before discussing less obvious changes to it.
+	There are various ways of expressing the requirements given in the specification as an abstract machine. The following files are contained in the \emph{Test\_scenarios} archive for reference of the reader. We begin by having \texttt{ITEMS} as a deferred set - a set which will be defined at some later point of the development process, and \texttt{content} as simply a subset of \texttt{ITEMS}, then inspect different ways of including the set of \texttt{ITEMS} in the machine, then we focus on the relation between the two sets as expressed in the Invariant clause. We then move onto different ways of expressing the set of \texttt{ITEMS}, for example as an enumerated set or one of a basic type. We finally explore various ways of describing the content of the bag, such as using sequences or relations. The reason for this order of tasks is to begin with the most intuitive implementation of the specification, before discussing less obvious changes to it.
 	
 	\subsubsection{Bagmch} is the reference machine which we take to be the core of this scenario. It implements exactly the specification without imposing any non-required conditions, such as the limit on the number of items in the bag. At the same time it includes one condition not explicitly mentioned in the specification, namely:
 	\begin{lstlisting}
@@ -152,7 +154,7 @@
 	\end{lstlisting}
 	The specification requires only that $\texttt{content} \subseteq \texttt{ITEMS}$, however in any implementation it is infeasible to have truly infinite sets, thus the software considers them to be erroneous. In the \emph{B Language Reference Manual}\cite{b reference} we find the following definition for the set of natural numbers: ${\texttt{NAT}  = 0 .. \texttt{MAXINT}}$, where \texttt{MAXINT} can be set by the user for a given project, although it is usually understood to be $2^{31}-1$. This definition is not supported by the \emph{B-book}, thus demonstrating a small disparity between the theory of the B-method and its implementation in Atelier B. Nevertheless it is very reasonable for practical purposes.
 	
-	This machine generates only four proof obligations and all of them are discharged automatically. The first three check that the \texttt{INVARIANT} is preserved in the initialisation and by the operations to add and remove items. The last one is as follows:
+	This machine generates only four proof obligations and all of them are discharged automatically. The first three check that the \texttt{INVARIANT} is preserved in the initialisation and by the operations to add and remove items - the only three actions affecting the state of the bag. The last one is as follows:
 	
 	\begin{lstlisting}
 		"Well definedness" 
@@ -160,7 +162,9 @@
 		content: FIN(content)
 	\end{lstlisting}
 	
-	It is concerned with the well-defineness of the operation \texttt{howmany}, which returns the number of items in the bag. The well-defineness proof obligations arise when an expression is used which requires certain conditions to be met in order to be well-defined. In this case, \texttt{card(content)} is well-defined only if \texttt{content} is a finite set. The well-definess conditions for all such expressions can be found in \emph{B Language Reference Manual}. The following machine illustrates the proof obligations generated when the well-definess conditions are not met.
+	It is concerned with the well-defineness of the operation \texttt{howmany}, which returns the number of items in the bag. The well-defineness proof obligations arise when an expression is used which requires certain conditions to be met in order to be well-defined. In this case, \texttt{card(content)} is well-defined only if \texttt{content} is a finite set. The well-definess conditions for all such expressions can be found in \emph{B Language Reference Manual}\cite{b reference}. The following machine illustrates the proof obligations generated when the well-definess conditions are not met.
+	
+	This machine is shown in Appendix A for ease of access.
 	
 	\subsubsection{Bagmch\_unbounded} illustrates the necessity to impose finiteness on the set of items contained in the bag. The sole difference between this and the reference Bag Machine is the statement:
 	
@@ -170,18 +174,129 @@
 	\end{lstlisting}
 	This machine generates the same four proof obligations as the reference machine, however the last one remains undischarged by the automated prover and correctly points the user to a problem in the abstract machine. 
 	
-	It is worth noting that there are multiple ways to denote subsets and finite subsets in these two machines, namely for unbounded subsets \texttt{content} $\subseteq$ \texttt{ITEMS} is equivalent to \texttt{content} $\in$ \texttt{POW(ITEMS)}, and for finite sets \texttt{content} $\in$ \texttt{FIN(ITEMS)} is equivalent to: \texttt{content} $\subseteq$ \texttt{ITEMS} $\wedge$ \texttt{content} $\in$ \texttt{FIN(content)}. These variations do not lead to any noticeable differences and do not cause different proof obligations to be generated and discharged, hence we conclude them to be equivalent where noted above.
+	\subsubsection{Bagmch\_params} differs from the reference machine in the way the set of \texttt{ITEMS} is included in it. \emph{Bagmch} is given the set of \texttt{ITEMS} as a deferred set, which is required to be explicitly defined at a later stage of the development. Here, it is given as a set-valued parameter, which must be instantiated any time the machine is used.\cite{b-method} However at the stage of abstract machine which is not used by any other machine, it does not make a difference in the prover.
 	
-	\subsubsection{Bagmch\_limited} imposes a limit on the number of items that can be included in the bag at once. We define this limit as \texttt{max\_elem} in the \texttt{CONSTANTS} clause of the static part of the machine and give its value in the \texttt{PROPERTIES} clause. Other ways of defining this value are shown later.
+	Similar behaviour can be observed later in the machines \emph{Bagmch\_limited} and \emph{Bagmch\_limited\_params}, with a scalar-valued parameter.
 	
-	This restriction impacts the \texttt{additem} operation, as we now need to check that adding an item to the bag will not exceed the limit. It can be done in the preconditions section of the operation, as is shown in the example included in the archive, or in an if-else statement. We found these ways to be equivalent and we have elected to stick to the former, since it is less restricting for potential refinement.
 	
-	There are nine proof obligations generated now. The initialisation and each of the operations to add and remove items results in two: one being a type check, the other making sure that the cardinality of \texttt{content} does not exceed \texttt{max\_elem}. The last three proof obligations are concerned with the well-definess of the expression \texttt{card(content)} in the invariant and the operation s\texttt{additem} and \texttt{howmany}.
+	\subsubsection{Bagmch\_long\_inv} demonstrates that a provably equivalent way of writing an expression may lead to a different behaviour of the prover. 
 	
-[]	If the invariant does not limit the content to the finite subsets, we 
+	There are multiple ways to denote subsets and finite subsets in these two machines. For unbounded subsets \texttt{content} $\subseteq$ \texttt{ITEMS} is equivalent to \texttt{content} $\in$ \texttt{POW(ITEMS)}. We include the latter form in the Invariant of this machine
+	
+	As we have discovered earlier, we need to limit the content of the bag to only finite subsets of \texttt{ITEMS} in the Invariant clause. A phrasing has been suggested by the well-defineness proof obligation generated by the reference machine. Thus, another way of expressing it to the one seen in the \emph{Bagmch} is:
+	
+	\begin{lstlisting}
+	INVARIANT
+	    content : POW(ITEMS) & 
+		content : FIN(content) 
+	\end{lstlisting}
+	
+	This time there are six proof obligations generated, all discharged automatically, and they are concerned only with the Invariant being preserved. There is a proof obligation for each clause of the Invariant, for each one of the initialisation and the two operation affecting the content of the bag. 
+	
+	Firstly, comparing the proof obligation related to the first clause of the Invariant, we see that it is not as simple as the one in \emph{Bagmch\_unbounded}. For example in the initialisation we see:
+	
+	\begin{lstlisting}
+"Invariant is preserved" &
+"Check invariant ((content):(POW(ITEMS)))" 
+=>
+	{} <: ITEMS 
+	\end{lstlisting}
+
+	Where we previously had:
+	\begin{lstlisting}
+"Invariant is preserved" => {} <: ITEMS 
+	\end{lstlisting}
+	
+	It strongly suggests that the notation $a \subseteq b$ is preferable to $a \in \mathbb{P}(b)$, for any two sets $a$ and $b$. While the result is still the same, the former seems to require less work from the prover, and thus especially for large projects may save some computation time.
+	
+	Next we compare the proof obligations regarding finiteness of \texttt{content}. The one generated now are of the form:
+	
+	\begin{lstlisting}
+"Invariant is preserved" &
+"Check invariant ((content):(POW(ITEMS)))" 
+=>
+	{} : FIN({}) 
+	\end{lstlisting}
+	
+	We can compare it to the finiteness POs in the reference \emph{Bagmch}:
+	
+	\begin{lstlisting}
+"Invariant is preserved" => {}: FIN(ITEMS)  
+	\end{lstlisting}
+	
+	This change in expression does not appear to make a difference for the proof obligations regarding the Invariant being preserved. However the key difference between this machine and the reference is that now there is now no proof obligation concerning the well-defineness of the expression \texttt{card(content)}. In this case, by adding the goal of a proof obligation regarding well-defineness, as it was seen before, to the Invariant, we have avoided the proof obligation altogether. A similar behaviour will be observed in later examples.
+	
+	We conclude that these two ways of expressing the relation '\texttt{content} is a finite subset of \texttt{ITEMS}', while equivalent in theory, may affect the performance and the time taken to complete computations by the prover in different ways. We recognize that it is something that may be noticeable at a very large-scale projects, and therefore we have no means of exploring it further in this work, but we highlight it as something users should be aware of.
+	
+	It is regrettable that the prover does not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
+	       
+	
+	\subsubsection{Bagmch\_limited} imposes a limit on the number of items that can be included in the bag at once. We define this limit as \texttt{max\_elem} in the \texttt{CONSTANTS} clause of the static part of the machine and give its type in the \texttt{PROPERTIES} clause:
+	
+	\begin{lstlisting}
+	CONSTANTS
+		max_elem
+	PROPERTIES
+		max_elem : NAT
+	\end{lstlisting}
+	
+	Here, we explicitly restrict \texttt{max\_elem} to be non-negative. Changing this expression to '$\texttt{max\_elem} \in \mathbb{Z}$' results in an unprovable proof obligation in the Initialisation, the goal of which is $card(\{\}) \leq \texttt{max\_elem}$ for all possible values of \texttt{max\_elem}. It clearly does not hold for negative values of the constant, hence it is limited to natural numbers.
+	
+	Furthermore, there is no difference between defining just the type of \texttt{max\_elem} or its value, forgoing the type declaration, i.e. having only the clause '\texttt{max\_elem} $= x$' for some chosen $x \in \mathbb{N}$ in the Properties clause. The type of it is defined implicitly and it does not affect the proof process.
+
+	This restriction impacts the \texttt{additem} operation, as we now need to check that adding an item to the bag will not exceed the limit. It can be done in the preconditions section of the operation, as is shown in the example included in the archive, or in an if-else statement. We found these ways to be equivalent for our purposes, as they do not generate different proof obligations. It is worth noting that they will impact the refinement stages of the development. We have elected to stick to the former, since it is less restricting for potential refinement.
+	
+	There are nine proof obligations generated. The initialisation and each of the operations to add and remove items results in two: one being a type check, the other making sure that the cardinality of \texttt{content} does not exceed \texttt{max\_elem}. The last three proof obligations are concerned with the well-definess of the expression \texttt{card(content)} in the invariant and the operation \texttt{additem} and \texttt{howmany}, that is anywhere where the expression appears.
+	
+	If the expression $\texttt{content} \in \texttt{FIN(ITEMS)}$ is replaced with $\texttt{content} \subseteq \texttt{ITEMS} \wedge \texttt{content} \in \texttt{FIN(content)}$ there are again nine proof obligations. However this time there are three proof obligations for each of the Initialisation and the adding and removing operations - one proof obligation for each clause of the Invariant. At the same time the well-defineness proof obligations are not generated. This is in line with the observations regarding \emph{Bagmch\_long\_inv}.
+
+	\subsubsection{Bagmch\_limited\_params} differs from the previous version by passing \texttt{max\_elem} as a scalar-valued parameter instead. The software requires defining at least the type of \texttt{max\_elem} in the Constraints clause, while the Constants and Properties clauses can now be removed. As in the case of \emph{Bagmch\_params} with a set-valued parameter, it does not affect the proof process.
+	
+	\subsubsection{Bagmch\_wrong\_order} is of particular interest, as it highlights a discrepancy between the theory of the B-method and its implementation in Atelier B. The Invariant clause contains a series of conjuncts which by the rules of logic are commutative. However they are not such in the software.
+	
+	Firstly, recall that in the \emph{Bagmch\_long\_inv}, the Invariant was as follows:
+	
+	\begin{lstlisting}
+	INVARIANT
+		content <: ITEMS &
+		content : FIN(content)
+	\end{lstlisting}
+	
+	Switching these two statements around results in an error message as static analysis is taking place, demanding that the type of \texttt{content} is defined before applying the built-in operator \texttt{FIN} to it. The software does not allow the user to proceed with the proof as long as such errors exist.
+	
+	With the addition of the limit on the number of items in the bag, this problem becomes much less obvious. For example, if the Invariant is formulated like this:
+	
+	\begin{lstlisting}
+	INVARIANT
+		content <: ITEMS &
+		card(content) <= max_elem & 
+		content : FIN(content)
+	\end{lstlisting}
+	
+	The static analysis does not give any errors, however an additional proof obligation is generated, on top of the nine we get in the alteration to the \emph{Bagmch\_limited} mentioned above. The proof obligation is:
+	
+	\begin{lstlisting}
+    	content <: ITEMS &
+		"Well definedness" 
+	=>
+		content: FIN(content) 
+	\end{lstlisting}
+	
+	It does not get discharged by any means available to the user within the interactive prover.	
+	
+	Based on these observations we reach the conclusion that the conjuncts in the Invariant are applied sequentially, in the order in which they are written. It is very much like the Assertion clause, which is defined to be checked sequentially in the B method.
+	
+	
 	
 	\section{Results}
-	In fact it was the initial goal of this project, to create a collection of proof rules which simplify the verification process in the automated prover. This collection was meant to include especially the rules that were found to be needed for the proofs of various scenarios. However as the work has progressed, we have found that it was not necessary to create additional rules, and instead any obstacle could be circumvented with a deeper understanding of the inner workings of the prover.
+	Equivalence of expressions
+	
+	Ordering of the Invariant
+	
+	\section{Concluding Remarks}
+	It was an initial goal of this project, to create a collection of proof rules which simplify the verification process in the automated prover. This collection was meant to include especially the rules that were found to be needed for the proofs of various scenarios. However as the work has progressed, we have found that it was not necessary to create additional rules, and instead any obstacle could be circumvented with a deeper understanding of the inner workings of the prover.
+	
+	Instead we 
 	\IEEEPARstart{}{} 
 	
 	\begin{thebibliography}{2}
@@ -239,9 +354,57 @@
 
 	\onecolumn
 	\appendices
-	\section{The Bag machine}
+	\section{The reference Bag machine}
 	\begin{lstlisting}
+MACHINE
+	Bagmch
+SETS
+	// possible items we can put in the bag
+	ITEMS
+VARIABLES
+	// contents of the bag
+	content
+INVARIANT
+	content : FIN(ITEMS) // content is a *finite* subset of ITEMS
+INITIALISATION
+	content := {} // we start with an empty bag
+OPERATIONS
+	/* Adds item aa to the bag*/
+	additem(aa) =
+	PRE
+		aa : ITEMS
+	THEN
+		content := content \/ {aa}
+	END;
 
+	/* removes aa from the bag (does nothing if aa not in the bag) */
+	removeitem(aa) =
+	PRE
+		aa : ITEMS
+	THEN
+		content := content - {aa}
+	END;
+
+	/* getter for the content*/
+	items <-- getcontents = items := content;
+
+	/* query how many items are in the bag */
+	nn <-- howmany = nn := card(content);
+
+	/* checks if the item aa is in the bag */
+	check <-- isin(aa) = 
+	PRE
+		aa : ITEMS
+	THEN
+		IF 
+			aa : content
+		THEN
+			check := TRUE
+		ELSE
+			check := FALSE
+		END
+	END
+END
 \end{lstlisting}
 
 

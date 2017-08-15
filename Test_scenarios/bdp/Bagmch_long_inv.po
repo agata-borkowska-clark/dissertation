@@ -1,0 +1,30 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & _f(9) & removeitem.2,(_f(3) & _f(6) => _f(13));
+_f(1) & _f(2) & _f(8) & _f(9) & removeitem.1,(_f(3) & _f(4) => _f(12));
+_f(1) & _f(2) & _f(8) & _f(9) & additem.2,(_f(3) & _f(6) => _f(11));
+_f(1) & _f(2) & _f(8) & _f(9) & additem.1,(_f(3) & _f(4) => _f(10));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+"Invariant is preserved";
+"Check invariant ((content) : (POW(ITEMS)))";
+(({}) : (POW(ITEMS)));
+"Check invariant ((content) : (FIN(content)))";
+(({}) : (FIN({})));
+((content) : (POW(ITEMS))) & ((content) : (FIN(content)));
+((aa) : (ITEMS));
+((((content) \/ ({aa}))) : (POW(ITEMS)));
+((((content) \/ ({aa}))) : (FIN(((content) \/ ({aa})))));
+(((content - {aa})) : (POW(ITEMS)));
+(((content - {aa})) : (FIN((content - {aa}))));
+((aa) : (content));
+not(((aa) : (content)));
+((content) : (POW(ITEMS)))
+END
+&
+THEORY EnumerateX
+END

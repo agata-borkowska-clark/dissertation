@@ -1,35 +1,24 @@
 <Machine name='Bagmch_params' type='abstraction'>
 <Parameters>
 <Id value='ITEMS' typref='4185748219'/>
-<Id value='max_elem' typref='2701647786'/>
 </Parameters>
 <Constraints>
 <Nary_Pred op='&amp;'>
 <Set>
 <Id value='ITEMS' typref='4185748219'/>
 </Set>
-<Exp_Comparison op=':'>
-<Id value='max_elem' typref='2701647786'/>
-<Id value='NAT1' typref='3603043417'/>
-</Exp_Comparison>
 </Nary_Pred>
 </Constraints>
 <Abstract_Variables>
 <Id value='content' typref='4185748219'/>
 </Abstract_Variables>
 <Invariant>
-<Nary_Pred op='&amp;'>
-<Exp_Comparison op='&lt;:'>
+<Exp_Comparison op=':'>
 <Id value='content' typref='4185748219'/>
+<Unary_Exp op='FIN' typref='2852175944'>
 <Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
-<Exp_Comparison op='&lt;='>
-<Unary_Exp op='card' typref='2701647786'>
-<Id value='content' typref='4185748219'/>
 </Unary_Exp>
-<Id value='max_elem' typref='2701647786'/>
 </Exp_Comparison>
-</Nary_Pred>
 </Invariant>
 <Initialisation>
 <Assignement_Sub>
@@ -53,16 +42,6 @@
 </Exp_Comparison>
 </Precondition>
 <Body>
-<If_Sub elseif='no'>
-<Condition>
-<Exp_Comparison op='&lt;'>
-<Unary_Exp op='card' typref='2701647786'>
-<Id value='content' typref='4185748219'/>
-</Unary_Exp>
-<Id value='max_elem' typref='2701647786'/>
-</Exp_Comparison>
-</Condition>
-<Then>
 <Assignement_Sub>
 <Variables>
 <Id value='content' typref='4185748219'/>
@@ -76,8 +55,6 @@
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
-</Then>
-</If_Sub>
 </Body>
 </Operation>
 <Operation name='removeitem'>
@@ -189,12 +166,11 @@
 <Id value='ITEMS'/>
 </Unary_Exp>
 </Type>
-<Type id='2701647786'>
-<Id value='INTEGER'/>
-</Type>
-<Type id='3603043417'>
+<Type id='2852175944'>
 <Unary_Exp op='POW'>
-<Id value='INTEGER'/>
+<Unary_Exp op='POW'>
+<Id value='ITEMS'/>
+</Unary_Exp>
 </Unary_Exp>
 </Type>
 <Type id='3817003670'>
@@ -204,6 +180,9 @@
 </Type>
 <Type id='1628806408'>
 <Id value='ITEMS'/>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
 </Type>
 <Type id='2043437594'>
 <Id value='BOOL'/>
