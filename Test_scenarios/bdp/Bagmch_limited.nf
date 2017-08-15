@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_limited))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_limited))==(btrue);
   Context_List_Invariant(Machine(Bagmch_limited))==(btrue);
-  List_Invariant(Machine(Bagmch_limited))==(content <: ITEMS & content: FIN(content) & card(content)<=max_elem)
+  List_Invariant(Machine(Bagmch_limited))==(content: FIN(ITEMS) & card(content)<=max_elem)
 END
 &
 THEORY ListAssertionsX IS
@@ -124,7 +124,7 @@ END
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Bagmch_limited),additem)==(aa: ITEMS);
+  List_Precondition(Machine(Bagmch_limited),additem)==(aa: ITEMS & card(content)<max_elem);
   List_Precondition(Machine(Bagmch_limited),removeitem)==(aa: ITEMS);
   List_Precondition(Machine(Bagmch_limited),getcontents)==(btrue);
   List_Precondition(Machine(Bagmch_limited),howmany)==(btrue);
@@ -136,8 +136,8 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Bagmch_limited),howmany)==(btrue | nn:=card(content));
   Expanded_List_Substitution(Machine(Bagmch_limited),getcontents)==(btrue | items:=content);
   Expanded_List_Substitution(Machine(Bagmch_limited),removeitem)==(aa: ITEMS | content:=content-{aa});
-  Expanded_List_Substitution(Machine(Bagmch_limited),additem)==(aa: ITEMS | card(content)<max_elem ==> content:=content\/{aa} [] not(card(content)<max_elem) ==> skip);
-  List_Substitution(Machine(Bagmch_limited),additem)==(IF card(content)<max_elem THEN content:=content\/{aa} END);
+  Expanded_List_Substitution(Machine(Bagmch_limited),additem)==(aa: ITEMS & card(content)<max_elem | content:=content\/{aa});
+  List_Substitution(Machine(Bagmch_limited),additem)==(content:=content\/{aa});
   List_Substitution(Machine(Bagmch_limited),removeitem)==(content:=content-{aa});
   List_Substitution(Machine(Bagmch_limited),getcontents)==(items:=content);
   List_Substitution(Machine(Bagmch_limited),howmany)==(nn:=card(content));

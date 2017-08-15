@@ -16,7 +16,7 @@ VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content : FIN(ITEMS)
+    content : FIN(ITEMS) // content is a *finite* subset of ITEMS
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS

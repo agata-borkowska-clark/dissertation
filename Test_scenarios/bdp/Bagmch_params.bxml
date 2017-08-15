@@ -1,4 +1,4 @@
-<Machine name='Bagmch_defferred' type='abstraction'>
+<Machine name='Bagmch_params' type='abstraction'>
 <Parameters>
 <Id value='ITEMS' typref='4185748219'/>
 <Id value='max_elem' typref='2701647786'/>

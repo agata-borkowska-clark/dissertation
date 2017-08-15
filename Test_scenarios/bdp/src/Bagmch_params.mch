@@ -1,38 +1,34 @@
-﻿/* Bagmch_limited
+﻿/* Bagmch_params
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 02/08/2017
- *
- * Like Bagmch, with an additional detail: imposing a limit on cardinality
+ * Creation date: 18/02/2017
  */
-
-/* The simplest version of the bag example */
 MACHINE
-    Bagmch_limited
-SETS
-    // possible items we can put in the bag
-    ITEMS
-CONCRETE_CONSTANTS
-    // max number of items that fit in the bag
-    max_elem
-PROPERTIES
-    max_elem = 3
+    Bagmch_params ( ITEMS , max_elem )
+CONSTRAINTS
+    // max_elem > 0. If no item can be put in the bag, the machine is useless
+    max_elem : NAT1
 ABSTRACT_VARIABLES
-    // contents of the bag
-    content
+    content // set of items that are currently in the bag
 INVARIANT
-    content : FIN ( ITEMS ) & // it's a finite subset of ITEMS
-    card ( content ) <= max_elem // it has at most max_elem elements
+    // content is a partial function, from mapping items to the number of the given item in the bag.
+    content <: ITEMS &
+    //content : FIN(content) &
+    card ( content ) <= max_elem
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
     /* Adds item aa to the bag, if there's space for it*/
     additem ( aa ) =
     PRE
-        aa : ITEMS  & // type check of the input
-        card ( content ) < max_elem
+        aa : ITEMS
     THEN
-        content := content \/ { aa }
+        IF
+            // only add item if we won't exceed the limit
+            card ( content ) < max_elem
+        THEN
+            content := content \/ { aa }
+        END
     END ;
 
     /* removes aa from the bag (does nothing if aa not in the bag) */
@@ -62,4 +58,5 @@ OPERATIONS
             check := FALSE
         END
     END
+
 END

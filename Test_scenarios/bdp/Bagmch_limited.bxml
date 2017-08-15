@@ -18,14 +18,10 @@
 </Properties>
 <Invariant>
 <Nary_Pred op='&amp;'>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='content' typref='4185748219'/>
 <Unary_Exp op='FIN' typref='2852175944'>
-<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
 </Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op='&lt;='>
@@ -52,22 +48,20 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
-</Precondition>
-<Body>
-<If_Sub elseif='no'>
-<Condition>
 <Exp_Comparison op='&lt;'>
 <Unary_Exp op='card' typref='2701647786'>
 <Id value='content' typref='4185748219'/>
 </Unary_Exp>
 <Id value='max_elem' typref='2701647786'/>
 </Exp_Comparison>
-</Condition>
-<Then>
+</Nary_Pred>
+</Precondition>
+<Body>
 <Assignement_Sub>
 <Variables>
 <Id value='content' typref='4185748219'/>
@@ -81,8 +75,6 @@
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
-</Then>
-</If_Sub>
 </Body>
 </Operation>
 <Operation name='removeitem'>

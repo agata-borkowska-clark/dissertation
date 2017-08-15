@@ -21,8 +21,7 @@ VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content <: ITEMS & // it's a subset of ITEMS
-    content: FIN(content) & // FIX
+    content : FIN(ITEMS) & // it's a finite subset of ITEMS
     card(content) <= max_elem  // it has at most max_elem elements
 INITIALISATION
     content := {} // we start with an empty bag
@@ -30,14 +29,10 @@ OPERATIONS
     /* Adds item aa to the bag, if there's space for it*/
     additem(aa) =
     PRE
-        aa : ITEMS
+        aa : ITEMS  & // type check of the input
+        card(content) < max_elem // we can only add the item, if there is space for it
     THEN
-        IF
-            // only add item if we won't exceed the limit
-            card(content) < max_elem
-        THEN
-            content := content \/ {aa}
-        END
+        content := content \/ {aa}
     END;
     
     /* removes aa from the bag (does nothing if aa not in the bag) */

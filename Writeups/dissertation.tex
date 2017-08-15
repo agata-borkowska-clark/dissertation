@@ -1,0 +1,251 @@
+\documentclass[11pt,journal]{IEEEtran}
+%\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{url}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+% Set listings to use small monospaced font.
+\lstset{basicstyle=\small\ttfamily,tabsize=4}
+\usepackage{graphicx}
+\ifCLASSOPTIONcompsoc
+% IEEE Computer Society needs nocompress option
+% requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+\else
+% normal IEEE
+\usepackage{cite}
+\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+	\title{Exploring the limitations of the Atelier B automated prover}
+	
+	\author{Agata~Borkowska,~UID: 1690550,~\IEEEmembership{MSc in Computer Science,~University of Warwick}% <-this % stops a space
+		\protect\\
+		\thanks{}}
+	
+	% The paper headers
+	
+	\markboth{}%
+	{ \MakeLowercase{\textit{}}: }
+	
+	\IEEEcompsoctitleabstractindextext{%
+		\begin{abstract}
+			%\boldmath
+			AtelierB is a tool for formal software development through refinement, using the B-method. It incorporates an automated prover, which has been recognized as the most thorough prover for B set theory, and has been used as a basis for many others. Nevertheless it has multiple shortcomings. Various approaches have been suggested and taken to improve its performance, including extensions to the proof rule base, plug-ins and third-party software. In this work we strive to establish the limitations of the prover without such additions, and discover at which point they become necessary. The secondary goal is to improve the robustness of the software without straying from pure B method, and taking into account the ease of use. As a metric of our success, we use the benchmarks proposed by Conchon and Iguernlala\cite{survey}.
+	\end{abstract}
+	\begin{IEEEkeywords}
+		B method, formal verification, abstract machine, proof
+	\end{IEEEkeywords}}
+	% IEEEtran.cls defaults to using nonbold math in the Abstract.
+	% This preserves the distinction between vectors and scalars. However,
+	% if the journal you are submitting to favors bold math in the abstract,
+	% then you can use LaTeX's standard command \boldmath at the very start
+	% of the abstract to achieve this. Many IEEE journals frown on math
+	% in the abstract anyway. In particular, the Computer Society does
+	% not want either math or citations to appear in the abstract.
+	
+	% Note that keywords are not normally used for peerreview papers.
+	
+	% make the title area
+	\maketitle
+	
+	
+	% To allow for easy dual compilation without having to reenter the
+	% abstract/keywords data, the \IEEEcompsoctitleabstractindextext text will
+	% not be used in maketitle, but will appear (i.e., to be "transported")
+	% here as \IEEEdisplaynotcompsoctitleabstractindextext when compsoc mode
+	% is not selected <OR> if conference mode is selected - because compsoc
+	% conference papers position the abstract like regular (non-compsoc)
+	% papers do!
+	\IEEEdisplaynotcompsoctitleabstractindextext
+	% \IEEEdisplaynotcompsoctitleabstractindextext has no effect when using
+	% compsoc under a non-conference mode.
+	
+	
+	% For peer review papers, you can put extra information on the cover
+	% page as needed:
+	% \ifCLASSOPTIONpeerreview
+	% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+	% \fi
+	%
+	% For peerreview papers, this IEEEtran command inserts a page break and
+	% creates the second title. It will be ignored for other modes.
+	\IEEEpeerreviewmaketitle
+	
+	
+	
+	\section{Introduction}
+	\IEEEPARstart{T}{he} aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is used in 
+	
+	\section{Literature review}
+
+	\section{Project overview}
+	\subsection{The aims of the project}
+	The key aim of this project is to discover the limitations of the Atelier B software. In the previous section, we have mentioned multiple plugins and extensions to the Atelier B software, which were created in order to improve the functionality. They highlight what other users have found lacking in Atelier B and what they have considered in need of improvement. However none of them demonstrate what can be achieved with the original software alone. Hence we strive to assess at what point Atelier B alone becomes insufficient, and the extensions are necessary to successfully verify a project. 
+	
+	An extension to this aim is answering the question: at what point is it necessary to add user-created rules in order to facilitate the proofs in the automated prover? It needs to be stressed that adding user-created rules is not advised unless it is absolutely necessary. Such rules then have to be thoroughly verified by means other than Atelier B software, to ensure that they are in fact correct. An error in an added rule would invalidate the entire proof process. Hence we will strive to circumvent obstacles by all means other than adding proof rules, before resorting to it. We hope to gather such advice and guidelines and make it accessible to others, so that they may be dissuaded from unnecessarily adding proof rules in their work. It is possible that adding proof rules to the Atelier B's rule base may be avoided entirely in the scenarios we have chosen, as they are by no means exhaustive; otherwise we will present the rules and their proofs for the use of others who wish to study the B-method.
+	
+	We intend to explore various ways of expressing a specification in the B language, paying attention to how seemingly equivalent expression result in different proof obligations being generated by the automated prover, and follow it up by explaining the differences with the information contained in the source texts. This approach is often taken by students and academics beginning their work with the B-method and the Atelier B software. They are unlikely to have a thorough knowledge of the intricacies of the B-method as implemented in the Atelier B software, and would attempt to write a machine first, then search the manuals to explain 
+	
+	We hope to provide them with an explanation for the most commonly encountered proof obligations which are not automatically discharged, and persistent patterns among them. Both understanding the information given by the automated prover and avoiding undischarged proof obligations in the first place is of interest. 
+	
+	The observations arising from our work can be separated into two groups. Firstly there will be points highlighting the intricacies of the B method, which can be reasoned about and explained easily using source texts, primarily Abrial's \emph{The B-book}\cite{b-book} and Schneider's \emph{The B-Method}\cite{b-method}. 
+	
+	Secondly, there will be disparities between the B method and its implementation in the Atelier B software. Not all of them can be classified as bugs, and some are clearly conscious choices which diverge from the pure theory of the B method. The manuals provided with the software will aid us with comparing the implementation to the theory. 
+	
+	\subsection{The scope of the project}
+	This work focused on abstract machines - they are the first step towards a formally verified implementation of a specification, thus making them the foundation of any project developed using the B method. An implication of this choice is focusing on set-related structures, including relations which are understood as sets of maplets, and operations, such as set comprehension, union, and intersection. These abstract constructs are not allowed in the later stages, where all data structures have to be concrete, and operations deterministic. We will also not discuss proof obligations related to loops, since those arise in the implementation stage.
+	
+	Another reason for this choice is the distinct lack of literature focusing on this stage of development, in comparison to the refinement and implementation stages.[CITE] The latter stages undeniably generate more proof obligations, since on top of the proof obligations which can appear in the abstract machines, we need to consider those related to connection between a refinement machine and the machine being refined.
+	
+	We shall approach it from an academic rather than industrial point of view, focusing on smaller yet more illustrative examples. The main reason for it is to limit the number of factors affecting the number of generated proof obligations and be able to control them more precisely. An industrial-scale project with hundreds of proof obligations would be rather unwieldy for our purposes. Secondly a person new to formal development and the B-method is more likely to be able to follow clear, exemplar scenarios. 
+	
+	Nevertheless we hope that not only students and researchers will find our work helpful. Being able to minimise the number of proof obligations to be manually discharged has the potential to reduce the time required to complete any project. The constructs and expressions we discuss are the same ones as those used in industry. In fact, we found that the more complex structures in the B language, such as sequences, are rarely used in large-scale projects, as exemplified by [CITE].
+
+
+	\section{Methodology}
+
+	\section{Project Management}
+	
+	\subsection{Choice of scenarios}
+	This work has focused on two generic scenarios and explored various ways of fulfilling a specification for each of them. The specifications were kept deliberately imprecise for two reasons. Firstly, it allowed for an in-depth exploration of the theme. More precise specification would narrow down the options significantly, limiting our findings. Secondly in an industry setting it is not unheard of to have specification documents which leave details up to interpretation or are open-ended. 
+	
+	After exhausting the ways each expressing the specification in the B-method, we created a few more machines for each scenario, which illustrate other variations on the theme, although they diverge further from the original intentions. They served to analyse constructs which are more particular or less suited to the chosen scenarios, but nevertheless not unheard of.
+	
+	It is important to observe that in large-scale industry projects which apply the B method, the constructs are kept simple and straightforward to avoid obfuscation. Thus in the sections below, dedicated to the chosen scenarios, the examples created were ordered by complexity. The later ones, for example in the case of the Bag Machine those involving sequences or relations, were analysed to compare the number of proof obligations generated next to their simpler variants.
+	
+	\section{The Bag Machine - various approaches to describing sets and collections}
+	\subsection{Specification}
+	Given a set of items, we want to describe a bag containing a subset of them. Initially, the bag is empty. We can perform the following operations on the bag:
+	\begin{itemize}
+		\item add an item to the bag
+		\item remove an item from the bag
+		\item find out the number of items in the bag
+		\item find out which items are in the bag
+		\item query whether a given item is in the bag
+	\end{itemize}
+	\subsection{Discussion of the specification}
+	An image of a bag of items was chosen due to its simplicity, although we recognize that it is potentially an unhelpful deviation from the most general description of this scenario, which can be achieved solely in set-theoretical terminology. We argue that this scenario is applicable in many circumstances. For example, one may be asked to develop a system that controls the barriers to a private car park. Then the system would maintain a set of registration numbers of the vehicles permitted to park there, which is a subset of all possible registration numbers. Another example is a library system, where \texttt{ITEMS} is the set of books in the library, and \texttt{content} are the books a person has on loan. We may want to impose a limit on the total number of items in the subset - bound by the number of spaces in the car park or the maximum number of books permitted to have on loan at the same time. This variation, although not explicitly required by the specification, was analysed in depth among others listed below.
+	
+	The aim of this scenario is to explore different ways of expressing sets and operations on them. The two sets we are working on are \texttt{ITEMS}, consisting of all possible items that can be put in the bag, and \texttt{content}, the items contained in the bag at a given point. There are various ways of describing each of these sets. 
+	
+	We take the relation between them firstly to be that of subset, namely \texttt{content} $\subseteq$ \texttt{ITEMS} or equivalently \texttt{content} $\in \mathbb{P}(\texttt{ITEMS})$. This already shows two different ways of expressing a simple relation like this. Furthermore we may want to impose the limitation that the content of the bag is a finite set, thus arriving at \texttt{content} $\in \texttt{FIN}(\texttt{ITEMS})$ in B notation, where \texttt{FIN}(\texttt{ITEMS}) denotes all finite subsets of the set of \texttt{ITEMS}. 
+	
+	There are other ways of describing the relation between the \texttt{ITEMS} and the \texttt{content} of the bag. For example latter can be a mapping from a subset of \texttt{ITEMS} to the number of times a given item appears in the bag.
+	
+	At the level of abstract machines, it is permitted to use set comprehension and other operations and properties of sets, according to the Zermelo-Fraenkel set theory. 
+
+	\subsection{Variants of the Bag Machine}
+	There are various ways of expressing the requirements given in the specification as an abstract machine. The following files are contained in the \emph{Test\_scenarios} archive for reference of the reader. We begin by having \texttt{ITEMS} as a deferred set - a set which will be defined at some later point of the development process, and \texttt{content} as simply a subset of \texttt{ITEMS}, and focus on the relation between them. We then move onto different ways of including the set of \texttt{ITEMS} in our machine, for example as an enumerated set or as a machine parameter. We finally explore various ways of describing the content of the bag, such as using sequences or relations. The reason for this order of tasks is to begin with the most intuitive implementation of the specification, before discussing less obvious changes to it.
+	
+	\subsubsection{Bagmch} is the reference machine which we take to be the core of this scenario. It implements exactly the specification without imposing any non-required conditions, such as the limit on the number of items in the bag. At the same time it includes one condition not explicitly mentioned in the specification, namely:
+	\begin{lstlisting}
+	INVARIANT
+		content : FIN(ITEMS)
+	\end{lstlisting}
+	The specification requires only that $\texttt{content} \subseteq \texttt{ITEMS}$, however in any implementation it is infeasible to have truly infinite sets, thus the software considers them to be erroneous. In the \emph{B Language Reference Manual}\cite{b reference} we find the following definition for the set of natural numbers: ${\texttt{NAT}  = 0 .. \texttt{MAXINT}}$, where \texttt{MAXINT} can be set by the user for a given project, although it is usually understood to be $2^{31}-1$. This definition is not supported by the \emph{B-book}, thus demonstrating a small disparity between the theory of the B-method and its implementation in Atelier B. Nevertheless it is very reasonable for practical purposes.
+	
+	This machine generates only four proof obligations and all of them are discharged automatically. The first three check that the \texttt{INVARIANT} is preserved in the initialisation and by the operations to add and remove items. The last one is as follows:
+	
+	\begin{lstlisting}
+		"Well definedness" 
+	=> 
+		content: FIN(content)
+	\end{lstlisting}
+	
+	It is concerned with the well-defineness of the operation \texttt{howmany}, which returns the number of items in the bag. The well-defineness proof obligations arise when an expression is used which requires certain conditions to be met in order to be well-defined. In this case, \texttt{card(content)} is well-defined only if \texttt{content} is a finite set. The well-definess conditions for all such expressions can be found in \emph{B Language Reference Manual}. The following machine illustrates the proof obligations generated when the well-definess conditions are not met.
+	
+	\subsubsection{Bagmch\_unbounded} illustrates the necessity to impose finiteness on the set of items contained in the bag. The sole difference between this and the reference Bag Machine is the statement:
+	
+	\begin{lstlisting}
+	INVARIANT
+		content <: ITEMS
+	\end{lstlisting}
+	This machine generates the same four proof obligations as the reference machine, however the last one remains undischarged by the automated prover and correctly points the user to a problem in the abstract machine. 
+	
+	It is worth noting that there are multiple ways to denote subsets and finite subsets in these two machines, namely for unbounded subsets \texttt{content} $\subseteq$ \texttt{ITEMS} is equivalent to \texttt{content} $\in$ \texttt{POW(ITEMS)}, and for finite sets \texttt{content} $\in$ \texttt{FIN(ITEMS)} is equivalent to: \texttt{content} $\subseteq$ \texttt{ITEMS} $\wedge$ \texttt{content} $\in$ \texttt{FIN(content)}. These variations do not lead to any noticeable differences and do not cause different proof obligations to be generated and discharged, hence we conclude them to be equivalent where noted above.
+	
+	\subsubsection{Bagmch\_limited} imposes a limit on the number of items that can be included in the bag at once. We define this limit as \texttt{max\_elem} in the \texttt{CONSTANTS} clause of the static part of the machine and give its value in the \texttt{PROPERTIES} clause. Other ways of defining this value are shown later.
+	
+	This restriction impacts the \texttt{additem} operation, as we now need to check that adding an item to the bag will not exceed the limit. It can be done in the preconditions section of the operation, as is shown in the example included in the archive, or in an if-else statement. We found these ways to be equivalent and we have elected to stick to the former, since it is less restricting for potential refinement.
+	
+	There are nine proof obligations generated now. The initialisation and each of the operations to add and remove items results in two: one being a type check, the other making sure that the cardinality of \texttt{content} does not exceed \texttt{max\_elem}. The last three proof obligations are concerned with the well-definess of the expression \texttt{card(content)} in the invariant and the operation s\texttt{additem} and \texttt{howmany}.
+	
+[]	If the invariant does not limit the content to the finite subsets, we 
+	
+	\section{Results}
+	In fact it was the initial goal of this project, to create a collection of proof rules which simplify the verification process in the automated prover. This collection was meant to include especially the rules that were found to be needed for the proofs of various scenarios. However as the work has progressed, we have found that it was not necessary to create additional rules, and instead any obstacle could be circumvented with a deeper understanding of the inner workings of the prover.
+	\IEEEPARstart{}{} 
+	
+	\begin{thebibliography}{2}
+		\bibitem{survey}
+		S.~Conchon and M.~ Iguernlala, "Increasing Proofs Automation Rate of Atelier-B Thanks to Alt-Ergo" in \emph{Proc.~1st Int.~Conf.~Reliability, Safety and Security of Railway Systems}. Paris, France, 2016, pp.~243-253
+		
+		\bibitem{railway standard}
+		\emph{Railway applications - Communication, signalling and processing systems}, EN 50128, 2011
+		
+		\bibitem{release notes}
+		\emph{Atelier B version 4.2 release notes}, ClearSy Sys. Eng., Aix-en-Provence, France, 2014
+		
+		\bibitem{b-method}
+		S.~Schneider, \emph{The B-Method: an Introduction}, Basinstoke, Palgrave, 2001
+		
+		\bibitem{b-book}
+		J.-R. Abrial, \emph{The B-book: assigning programs to meanings}, Cambridge, Cambridge Univ. Press, 1996
+		
+		\bibitem{user manual}
+		\emph{Atelier B User Manual}, v.~4.0, ClearSy Sys.~Eng., Aix-en-Provence, France
+		
+		\bibitem{b reference}
+		\emph{B Language Reference Manual}, v.~1.8.7, ClearSy Sys.~Eng., Aix-en-Provence, France
+		
+		\bibitem{PO reference}
+		\emph{Proof Obligations Reference Manual}, v.~3.7, ClearSy Sys.~Eng., Aix-en-Provence, France
+		
+		\bibitem{Prover guide}
+		\emph{Interactive Prover User Manual}, v.~4.0, ClearSy Sys.~Eng., Aix-en-Provence, France
+		
+		\bibitem{Redacting rules}
+		\emph{Redaction guide for mathematical rules} v.~1.1, ClearSy Sys.Ęng., Aix-en-Provence, France, accessible: \url{http://www.atelierb.eu/wp-content/uploads/sites/3/manuels/guide-de-redaction-de-regles-mathematiques-fr.pdf}\\
+		Translated by D.~D\'{e}harbe, accessible: 
+		\url{http://www.math.pku.edu.cn/teachers/qiuzy/fm_B/Atelier_B/Writing_mathematical_rules.pdf}
+		
+		\bibitem{embedding and theorem proving}
+		M. Jacquel et al., "Verifying B Proof Rules Using Deep Embedding and Automated Theorem Proving" in \emph{Proc. 9th Int. Conf. Software Eng. Formal Methods}, Montevideo, Urugway, Nov. 2011, pp. 253-268
+		
+		\bibitem{SMT}
+		D. D\'{e}harbe, "Integration of SMT-solvers in B and Event-B development environments" in \emph{Sci. Comp. Prog.} vol. 78, Elsevier, March 2013, pp. 310-326
+		
+		\bibitem{San Juan metro}
+		M. Leuschel et al., "Automated property verification for large scale B models with ProB" in \emph{Proc. 2nd Int. Symp. Formal Methods}, Eindhoven, The Netherlands. 2009, pp.~708-723
+		
+		\bibitem{BEval}
+		V. Medeiros Jr. and D. D\'{e}harbe, "BEval: A Plug-in to Extend Atelier B with Current Verification Technologies" in \emph{Proc. 1st Latin Amer. Workshop Formal Methods}, Buenos Aires, Argentina, 20014, pp. 53-58
+		
+		
+		
+		
+
+		
+	\end{thebibliography}
+	
+
+	\onecolumn
+	\appendices
+	\section{The Bag machine}
+	\begin{lstlisting}
+
+\end{lstlisting}
+
+
+	
+	% that's all folks
+\end{document}
+
