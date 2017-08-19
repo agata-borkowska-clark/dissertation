@@ -23,6 +23,9 @@
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_enum_more_pos" suffix="mch" user="Agata">
             <component name="Bagmch_enum_more_pos" type="specification" />
         </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_finite_items" suffix="mch" user="Agata">
+            <component name="Bagmch_finite_items" type="specification" />
+        </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_limited" suffix="mch" user="Agata">
             <component name="Bagmch_limited" type="specification" />
         </component_file>
@@ -40,6 +43,9 @@
         </component_file>
         <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_params" suffix="mch" user="Agata">
             <component name="Bagmch_params" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_pre" suffix="mch" user="Agata">
+            <component name="Bagmch_pre" type="specification" />
         </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_relation" suffix="mch" user="Agata">
             <component name="Bagmch_relation" type="specification" />

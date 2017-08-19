@@ -1,0 +1,50 @@
+\documentclass[11pt,journal]{IEEEtran}
+%\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{url}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+% Set listings to use small monospaced font.
+\lstset{basicstyle=\small\ttfamily,tabsize=4}
+\usepackage{graphicx}
+\ifCLASSOPTIONcompsoc
+% IEEE Computer Society needs nocompress option
+% requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+\else
+% normal IEEE
+\usepackage{cite}
+\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}	
+
+	\onecolumn
+	\appendices
+
+\section{'A subset of a finite set is finite' - Proof}
+Let $A$ and $B$ be sets, with $A \subseteq B$ and $B$ finite. Let us define $[n]$ to be the set of all elements of $\mathbb{N}$ less than $n$, i.e.~$[n] = \{0,1,...,n-1\}$.
+
+Since $B$ is finite, by the definition of finiteness there is $n \in \mathbb{N}$ such that there exists a bijection between $B$ and $[n]$. Hence it suffices to prove that any subset of $[n]$ for $n \in \mathbb{N}$ is finite. We proceed by induction.
+
+When $n = 0$, $[n] = \varnothing$, and trivially all subsets of the empty set are finite.
+
+Let $n > 0$ and assume that all subsets of $[n-1]$ are finite. 
+
+Note that $[n] = \{0,1,...,n-1\} = \{0,1,...,n-2\} \cup \{n-1\} = [n-1] \cup \{n-1\}$. Let $x \subseteq [n]$. Then either $n-1 \notin x$ or $n-1\in x$. In the first case, $x \subseteq [n-1]$, and thus it is finite.
+
+Otherwise, $x\backslash\{n-1\} \subseteq [n-1]$ and is finite. Therefore there exists a $k \in \mathbb{N}$ such that there is a bijection $f: x\backslash\{n-1\} \rightarrow [k]$. Then $f' = f \cup \{(n-1, k)\}$ is a bijection $f': x \rightarrow [k+1]$ and by the inductive property of the natural numbers, $k+1 \in \mathbb{N}$.
+
+Hence, any $x \subseteq n$ is finite.
+
+$\square$
+	
+	% that's all folks
+\end{document}
+

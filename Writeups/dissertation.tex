@@ -174,6 +174,8 @@
 	\end{lstlisting}
 	This machine generates the same four proof obligations as the reference machine, however the last one remains undischarged by the automated prover and correctly points the user to a problem in the abstract machine. 
 	
+	\subsubsection{Bagmch\_pre} shows a workaround the well-defineness proof obligation in the previous example. 
+	
 	\subsubsection{Bagmch\_params} differs from the reference machine in the way the set of \texttt{ITEMS} is included in it. \emph{Bagmch} is given the set of \texttt{ITEMS} as a deferred set, which is required to be explicitly defined at a later stage of the development. Here, it is given as a set-valued parameter, which must be instantiated any time the machine is used.\cite{b-method} However at the stage of abstract machine which is not used by any other machine, it does not make a difference in the prover.
 	
 	Similar behaviour can be observed later in the machines \emph{Bagmch\_limited} and \emph{Bagmch\_limited\_params}, with a scalar-valued parameter.
@@ -230,6 +232,38 @@
 	
 	It is regrettable that the prover does not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
 	       
+	\subsubsection{Bagmch\_finite\_items} is an attempt to impose finiteness earlier on, on the set of \texttt{ITEMS}. We do it by adding the clause '$\texttt{ITEMS} \in \texttt{FIN(ITEMS)}$' to the Properties clause. Otherwise the machine is identical to \emph{Bagmch\_unbounded}. We rely on the fact that any subset of a finite set is necessarily finite. Appendix B contains a proof of this claim.
+	
+	We see the same four proof obligations as in \emph{Bagmch\_unbounded}, and again the one regarding well-defineness is not discharged automatically. We can of course add the clause '$\texttt{content} \in \texttt{FIN(content)}$' or otherwise explicitly impose the finiteness property on the contents of the bag, but it should not be necessary. The machine is correct, and as the aforementioned proof suggests, it can be verified manually.
+	
+	Thus we move on to the next stage in our process, as described in the Methodology section. The interactive prover allows users to search rules by the goal, as well as browse the file containing the integrated proof rule base. However none of the rules contains the goal required. No other manipulation in the interactive prover leads to discharging the proof obligation either.
+	
+	The claim 'a subset of a finite set is finite' can be expressed as a B rule as follows:
+		
+	\begin{lstlisting}
+	THEORY userInFINXY IS
+		band(binhyp(b: FIN(b)), 
+		binhyp(a <: b))
+		=>
+		a: FIN(a)
+	END
+	\end{lstlisting}
+	
+	This rule can be added to the \emph{.pmm} file for this component, so that it is not visible during other proofs, or to the Patch Prover, which contains user-added rules available to all components in a project. Either way it has to be then called explicitly in the interactive prover, with the command to apply rule '\texttt{ar(<theory name>)}', to discharge the obligations with this goal. The project archive contains the \emph{Bagmch\_finite\_items.pmm} file with this rule to illustrate how it works. 
+	
+	An alternative to including this rule in the PatchProver or the \emph{.pmm} file is to add the goal of the proof obligation to the Invariant, as can be seen in \emph{Bagmch\_long\_inv}. This is a safer alternative, because it will certainly not permit incorrect statements to be accepted by the prover, although it may restrict the number of legal states of the machine. At the same time it leads to more proof obligations and it can be considered the user performing part of the proof manually.
+	
+	\subsubsection{Bagmch\_constant\_set} is very similar to the previous machines. This time the superset of \texttt{content} is a set described in the Constants clause, with the following properties:
+	
+	\begin{lstlisting}
+	CONSTANTS
+		items
+	PROPERTIES
+		items <: ITEMS &
+		items : FIN(items)
+	\end{lstlisting}
+	
+	The behaviour of this constant is identical to that of the deferred set of \texttt{ITEMS}, as seen in \emph{Bagmch\_finite\_items}.
 	
 	\subsubsection{Bagmch\_limited} imposes a limit on the number of items that can be included in the bag at once. We define this limit as \texttt{max\_elem} in the \texttt{CONSTANTS} clause of the static part of the machine and give its type in the \texttt{PROPERTIES} clause:
 	
@@ -284,14 +318,24 @@
 	
 	It does not get discharged by any means available to the user within the interactive prover.	
 	
-	Based on these observations we reach the conclusion that the conjuncts in the Invariant are applied sequentially, in the order in which they are written. It is very much like the Assertion clause, which is defined to be checked sequentially in the B method.
+	Based on these observations we reach the conclusion that the conjuncts in the Invariant are applied sequentially, in the order in which they are written. It is very much like the Assertion clause, which is defined to be checked sequentially in the B method. It is also understandable from the implementation point of view, since checking all permutations of the conjuncts would be computationally hard.
 	
-	
-	
+
 	\section{Results}
 	Equivalence of expressions
 	
 	Ordering of the Invariant
+	
+	\subsection{Additional rules}
+	\begin{lstlisting}
+	THEORY userInFINXY IS
+		band(binhyp(b: FIN(b)), 
+		binhyp(a <: b))
+		=>
+		a: FIN(a)
+	END
+	\end{lstlisting}
+	
 	
 	\section{Concluding Remarks}
 	It was an initial goal of this project, to create a collection of proof rules which simplify the verification process in the automated prover. This collection was meant to include especially the rules that were found to be needed for the proofs of various scenarios. However as the work has progressed, we have found that it was not necessary to create additional rules, and instead any obstacle could be circumvented with a deeper understanding of the inner workings of the prover.
@@ -406,8 +450,23 @@ OPERATIONS
 	END
 END
 \end{lstlisting}
+\pagebreak
+\section{'A subset of a finite set is finite' - Proof}
+Let $A$ and $B$ be sets, with $A \subseteq B$ and $B$ finite. Let us define $[n]$ to be the set of all elements of $\mathbb{N}$ less than $n$, i.e.~$[n] = \{0,1,...,n-1\}$.
 
+Since $B$ is finite, by the definition of finiteness there is $n \in \mathbb{N}$ such that there exists a bijection between $B$ and $[n]$. Hence it suffices to prove that any subset of $[n]$ for $n \in \mathbb{N}$ is finite. We proceed by induction.
 
+When $n = 0$, $[n] = \varnothing$, and trivially all subsets of the empty set are finite.
+
+Let $n > 0$ and assume that all subsets of $[n-1]$ are finite. 
+
+Note that $[n] = \{0,1,...,n-1\} = \{0,1,...,n-2\} \cup \{n-1\} = [n-1] \cup \{n-1\}$. Let $x \subseteq [n]$. Then either $n-1 \notin x$ or $n-1\in x$. In the first case, $x \subseteq [n-1]$, and thus it is finite.
+
+Otherwise, $x\backslash\{n-1\} \subseteq [n-1]$ and is finite. Therefore there exists a $k \in \mathbb{N}$ such that there is a bijection $f: x\backslash\{n-1\} \rightarrow [k]$. Then $f' = f \cup \{(n-1, k)\}$ is a bijection $f': x \rightarrow [k+1]$ and by the inductive property of the natural numbers, $k+1 \in \mathbb{N}$.
+
+Hence, any $x \subseteq n$ is finite.
+
+$\square$
 	
 	% that's all folks
 \end{document}

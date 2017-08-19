@@ -22,20 +22,14 @@
 <Define name="inv">
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
@@ -49,10 +43,6 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:1:1:2:3" typref="1628806408" value="BAZZ"/>
 </Enumerated_Values>
 </Set>
-<Exp_Comparison op="=">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:4:1:1" typref="2701647786" value="max_elem"/>
-<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:4:1:2" typref="2701647786" value="2"/>
-</Exp_Comparison>
 </Define>
 <Define name="inprp"/>
 <Define name="inext"/>
@@ -73,10 +63,10 @@
 <Nary_Sub op=";">
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:6:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:4:1:1:1" typref="4185748219" value="content"/>
 </Variables>
 <Values>
-<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:6:1:2:1" typref="3817003670"/>
+<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:4:1:2:1" typref="3817003670"/>
 </Values>
 </Simple_Assignement_Sub>
 </Nary_Sub>
@@ -86,20 +76,14 @@
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -124,62 +108,44 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:2:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:2:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:2:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
 <Goal>
 <Sub_Calculus>
-<If_Sub elseif="no">
-<Condition>
-<Exp_Comparison op="&lt;">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
-</Exp_Comparison>
-</Condition>
-<Then>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:2:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1:1" typref="4185748219" value="content"/>
 </Variables>
 <Values>
 <Binary_Exp op="\/" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:2:1:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:2:1:1" typref="4185748219" value="content"/>
 <Nary_Exp op="{" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:2:1:2:1:2:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
-</Then>
-</If_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -204,12 +170,12 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:2:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:2:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:2:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -217,13 +183,13 @@
 <Sub_Calculus>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:3:1:1:1" typref="4185748219" value="content"/>
 </Variables>
 <Values>
 <Binary_Exp op="-" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:3:1:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:3:1:2:1:1" typref="4185748219" value="content"/>
 <Nary_Exp op="{" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:3:1:2:1:2:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
@@ -234,20 +200,14 @@
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -271,18 +231,18 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:3:2:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:3:2:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:3:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:3:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>
 <Sub_Calculus>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:3:3:1:1:1" typref="4185748219" value="items"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:3:3:1:1:1" typref="4185748219" value="items"/>
 </Variables>
 <Values>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:3:3:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:3:3:1:2:1" typref="4185748219" value="content"/>
 </Values>
 </Simple_Assignement_Sub>
 <Binary_Pred op="=&gt;">
@@ -291,20 +251,14 @@
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -328,19 +282,19 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:4:2:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:4:2:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:4:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:4:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>
 <Sub_Calculus>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:4:3:1:1:1" typref="2701647786" value="nn"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:4:3:1:1:1" typref="2701647786" value="nn"/>
 </Variables>
 <Values>
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:4:3:1:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:4:3:1:2:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
 </Values>
 </Simple_Assignement_Sub>
@@ -350,20 +304,14 @@
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -388,12 +336,12 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:2:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:2:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:2:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -402,27 +350,27 @@
 <If_Sub elseif="no">
 <Condition>
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:1:1:2" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:1:1:2" typref="4185748219" value="content"/>
 </Exp_Comparison>
 </Condition>
 <Then>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:2:1:1:1" typref="2043437594" value="check"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:2:1:1:1" typref="2043437594" value="check"/>
 </Variables>
 <Values>
-<Boolean_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:2:1:2:1" typref="2043437594" value="TRUE"/>
+<Boolean_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:2:1:2:1" typref="2043437594" value="TRUE"/>
 </Values>
 </Simple_Assignement_Sub>
 </Then>
 <Else>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:3:1:1:1" typref="2043437594" value="check"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:3:1:1:1" typref="2043437594" value="check"/>
 </Variables>
 <Values>
-<Boolean_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:3:1:2:1" typref="2043437594" value="FALSE"/>
+<Boolean_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:3:1:2:1" typref="2043437594" value="FALSE"/>
 </Values>
 </Simple_Assignement_Sub>
 </Else>
@@ -433,20 +381,14 @@
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:2:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= max_elem)">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:2" typref="2701647786" value="max_elem"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -480,12 +422,7 @@
 </Hypothesis>
 <Goal>
 <Tag goalTag="Well definedness">
-<Nary_Pred op="&amp;">
-<Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-</Nary_Pred>
 </Tag>
 </Goal>
 </Proof_Obligation>
@@ -508,35 +445,13 @@
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op="&lt;:" initialTag="content : POW( ITEMS)">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
-</Binary_Pred>
-<Binary_Pred op="=&gt;">
-<Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:2:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-</Exp_Comparison>
-<Nary_Pred op="&amp;">
-<Binary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;"/>
-<Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:3:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-</Exp_Comparison>
-</Nary_Pred>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-</Nary_Pred>
 </Binary_Pred>
 </Nary_Pred>
 </Binary_Pred>
@@ -602,8 +517,8 @@
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
@@ -633,56 +548,23 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:2:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:2:1:2:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:1:2:1:2:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Binary_Pred op="&amp;">
-<Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;"/>
-<Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-</Exp_Comparison>
-</Nary_Pred>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-<Binary_Pred op="=&gt;">
-<Exp_Comparison op="&lt;">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
-</Exp_Comparison>
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
-</Binary_Pred>
-<Binary_Pred op="=&gt;">
-<Unary_Pred op="not">
-<Exp_Comparison op="&lt;">
-<Unary_Exp op="card" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:1:1:1:1" typref="4185748219" value="content"/>
-</Unary_Exp>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:1:3:1:1:1:2" typref="2701647786" value="max_elem"/>
-</Exp_Comparison>
-</Unary_Pred>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
@@ -710,8 +592,8 @@
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
@@ -741,12 +623,12 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:2:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:2:2:1:2:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:2:2:1:2:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -801,8 +683,8 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:3:2:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:3:2:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:3:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:3:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>
@@ -853,8 +735,8 @@
 <Definition name="ass"/>
 <Hypothesis>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:4:2:1:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:4:2:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:4:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:4:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>
@@ -864,9 +746,9 @@
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:4:3:1:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:4:3:1:2:1:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:4:3:1:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:4:3:1:2:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -897,8 +779,8 @@
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
@@ -928,12 +810,12 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:1:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;:">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:2:1" typref="4185748219" value="content"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:3:1:2:2" typref="4185748219" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:2:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:3:1:2:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -947,8 +829,8 @@
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:1:1:2" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:1:1:2" typref="4185748219" value="content"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
@@ -956,8 +838,8 @@
 <Binary_Pred op="=&gt;">
 <Unary_Pred op="not">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:7:5:4:1:1:1:2" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:5:5:4:1:1:1:2" typref="4185748219" value="content"/>
 </Exp_Comparison>
 </Unary_Pred>
 <Nary_Pred op="&amp;">
@@ -973,29 +855,29 @@
 <TypeInfos>
 <Type id="4185748219">
 <Unary_Exp op="POW">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:8:1:1:1" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:6:1:1:1" value="ITEMS"/>
 </Unary_Exp>
 </Type>
 <Type id="1628806408">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:8:2:1" value="ITEMS"/>
-</Type>
-<Type id="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:8:3:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:6:2:1" value="ITEMS"/>
 </Type>
 <Type id="2852175944">
 <Unary_Exp op="POW">
 <Unary_Exp op="POW">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:8:4:1:1:1" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:6:3:1:1:1" value="ITEMS"/>
 </Unary_Exp>
 </Unary_Exp>
 </Type>
 <Type id="3817003670">
 <Unary_Exp op="POW">
-<Generic_Type tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:8:5:1:1"/>
+<Generic_Type tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:6:4:1:1"/>
 </Unary_Exp>
 </Type>
+<Type id="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:6:5:1" value="INTEGER"/>
+</Type>
 <Type id="2043437594">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:8:6:1" value="BOOL"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_enum.bxml:1:6:6:1" value="BOOL"/>
 </Type>
 </TypeInfos>
 </Proof_Obligations>

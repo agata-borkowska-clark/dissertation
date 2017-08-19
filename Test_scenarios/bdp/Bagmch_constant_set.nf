@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_constant_set))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_constant_set))==(btrue);
   Context_List_Invariant(Machine(Bagmch_constant_set))==(btrue);
-  List_Invariant(Machine(Bagmch_constant_set))==(content <: items & card(content)<=max_elem)
+  List_Invariant(Machine(Bagmch_constant_set))==(content <: items)
 END
 &
 THEORY ListAssertionsX IS
@@ -136,8 +136,8 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Bagmch_constant_set),howmany)==(btrue | nn:=card(content));
   Expanded_List_Substitution(Machine(Bagmch_constant_set),getcontents)==(btrue | output:=content);
   Expanded_List_Substitution(Machine(Bagmch_constant_set),removeitem)==(aa: items | content:=content-{aa});
-  Expanded_List_Substitution(Machine(Bagmch_constant_set),additem)==(aa: items | card(content)<max_elem ==> content:=content\/{aa} [] not(card(content)<max_elem) ==> skip);
-  List_Substitution(Machine(Bagmch_constant_set),additem)==(IF card(content)<max_elem THEN content:=content\/{aa} END);
+  Expanded_List_Substitution(Machine(Bagmch_constant_set),additem)==(aa: items | content:=content\/{aa});
+  List_Substitution(Machine(Bagmch_constant_set),additem)==(content:=content\/{aa});
   List_Substitution(Machine(Bagmch_constant_set),removeitem)==(content:=content-{aa});
   List_Substitution(Machine(Bagmch_constant_set),getcontents)==(output:=content);
   List_Substitution(Machine(Bagmch_constant_set),howmany)==(nn:=card(content));
@@ -145,9 +145,9 @@ THEORY ListSubstitutionX IS
 END
 &
 THEORY ListConstantsX IS
-  List_Valuable_Constants(Machine(Bagmch_constant_set))==(max_elem,items);
+  List_Valuable_Constants(Machine(Bagmch_constant_set))==(items);
   Inherited_List_Constants(Machine(Bagmch_constant_set))==(?);
-  List_Constants(Machine(Bagmch_constant_set))==(max_elem,items)
+  List_Constants(Machine(Bagmch_constant_set))==(items)
 END
 &
 THEORY ListSetsX IS
@@ -175,7 +175,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Bagmch_constant_set))==(btrue);
   Context_List_Properties(Machine(Bagmch_constant_set))==(btrue);
   Inherited_List_Properties(Machine(Bagmch_constant_set))==(btrue);
-  List_Properties(Machine(Bagmch_constant_set))==(items <: ITEMS & items: FIN(items) & max_elem = 3 & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
+  List_Properties(Machine(Bagmch_constant_set))==(items <: ITEMS & items: FIN(items) & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
 END
 &
 THEORY ListSeenInfoX END
@@ -189,9 +189,9 @@ THEORY ListANYVarX IS
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Bagmch_constant_set)) == (max_elem,items,ITEMS | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ? | Bagmch_constant_set);
+  List_Of_Ids(Machine(Bagmch_constant_set)) == (items,ITEMS | ? | content | ? | additem,removeitem,getcontents,howmany,isin | ? | ? | ? | Bagmch_constant_set);
   List_Of_HiddenCst_Ids(Machine(Bagmch_constant_set)) == (? | ?);
-  List_Of_VisibleCst_Ids(Machine(Bagmch_constant_set)) == (max_elem,items);
+  List_Of_VisibleCst_Ids(Machine(Bagmch_constant_set)) == (items);
   List_Of_VisibleVar_Ids(Machine(Bagmch_constant_set)) == (? | ?);
   List_Of_Ids_SeenBNU(Machine(Bagmch_constant_set)) == (?: ?)
 END
@@ -201,7 +201,7 @@ THEORY SetsEnvX IS
 END
 &
 THEORY ConstantsEnvX IS
-  Constants(Machine(Bagmch_constant_set)) == (Type(max_elem) == Cst(btype(INTEGER,?,?));Type(items) == Cst(SetOf(atype(ITEMS,"[items","]items"))))
+  Constants(Machine(Bagmch_constant_set)) == (Type(items) == Cst(SetOf(atype(ITEMS,"[items","]items"))))
 END
 &
 THEORY VariablesEnvX IS

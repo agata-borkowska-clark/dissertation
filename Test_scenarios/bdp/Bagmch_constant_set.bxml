@@ -5,7 +5,6 @@
 </Set>
 </Sets>
 <Concrete_Constants>
-<Id value='max_elem' typref='2701647786'/>
 <Id value='items' typref='4185748219'/>
 </Concrete_Constants>
 <Abstract_Variables>
@@ -23,25 +22,13 @@
 <Id value='items' typref='4185748219'/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op='='>
-<Id value='max_elem' typref='2701647786'/>
-<Integer_Literal value='3' typref='2701647786'/>
-</Exp_Comparison>
 </Nary_Pred>
 </Properties>
 <Invariant>
-<Nary_Pred op='&amp;'>
 <Exp_Comparison op='&lt;:'>
 <Id value='content' typref='4185748219'/>
 <Id value='items' typref='4185748219'/>
 </Exp_Comparison>
-<Exp_Comparison op='&lt;='>
-<Unary_Exp op='card' typref='2701647786'>
-<Id value='content' typref='4185748219'/>
-</Unary_Exp>
-<Id value='max_elem' typref='2701647786'/>
-</Exp_Comparison>
-</Nary_Pred>
 </Invariant>
 <Initialisation>
 <Assignement_Sub>
@@ -65,16 +52,6 @@
 </Exp_Comparison>
 </Precondition>
 <Body>
-<If_Sub elseif='no'>
-<Condition>
-<Exp_Comparison op='&lt;'>
-<Unary_Exp op='card' typref='2701647786'>
-<Id value='content' typref='4185748219'/>
-</Unary_Exp>
-<Id value='max_elem' typref='2701647786'/>
-</Exp_Comparison>
-</Condition>
-<Then>
 <Assignement_Sub>
 <Variables>
 <Id value='content' typref='4185748219'/>
@@ -88,8 +65,6 @@
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
-</Then>
-</If_Sub>
 </Body>
 </Operation>
 <Operation name='removeitem'>
@@ -201,9 +176,6 @@
 <Id value='ITEMS'/>
 </Unary_Exp>
 </Type>
-<Type id='2701647786'>
-<Id value='INTEGER'/>
-</Type>
 <Type id='2852175944'>
 <Unary_Exp op='POW'>
 <Unary_Exp op='POW'>
@@ -218,6 +190,9 @@
 </Type>
 <Type id='1628806408'>
 <Id value='ITEMS'/>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
 </Type>
 <Type id='2043437594'>
 <Id value='BOOL'/>

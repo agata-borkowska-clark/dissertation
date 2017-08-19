@@ -8,21 +8,17 @@ MACHINE
 SETS
     ITEMS
 CONSTANTS
-    // max number of items that fit in the bag
-    max_elem,
     // possible items we can put in the bag
     items
 PROPERTIES
     items <: ITEMS &
-    items : FIN(items) & // items is a finite set
-    max_elem = 3
+    items : FIN(items) // items is a finite set
 VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content <: items & // it's a subset of ITEMS
+    content <: items // it's a subset of ITEMS
     //content : FIN(content) &
-    card(content) <= max_elem // it has at most max_elem elements
     // Note: items is a finite set, so any subset of it is necessarily finite.
     // Yet we still need 'content : FIN(content)' to discharge all the POs
 INITIALISATION
@@ -33,12 +29,7 @@ OPERATIONS
     PRE
         aa : items
     THEN
-        IF
-            // only add item if we won't exceed the limit
-            card(content) < max_elem
-        THEN
-            content := content \/ {aa}
-        END
+        content := content \/ {aa}
     END;
     
     /* removes aa from the bag (does nothing if aa not in the bag) */
