@@ -1,4 +1,4 @@
-<Machine name='Bagmch_constant_set' type='abstraction'>
+<Machine name='Bagmch_constant_set2' type='abstraction'>
 <Sets>
 <Set>
 <Id value='ITEMS' typref='4185748219'/>
@@ -11,12 +11,18 @@
 <Id value='content' typref='4185748219'/>
 </Abstract_Variables>
 <Properties>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
-<Id value='items' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
 <Unary_Exp op='FIN' typref='2852175944'>
 <Id value='ITEMS' typref='4185748219'/>
 </Unary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op='&lt;:'>
+<Id value='items' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+</Nary_Pred>
 </Properties>
 <Invariant>
 <Exp_Comparison op='&lt;:'>

@@ -2,6 +2,7 @@ digraph {
 Bagmch [ label=" Bagmch " shape= box ]
 Bagmch_assertions [ label=" Bagmch_assertions " shape= box ]
 Bagmch_constant_set [ label=" Bagmch_constant_set " shape= box ]
+Bagmch_constant_set2 [ label=" Bagmch_constant_set2 " shape= box ]
 Bagmch_detailed [ label=" Bagmch_detailed " shape= box ]
 Bagmch_enum [ label=" Bagmch_enum " shape= box ]
 Bagmch_enum_more_pos [ label=" Bagmch_enum_more_pos " shape= box ]

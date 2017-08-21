@@ -14,6 +14,9 @@
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_constant_set" suffix="mch" user="Agata">
             <component name="Bagmch_constant_set" type="specification" />
         </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_constant_set2" suffix="mch" user="Agata">
+            <component name="Bagmch_constant_set2" type="specification" />
+        </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_detailed" suffix="mch" user="Agata">
             <component name="Bagmch_detailed" type="specification" />
         </component_file>

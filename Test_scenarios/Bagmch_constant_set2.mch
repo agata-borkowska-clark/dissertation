@@ -1,17 +1,19 @@
-/* Bagmch_constant_set
+/* Bagmch_constant_set2
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 11/04/2017
+ * Creation date: 21/08/2017
  */
 MACHINE
-    Bagmch_constant_set
+    Bagmch_constant_set2
 SETS
     ITEMS
 CONSTANTS
-    // possible items we can put in the bag
+    // possible items we can put in the bag, chosen out of many
+    // e.g. only the ones that fit
     items
 PROPERTIES
-    items : FIN(ITEMS)
+    ITEMS : FIN(ITEMS) & // ITEMS is a finite set
+    items <: ITEMS 
 VARIABLES
     // contents of the bag
     content

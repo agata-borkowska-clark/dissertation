@@ -1,0 +1,12 @@
+﻿THEORY User_Pass IS
+Operation(Initialisation) & ff(0) & pr;
+Operation(additem) & ff(0) & pr;
+Operation(removeitem) & ff(0) & pr;
+Operation(WellDefinedness_howmany) & ff(0) & pr & ah(items : FIN(items)) & ar(userInFINXY) & pr & ar(userInFINXY)
+END &
+	THEORY userInFINXY IS
+		band(binhyp(b: FIN(b)), 
+		binhyp(a <: b))
+		=>
+		a: FIN(a)
+	END

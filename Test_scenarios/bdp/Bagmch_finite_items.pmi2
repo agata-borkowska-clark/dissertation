@@ -1,17 +1,17 @@
 ﻿THEORY BalanceX IS
-  Bagmch_finite_items,9,0,0,6,0,0,0;
+  Bagmch_finite_items,9,3,0,6,0,0,0;
   Initialisation,2,0,0,2,0,0,0;
-  WellDefinednessInvariant,1,0,0,0,0,0,0;
-  WellDefinedness_additem,1,0,0,0,0,0,0;
-  WellDefinedness_howmany,1,0,0,0,0,0,0;
+  WellDefinednessInvariant,1,1,0,0,0,0,0;
+  WellDefinedness_additem,1,1,0,0,0,0,0;
+  WellDefinedness_howmany,1,1,0,0,0,0,0;
   additem,2,0,0,2,0,0,0;
   removeitem,2,0,0,2,0,0,0
 END
 &
 THEORY ProofState IS
-  Unproved;
-  Unproved;
-  Unproved;
+  Proved(Util);
+  Proved(Util);
+  Proved(Util);
   Proved(0);
   Proved(0);
   Proved(0);
@@ -21,9 +21,9 @@ THEORY ProofState IS
 END
 &
 THEORY MethodList IS
-  ?;
-  ?;
-  ?;
+  pr & ar(userInFINXY);
+  pr & ar(userInFINXY);
+  pr & ar(userInFINXY);
   pr;
   pr;
   pr;

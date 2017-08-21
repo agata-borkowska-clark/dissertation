@@ -11,8 +11,8 @@ CONCRETE_CONSTANTS
     // possible items we can put in the bag
     items
 PROPERTIES
-    items <: ITEMS &
-    items : FIN ( items ) // items is a finite set
+    items : FIN ( ITEMS )
+//    items : FIN(items) // items is a finite set
 ABSTRACT_VARIABLES
     // contents of the bag
     content

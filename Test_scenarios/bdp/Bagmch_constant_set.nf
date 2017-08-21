@@ -175,7 +175,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Bagmch_constant_set))==(btrue);
   Context_List_Properties(Machine(Bagmch_constant_set))==(btrue);
   Inherited_List_Properties(Machine(Bagmch_constant_set))==(btrue);
-  List_Properties(Machine(Bagmch_constant_set))==(items <: ITEMS & items: FIN(items) & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
+  List_Properties(Machine(Bagmch_constant_set))==(items: FIN(ITEMS) & ITEMS: FIN(INTEGER) & not(ITEMS = {}))
 END
 &
 THEORY ListSeenInfoX END

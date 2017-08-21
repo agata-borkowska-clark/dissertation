@@ -1,18 +1,20 @@
-/* Bagmch_constant_set
+﻿/* Bagmch_constant_set2
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 11/04/2017
+ * Creation date: 21/08/2017
  */
 MACHINE
-    Bagmch_constant_set
+    Bagmch_constant_set2
 SETS
     ITEMS
-CONSTANTS
-    // possible items we can put in the bag
+CONCRETE_CONSTANTS
+    // possible items we can put in the bag, chosen out of many
+    // e.g. only the ones that fit
     items
 PROPERTIES
-    items : FIN(ITEMS)
-VARIABLES
+    ITEMS : FIN ( ITEMS ) & // ITEMS is a finite set
+    items <: ITEMS
+ABSTRACT_VARIABLES
     // contents of the bag
     content
 INVARIANT
@@ -24,33 +26,33 @@ INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
     /* Adds item aa to the bag, if there's space for it*/
-    additem(aa) =
+    additem ( aa ) =
     PRE
         aa : items
     THEN
-        content := content \/ {aa}
-    END;
-    
+        content := content \/ { aa }
+    END ;
+
     /* removes aa from the bag (does nothing if aa not in the bag) */
-    removeitem(aa) =
+    removeitem ( aa ) =
     PRE
         aa : items
     THEN
-        content := content - {aa}
-    END;
-    
+        content := content - { aa }
+    END ;
+
     /* getter for the content*/
-    output <-- getcontents = output := content;
-    
+    output <-- getcontents = output := content ;
+
     /* query how many items are in the bag */
-    nn <-- howmany = nn := card(content);
-    
+    nn <-- howmany = nn := card ( content ) ;
+
     /* checks if the item aa is in the bag */
-    check <-- isin(aa) = 
+    check <-- isin ( aa ) =
     PRE
         aa : items
     THEN
-        IF 
+        IF
             aa : content
         THEN
             check := TRUE
