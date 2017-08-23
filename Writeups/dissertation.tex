@@ -85,6 +85,74 @@
 	\IEEEPARstart{T}{he} aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is used in 
 	
 	\section{Definitions and Conventions}
+	\subsection{Structure of a machine}
+	In the B language, using Atelier B syntax, an abstract machine usually has the following clauses, in order:
+	\begin{itemize}
+		\item machine name - must match the name of the file, followed by a list of parameters without type definitions, given in brackets as a comma-separated list, for example \texttt{Bagmch(ITEMS, max\_elem)}.
+		\item \texttt{SETS} - deferred sets, i.e. those which will be specified at a later point. 
+		\item \texttt{CONSTANTS}
+		\item \texttt{PROPERTIES}
+		\item \texttt{VARIABLES}
+		\item \texttt{INVARIANT}
+		\item \texttt{ASSERTIONS}
+		\item \texttt{INITIALISATION}
+		\item \texttt{OPERATIONS}
+	\end{itemize}
+	Other clauses which are not analysed in this project, are structuring clauses, such ass \texttt{USES}, \texttt{SEES}, or \texttt{INCLUDES}, and clauses necessary for refinement and implementation.
+	
+	\subsection{Definitions and notations}
+	Care shall be taken to use unambiguous notation and terms. We begin with a brief summary of the logic notation, comparing it to the B syntax, which comprises of ASCII characters or approximations thereof. We first give the unicode symbol which will be used when discussing logical expressions in this writeup, followed by the ASCII equivalent written in a monotype font, as it can be seen in code snippets. 
+	\begin{itemize}
+		\item AND is denoted by $\wedge$ or \texttt{\&}
+		\item OR is denoted by $\vee$ or \texttt{or}
+		\item the existential quantifier is $\exists$ or \texttt{\#}
+		\item the universal quantifier is $\forall$ or \texttt{!}
+		\item the negation is denoted by $\neg$ or \texttt{not(x)}
+	\end{itemize}
+	This list includes only the most commonly seen symbols, some of which may not be intuitive to some users. Other symbols will be defined if or when they are needed.
+	
+	Since the B method is heavily based on Zermelo-Fraenkel set theory, it is worth recalling key concepts and definitions from this area.\cite{Goldrei}
+	
+	Firstly, a \textbf{set} is a collection of distinct objects, which we will call \textbf{elements}. We say that $a$ is an element of a set $x$ or that it belongs to the set $x$. Set membership is a binary relation denoted with the symbol '$\in$' or with '\texttt{:}' in the B syntax.
+	
+	By the Axiom of Extensionality, two sets are equal if and only if they have the same elements. Hence, in set axiomatic set theory $\{x\} = \{x, x\}$ - for each element of the first set is in the second, and each $x$ in the second set is in the first one. The B method also recognizes this equality\cite{b-method}. 
+	
+	Note that a set can be an element of another set, however a set must not belong to itself - i.e. there does not exist a set $x$ such that $x \in x$. This is known as Russell's Paradox.
+	
+	By the Null Set Axiom, there exists a set having no elements - i.e. the \textbf{empty set}. It is denoted $\varnothing$ or \texttt{\{\}} in the B syntax. The empty set is unique.
+	
+	A \textbf{subset} $y$ of a set $x$ is a set such that each element of $y$ is also in $x$, but not necessarily the other way round. It is denoted $y \subseteq x$ or \texttt{y <: x} in the B syntax. Note that the empty set is a subset of every set, and that every set is a subset of itself.
+	
+	The \textbf{powerset} of a set $x$, denoted $\mathbb{P}(x)$ or \texttt{POW(x)} in the B syntax is the set containing all subsets of the set $x$. For example if $x = \{a,b\}$, then $\mathbb{P}(x) = \{\varnothing, \{a\}, \{b\}, \{a,b\}\}$. Thus the expression $y \subseteq x$ is semantically equivalent to $y \in \mathbb{P}(x)$. 
+	
+	The \textbf{union} of sets $x$ and $y$ is defined as the set of elements which belong to either $x$ or $y$, i.e. $x \cup y = \{z| z \in x \vee z \in y\}$ and in the B syntax it is written as \verb|x\/y|. The \textbf{intersection} of sets $x$ and $y$ is defined to be the set of all elements which belong to both $x$ and $y$, i.e. $x \cap y = \{z | z \in x \wedge z \in y \}$, which in the B syntax is \verb|x/\y|.
+
+	
+	Natural numbers will be often seen in this project. Firstly, and a little informally, the set of natural numbers, denoted $\mathbb{N}$ or \texttt{NAT} in the B syntax, is the set $\{0,1,2, ...\}$. The B syntax also has an abbreviation for the natural numbers excluding 0, i.e. \texttt{NAT1} shall be used to mean $\mathbb{N}-\{0\}$.
+	
+	The natural numbers give the first discrepancy between the B method and the mathematical theories which it is based on, which we encounter throughout this work. Formally, in axiomatic set theory, the natural numbers are defined as follows:
+	
+	Let $x^+$ denote the successor set of the set $x$, which is $x^+ = x \cup {x}$. Then $\mathbb{N}$ is the smallest (with respect to the number of elements) set such that $\varnothing \in \mathbb{N}$ and if $x \in \mathbb{N}$ then $x^+ \in \mathbb{N}$.
+	
+	For simplicity, it is often defined that $\varnothing = 0$, $1 = \{\varnothing \}$, $2 = \{\varnothing , \{\varnothing\} \} = \{0,1\}$, and so on. In set theory, every element of the natural numbers is a set itself. This is not the case in B, and an attempt to talk about an element of an $n \in \mathbb{N}$ gives a type error in Atelier B during static analysis.
+	
+	To make the distinction clear between integers and sets of integers as defined above, we will use the notation $[n]$ for some $n \in \mathbb{N}$ to indicate the set of all integers smaller than $n$, which is: $[n] = \{0,1, ...,n-1\}$. The B syntax has an abbreviation for it, and $[n]$ can be denoted as \texttt{0..n-1}. More generally, this B notation means a segment of natural numbers - for $m, n \in \mathbb{N}$, \texttt{m..n} $= \{x | x \in \mathbb{N} \wedge m \leq x \wedge x \leq n\}$
+	
+	A \textbf{Cartesian product} of two sets $x$ and $y$ is the set of all pairs $\{(a,b) | a \in x \wedge b \in y  \}$. It is denoted $x \times y$ or \texttt{x*y}.
+	
+	With the help of those definitions we can finally define a finite set. A \textbf{finite} set is a set $x$ such that there exists a bijection between $x$ and $[n]$ for some $n \in \mathbb{N}$.  The B syntax also provides an abbreviation for the set of all finite subsets of a set $x$. \texttt{FIN(x)} is hence defined to be $\{y| y \in \mathbb{P}(x) \wedge y \text{ is finite} \}$.
+	
+	Then the \textbf{cardinality} of $x$ is the number of elements in $x$, in this case $n$, and is denoted $|x|$ or \texttt{card(x)} in the B syntax. Note that in the B language, the expression \texttt{card(x)} is well-defined only for finite sets.
+	
+	\subsection{Conventions}
+	
+	Variables and constants in the B language are named according to the following conventions:
+	\begin{itemize}
+		\item names of sets, including deferred sets and those given as machine parameters, are written in all capitals. In this text, they will also be written in a monotype font, for example \texttt{ITEMS}.
+		\item scalar constants' names shall be written in lower case, in a monotype font, for example \texttt{max\_elem}.
+		\item names of variables shall be written in lower case, in a monotype font, and must be at least two characters in length, for example \texttt{aa}.
+	\end{itemize}
+	Single-character variable names are not allowed in the B-syntax. They are reserved for wildcards in user-written proof rules.
 	
 	\section{Literature review}
 
@@ -247,7 +315,7 @@
 	
 	We conclude that these two ways of expressing the relation '\texttt{content} is a finite subset of \texttt{ITEMS}', while equivalent in theory, will affect the performance and the time taken to complete computations by the prover in different ways. One will result in more proof obligations being generated, however they will be of a simpler nature and discharged automatically, which is faster than discharging even a single proof obligation manually, such as the well-defineness one in the latter case. We recognize that it is something that may be noticeable at large-scale projects, while in a small scenario the overhead will severely affect any measurements of performance, and therefore we have no means of exploring it further in this work, but we highlight it as something users should be aware of.
 	
-	It is regrettable that the prover does not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
+	[CHECK - trace system]It is regrettable that the prover does not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
 	       
 	\subsubsection{Bagmch\_finite\_items} is an attempt to impose finiteness earlier on, on the set of \texttt{ITEMS}. We do it by adding the expression '$\texttt{ITEMS} \in \texttt{FIN(ITEMS)}$' to the Properties clause. Otherwise the machine is identical to \emph{Bagmch\_unbounded}. We rely on the fact that any subset of a finite set is necessarily finite. Appendix B contains a proof of this claim.
 	
@@ -404,6 +472,9 @@ ar(userInFINXY) & pr & ar(userInFINXY)
 		
 		\bibitem{release notes}
 		\emph{Atelier B version 4.2 release notes}, ClearSy Sys. Eng., Aix-en-Provence, France, 2014
+		
+		\bibitem{Goldrei}
+		D. Goldrei, \emph{Classic set theory}, Chapman and Hall/CRC, Boca Raton, 1998
 		
 		\bibitem{Cargo culting}
 		N. Bezroukov, "Cargo Cult Programming" in \emph{Softpanorama} [Online],  Open Source Software Education Society. Retrieved 21 August 2017. Available: \url{http://www.softpanorama.org/Skeptics/cargo_cult_programming.shtml}
