@@ -1,0 +1,6 @@
+﻿THEORY User_Pass IS
+Operation(Initialisation) & ff(0) & pr;
+Operation(additem) & ff(0) & pr;
+Operation(removeitem) & ff(0) & pr;
+Operation(removeitem) & ff(0) & pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr
+END 

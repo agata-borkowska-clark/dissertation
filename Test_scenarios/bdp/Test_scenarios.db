@@ -50,6 +50,21 @@
         <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_pre" suffix="mch" user="Agata">
             <component name="Bagmch_pre" type="specification" />
         </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_redundant" suffix="mch" user="Agata">
+            <component name="Bagmch_redundant" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_redundant2" suffix="mch" user="Agata">
+            <component name="Bagmch_redundant2" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_redundant3" suffix="mch" user="Agata">
+            <component name="Bagmch_redundant3" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_redundant_reverse" suffix="mch" user="Agata">
+            <component name="Bagmch_redundant_reverse" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_redundant_reverse2" suffix="mch" user="Agata">
+            <component name="Bagmch_redundant_reverse2" type="specification" />
+        </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_relation" suffix="mch" user="Agata">
             <component name="Bagmch_relation" type="specification" />
         </component_file>

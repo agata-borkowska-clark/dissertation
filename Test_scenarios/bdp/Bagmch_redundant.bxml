@@ -1,0 +1,259 @@
+<Machine name='Bagmch_redundant' type='abstraction'>
+<Sets>
+<Set>
+<Id value='ITEMS' typref='4185748219'/>
+</Set>
+</Sets>
+<Concrete_Constants>
+<Id value='max_elem' typref='2701647786'/>
+</Concrete_Constants>
+<Abstract_Variables>
+<Id value='content' typref='4185748219'/>
+</Abstract_Variables>
+<Properties>
+<Exp_Comparison op=':'>
+<Id value='max_elem' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+</Properties>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='content' typref='4185748219'/>
+<Unary_Exp op='POW' typref='2852175944'>
+<Id value='ITEMS' typref='4185748219'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='content' typref='4185748219'/>
+<Unary_Exp op='FIN' typref='2852175944'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+<Binary_Exp op='+' typref='2701647786'>
+<Id value='max_elem' typref='2701647786'/>
+<Integer_Literal value='4' typref='2701647786'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+<Binary_Exp op='+' typref='2701647786'>
+<Id value='max_elem' typref='2701647786'/>
+<Integer_Literal value='3' typref='2701647786'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+<Binary_Exp op='+' typref='2701647786'>
+<Id value='max_elem' typref='2701647786'/>
+<Integer_Literal value='2' typref='2701647786'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+<Binary_Exp op='+' typref='2701647786'>
+<Id value='max_elem' typref='2701647786'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+<Id value='max_elem' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='content' typref='4185748219'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='additem'>
+<Input_Parameters>
+<Id value='aa' typref='1628806408'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='1628806408'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;'>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+<Id value='max_elem' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='content' typref='4185748219'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='4185748219'>
+<Id value='content' typref='4185748219'/>
+<Nary_Exp op='{' typref='4185748219'>
+<Id value='aa' typref='1628806408'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='removeitem'>
+<Input_Parameters>
+<Id value='aa' typref='1628806408'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='1628806408'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='content' typref='4185748219'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='4185748219'>
+<Id value='content' typref='4185748219'/>
+<Nary_Exp op='{' typref='4185748219'>
+<Id value='aa' typref='1628806408'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='getcontents'>
+<Output_Parameters>
+<Id value='items' typref='4185748219'/>
+</Output_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='items' typref='4185748219'/>
+</Variables>
+<Values>
+<Id value='content' typref='4185748219'/>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='howmany'>
+<Output_Parameters>
+<Id value='nn' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='nn' typref='2701647786'/>
+</Variables>
+<Values>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='content' typref='4185748219'/>
+</Unary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='isin'>
+<Output_Parameters>
+<Id value='check' typref='2043437594'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='aa' typref='1628806408'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='1628806408'/>
+<Id value='ITEMS' typref='4185748219'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='1628806408'/>
+<Id value='content' typref='4185748219'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='check' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Literal value='TRUE' typref='2043437594'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='check' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Literal value='FALSE' typref='2043437594'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='4185748219'>
+<Unary_Exp op='POW'>
+<Id value='ITEMS'/>
+</Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='2852175944'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Id value='ITEMS'/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='1628806408'>
+<Id value='ITEMS'/>
+</Type>
+<Type id='2043437594'>
+<Id value='BOOL'/>
+</Type>
+</TypeInfos>
+
+</Machine>

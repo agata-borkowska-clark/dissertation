@@ -1,0 +1,72 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(18) & _f(27) & removeitem.7,(_f(3) & _f(16) => _f(34));
+_f(1) & _f(2) & _f(18) & _f(27) & removeitem.6,(_f(3) & _f(14) => _f(33));
+_f(1) & _f(2) & _f(18) & _f(27) & removeitem.5,(_f(3) & _f(12) => _f(32));
+_f(1) & _f(2) & _f(18) & _f(27) & removeitem.4,(_f(3) & _f(10) => _f(31));
+_f(1) & _f(2) & _f(18) & _f(27) & removeitem.3,(_f(3) & _f(8) => _f(30));
+_f(1) & _f(2) & _f(18) & _f(27) & removeitem.2,(_f(3) & _f(6) => _f(29));
+_f(1) & _f(2) & _f(18) & _f(27) & removeitem.1,(_f(3) & _f(4) => _f(28));
+_f(1) & _f(2) & _f(18) & _f(19) & additem.7,(_f(3) & _f(16) => _f(26));
+_f(1) & _f(2) & _f(18) & _f(19) & additem.6,(_f(3) & _f(14) => _f(25));
+_f(1) & _f(2) & _f(18) & _f(19) & additem.5,(_f(3) & _f(12) => _f(24));
+_f(1) & _f(2) & _f(18) & _f(19) & additem.4,(_f(3) & _f(10) => _f(23));
+_f(1) & _f(2) & _f(18) & _f(19) & additem.3,(_f(3) & _f(8) => _f(22));
+_f(1) & _f(2) & _f(18) & _f(19) & additem.2,(_f(3) & _f(6) => _f(21));
+_f(1) & _f(2) & _f(18) & _f(19) & additem.1,(_f(3) & _f(4) => _f(20));
+_f(1) & _f(2) & Initialisation.7,(_f(3) & _f(16) => _f(17));
+_f(1) & _f(2) & Initialisation.6,(_f(3) & _f(14) => _f(15));
+_f(1) & _f(2) & Initialisation.5,(_f(3) & _f(12) => _f(13));
+_f(1) & _f(2) & Initialisation.4,(_f(3) & _f(10) => _f(11));
+_f(1) & _f(2) & Initialisation.3,(_f(3) & _f(8) => _f(9));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {}) & ((max_elem) : (NAT));
+"Invariant is preserved";
+"Check invariant ((content) : (POW(ITEMS)))";
+(({}) : (POW(ITEMS)));
+"Check invariant ((content) : (FIN(content)))";
+(({}) : (FIN({})));
+"Check invariant (card(content) <= max_elem)";
+(card({}) <= max_elem);
+"Check invariant (card(content) <= (max_elem + 1))";
+(card({}) <= (max_elem + 1));
+"Check invariant (card(content) <= (max_elem + 2))";
+(card({}) <= (max_elem + 2));
+"Check invariant (card(content) <= (max_elem + 3))";
+(card({}) <= (max_elem + 3));
+"Check invariant (card(content) <= (max_elem + 4))";
+(card({}) <= (max_elem + 4));
+((content) : (POW(ITEMS))) & ((content) : (FIN(content))) & (card(content) <= max_elem) & (card(content) <= (max_elem + 1)) & (card(content) <= (max_elem + 2)) & (card(content) <= (max_elem + 3)) & (card(content) <= (max_elem + 4));
+((aa) : (ITEMS)) & (card(content) +1 <= max_elem);
+((((content) \/ ({aa}))) : (POW(ITEMS)));
+((((content) \/ ({aa}))) : (FIN(((content) \/ ({aa})))));
+(card(((content) \/ ({aa}))) <= max_elem);
+(card(((content) \/ ({aa}))) <= (max_elem + 1));
+(card(((content) \/ ({aa}))) <= (max_elem + 2));
+(card(((content) \/ ({aa}))) <= (max_elem + 3));
+(card(((content) \/ ({aa}))) <= (max_elem + 4));
+((aa) : (ITEMS));
+(((content - {aa})) : (POW(ITEMS)));
+(((content - {aa})) : (FIN((content - {aa}))));
+(card((content - {aa})) <= max_elem);
+(card((content - {aa})) <= (max_elem + 1));
+(card((content - {aa})) <= (max_elem + 2));
+(card((content - {aa})) <= (max_elem + 3));
+(card((content - {aa})) <= (max_elem + 4));
+((aa) : (content));
+not(((aa) : (content)));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+(card(content) <= (max_elem + 3));
+(card(content) <= (max_elem + 2));
+(card(content) <= (max_elem + 1));
+(card(content) <= max_elem);
+((content) : (FIN(content)));
+((content) : (POW(ITEMS)))
+END
+&
+THEORY EnumerateX
+END

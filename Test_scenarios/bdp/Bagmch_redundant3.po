@@ -1,0 +1,95 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.10,(_f(3) & _f(22) => _f(46));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.9,(_f(3) & _f(20) => _f(45));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.8,(_f(3) & _f(18) => _f(44));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.7,(_f(3) & _f(16) => _f(43));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.6,(_f(3) & _f(14) => _f(42));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.5,(_f(3) & _f(12) => _f(41));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.4,(_f(3) & _f(10) => _f(40));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.3,(_f(3) & _f(8) => _f(39));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.2,(_f(3) & _f(6) => _f(38));
+_f(1) & _f(2) & _f(24) & _f(36) & removeitem.1,(_f(3) & _f(4) => _f(37));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.10,(_f(3) & _f(22) => _f(35));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.9,(_f(3) & _f(20) => _f(34));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.8,(_f(3) & _f(18) => _f(33));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.7,(_f(3) & _f(16) => _f(32));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.6,(_f(3) & _f(14) => _f(31));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.5,(_f(3) & _f(12) => _f(30));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.4,(_f(3) & _f(10) => _f(29));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.3,(_f(3) & _f(8) => _f(28));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.2,(_f(3) & _f(6) => _f(27));
+_f(1) & _f(2) & _f(24) & _f(25) & additem.1,(_f(3) & _f(4) => _f(26));
+_f(1) & _f(2) & Initialisation.10,(_f(3) & _f(22) => _f(23));
+_f(1) & _f(2) & Initialisation.9,(_f(3) & _f(20) => _f(21));
+_f(1) & _f(2) & Initialisation.8,(_f(3) & _f(18) => _f(19));
+_f(1) & _f(2) & Initialisation.7,(_f(3) & _f(16) => _f(17));
+_f(1) & _f(2) & Initialisation.6,(_f(3) & _f(14) => _f(15));
+_f(1) & _f(2) & Initialisation.5,(_f(3) & _f(12) => _f(13));
+_f(1) & _f(2) & Initialisation.4,(_f(3) & _f(10) => _f(11));
+_f(1) & _f(2) & Initialisation.3,(_f(3) & _f(8) => _f(9));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+"Invariant is preserved";
+"Check invariant ((content) : (POW(ITEMS)))";
+(({}) : (POW(ITEMS)));
+"Check invariant ((content) : (FIN(content)))";
+(({}) : (FIN({})));
+"Check invariant (card(content) <= 10)";
+(card({}) <= 10);
+"Check invariant (card(content) <= 9)";
+(card({}) <= 9);
+"Check invariant (card(content) <= 8)";
+(card({}) <= 8);
+"Check invariant (card(content) <= 7)";
+(card({}) <= 7);
+"Check invariant (card(content) <= 6)";
+(card({}) <= 6);
+"Check invariant (card(content) <= 5)";
+(card({}) <= 5);
+"Check invariant (card(content) <= 4)";
+(card({}) <= 4);
+"Check invariant (card(content) <= 3)";
+(card({}) <= 3);
+((content) : (POW(ITEMS))) & ((content) : (FIN(content))) & (card(content) <= 10) & (card(content) <= 9) & (card(content) <= 8) & (card(content) <= 7) & (card(content) <= 6) & (card(content) <= 5) & (card(content) <= 4) & (card(content) <= 3);
+((aa) : (ITEMS)) & (card(content) +1 <= 3);
+((((content) \/ ({aa}))) : (POW(ITEMS)));
+((((content) \/ ({aa}))) : (FIN(((content) \/ ({aa})))));
+(card(((content) \/ ({aa}))) <= 10);
+(card(((content) \/ ({aa}))) <= 9);
+(card(((content) \/ ({aa}))) <= 8);
+(card(((content) \/ ({aa}))) <= 7);
+(card(((content) \/ ({aa}))) <= 6);
+(card(((content) \/ ({aa}))) <= 5);
+(card(((content) \/ ({aa}))) <= 4);
+(card(((content) \/ ({aa}))) <= 3);
+((aa) : (ITEMS));
+(((content - {aa})) : (POW(ITEMS)));
+(((content - {aa})) : (FIN((content - {aa}))));
+(card((content - {aa})) <= 10);
+(card((content - {aa})) <= 9);
+(card((content - {aa})) <= 8);
+(card((content - {aa})) <= 7);
+(card((content - {aa})) <= 6);
+(card((content - {aa})) <= 5);
+(card((content - {aa})) <= 4);
+(card((content - {aa})) <= 3);
+((aa) : (content));
+not(((aa) : (content)));
+(card(content) <= 4);
+(card(content) <= 5);
+(card(content) <= 6);
+(card(content) <= 7);
+(card(content) <= 8);
+(card(content) <= 9);
+(card(content) <= 10);
+((content) : (FIN(content)));
+((content) : (POW(ITEMS)))
+END
+&
+THEORY EnumerateX
+END
