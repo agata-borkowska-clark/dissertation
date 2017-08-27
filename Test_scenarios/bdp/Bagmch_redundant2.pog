@@ -1,14 +1,14 @@
 <Proof_Obligations>
-<Define merge="=" name="B definitions">
+<Define name="B definitions">
 <Nary_Pred op="&amp;" translate="((NAT) = (((0) .. (2147483647)))) &amp; ((INT) = (((-2147483647) .. (2147483647))))">
-<Exp_Comparison op="=">
+<Exp_Comparison op="=" translate="((NAT) = (((0) .. (2147483647))))">
 <Id value="NAT"/>
 <Binary_Exp op="..">
 <Integer_Literal value="0"/>
 <Id value="MAXINT"/>
 </Binary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op="=">
+<Exp_Comparison op="=" translate="((INT) = (((-2147483647) .. (2147483647))))">
 <Id value="INT"/>
 <Binary_Exp op="..">
 <Id value="MININT"/>
@@ -17,23 +17,23 @@
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
-<Define merge="=" name="ctx"/>
-<Define merge="=" name="seext"/>
-<Define merge="-" name="inv">
+<Define name="ctx"/>
+<Define name="seext"/>
+<Define name="inv">
 <Nary_Pred op="&amp;" translate="((content) : (POW(ITEMS))) &amp; ((content) : (FIN(content))) &amp; (card(content) &lt;= (3 + 4)) &amp; (card(content) &lt;= (3 + 3)) &amp; (card(content) &lt;= (3 + 2)) &amp; (card(content) &lt;= (3 + 1)) &amp; (card(content) &lt;= 3)">
-<Exp_Comparison op=":" initialTag="((content) : (POW(ITEMS)))">
+<Exp_Comparison op=":" initialTag="((content) : (POW(ITEMS)))" translate="((content) : (POW(ITEMS)))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
 <Unary_Exp op="POW" typref="2852175944">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((content) : (FIN(content)))">
+<Exp_Comparison op=":" initialTag="((content) : (FIN(content)))" translate="((content) : (FIN(content)))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
 <Unary_Exp op="FIN" typref="2852175944">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:2:2:1" typref="4185748219" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= (3 + 4))">
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= (3 + 4))" translate="(card(content) &lt;= (3 + 4))">
 <Unary_Exp op="card" typref="2701647786">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:3:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
@@ -42,7 +42,7 @@
 <Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:3:2:2" typref="2701647786" value="4"/>
 </Binary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= (3 + 3))">
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= (3 + 3))" translate="(card(content) &lt;= (3 + 3))">
 <Unary_Exp op="card" typref="2701647786">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:4:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
@@ -51,7 +51,7 @@
 <Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:4:2:2" typref="2701647786" value="3"/>
 </Binary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= (3 + 2))">
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= (3 + 2))" translate="(card(content) &lt;= (3 + 2))">
 <Unary_Exp op="card" typref="2701647786">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:5:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
@@ -60,7 +60,7 @@
 <Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:5:2:2" typref="2701647786" value="2"/>
 </Binary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= (3 + 1))">
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= (3 + 1))" translate="(card(content) &lt;= (3 + 1))">
 <Unary_Exp op="card" typref="2701647786">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:6:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
@@ -69,7 +69,7 @@
 <Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:6:2:2" typref="2701647786" value="1"/>
 </Binary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= 3)">
+<Exp_Comparison op="&lt;=" initialTag="(card(content) &lt;= 3)" translate="(card(content) &lt;= 3)">
 <Unary_Exp op="card" typref="2701647786">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:3:1:7:1:1" typref="4185748219" value="content"/>
 </Unary_Exp>
@@ -77,16 +77,16 @@
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
-<Define merge="=" name="ass"/>
-<Define merge="=" name="lprp">
-<Set>
+<Define name="ass"/>
+<Define name="lprp">
+<Set translate="ITEMS: FIN(INTEGER) &amp; not(ITEMS = {})">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:1:1:1" typref="4185748219" value="ITEMS"/>
 </Set>
 </Define>
-<Define merge="=" name="inprp"/>
-<Define merge="=" name="inext"/>
-<Define merge="=" name="cst"/>
-<Proof_Obligation merge="=">
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="cst"/>
+<Proof_Obligation>
 <Comment>Initialisation dans une machine abstraite</Comment>
 <Tag>Initialisation</Tag>
 <Tag>Invariant</Tag>
@@ -100,7 +100,7 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -114,7 +114,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal merge="1">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -128,7 +128,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -144,9 +144,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -162,9 +161,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -180,9 +178,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -198,9 +195,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -213,10 +209,9 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>additem</Tag>
 <Tag>INVARIANT</Tag>
@@ -246,7 +241,7 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -265,7 +260,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal merge="1">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -289,7 +284,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -310,9 +305,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -333,9 +327,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -356,9 +349,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -379,9 +371,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -399,10 +390,9 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>removeitem</Tag>
 <Tag>INVARIANT</Tag>
@@ -424,7 +414,7 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -443,7 +433,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal merge="1">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -467,7 +457,7 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -488,9 +478,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -511,9 +500,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -534,9 +522,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -557,9 +544,8 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="">
+<Simple_Goal>
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
@@ -577,10 +563,9 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -598,7 +583,7 @@
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -616,7 +601,7 @@
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>isin</Tag>
 <Tag>INVARIANT</Tag>
@@ -656,10 +641,10 @@
 </Unary_Pred>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessConstraints</Tag>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessProperties</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -670,7 +655,7 @@
 </Set>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessInvariant</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -740,7 +725,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Tag>WellDefinednessAssertions</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -751,7 +736,7 @@
 <Definition name="seext"/>
 <Definition name="inv"/>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessInitialisation</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -761,7 +746,7 @@
 <Definition name="inext"/>
 <Definition name="seext"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_additem</Tag>
 <Tag>INVARIANT</Tag>
@@ -781,7 +766,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_additem</Tag>
 <Tag>INVARIANT</Tag>
@@ -809,7 +794,7 @@
 </Nary_Pred>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_removeitem</Tag>
 <Tag>INVARIANT</Tag>
@@ -823,7 +808,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_removeitem</Tag>
 <Tag>INVARIANT</Tag>
@@ -843,7 +828,7 @@
 </Exp_Comparison>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -857,7 +842,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -872,7 +857,7 @@
 <Definition name="ass"/>
 <Hypothesis/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -886,7 +871,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -901,7 +886,7 @@
 <Definition name="ass"/>
 <Hypothesis/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_isin</Tag>
 <Tag>INVARIANT</Tag>
@@ -915,7 +900,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_isin</Tag>
 <Tag>INVARIANT</Tag>
@@ -949,7 +934,7 @@
 </Unary_Pred>
 </Local_Hyp>
 </Proof_Obligation>
-<TypeInfos merge="=">
+<TypeInfos>
 <Type id="4185748219">
 <Unary_Exp op="POW">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_redundant2.bxml:1:6:1:1:1" value="ITEMS"/>
