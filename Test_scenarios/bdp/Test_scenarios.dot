@@ -1,5 +1,6 @@
 digraph {
 Bagmch [ label=" Bagmch " shape= box ]
+Bagmch_2sets [ label=" Bagmch_2sets " shape= box ]
 Bagmch_assertions [ label=" Bagmch_assertions " shape= box ]
 Bagmch_constant_set [ label=" Bagmch_constant_set " shape= box ]
 Bagmch_constant_set2 [ label=" Bagmch_constant_set2 " shape= box ]

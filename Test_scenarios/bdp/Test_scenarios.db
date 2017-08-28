@@ -8,6 +8,9 @@
         <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch" suffix="mch" user="Agata">
             <component name="Bagmch" type="specification" />
         </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_2sets" suffix="mch" user="Agata">
+            <component name="Bagmch_2sets" type="specification" />
+        </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_assertions" suffix="mch" user="Agata">
             <component name="Bagmch_assertions" type="specification" />
         </component_file>
