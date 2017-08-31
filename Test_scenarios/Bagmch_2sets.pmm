@@ -1,0 +1,8 @@
+﻿THEORY User_Pass IS
+Operation(Initialisation) & ff(0) & pr;
+Operation(additem1) & ff(0) & pr;
+Operation(additem2) & ff(0) & pr;
+Operation(additemboth) & ff(0) & pr;
+Operation(removeitem1) & ff(0) & pr;
+Operation(removeitem2) & ff(0) & pr
+END 

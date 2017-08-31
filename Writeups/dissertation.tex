@@ -588,7 +588,17 @@ DEFINITIONS
 		\item \verb|{}: FIN({}) |
 		\item \verb|{}\/{} <: ITEMS|
 	\end{itemize}
-	The proof obligations did not get duplicated for each of the two sets.
+	The proof obligations did not get duplicated for each of the two sets, which was not in line with our expectations. In fact neither of those three proof obligations refers directly to one variable or the other.
+	
+	
+	Then: non det assignment, different values
+	Conclusion: Invariant POs reduced if same values for same requirements
+	
+	
+	Nondeterministic:
+	if remove from ITEMS, it works, if from content:
+	
+\verb|Operation(removeitem) & ff(0) & dd & pr & ah(content <: ITEMS) & pr & pr|
 	
 
 	\section{Results}
