@@ -1,0 +1,33 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & _f(12) & WellDefinedness_pop.1,(_f(17) => _f(18));
+_f(1) & _f(2) & _f(8) & _f(12) & pop.2,(_f(3) & _f(6) => _f(14));
+_f(1) & _f(2) & _f(8) & _f(12) & pop.1,(_f(3) & _f(4) => _f(13));
+_f(1) & _f(2) & _f(8) & _f(9) & push.2,(_f(3) & _f(6) => _f(11));
+_f(1) & _f(2) & _f(8) & _f(9) & push.1,(_f(3) & _f(4) => _f(10));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+"Invariant is preserved";
+"Check invariant ((stack) : (seq(ITEMS)))";
+(({}) : (seq(ITEMS)));
+"Check invariant ((stack) : (seq(ran(stack))))";
+(({}) : (seq(ran({}))));
+stack : NATURAL-{0} +-> ITEMS & ((stack) : (seq(ITEMS))) & stack : NATURAL-{0} +-> ran(stack) & ((stack) : (seq(ran(stack))));
+((aa) : ((ITEMS - ran(stack))));
+((((stack) <- (aa))) : (seq(ITEMS)));
+((((stack) <- (aa))) : (seq(ran(((stack) <- (aa))))));
+(0 +1 <= size(stack));
+((front(stack)) : (seq(ITEMS)));
+((front(stack)) : (seq(ran(front(stack)))));
+stack : NATURAL-{0} +-> ITEMS;
+((stack) : (seq(ITEMS)));
+"Well definedness";
+not(((stack) = ({})))
+END
+&
+THEORY EnumerateX
+END

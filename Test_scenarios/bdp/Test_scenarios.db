@@ -74,6 +74,9 @@
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_relation" suffix="mch" user="Agata">
             <component name="Bagmch_relation" type="specification" />
         </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_setops" suffix="mch" user="Agata">
+            <component name="Bagmch_setops" type="specification" />
+        </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_unbounded" suffix="mch" user="Agata">
             <component name="Bagmch_unbounded" type="specification" />
         </component_file>

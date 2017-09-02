@@ -1,4 +1,6 @@
 digraph {
-Graphmch [ label=" Graphmch " shape= box ]
+Queuemch [ label=" Queuemch " shape= box ]
+Queuemch_double [ label=" Queuemch_double " shape= box ]
+Queuemch_stack [ label=" Queuemch_stack " shape= box ]
 
 }

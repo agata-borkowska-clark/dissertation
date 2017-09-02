@@ -22,7 +22,7 @@ INVARIANT
     card(content) <= max_elem + 4 &
     card(content) <= max_elem + 3 &
     card(content) <= max_elem + 2 &
-    card(content) <= max_elem + 1 &
+    card(content) <= max_elem + 1 & 
     card(content) <= max_elem
 INITIALISATION
     content := {} // we start with an empty bag

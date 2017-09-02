@@ -8,12 +8,20 @@
 <Id value='content' typref='4185748219'/>
 </Abstract_Variables>
 <Invariant>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='content' typref='4185748219'/>
 <Unary_Exp op='FIN' typref='2852175944'>
 <Id value='ITEMS' typref='4185748219'/>
 </Unary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='content' typref='4185748219'/>
+<Unary_Exp op='FIN' typref='2852175944'>
+<Id value='ITEMS' typref='4185748219'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
 </Invariant>
 <Initialisation>
 <Assignement_Sub>

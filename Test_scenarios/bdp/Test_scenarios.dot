@@ -22,6 +22,7 @@ Bagmch_redundant3 [ label=" Bagmch_redundant3 " shape= box ]
 Bagmch_redundant_reverse [ label=" Bagmch_redundant_reverse " shape= box ]
 Bagmch_redundant_reverse2 [ label=" Bagmch_redundant_reverse2 " shape= box ]
 Bagmch_relation [ label=" Bagmch_relation " shape= box ]
+Bagmch_setops [ label=" Bagmch_setops " shape= box ]
 Bagmch_unbounded [ label=" Bagmch_unbounded " shape= box ]
 Bagmch_wrong_order [ label=" Bagmch_wrong_order " shape= box ]
 

@@ -4,8 +4,14 @@
     <project decomp_dir="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\expand_src" old_decomp_dir="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\src" type="VALIDATION">
         <!-- Definition directory list -->
         <!-- Component file list -->
-        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios2" name="Graphmch" suffix="mch" user="Agata">
-            <component name="Graphmch" type="specification" />
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios2" name="Queuemch" suffix="mch" user="Agata">
+            <component name="Queuemch" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios2" name="Queuemch_double" suffix="mch" user="Agata">
+            <component name="Queuemch_double" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios2" name="Queuemch_stack" suffix="mch" user="Agata">
+            <component name="Queuemch_stack" type="specification" />
         </component_file>
     </project>
 </db_xml>

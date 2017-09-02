@@ -1,6 +1,8 @@
 \documentclass[11pt,journal]{IEEEtran}
 %\usepackage{hyperref}
 %\usepackage[breaklinks]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,calc,shapes}
 \usepackage{breakurl}
 \usepackage{url}
 \usepackage{amsfonts}
@@ -43,7 +45,7 @@
 			In this work we strive to establish the limitations of the prover without such additions, and discover at which point they become necessary. The secondary goal is to provide new users with practical guidelines on how to understand the feedback given by the provers and how to reduce the number of proof obligations which are not demonstrated automatically, since manually discharging them is the most time-consuming part of the proof process\cite{survey}.
 	\end{abstract}
 	\begin{IEEEkeywords}
-		B method, formal verification, specification, abstract machine, proof
+		B method, formal verification, specification, abstract machine, proof, system development
 	\end{IEEEkeywords}}
 	% IEEEtran.cls defaults to using nonbold math in the Abstract.
 	% This preserves the distinction between vectors and scalars. However,
@@ -84,11 +86,11 @@
 	
 	
 	\section{Introduction}
-	\IEEEPARstart{T}{he} aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is primarily, but not exclusively used in safety-critical areas, where testing may not feasible.
+	\IEEEPARstart{T}{he} aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is primarily, but not exclusively used in safety-critical areas, where testing may not feasible or may be very costly. As such, it is of interest not just to academics, but to people working in the industry as well. 
 	
 
 	
-	\subsection{Structure of a machine}
+	\subsection{Structure of an abstract machine}
 	In the B language, using Atelier B syntax, an abstract machine usually has the following clauses, in order:
 	\begin{itemize}
 		\item machine name - must match the name of the file, followed by a list of parameters without type definitions, given in brackets as a comma-separated list, for example \texttt{Bagmch(ITEMS, max\_elem)}.
@@ -210,7 +212,7 @@
 
 	This selection of examples suffices to prove that formal methods are still applicable and are of interest not just to academics. 
 	
-	The scale of these projects is infeasible to simulate in this work, however they give us a good idea of the time cost racked up by proof obligations which are not discharged automatically. Conchon and Iguernlala consider reducing the number of undemonstrated proof obligations to be a good way of reducing the cost of the whole project\cite{survey}, and indeed the figures given by Badeau and Amelot support this claim. 30\% of the time they have spent on working on the abstract model was devoted to proof\cite{airport shuttle}.
+	The scale of these projects is infeasible to simulate in this work, however they give us a good idea of the time cost racked up by proof obligations which are not discharged automatically. Conchon and Iguernlala consider decreasing the number of undemonstrated proof obligations to be a good way of reducing the cost of the whole project\cite{survey}, and indeed the figures given by Badeau and Amelot support this claim. 30\% of the time they have spent on working on the abstract model was devoted to proof\cite{airport shuttle}.
 	
 	Since this work is meant to aid new users of Atelier B, it was interesting and worthwhile to look at what others consider to be shortcomings of the software. Even the engineers of ClearSy themselves have noted that their documentation was lacking and additional documents were necessary for their collaborators from RATP to fully understand their deliverables\cite{screen doors}. Leuschel \emph{et al.} have openly admitted that they found the feedback provided by the prover to be unhelpful with locating the problem\cite{San Juan metro}. Their experience is in line with our own and that of our colleagues.
 
@@ -250,10 +252,19 @@
 	
 	We shall approach this project from an academic rather than industrial point of view, focusing on smaller yet more illustrative examples. The main reason for it is to limit the number of factors affecting the number of generated proof obligations and be able to control them more precisely. An industrial-scale project with hundreds of proof obligations would be rather unwieldy for our purposes. Secondly a person new to formal development and the B-method is more likely to be able to follow clear, exemplar scenarios. 
 	
-	Nevertheless we hope that not only students and researchers will find our work helpful. Being able to minimise the number of proof obligations to be manually discharged has the potential to reduce the time required to complete any project. The constructs and expressions we discuss are the same ones as those used in industry. In fact, we found that the more complex structures in the B language, such as sequences, are rarely used in large-scale projects, as exemplified by [CITE].
+	Nevertheless we hope that not only students and researchers will find our work helpful. Being able to minimise the number of proof obligations to be manually discharged has the potential to reduce the time required to complete any project. The constructs and expressions we discuss are the same ones as those used in industry. In fact, we found that the more complex structures in the B language, such as sequences, are rarely used in large-scale projects, as exemplified by the rail station model created by Reichl \textit{et al.}\cite{station model}.
 
 
 	\section{Methodology}
+	\subsection{Overview}
+	To begin our work, we consider a very simple scenario to start us off. We choose scenarios that can be easily expanded and extended, but also which might serve as an example or an exercise for those who are beginning their work with the B method and the Atelier B software.
+	
+	We then make small changes to the abstract machine we have initially created, paying close attention to how the generated proof obligations differ. We want to observe how their number and complexity relates to the structures used in the code, and how easily they are discharged with the help of the interactive prover. Each difference in the behaviour of seemingly equivalent ways of expressing the same notion may lead to further questions or hint on what else may be worth investigating.
+	
+	We will attempt to explain any peculiar behaviours with the aid of the documentation, but given its brevity and lack of detail in certain areas, we do not expect to find an explanation for every quirk of the software. Nevertheless we will describe all of the observed patterns, as they may be found helpful by other users.
+	
+	Out of all the machines we create, we will pick the most illustrative ones to describe in detail and discuss their behaviour. This project is deliberately open-ended, since it is difficult to say at the onset what discoveries will be made.
+	\subsection{The proof process}
 	The \emph{Interactive Prover User Manual}\cite{Prover guide} outlines the part of the proof process concerning the abstract machine as follows:
 	\begin{enumerate}
 		\item write the abstract machine
@@ -262,18 +273,69 @@
 		\item if not all proof obligations are demonstrated automatically, check that they are true and indeed should be demonstrated. If they are not, the machine is erroneous.
 	\end{enumerate}
 
-	It then encourages the users to write the implementation, and if undischarged proof obligations remain after that, only then the users are told to use the Interactive Prover. We acknowledge this advice. However the steps listed above are nevertheless very general, and in particular the users are not advised on how to establish whether an undischarged proof obligation is beyond the capabilities of the Automatic Prover or simply false. hence, we intend to use the Interactive Prover at the abstract machine stage of the development in order to assess this.
+	It then encourages the users to write the implementation, and if undischarged proof obligations remain after that, only then the users are told to use the Interactive Prover. We acknowledge this advice, however the steps listed above are nevertheless very general, and in particular the users are not advised on how to establish whether an undischarged proof obligation is beyond the capabilities of the Automatic Prover or simply false. It should be accentuated that quite often undischarged proof obligations do not immediately appear false. From our experience, this is in particular true for the well-defineness conditions, which are defined in the \emph{B Language Reference Manual}\cite{b reference}. Hence, we intend to use the Interactive Prover at the abstract machine stage of the development in order to assess this.
 	
-	It should be accentuated that quite often undischarged proof obligations do not immediately appear false. From our experience, this is in particular true for the well-definess 
+	\tikzstyle{decision} = [diamond, draw, 
+	text width=6em, text badly centered, node distance=3cm, inner sep=0pt]
+	\tikzstyle{block} = [rectangle, draw,  
+	text width=6em, text centered, rounded corners, minimum height=4em]
+	\tikzstyle{line} = [draw, -latex']
+	\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+	minimum height=1.5em]
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[node distance = 2.5cm, auto,transform shape,scale=0.75]
+		% Place nodes
+		\node [block] (spec) {Write the specification};
+		\node [block, below of=spec] (am) {Formalize it as an abstract machine};
+		\node [block, below of=am] (gen) {Generate POs and run the automatic prover};
+		\node [decision, below of=gen] (decide) {Undischarged POs?};
+		\node [block, right of=decide, node distance=4cm] (ctd){Continue the development process};
+		\node [right of=ctd] (blank1) {};
+		\node [decision, below of=decide, node distance=4cm] (sanity) {Do they point to errors?};
+		\node [block, below of=sanity, node distance=3.5cm] (ip) {Use interactive prover};
+		\node [decision, below of=ip] (decide2) {Undischarged POs?};
+		\node [decision, below of=decide2, node distance=4cm] (sanity2) {Do they point to errors?};
+		\node [block, below of=sanity2, node distance=3cm] (rules) {Use user rules};
+		\node [below of=rules, node distance=2cm] (blank2) {};
+		
+		% Draw edges
+		\path [line] (spec) -- (am);
+		\path [line] (am) -- (gen);
+		\path [line] (gen) -- (decide);
+		\path [line] (decide) -- node {no} (ctd);
+		\path [line, dashed] (ctd) -- (blank1);
+		\path [line] (decide) -- node {yes}(sanity);
+		\path [line] (sanity) -- node {no} (ip);
+		\path [line] (ip) -- (decide2);
+		\path [line] (sanity.west) -- node {yes} ($(sanity.west) + (-4mm,0)$) |- (am.west);
+		\path [line] (decide2) -| node [near start] {no}(ctd);
+		\path [line] (decide2) -- node{yes} (sanity2);
+		\path [line] (sanity2.west) -- node {yes} ($(sanity2.west) + (-7mm,0)$) |- (am.west);
+		\path [line] (sanity2) -- node {no} (rules) ;
+		\path [line,dashed] (rules) -- (blank2);
+		\end{tikzpicture}
+		\caption{The proof process for an abstract machine}
+	\end{figure}
+	We refine the last step listed above as follows. After undischarged POs are discovered, each one should be considered in turn to see if it points to an error. It can be done by simple inspection, relying on common sense, and does not have to be a lengthy process. The aim of this is to spot typical human errors. 
+	
+	If the user is still convinced that the proof obligations remain undischarged due to the limitations of the automatic prover rather than the error in the formalisation, they may proceed to use the interactive prover. Using the interactive prover often requires rewriting of many expressions in various ways, due to the way the software normalises them. Such operations necessarily involve closer inspection of said expressions, and may be very helpful in spotting further errors or ambiguity in the formalisation.
+	
+	Work with the interactive prover in our experience often results in code which is less readable and user-friendly, but easier to understand by the automatic prover, as it is more in line with how it normalises expressions. Thus at this stage we translate our initial formalisation into something that results in fewer undischarged proof obligations. The goals of the proof obligations, as shown in the interactive prover, often hint at how the expressions can be rephrased or what conjuncts can be added in the code. 
+	
+	Finally, if there are still undischarged proof obligations despite any attempts to rephrase the problematic expressions in the abstract machine, the user may consider writing their own rules to add to the proof rule base. This alone is a process which requires great care, as any user-written rule which is not thoroughly verified will invalidate the whole proof process. 
+	
+	The above refinement of the process, with the focus on deciding whether proof obligations are undischarged because of the errors in the abstract machine or due to the limitations of the prover, is illustrated in Figure 1.
 
-	\section{Project Management}
-	
+
 	\subsection{Choice of scenarios}
-	This work has focused on two generic scenarios and explored various ways of fulfilling a specification for each of them. The specifications were kept deliberately imprecise for two reasons. Firstly, it allowed for an in-depth exploration of the theme. More precise specification would narrow down the options significantly, limiting our findings. Secondly in an industry setting it is not unheard of to have specification documents which leave details up to interpretation or are open-ended. 
+	This work has focused on two generic scenarios and explored various ways of fulfilling a specification for each of them. The first scenario is exploring various ways of implementing a set and the operations on it. The second scenario can be more precisely called a collection of formalisations of various common data structures into the B-language, and includes objects such as stack, queue, or linked list.
+	
+	The specifications were kept deliberately imprecise for two reasons. Firstly, it allowed for an in-depth exploration of the theme. More precise specification would narrow down the options significantly, limiting our findings. Secondly in an industry setting it is not unheard of to have specification documents which leave details up to interpretation or are open-ended. 
 	
 	After exhausting the ways each expressing the specification in the B-method, we created a few more machines for each scenario, which illustrate other variations on the theme, although they diverge further from the original intentions. They served to analyse constructs which are more particular or less suited to the chosen scenarios, but nevertheless not unheard of.
 	
-	It is important to observe that in large-scale industry projects which apply the B method, the constructs are kept simple and straightforward to avoid obfuscation. Thus in the sections below, dedicated to the chosen scenarios, the examples created were ordered by complexity. The later ones, for example in the case of the Bag Machine those involving sequences or relations, were analysed to compare the number of proof obligations generated next to their simpler variants.
+	It is important to observe that in large-scale industry projects which apply the B method, the constructs are kept simple and straightforward to avoid obfuscation. Thus in the sections below, dedicated to the chosen scenarios, the examples created were ordered by complexity. The later ones, for example in the case of the Bag Machine those involving non-deterministic assignment, were analysed to compare the number of proof obligations generated next to their simpler variants.
 	
 	\section{The Bag Machine - various approaches to describing sets and collections}
 	\subsection{Specification}
@@ -285,6 +347,67 @@
 		\item find out which items are in the bag
 		\item query whether a given item is in the bag
 	\end{itemize}
+
+	\subsection{Visualisation}
+	We can illustrate the operations on the bag with a state machine, as seen in Figure 2. For simplicity, let the set of \texttt{ITEMS} be $\{a_1, a_2, a_3\}$. Only the operations to add or remove an item will be included, since the others do not affect the content of the bag. 
+	\begin{figure*}
+		\centering
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=4cm,
+	thin, bend angle=5]
+	\node[state] (empty) at (0,0) {$\emptyset$};
+	\node (hidden) at (-1,1) {};
+	\node[state] (a1) at (3,2.5) {$\{a_1\}$};
+	\node[state] (a2) at (3, 0) {$\{a_2\}$};
+	\node[state] (a3) at (3,-2.5) {$\{a_3\}$};
+	\node[state] (a12) at (7, 4) {$\{a_1,a_2\}$};
+	\node[state] (a23) at (7,0) {$\{a_2,a_3\}$};
+	\node[state] (a13) at (7,-4) {$\{a_1,a_3\}$};
+	\node[state] (a123) at (11, 0) {$\{a_1,a_2,a_3\}$};
+	
+	\path (hidden) edge node {start} (empty);
+	
+	\path (empty) edge [bend left] node {$\pm a_1$} (a1)
+	edge [bend left] node {$\pm a_2$} (a2)
+	edge [bend left] node {$\pm a_3$} (a3)
+	edge [loop left] node {$-a_1,-a_2,-a_3$} (empty);
+	
+	\path (a1) edge [loop above] node {$+ a_1, -a_2, -a_3$} (a1)
+	edge [bend left] node {$\pm a_2$} (a12)
+	edge [bend left] node {$\pm a_3$} (a13)
+	edge [bend left]  (empty);
+	
+	\path (a2) edge [loop below] node {$+a_2, -a_1, -a_3$} (a2)
+	edge [bend left] node {$\pm a_1$} (a12)
+	edge [bend left] node {$\pm a_3$} (a23)
+	edge [bend left] (empty);
+	
+	\path (a3) edge [loop below] node {$+a_3, -a_1, -a_2$} (a3)
+	edge [bend left] node {$\pm a_1$} (a13)
+	edge [bend left] node {$\pm a_2$} (a23)
+	edge [bend left] (empty);
+	
+	\path (a12) edge [loop above] node {$+a_1,+a_2, -a_3$} (a12)
+	edge [bend left]  (a2)
+	edge [bend left]  (a1)
+	edge [bend left] node {$\pm a_3$} (a123);
+	
+	\path (a23) edge [loop above] node {$+a_2,+a_3, -a_1$} (a12)
+	edge [bend left]  (a2)
+	edge [bend left]  (a3)
+	edge [bend left] node {$\pm a_1$} (a123);
+	
+	\path (a13) edge [loop below] node {$+a_1,+a_3, -a_2$} (a13)
+	edge [bend left]  (a1)
+	edge [bend left]  (a3)
+	edge [bend left] node {$\pm a_2$} (a123);
+	
+	\path (a123) edge [loop above] node {$+a_1,+a_2,+a_3$} (a13)
+	edge [bend left]  (a12)
+	edge [bend left]  (a23)
+	edge [bend left]  (a13);
+	\end{tikzpicture};
+	\caption{The result of the add and remove item operations on the bag machine with the set of \texttt{ITEMS} being $\{a_1, a_2, a_3\}$. Each of the labels of the form '$\pm a_i$' refers to both edges connecting the corresponding nodes.}
+	\end{figure*}
 	\subsection{Discussion of the specification}
 	We take the metaphorical bag to be as generic as possible and attempt to interpret the specification in any reasonable way. The details are deliberately left up to interpretation - for example it is not specified whether multiple copies of an item can be included or not, thus making the content of a bag into a set following the Zermelo-Fraenkel definition, or a multiset. Both possibilities will be explored.
 	
@@ -309,7 +432,7 @@
 
 	The specification requires only that $\texttt{content} \subseteq \texttt{ITEMS}$, however in any implementation it is infeasible to have truly infinite sets, thus the software considers them to be erroneous. In the \emph{B Language Reference Manual}\cite{b reference} we find the following definition for the set of natural numbers: ${\texttt{NAT}  = 0 .. \texttt{MAXINT}}$, where \texttt{MAXINT} can be set by the user for a given project, although it is usually understood to be $2^{31}-1$. This definition is not supported by the \emph{B-book}, thus demonstrating a small disparity between the theory of the B-method and its implementation in Atelier B. Nevertheless it is very reasonable for practical purposes.
 	
-	This machine generates only four proof obligations and all of them are discharged automatically. The first three check that the \texttt{INVARIANT} is preserved in the initialisation and by the operations to add and remove items - the only three actions affecting the state of the bag. The last one is as follows:
+	This machine generates only four proof obligations and all of them are discharged automatically. The first three check that the Invariant is preserved in the Initialisation and by the operations to add and remove items - the only three actions affecting the state of the bag. The last one is as follows:
 	
 	\begin{lstlisting}
 		"Well definedness" 
@@ -329,12 +452,13 @@
 	\end{lstlisting}
 	This machine generates the same four proof obligations as the reference machine, however the last one remains undischarged by the automated prover and correctly points the user to a problem in the abstract machine. 
 	
-	\subsubsection{Bagmch\_pre} shows a workaround the well-defineness proof obligation in the previous example. 
+	\subsubsection{Bagmch\_pre} shows a workaround the well-defineness proof obligation in the previous example. It results in one fewer proof obligation than the reference \emph{Bagmch}, as putting the goal of the well-defineness proof obligation in the pre-condition of the related operation prevents the proof obligation from being generated.
+	
+	While it is a way to avoid dealing with a potentially tricky proof obligation, it only postpones the problem, as preconditions will have to be further specified at the later stages of development. Hence, it may be good enough if the aim is simply to formalize a specification, but this solution will have disadvantages if the abstract machine is intended to be refined all the way to the implementation level.
 	
 	\subsubsection{Bagmch\_params} differs from the reference machine in the way the set of \texttt{ITEMS} is included in it. \emph{Bagmch} is given the set of \texttt{ITEMS} as a deferred set, which is required to be explicitly defined at a later stage of the development. Here, it is given as a set-valued parameter, which must be instantiated any time the machine is used.\cite{b-method} However at the stage of abstract machine which is not used by any other machine, it does not make a difference in the prover.
 	
 	Similar behaviour can be observed later in the machines \emph{Bagmch\_limited} and \emph{Bagmch\_limited\_params}, with a scalar-valued parameter.
-	
 	
 	\subsubsection{Bagmch\_long\_inv} demonstrates that a provably equivalent way of writing an expression may lead to a different behaviour of the prover. 
 	
@@ -350,7 +474,7 @@
 	
 	This time there are six proof obligations generated, all discharged automatically, and they are concerned only with the Invariant being preserved. There is a proof obligation for each clause of the Invariant, for each one of the initialisation and the two operation affecting the content of the bag. 
 	
-	Firstly, comparing the proof obligation related to the first clause of the Invariant, we see that it is not as simple as the one in \emph{Bagmch\_unbounded}. For example in the initialisation we see:
+	Firstly, comparing the proof obligation related to the first clause of the Invariant, we see that it is not as simple as the one in \emph{Bagmch\_unbounded}. For example in the Initialisation we see:
 	
 	\begin{lstlisting}
 "Invariant is preserved" &
@@ -364,7 +488,7 @@
 "Invariant is preserved" => {} <: ITEMS 
 	\end{lstlisting}
 	
-	It strongly suggests that the notation $a \subseteq b$ is preferable to $a \in \mathbb{P}(b)$, for any two sets $a$ and $b$. While the result is still the same, the former seems to require less work from the prover, since fewer clauses are generated. Thus especially for large projects may save some computation time. Again, on a small scale like this we have no means of measuring it due to the overhead.
+	It strongly suggests that the notation $a \subseteq b$ is preferable to $a \in \mathbb{P}(b)$, for any two sets $a$ and $b$. While the result is still the same, the former seems to require less work from the prover, since fewer clauses are generated. Thus especially for large projects may save some computation time. 
 	
 	Next we compare the proof obligations regarding finiteness of \texttt{content}. The one generated now are of the form:
 	
@@ -385,7 +509,7 @@
 	
 	We conclude that these two ways of expressing the relation '\texttt{content} is a finite subset of \texttt{ITEMS}', while equivalent in theory, will affect the performance and the time taken to complete computations by the prover in different ways. One will result in more proof obligations being generated, however they will be of a simpler nature and discharged automatically, which is faster than discharging even a single proof obligation manually, such as the well-defineness one in the latter case. We recognize that it is something that may be noticeable at large-scale projects, while in a small scenario the overhead will severely affect any measurements of performance, and therefore we have no means of exploring it further in this work, but we highlight it as something users should be aware of.
 	
-	[CHECK - trace system]It is regrettable that the prover does not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
+	[CHECK - trace sysdoes tem]It is regrettable that the prover not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
 	       
 	\subsubsection{Bagmch\_finite\_items} is an attempt to impose finiteness earlier on, on the set of \texttt{ITEMS}. We do it by adding the expression '$\texttt{ITEMS} \in \texttt{FIN(ITEMS)}$' to the Properties clause. Otherwise the machine is identical to \emph{Bagmch\_unbounded}. We rely on the fact that any subset of a finite set is necessarily finite. Appendix B contains a proof of this claim.
 	
@@ -560,6 +684,8 @@ DEFINITIONS
 	
 	Given the previous findings about the conjuncts in the Invariant not being commutative, we have also explored ordering the clauses from the most to the least restrictive - i.e. reversing the order of the conjuncts from the Invariant shown above. We found that it did not change the outcome in this case. In \emph{Bagmch\_redundant\_reverse} \texttt{max\_elem : NAT} is used just like in \emph{Bagmch\_redundant} and the same proof obligations are generated and not discharged. In \emph{Bagmch\_redundant\_reverse2} we use numerical values instead of a constant in each conjunct, and all proof obligations are observed to discharge automatically.
 	
+	Finally we have tried including the same conjunct twice in the Invariant, and only then we have noticed that the redundancy is acted upon by the software - the prover does not list the same conjunct twice. 
+	
 	We move on to discuss the number of proof obligation generated in relation to the number of clauses in the Invariant. Recall that the machine has two operations which change the \texttt{content} variable. Each one of them and the Initialisation generates one proof obligation for each clause in the Invariant. With the Invariant as given above, it comes to three sets of seven proof obligations. Adding clauses following the pattern '\texttt{card(content) <= max\_elem + n}' and checking the number of generated proof obligations demonstrates the following correlation: the number of proof obligations regarding the preservation of the Invariant is equal to the number of operations affecting the state of the machine plus one for the Initialisation multiplied by the number of clauses in the Invariant. However at this point all the clauses are related to the single variable affected by the operations. We will see if having clauses concerning other variables, unaffected by these operations, changes the pattern, in \emph{Bagmch\_2sets}.
 	
 	\subsubsection{Bagmch\_2sets} allows us to further investigate the relation between the number of proof obligations and clauses in the Invariant. This machine maintains two subsets of \texttt{ITEMS}, called \texttt{content1} and \texttt{content2}. They act exactly like the \texttt{content} set did in the previous machine. We thus have two conjuncts involving each of the variables in turn, and for the sake of observing all factors, we add an additional (redundant) conjunct involving both variables, so the Invariant now becomes:
@@ -607,16 +733,44 @@ DEFINITIONS
 	if remove from ITEMS, it works, if from content:
 	
 \verb|Operation(removeitem) & ff(0) & dd & pr & ah(content <: ITEMS) & pr & pr|
+
+	Disjuncts in Invariant
+	\subsection{Summary}
 	
+	\section{Queue, stack, and lists}
+	\subsection{Overview and motivation}
+	There are many data structures, which cannot be forced into the Bag machine scenario, and trying to do so would be overly contrived and lack clarity. We also stray from the idea of using an abstraction like the Bag, in order to make the reasoning simpler. Instead, we present a collection of machines which do not conform to a specific scenario, but instead focus on typical data structures in computer science in general.
+	
+	The particular data structures we have translated to B language are:
+	\begin{itemize}
+		\item queue
+		\item stack
+		\item linked list
+		\item doubly linked list
+	\end{itemize}
+	
+	
+	\subsection{Summary}
+	On one hand B method is fairly well suited for this task, due to it containing concise notation for relations, functions, and sequences. Thus implementing the structures themselves was straightforward. 
+	
+	On the other implementing the standard operations on those data structures, such as traversing a list, required more effort, because the B method at the abstract machine level does not permit recursion or loops, and hence we cannot for example traverse a list to find the $n^{th}$ element in it.
+
 
 	\section{Results}
 	\subsection{Summary of the work done}
 	
 	
 	\subsection{Findings and observations}
-	Number of proof obligations
+	\subsubsection{Number and type of proof obligations}
+	We have mostly dealt with two kinds of proof obligations: those regarding the preservation of the Invariant and those concerned with well-defineness of certain expressions. There are also proof obligations ensuring that refinement relations are maintained and that there exist satisfying assignments of the specified constraints and properties\cite{Sekerinski}, however we have not touched on the former, because we did not explore structuring of machines, and the latter is not covered by the Atelier B provers.
 	
-	Equivalence of expressions
+	The well-defineness proof obligations which are not demonstrated automatically, can be easily discharged with the help of interactive prover, by adding to the Invariant or the preconditions of the related operation the well-definess condition for the problematic expression. All of those conditions are listed in the \emph{B Language Reference Manual}. Thus they can be avoided entirely.
+	
+	The preservation of the Invariant proof obligations are generated for the Initialisation and for each operation which changes the state of the abstract machine, that is changes the value assigned to some variable. For any such operation affecting some variable \texttt{aa}, there will be a proof obligation generated for every conjunct in the Invariant which involves \texttt{aa}. 
+	
+	Little optimisation is done automatically in the prover when it comes to redundant proof obligations, and so the users should take care to avoid redundant conditions in the Invariant. However repeated clauses in the prover do get noticed (and ignored) by the software.
+	
+	\subsubsection{Equivalence of expressions}
 	
 	Ordering of the Invariant
 	
@@ -638,6 +792,22 @@ DEFINITIONS
 	\end{lstlisting}
 	It can be found in the \emph{Bagmch\_finite\_items.pmm} file included in the project archive.
 	
+	[CITE MISSING MOD RULES]
+	
+	Putting this together with the information contained in the various user manuals, we conclude that writing user rules may be required in circumstances involving moduli or sequences or sets - where one might want to user recursion, which is not available in the abstract machines, or when separate rules would have to be written for many similar cases. At this point it is simpler from the developers' point of view to let the user write specifically the rules they need, than try to anticipate all possible use cases. Thus we highlight those two areas as ones that may need additional rules.
+	
+	At the same time we observe that simple structures such as sets rarely need it, and most cases where one might think that an additional rule is necessary, can be circumvented.
+	\section{Evaluation and future outlook}
+	As was discussed earlier, the scope of this project was limited. It was in part by the time constraints, which were independent of our decisions, but also we have chosen to restrict it, in order to stay focused and truly explore in depth the behaviour of the software in the chosen situations, rather than attempt too much and let our observations be cursory.
+	
+	We have focused mainly on the static part of the machine, and how variations to it affect proof obligations concerning the preservation of the Invariant. We have considered some variations of the basic operations, but 
+	
+	\subsection{Possible continuations}
+	There are multiple ways in which this work can be taken further. Firstly, we have not covered all clauses, and made scarce use of Definitions and did not explore Assertions much. In the former case, there was little need for it. In the case of Assertions, we struggled to find a simple scenario where this clause may be applicable. Similarly, there is a lot to explore in the area of structuring and refinement.
+	
+	We we have focused on simpler data structures, which may be seen in an industrial setting, and we have kept the operations fairly straightforward, using basic transformations and avoiding overly complicated combinations of functions and relations. The examples of queues, stacks, and linked lists already suggest that functions, relations, and sequences result in a significant number of proof obligations, which may not be discharged automatically. It would be interesting to analyse them more closely, however time was a limitation in this respect.
+	
+	Finally we did not have access to industrial-scale models written in pure B method, and thus we could not properly measure how much the patterns we have noticed matter on a larger scale, and thus we were left with predictions and estimations. Indeed working through a purely functional and not necessarily an exemplary project in terms of style, would be a time consuming task on its own, and rewriting it according to our findings even more so. 
 	
 	\section{Concluding Remarks}
 
@@ -649,8 +819,11 @@ DEFINITIONS
 
 	
 	\section{Acknowledgements}
+	I would like to thank my supervisor, Jane Sinclair of the University of Warwick, for sparking my interest in formal methods and fuelling it throughout the course of this project. I would also like to thank my friends and my fianc\'{e} for their patience and support, as is evidenced by all suggestions on how to improve this document. Last, but not least I would like to thank my parents for always encouraging my studies and inspiring an interest in academia.
 	
 	\IEEEPARstart{}{} 
+	\pagebreak
+
 	
 	\begin{thebibliography}{2}
 		\bibitem{survey}
