@@ -1,9 +1,16 @@
 THEORY ProofList IS
-_f(1) & _f(2) & _f(8) & WellDefinedness_howmany.1,(_f(19) => _f(20));
-_f(1) & _f(2) & _f(8) & _f(9) & removeitem.2,(_f(3) & _f(6) => _f(13));
-_f(1) & _f(2) & _f(8) & _f(9) & removeitem.1,(_f(3) & _f(4) => _f(12));
-_f(1) & _f(2) & _f(8) & _f(9) & additem.2,(_f(3) & _f(6) => _f(11));
-_f(1) & _f(2) & _f(8) & _f(9) & additem.1,(_f(3) & _f(4) => _f(10));
+_f(1) & _f(2) & _f(8) & WellDefinedness_howmany.2,(_f(26) & _f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & WellDefinedness_howmany.1,(_f(24) => _f(27));
+_f(1) & _f(2) & _f(8) & _f(16) & WellDefinedness_removeitem.1,(_f(10) & _f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_additem.1,(_f(16) & _f(10) & _f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & _f(16) & removeitem.4,(_f(10) & _f(18) & _f(3) & _f(6) => _f(22));
+_f(1) & _f(2) & _f(8) & _f(16) & removeitem.3,(_f(10) & _f(18) & _f(3) & _f(4) => _f(21));
+_f(1) & _f(2) & _f(8) & _f(16) & removeitem.2,(_f(10) & _f(17) & _f(3) & _f(6) => _f(20));
+_f(1) & _f(2) & _f(8) & _f(16) & removeitem.1,(_f(10) & _f(17) & _f(3) & _f(4) => _f(19));
+_f(1) & _f(2) & _f(8) & _f(9) & additem.4,(_f(11) & _f(3) & _f(6) => _f(15));
+_f(1) & _f(2) & _f(8) & _f(9) & additem.3,(_f(11) & _f(3) & _f(4) => _f(14));
+_f(1) & _f(2) & _f(8) & _f(9) & additem.2,(_f(10) & _f(3) & _f(6) => _f(13));
+_f(1) & _f(2) & _f(8) & _f(9) & additem.1,(_f(10) & _f(3) & _f(4) => _f(12));
 _f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
 _f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
 END
@@ -12,23 +19,30 @@ THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
 ITEMS: FIN(INTEGER) & not(ITEMS = {});
 "Invariant is preserved";
-"Check invariant ((content) : (((ITEMS) >+> ({TRUE}\/{FALSE}))))";
-(({}) : (((ITEMS) >+> ({TRUE}\/{FALSE}))));
+"Check invariant ((content) : (((ITEMS) +-> (NAT))))";
+(({}) : (((ITEMS) +-> (NAT))));
 "Check invariant ((dom(content)) : (FIN(ITEMS)))";
 ((dom({})) : (FIN(ITEMS)));
-content : ITEMS +-> {TRUE}\/{FALSE} & content~ : {TRUE}\/{FALSE} +-> ITEMS & ((content) : (((ITEMS) >+> ({TRUE}\/{FALSE})))) & ((dom(content)) : (FIN(ITEMS)));
+((content) : (((ITEMS) +-> (NAT)))) & ((dom(content)) : (FIN(ITEMS)));
+((aa) : (ITEMS)) & ((((aa) : (dom(content)))) => (((content )(aa) +1 <= 2147483647)));
+((aa) : (dom(content)));
+not(((aa) : (dom(content))));
+((((content) <+ ({((aa) |-> (((content )(aa) + 1)))}))) : (((ITEMS) +-> (NAT))));
+((dom(((content) <+ ({((aa) |-> (((content )(aa) + 1)))})))) : (FIN(ITEMS)));
+((((content) \/ ({((aa) |-> (1))}))) : (((ITEMS) +-> (NAT))));
+((dom(((content) \/ ({((aa) |-> (1))})))) : (FIN(ITEMS)));
 ((aa) : (ITEMS));
-((((content) <+ ({((aa) |-> (TRUE))}))) : (((ITEMS) >+> ({TRUE}\/{FALSE}))));
-((dom(((content) <+ ({((aa) |-> (TRUE))})))) : (FIN(ITEMS)));
-((((content) <+ ({((aa) |-> (FALSE))}))) : (((ITEMS) >+> ({TRUE}\/{FALSE}))));
-((dom(((content) <+ ({((aa) |-> (FALSE))})))) : (FIN(ITEMS)));
-((((aa) |-> (TRUE))) : (content));
-not(((((aa) |-> (TRUE))) : (content)));
-content : ITEMS +-> {TRUE}\/{FALSE};
-content~ : {TRUE}\/{FALSE} +-> ITEMS;
-((content) : (((ITEMS) >+> ({TRUE}\/{FALSE}))));
+(1 +1 <= (content )(aa));
+not((1 +1 <= (content )(aa)));
+((((content) <+ ({((aa) |-> (((content )(aa) - 1)))}))) : (((ITEMS) +-> (NAT))));
+((dom(((content) <+ ({((aa) |-> (((content )(aa) - 1)))})))) : (FIN(ITEMS)));
+(((content - {((aa) |-> (1))})) : (((ITEMS) +-> (NAT))));
+((dom((content - {((aa) |-> (1))}))) : (FIN(ITEMS)));
+((content) : (((ITEMS) +-> (NAT))));
 "Well definedness";
-((((content) |> ({TRUE}))) : (FIN(((content) |> ({TRUE})))))
+((content) : (((dom(content)) +-> (ran(content)))));
+((xx) : (dom(content)));
+((SET(xx).(((xx) : (dom(content))))) : (FIN(SET(xx).(((xx) : (dom(content)))))))
 END
 &
 THEORY EnumerateX

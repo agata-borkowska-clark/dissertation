@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{listings}
+\usepackage{array}
 % Set listings to use small monospaced font.
 \lstset{basicstyle=\small\ttfamily,tabsize=4}
 \usepackage{graphicx}
@@ -261,7 +262,9 @@
 	
 	We then make small changes to the abstract machine we have initially created, paying close attention to how the generated proof obligations differ. We want to observe how their number and complexity relates to the structures used in the code, and how easily they are discharged with the help of the interactive prover. Each difference in the behaviour of seemingly equivalent ways of expressing the same notion may lead to further questions or hint on what else may be worth investigating.
 	
-	We will attempt to explain any peculiar behaviours with the aid of the documentation, but given its brevity and lack of detail in certain areas, we do not expect to find an explanation for every quirk of the software. Nevertheless we will describe all of the observed patterns, as they may be found helpful by other users.
+	We use the ProB animator for B machines for any quick check that we have translated our intentions correctly into the B syntax. Even if there are no syntax errors and proof obligations do not indicate any problems, it does not necessarily mean that the machine works as intended, only that it is correct. For example ProB may be used to check that a summation or a lambda expression have the intended meaning.
+	
+	We will attempt to explain any peculiar behaviours of the Atelier B prover with the aid of the documentation, but given its brevity and lack of detail in certain areas, we do not expect to find an explanation for every quirk of the software. Nevertheless we will describe all of the observed patterns, as they may be found helpful by other users.
 	
 	Out of all the machines we create, we will pick the most illustrative ones to describe in detail and discuss their behaviour. This project is deliberately open-ended, since it is difficult to say at the onset what discoveries will be made.
 	\subsection{The proof process}
@@ -658,7 +661,7 @@ ar(userInFINXY) & pr & ar(userInFINXY)
 	
 	Based on these observations we reach the conclusion that the conjuncts in the Invariant are applied sequentially, in the order in which they are written. It is very much like the Assertion clause, which is defined to be checked sequentially in the B method. It is also understandable from the implementation point of view, since checking all permutations of the conjuncts would be computationally hard.
 	
-	\subsubsection{Bagmch\_redundant...} are four machines with redundant clauses in the Invariant, written in a different order or in a slightly different manner, but essentially nigh identical. Note that it is a very bad practice to do something like this intentionally, however as this work is aimed at people beginning their work with the B method, it is expected that a similar mistake, albeit a less obvious one, can happen.
+	\subsubsection{Bagmch\_redundant...} are five machines with redundant clauses in the Invariant, written in a different order or in a slightly different manner, but essentially nigh identical. Note that it is a very bad practice to do something like this intentionally, however as this work is aimed at people beginning their work with the B method, it is expected that a similar mistake, albeit a less obvious one, can happen.
 	
 	They borrow the concept of imposing the maximum number of items that can fit in the bag from the previous machines. This time we add redundant clauses in the Invariant to explore the relation between their number and the number of proof obligations generated, as well as observe if there is any evidence of optimisation in the prover.
 	
@@ -781,17 +784,147 @@ DEFINITIONS
 	
 	\subsubsection{Bagmch\_setops} briefly explores if operations taking finite subsets of \texttt{ITEMS} as parameters instead of a single element of that set, make any difference to the proof process. This change does not appear to have any impact on the proof process, as compared to the reference \emph{Bagmch}.
 	
-	\subsubsection{Bagmch\_enum} strays from the set of \texttt{ITEMS} being deferred, as can be seen in all previous machines. Instead, it is defined explicitly as an enumerated set with three elements. It is a copy of the reference \emph{Bagmch}, the only difference being the definition of the set of \texttt{ITEMS}. The operations all remain the same.
+	\subsubsection{Bagmch\_enum} strays from the set of \texttt{ITEMS} being deferred, as can be seen in all previous machines. Instead, it is defined explicitly as an enumerated set with three elements, namely \texttt{ITEMS = \{FOO, BAR, BAZZ\}}. It is a copy of the reference \emph{Bagmch}, the only difference being the definition of the set of \texttt{ITEMS}. The operations all remain the same as before.
 	
 	The reason for this change is to explore the behaviour of enumerated sets as they are implemented in the Atelier B. The user manuals do not elaborate on the topic, noting only that "Every enumerated set is dfined as the set comprising all of its elements, and the
 	elements are distinct two by two"\cite{PO reference}.
 	
 	This time we see eight proof obligations, and only two of them are discharged automatically. They are the single proof obligation generated for the Invariant, with the goal \texttt{\{\}: FIN(ITEMS)}, and the one concerned with the well-defineness of the expression involving cardinality in the operation 'howmany'. Its goal is: \texttt{content: FIN(content)}.
 	
-	\subsubsection{Bagmch\_enum\_more\_pos}
-
-	\subsection{Summary}
+	The other six come from the operations. The three operations that do not affect the value of the variable \texttt{content} result in four proof obligations - one for each of 'getcontent' and 'howmany' operations, and two for 'isin', the latter caused by the if-else statement. All of those four proof obligations have the goal '\texttt{content: FIN(ITEMS)}', which is the exact expression present in the Invariant, which defines the type of the variable \texttt{content}. The operations to add or remove item result in proof obligations with goals '\verb|content\/{aa}: FIN(ITEMS)|' and '\verb|content-{aa}: FIN(ITEMS)|' respectively. 
 	
+	Tackling any of those proof obligations with the prover provides significant insight into the internal implementation of the enumerated set. The prover generates the following subgoals:
+	
+	\begin{itemize}
+		\item \verb|dom(content): FIN(INTEGER)|
+		\item \verb|1<=min(dom(content))|
+		\item \verb|max(dom(content))<=3|
+		\item \verb|ran(content)<:{ITEMS.enum}|
+	\end{itemize}
+	Thus the goals to confirm the type of a variable which we know to be a subset of an enumerates set given earlier, show that the enumerated set is realised as a relation from a finite subset of the natural numbers to '\texttt{ITEMS.enum}', which we assume to mean the elements we specified as members of the enumerated set's definition. More specifically, it is a bijection from the set $\{1,2,3\}$ to \texttt{ITEMS.enum} $= \{FOO, BAR, BAZZ\}$.
+	
+	Our previous attempts to reduce the number of undemonstrated proof obligations suggest adding the goal of the proof obligation to the Invariant, in order to specify the properties of the machine further, in a way more susceptible to the automatic proof. However the initial goal, namely '\texttt{content: FIN(ITEMS)}' is already present in the Invariant. 
+	
+	An attempt to add the four subgoals listed lead to another observation: the expression '\texttt{ITEMS.enum}' is unrecognized and fails at the stage of static analysis.
+	
+	A certain way to remove these proof obligations from the list of the undischarged ones is to add their goals as a precondition in each operation. We generally do not advise jumping to this solution easily, but seeing as the goals of the proof obligations are correct due to the type definition of \texttt{content}, and that the prover appears to be stumbling over something that in the reference machine was trivially demonstrated, we opt for it. We did not find an explanation for this frustrating behaviour of the software.
+	
+	Thus, we add '\texttt{content: FIN(ITEMS)}' as a precondition to each operation, since we are interested only in the states of the machine in which this expression is true. Then we re-generate the proof obligations and run the automated prover again. The four proof obligations related to the operations not affecting the value of the variable \texttt{content} disappear entirely. The remaining four are analogous to the ones in the reference \emph{Bagmch} and are discharged by the automated prover.
+	
+	It is a crude workaround, and one might ask what benefits it gives. Removing proof obligations from the list of the undischarged ones allows the user to focus on other ones, and not be distracted by ones which were analysed and deemed to hold earlier. In fact, the use of preconditions in general is justified by wanting to separate concerns and focus on one thing at a time. Thus this method may be readily applied by users who want to concentrate on more meaningful proof obligations, and is a valid tactic in their situation.
+	
+	\subsubsection{Bagmch\_relation} explores the possibilities given by the in-built notation and operations on relations and functions in the B language. This time the bag can contain multiple copies of an item. The content of the bag is realised as a partial function from \texttt{ITEMS} to positive integers. Recall that while in set theory functions are realised as sets of ordered pairs, which in this case means subset of $\texttt{ITEMS} \times \texttt{NAT1}$, in the B language they are sets of maplets, each one expressed as '\texttt{aa|->nn}' for some $\texttt{aa} \in \texttt{ITEMS}$ and some $\texttt{nn} \in \texttt{NAT1}$.
+	
+	The Invariant now looks as follows:
+	\begin{lstlisting}
+INVARIANT
+	content : ITEMS+->NAT1 &
+	dom(content) : FIN(ITEMS)
+	\end{lstlisting}
+
+	An item is listed in this function only if there is at least one present in the bag. As a result the add and remove item operations have to be split into cases. When adding an item, we can either increase the count if it is already in the bag, or we need to add it to the domain of \texttt{content}. Hence now the operation turns into:
+	\begin{lstlisting}
+additem(aa) =
+PRE
+	aa : ITEMS
+THEN
+	IF 
+		aa : dom(content) 
+	THEN
+		content := content 
+			<+ {aa|->content(aa)+1}
+	ELSE
+		content := content\/{aa|->1}
+	END
+END;
+	\end{lstlisting}
+	One can observe the syntax for maplets mentioned earlier, for functional override, denoted \texttt{<+}, and finally that \texttt{content} is still essentially a set, although its elements are now of a different form.
+	
+	Similarly the operation to remove an item is split into multiple cases. If there is more than one copy of the item in the bag, we decrease the count. If there is precisely one present, we remove the maplet '\texttt{aa|->1}' from the \texttt{content}. Finally, if there is none, the operation does nothing.
+	
+	Another operation which gets severely affected by this change to the definition of \texttt{content} is the operation returning the total number of items in the bag. At the abstract machine level, it is possible to use summation over a set. It is expressed as \verb=SIGMA(xx).(xx:dom(content)|content(xx))=. 
+	
+	Note that we cannot simply add all elements in the range of \texttt{content}, because if there are multiple elements appearing in the same quantity, their number will be added only once. That is, if \texttt{content = \{aa|->1, bb|->1\}}, then the range of this function is \texttt{ran(content) = \{1\}}, and summing over it will not give the correct result.
+	
+	This machine has 13 proof obligations generated, and only one of them is not discharged automatically. This came as a pleasant surprise, and indicates that the structures used are still relatively simple, for example in comparison to the enumerated set.
+	
+	The problematic proof obligation in fact points to an oversight in the initial abstract machine. Its goal is initially '\texttt{content<+\{aa|->content(aa)+1\}: ITEMS +-> NAT}' and the reason behind it may not be obvious at first, but running the automated prover on it narrows it down to: '\texttt{content(aa)<=2147483646}', the number being the value of the in-built \texttt{MAXINT} constant. Thus the prover is asking the user to make sure that the maximum implemented integer is not exceeded by adding an item.
+	
+	Hence the behaviour of the operation to add an item has to be restricted in the case when the count of an item in the bag is increased. Adding simply '\texttt{content(aa) < MAXINT}' is not sufficient, since it assumes that \texttt{aa} is in the domain of \texttt{content}, and leads to further difficulties. On the other adding a precondition just to one branch of an if-else statement is impossible. Hence we opt for writing the preconditions of this operation as:
+	\begin{lstlisting}
+aa: ITEMS &
+(aa: dom(content) => content(aa) < MAXINT)
+	\end{lstlisting}
+	Thus the additional condition applies only in the relevant branch.
+	
+	This machination results in an additional proof obligation generated, dealing with the well-definess of the preconditions to this operation. It is understandable, since the expression \texttt{content(aa)} is meaningful only if \texttt{aa} is in the domain of the function. 
+	
+	All of the 14 proof obligations which were generated this time, get demonstrated by the automated prover, without any input from the user.
+	
+	We further inspect the proof obligations generated for the operation involving the summation. There are two of them, and both are concerned with well-defineness conditions. The lack of proof obligations regarding the preservation of the Invariant is not unexpected, since this operation does not change the state of the machine. The first proof obligation checks that the summation is carried over a finite set. 
+	
+	The second contains a goal similar to those seen in the other well-defineness proof obligations for this machine, namely '\texttt{content: dom(content) +-> ran(content)}. Although this time it involves set comprehension, that is '\texttt{\{~xx | xx: dom(content)\}}', the meaning is the same. It appears to be a simple type check, to ensure that the structure is understood correctly.
+	
+	This machine gives an idea of what to expect when dealing with functions, although it is very simplistic and not problematic at all. We hope that even this insight will be useful in working on the second set of machines.
+	
+	\subsection{Summary}
+
+	
+\begin{table}[h]
+	\centering
+	\begin{tabular}
+		{|c|c|m{1cm}|m{1.7cm}|}
+		\hline
+		Section & Machine & Number of POs & POs requiring user action  \\ 
+		\hline 
+		 1. & Bagmch & 4 & 0  \\ 
+		 3. & Bagmch\_pre & 3 & 0 \\ 
+		 4. & Bagmch\_restrictive & 4 & 1 \\ 
+		 5. & Bagmch\_nondet & 4 & 0 \\ 
+		 5. & Bagmch\_nondet\_restrictive & 4 & 1 \\ 
+		 6. & Bagmch\_params & 4 & 0 \\ 
+		 7. & Bagmch\_long\_inv & 6 & 0 \\ 
+		 8. & Bagmch\_finite\_items & 4 & 1 \\ 
+		 9. & Bagmch\_constant\_set & 4 & 1 \\
+		10. & Bagmch\_constant\_set2 & 4 & 1 \\
+		11. & Bagmch\_limited & 9 & 0 \\
+		12. & Bagmch\_limited\_params & 9 & 0 \\
+		14. & Bagmch\_redundant & 21 & 4 \\
+		14. & Bagmch\_redundant2 & 21 & 0 \\
+		14. & Bagmch\_redundant3 & 30 & 0 \\
+		14. & Bagmch\_redundant\_reverse & 21 & 4 \\
+		14. & Bagmch\_redundant\_reverse2 & 30 & 0 \\
+		15. & Bagmch\_2sets & 20 & 0 \\
+		16. & Bagmch\_2sets\_1elem & 20 & 0 \\
+		17. & Bagmch\_2sets\_2elem & 22 & 0 \\
+		18. & Bagmch\_setops & 6 & 0 \\
+		19. & Bagmch\_enum & 8 & 6 \\
+		20. & Bagmch\_relation & 13 & 1 \\
+		\hline 
+
+	\end{tabular}
+			
+	\caption{List of machines which arose from the Bagmch scenario}
+\end{table}
+	The machines listed in Table 1 have been included in the attached archive containing the source code and user passes (where relevant). They are listed here for comparison, together with the number of proof obligations generated in the initial version of the machines, before the proof obligations were inspected in the interactive prover and before any changes were done to the code in order to decrease their numbers. Although in all examples we have managed to demonstrate all of them, in Table 1, we note which ones required the use of the interactive prover due to not all proof obligations being discharged automatically.
+	
+	Two machines were omitted from this list, because they were deliberately left with undischarged proof obligations which point to errors. They are listed in Table 2.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}
+			{|c|c|m{1cm}|m{1.7cm}|}
+			\hline
+			Section & Machine & Number of POs & Undischarged POs \\ 
+			\hline 
+			 2. & Bagmch\_unbounded & 4 & 1  \\ 
+			13. & Bagmch\_wrong\_order & 10 & 1\\ 
+			\hline 
+			
+		\end{tabular}
+		
+		\caption{List of machines which contain deliberate, illustrative errors}
+	\end{table}
 	\section{Queue, stack, and lists}
 	\subsection{Overview and motivation}
 	There are many data structures, which cannot be forced into the Bag machine scenario, and trying to do so would be overly contrived and lack clarity. We also stray from the idea of using an abstraction like the Bag, in order to make the reasoning simpler. Instead, we present a collection of machines which do not conform to a specific scenario, but instead focus on typical data structures in computer science in general.
@@ -802,13 +935,17 @@ DEFINITIONS
 		\item stack
 		\item linked list
 		\item doubly linked list
+		\item tree
+		\item binary tree
 	\end{itemize}
 	
 	These machines will make use of the functions and sequences as built into the B language, and will deliberately have more intricate relations between variables, and more complicated operations.
 	
 	Since they deal with data structures which we have not explored yet, we decided to use this opportunity to test how well our method of reducing the number of undischarged proof obligations works without prior knowledge and practice with the expressions involved. 
 	
-	To this end we keep two copies of each of the four machines listed above. The files marked with \emph{\_initial} show what the machines started as and how they changed thanks to the suggestions given by the interactive prover.
+	To this end we keep two copies of each of the six machines listed above. The files marked with \emph{\_initial} show what the machines started as and how they changed thanks to the suggestions given by the interactive prover.
+	
+	\subsection{Data structures machines}
 	
 	\subsection{Summary}
 	On one hand B method is fairly well suited for this task, due to it containing concise notation for relations, functions, and sequences. Thus implementing the structures themselves was straightforward. 

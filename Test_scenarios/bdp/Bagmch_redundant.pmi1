@@ -1,16 +1,16 @@
 ﻿THEORY BalanceX IS
-  Bagmch_redundant,21,0,0,21,0,0,0;
+  Bagmch_redundant,21,4,0,17,0,0,0;
   Initialisation,7,0,0,7,0,0,0;
   additem,7,0,0,7,0,0,0;
-  removeitem,7,0,0,7,0,0,0
+  removeitem,7,4,0,3,0,0,0
 END
 &
 THEORY ProofState IS
   Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
+  Proved(Util);
+  Proved(Util);
+  Proved(Util);
+  Proved(Util);
   Proved(0);
   Proved(0);
   Proved(0);
@@ -31,10 +31,10 @@ END
 &
 THEORY MethodList IS
   pr;
-  pr;
-  pr;
-  pr;
-  pr;
+  pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
+  pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
+  pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
+  pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
   pr;
   pr;
   pr;
@@ -55,10 +55,10 @@ END
 &
 THEORY PassList IS
   Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
   Force(0),?;
   Force(0),?;
   Force(0),?;

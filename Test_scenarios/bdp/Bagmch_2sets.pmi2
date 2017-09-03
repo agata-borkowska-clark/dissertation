@@ -1,14 +1,20 @@
 ﻿THEORY BalanceX IS
-  Bagmch_2sets,14,0,0,14,0,0,0;
-  Initialisation,2,0,0,2,0,0,0;
-  additem1,2,0,0,2,0,0,0;
-  additem2,2,0,0,2,0,0,0;
-  additemboth,4,0,0,4,0,0,0;
-  removeitem1,2,0,0,2,0,0,0;
-  removeitem2,2,0,0,2,0,0,0
+  Bagmch_2sets,20,0,0,20,0,0,0;
+  Initialisation,3,0,0,3,0,0,0;
+  additem1,3,0,0,3,0,0,0;
+  additem2,3,0,0,3,0,0,0;
+  additemboth,5,0,0,5,0,0,0;
+  removeitem1,3,0,0,3,0,0,0;
+  removeitem2,3,0,0,3,0,0,0
 END
 &
 THEORY ProofState IS
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
   Proved(0);
   Proved(0);
   Proved(0);
@@ -39,10 +45,22 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
   pr
 END
 &
 THEORY PassList IS
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
   Force(0),?;
   Force(0),?;
   Force(0),?;

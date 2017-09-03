@@ -1,62 +1,58 @@
-﻿/* Bagmch_enum_more_pos
+﻿/* Bagmch_nondet_restrictive
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 31/07/2017
+ * Creation date: 03/09/2017
  */
+
+ /* Like Bagmch_nondet, except add or remove item operations are never no-op*/
 MACHINE
-    Bagmch_enum_more_pos
+    Bagmch_nondet_restrictive
 
 SETS
     // possible items we can put in the bag
-    ITEMS = { FOO , BAR , BAZZ }
-
-
+    ITEMS
 ABSTRACT_VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content : FIN ( ITEMS ) & // it's a subset of ITEMS
-    card ( content ) <= 2     // it has at most max_elem elements
+    content : FIN ( ITEMS ) // content is a *finite* subset of ITEMS
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
-    /* Adds item aa to the bag, if there's space for it*/
-    additem ( aa ) =
-    PRE
-        aa : ITEMS & card ( content ) < 2
+    /* Adds item aa to the bag*/
+    additem =
+    ANY
+        aa
+    WHERE
+        aa : ITEMS - content
     THEN
         content := content \/ { aa }
     END ;
 
     /* removes aa from the bag (does nothing if aa not in the bag) */
-    removeitem ( aa ) =
+    removeitem =
     PRE
-        aa : ITEMS
+        not ( content = {} )
     THEN
-        content := content - { aa }
+        ANY
+            aa
+        WHERE
+            aa : content
+        THEN
+            content := content - { aa }
+        END
     END ;
 
     /* getter for the content*/
-    items <-- getcontents =
-    PRE
-        content <: ITEMS
-    THEN
-        items := content
-    END ;
+    items <-- getcontents = items := content ;
 
     /* query how many items are in the bag */
-    nn <-- howmany =
-    PRE
-        content <: ITEMS
-    THEN
-        nn := card ( content )
-    END ;
+    nn <-- howmany = nn := card ( content ) ;
 
     /* checks if the item aa is in the bag */
     check <-- isin ( aa ) =
     PRE
-        aa : ITEMS &
-        content <: ITEMS
+        aa : ITEMS
     THEN
         IF
             aa : content

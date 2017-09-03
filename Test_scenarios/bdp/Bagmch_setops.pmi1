@@ -2,7 +2,7 @@
   Bagmch_setops,6,0,0,6,0,0,0;
   Initialisation,2,0,0,2,0,0,0;
   additems,2,0,0,2,0,0,0;
-  removeitem,2,0,0,2,0,0,0
+  removeitems,2,0,0,2,0,0,0
 END
 &
 THEORY ProofState IS

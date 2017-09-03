@@ -31,10 +31,10 @@ END
 &
 THEORY MethodList IS
   pr;
-  pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
-  pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
-  pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
-  pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
+  dd & pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
+  dd & pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
+  dd & pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
+  dd & pr & ah(0<=max_elem-card(content-{aa})) & pr & pr & pr;
   pr;
   pr;
   pr;

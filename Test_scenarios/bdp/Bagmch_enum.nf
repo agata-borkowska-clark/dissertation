@@ -124,19 +124,19 @@ END
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Bagmch_enum),additem)==(aa: ITEMS);
-  List_Precondition(Machine(Bagmch_enum),removeitem)==(aa: ITEMS);
-  List_Precondition(Machine(Bagmch_enum),getcontents)==(btrue);
-  List_Precondition(Machine(Bagmch_enum),howmany)==(btrue);
-  List_Precondition(Machine(Bagmch_enum),isin)==(aa: ITEMS)
+  List_Precondition(Machine(Bagmch_enum),additem)==(aa: ITEMS & content: FIN(ITEMS));
+  List_Precondition(Machine(Bagmch_enum),removeitem)==(aa: ITEMS & content: FIN(ITEMS));
+  List_Precondition(Machine(Bagmch_enum),getcontents)==(content: FIN(ITEMS));
+  List_Precondition(Machine(Bagmch_enum),howmany)==(content: FIN(ITEMS));
+  List_Precondition(Machine(Bagmch_enum),isin)==(aa: ITEMS & content: FIN(ITEMS))
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(Bagmch_enum),isin)==(aa: ITEMS | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
-  Expanded_List_Substitution(Machine(Bagmch_enum),howmany)==(btrue | nn:=card(content));
-  Expanded_List_Substitution(Machine(Bagmch_enum),getcontents)==(btrue | items:=content);
-  Expanded_List_Substitution(Machine(Bagmch_enum),removeitem)==(aa: ITEMS | content:=content-{aa});
-  Expanded_List_Substitution(Machine(Bagmch_enum),additem)==(aa: ITEMS | content:=content\/{aa});
+  Expanded_List_Substitution(Machine(Bagmch_enum),isin)==(aa: ITEMS & content: FIN(ITEMS) | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
+  Expanded_List_Substitution(Machine(Bagmch_enum),howmany)==(content: FIN(ITEMS) | nn:=card(content));
+  Expanded_List_Substitution(Machine(Bagmch_enum),getcontents)==(content: FIN(ITEMS) | items:=content);
+  Expanded_List_Substitution(Machine(Bagmch_enum),removeitem)==(aa: ITEMS & content: FIN(ITEMS) | content:=content-{aa});
+  Expanded_List_Substitution(Machine(Bagmch_enum),additem)==(aa: ITEMS & content: FIN(ITEMS) | content:=content\/{aa});
   List_Substitution(Machine(Bagmch_enum),additem)==(content:=content\/{aa});
   List_Substitution(Machine(Bagmch_enum),removeitem)==(content:=content-{aa});
   List_Substitution(Machine(Bagmch_enum),getcontents)==(items:=content);

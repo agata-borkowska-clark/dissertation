@@ -1,9 +1,5 @@
 THEORY ProofList IS
-_f(1) & _f(2) & _f(5) & WellDefinedness_howmany.1,(_f(12) => _f(13));
-_f(1) & _f(2) & _f(5) & _f(6) & isin.2,(_f(11) & _f(3) => _f(9));
-_f(1) & _f(2) & _f(5) & _f(6) & isin.1,(_f(10) & _f(3) => _f(9));
-_f(1) & _f(2) & _f(5) & howmany.1,(_f(3) => _f(9));
-_f(1) & _f(2) & _f(5) & getcontents.1,(_f(3) => _f(9));
+_f(1) & _f(2) & _f(5) & _f(9) & WellDefinedness_howmany.1,(_f(13) => _f(14));
 _f(1) & _f(2) & _f(5) & _f(6) & removeitem.1,(_f(3) => _f(8));
 _f(1) & _f(2) & _f(5) & _f(6) & additem.1,(_f(3) => _f(7));
 _f(1) & _f(2) & Initialisation.1,(_f(3) => _f(4))
@@ -15,12 +11,13 @@ THEORY Formulas IS
 "Invariant is preserved";
 (({}) : (FIN(((1..3)*{ITEMS}))));
 ((content) : (FIN(ITEMS)));
-((aa) : (((1..3)*{ITEMS})));
+((aa) : (((1..3)*{ITEMS}))) & ((content) : (FIN(((1..3)*{ITEMS}))));
 ((((content) \/ ({aa}))) : (FIN(((1..3)*{ITEMS}))));
 (((content - {aa})) : (FIN(((1..3)*{ITEMS}))));
 ((content) : (FIN(((1..3)*{ITEMS}))));
 ((aa) : (content));
 not(((aa) : (content)));
+((aa) : (((1..3)*{ITEMS})));
 "Well definedness";
 ((content) : (FIN(content)))
 END

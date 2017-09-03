@@ -5,23 +5,20 @@
 </Set>
 </Sets>
 <Abstract_Variables>
-<Id value='content' typref='1870877538'/>
+<Id value='content' typref='301403634'/>
 </Abstract_Variables>
 <Invariant>
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
-<Id value='content' typref='1870877538'/>
-<Binary_Exp op='&gt;+&gt;' typref='719664375'>
+<Id value='content' typref='301403634'/>
+<Binary_Exp op='+-&gt;' typref='3903554065'>
 <Id value='ITEMS' typref='4185748219'/>
-<Nary_Exp op='{' typref='4282494527'>
-<Boolean_Literal value='TRUE' typref='2043437594'/>
-<Boolean_Literal value='FALSE' typref='2043437594'/>
-</Nary_Exp>
+<Id value='NAT' typref='3603043417'/>
 </Binary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
 <Unary_Exp op='dom' typref='4185748219'>
-<Id value='content' typref='1870877538'/>
+<Id value='content' typref='301403634'/>
 </Unary_Exp>
 <Unary_Exp op='FIN' typref='2852175944'>
 <Id value='ITEMS' typref='4185748219'/>
@@ -32,7 +29,7 @@
 <Initialisation>
 <Assignement_Sub>
 <Variables>
-<Id value='content' typref='1870877538'/>
+<Id value='content' typref='301403634'/>
 </Variables>
 <Values>
 <EmptySet typref='3817003670'/>
@@ -45,28 +42,81 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
+<Binary_Pred op='=&gt;'>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='1628806408'/>
+<Unary_Exp op='dom' typref='4185748219'>
+<Id value='content' typref='301403634'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='content' typref='301403634'/>
+<Id value='aa' typref='1628806408'/>
+</Binary_Exp>
+<Id value='MAXINT' typref='2701647786'/>
+</Exp_Comparison>
+</Binary_Pred>
+</Nary_Pred>
 </Precondition>
 <Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='1628806408'/>
+<Unary_Exp op='dom' typref='4185748219'>
+<Id value='content' typref='301403634'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Condition>
+<Then>
 <Assignement_Sub>
 <Variables>
-<Id value='content' typref='1870877538'/>
+<Id value='content' typref='301403634'/>
 </Variables>
 <Values>
-<Binary_Exp op='&lt;+' typref='1870877538'>
-<Id value='content' typref='1870877538'/>
-<Nary_Exp op='{' typref='1870877538'>
-<Binary_Exp op='|-&gt;' typref='208484023'>
+<Binary_Exp op='&lt;+' typref='301403634'>
+<Id value='content' typref='301403634'/>
+<Nary_Exp op='{' typref='301403634'>
+<Binary_Exp op='|-&gt;' typref='3217549649'>
 <Id value='aa' typref='1628806408'/>
-<Boolean_Literal value='TRUE' typref='2043437594'/>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='content' typref='301403634'/>
+<Id value='aa' typref='1628806408'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
 </Binary_Exp>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='content' typref='301403634'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='301403634'>
+<Id value='content' typref='301403634'/>
+<Nary_Exp op='{' typref='301403634'>
+<Binary_Exp op='|-&gt;' typref='3217549649'>
+<Id value='aa' typref='1628806408'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
 </Body>
 </Operation>
 <Operation name='removeitem'>
@@ -80,22 +130,71 @@
 </Exp_Comparison>
 </Precondition>
 <Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='1628806408'/>
+<Unary_Exp op='dom' typref='4185748219'>
+<Id value='content' typref='301403634'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Condition>
+<Then>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='&gt;'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='content' typref='301403634'/>
+<Id value='aa' typref='1628806408'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
 <Assignement_Sub>
 <Variables>
-<Id value='content' typref='1870877538'/>
+<Id value='content' typref='301403634'/>
 </Variables>
 <Values>
-<Binary_Exp op='&lt;+' typref='1870877538'>
-<Id value='content' typref='1870877538'/>
-<Nary_Exp op='{' typref='1870877538'>
-<Binary_Exp op='|-&gt;' typref='208484023'>
+<Binary_Exp op='&lt;+' typref='301403634'>
+<Id value='content' typref='301403634'/>
+<Nary_Exp op='{' typref='301403634'>
+<Binary_Exp op='|-&gt;' typref='3217549649'>
 <Id value='aa' typref='1628806408'/>
-<Boolean_Literal value='FALSE' typref='2043437594'/>
+<Binary_Exp op='-' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='content' typref='301403634'/>
+<Id value='aa' typref='1628806408'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
 </Binary_Exp>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='content' typref='301403634'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='301403634'>
+<Id value='content' typref='301403634'/>
+<Nary_Exp op='{' typref='301403634'>
+<Binary_Exp op='|-&gt;' typref='3217549649'>
+<Id value='aa' typref='1628806408'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Then>
+</If_Sub>
 </Body>
 </Operation>
 <Operation name='getcontents'>
@@ -108,20 +207,9 @@
 <Id value='items' typref='4185748219'/>
 </Variables>
 <Values>
-<Quantified_Set typref='4185748219'>
-<Variables>
-<Id value='xx' typref='1628806408'/>
-</Variables>
-<Body>
-<Exp_Comparison op=':'>
-<Binary_Exp op='|-&gt;'>
-<Id value='xx' typref='1628806408'/>
-<Boolean_Literal value='TRUE' typref='2043437594'/>
-</Binary_Exp>
-<Id value='content' typref='1870877538'/>
-</Exp_Comparison>
-</Body>
-</Quantified_Set>
+<Unary_Exp op='dom' typref='4185748219'>
+<Id value='content' typref='301403634'/>
+</Unary_Exp>
 </Values>
 </Assignement_Sub>
 </Body>
@@ -136,14 +224,25 @@
 <Id value='nn' typref='2701647786'/>
 </Variables>
 <Values>
-<Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='1870877538'>
-<Id value='content' typref='1870877538'/>
-<Nary_Exp op='{' typref='4282494527'>
-<Boolean_Literal value='TRUE' typref='2043437594'/>
-</Nary_Exp>
-</Binary_Exp>
+<Quantified_Exp type='SIGMA' typref='2701647786'>
+<Variables>
+<Id value='xx' typref='1628806408'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='xx' typref='1628806408'/>
+<Unary_Exp op='dom' typref='4185748219'>
+<Id value='content' typref='301403634'/>
 </Unary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='content' typref='301403634'/>
+<Id value='xx' typref='1628806408'/>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
 </Values>
 </Assignement_Sub>
 </Body>
@@ -165,11 +264,10 @@
 <If_Sub elseif='no'>
 <Condition>
 <Exp_Comparison op=':'>
-<Binary_Exp op='|-&gt;'>
 <Id value='aa' typref='1628806408'/>
-<Boolean_Literal value='TRUE' typref='2043437594'/>
-</Binary_Exp>
-<Id value='content' typref='1870877538'/>
+<Unary_Exp op='dom' typref='4185748219'>
+<Id value='content' typref='301403634'/>
+</Unary_Exp>
 </Exp_Comparison>
 </Condition>
 <Then>
@@ -202,31 +300,28 @@
 <Id value='ITEMS'/>
 </Unary_Exp>
 </Type>
-<Type id='1870877538'>
+<Type id='301403634'>
 <Unary_Exp op='POW'>
 <Binary_Exp op='*'>
 <Id value='ITEMS'/>
-<Id value='BOOL'/>
+<Id value='INTEGER'/>
 </Binary_Exp>
 </Unary_Exp>
 </Type>
-<Type id='719664375'>
+<Type id='3903554065'>
 <Unary_Exp op='POW'>
 <Unary_Exp op='POW'>
 <Binary_Exp op='*'>
 <Id value='ITEMS'/>
-<Id value='BOOL'/>
+<Id value='INTEGER'/>
 </Binary_Exp>
 </Unary_Exp>
 </Unary_Exp>
 </Type>
-<Type id='4282494527'>
+<Type id='3603043417'>
 <Unary_Exp op='POW'>
-<Id value='BOOL'/>
+<Id value='INTEGER'/>
 </Unary_Exp>
-</Type>
-<Type id='2043437594'>
-<Id value='BOOL'/>
 </Type>
 <Type id='2852175944'>
 <Unary_Exp op='POW'>
@@ -243,14 +338,17 @@
 <Type id='1628806408'>
 <Id value='ITEMS'/>
 </Type>
-<Type id='208484023'>
-<Binary_Exp op='*'>
-<Id value='ITEMS'/>
-<Id value='BOOL'/>
-</Binary_Exp>
-</Type>
 <Type id='2701647786'>
 <Id value='INTEGER'/>
+</Type>
+<Type id='3217549649'>
+<Binary_Exp op='*'>
+<Id value='ITEMS'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Type>
+<Type id='2043437594'>
+<Id value='BOOL'/>
 </Type>
 </TypeInfos>
 

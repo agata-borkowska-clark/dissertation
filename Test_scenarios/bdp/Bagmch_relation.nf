@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_relation))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_relation))==(btrue);
   Context_List_Invariant(Machine(Bagmch_relation))==(btrue);
-  List_Invariant(Machine(Bagmch_relation))==(content: ITEMS >+> {TRUE,FALSE} & dom(content): FIN(ITEMS))
+  List_Invariant(Machine(Bagmch_relation))==(content: ITEMS +-> NAT & dom(content): FIN(ITEMS))
 END
 &
 THEORY ListAssertionsX IS
@@ -124,7 +124,7 @@ END
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Bagmch_relation),additem)==(aa: ITEMS);
+  List_Precondition(Machine(Bagmch_relation),additem)==(aa: ITEMS & (aa: dom(content) => content(aa)<MAXINT));
   List_Precondition(Machine(Bagmch_relation),removeitem)==(aa: ITEMS);
   List_Precondition(Machine(Bagmch_relation),getcontents)==(btrue);
   List_Precondition(Machine(Bagmch_relation),howmany)==(btrue);
@@ -132,16 +132,16 @@ THEORY ListPreconditionX IS
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(Bagmch_relation),isin)==(aa: ITEMS | aa|->TRUE: content ==> check:=TRUE [] not(aa|->TRUE: content) ==> check:=FALSE);
-  Expanded_List_Substitution(Machine(Bagmch_relation),howmany)==(btrue | nn:=card(content|>{TRUE}));
-  Expanded_List_Substitution(Machine(Bagmch_relation),getcontents)==(btrue | items:={xx | xx|->TRUE: content});
-  Expanded_List_Substitution(Machine(Bagmch_relation),removeitem)==(aa: ITEMS | content:=content<+{aa|->FALSE});
-  Expanded_List_Substitution(Machine(Bagmch_relation),additem)==(aa: ITEMS | content:=content<+{aa|->TRUE});
-  List_Substitution(Machine(Bagmch_relation),additem)==(content:=content<+{aa|->TRUE});
-  List_Substitution(Machine(Bagmch_relation),removeitem)==(content:=content<+{aa|->FALSE});
-  List_Substitution(Machine(Bagmch_relation),getcontents)==(items:={xx | xx|->TRUE: content});
-  List_Substitution(Machine(Bagmch_relation),howmany)==(nn:=card(content|>{TRUE}));
-  List_Substitution(Machine(Bagmch_relation),isin)==(IF aa|->TRUE: content THEN check:=TRUE ELSE check:=FALSE END)
+  Expanded_List_Substitution(Machine(Bagmch_relation),isin)==(aa: ITEMS | aa: dom(content) ==> check:=TRUE [] not(aa: dom(content)) ==> check:=FALSE);
+  Expanded_List_Substitution(Machine(Bagmch_relation),howmany)==(btrue | nn:=SIGMA(xx).(xx: dom(content) | content(xx)));
+  Expanded_List_Substitution(Machine(Bagmch_relation),getcontents)==(btrue | items:=dom(content));
+  Expanded_List_Substitution(Machine(Bagmch_relation),removeitem)==(aa: ITEMS | aa: dom(content) ==> (content(aa)>1 ==> content:=content<+{aa|->content(aa)-1} [] not(content(aa)>1) ==> content:=content-{aa|->1}) [] not(aa: dom(content)) ==> skip);
+  Expanded_List_Substitution(Machine(Bagmch_relation),additem)==(aa: ITEMS & (aa: dom(content) => content(aa)<MAXINT) | aa: dom(content) ==> content:=content<+{aa|->content(aa)+1} [] not(aa: dom(content)) ==> content:=content\/{aa|->1});
+  List_Substitution(Machine(Bagmch_relation),additem)==(IF aa: dom(content) THEN content:=content<+{aa|->content(aa)+1} ELSE content:=content\/{aa|->1} END);
+  List_Substitution(Machine(Bagmch_relation),removeitem)==(IF aa: dom(content) THEN IF content(aa)>1 THEN content:=content<+{aa|->content(aa)-1} ELSE content:=content-{aa|->1} END END);
+  List_Substitution(Machine(Bagmch_relation),getcontents)==(items:=dom(content));
+  List_Substitution(Machine(Bagmch_relation),howmany)==(nn:=SIGMA(xx).(xx: dom(content) | content(xx)));
+  List_Substitution(Machine(Bagmch_relation),isin)==(IF aa: dom(content) THEN check:=TRUE ELSE check:=FALSE END)
 END
 &
 THEORY ListConstantsX IS
@@ -201,7 +201,7 @@ THEORY SetsEnvX IS
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Machine(Bagmch_relation)) == (Type(content) == Mvl(SetOf(atype(ITEMS,?,?)*btype(BOOL,?,?))))
+  Variables(Machine(Bagmch_relation)) == (Type(content) == Mvl(SetOf(atype(ITEMS,?,?)*btype(INTEGER,?,?))))
 END
 &
 THEORY OperationsEnvX IS
