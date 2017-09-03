@@ -20,18 +20,18 @@
 <Define merge="=" name="ctx"/>
 <Define merge="=" name="seext"/>
 <Define merge="-" name="inv">
-<Nary_Pred op="&amp;" translate="stack : NATURAL-{0} +-> ITEMS &amp; ((stack) : (seq(ITEMS))) &amp; stack : NATURAL-{0} +-> ran(stack) &amp; ((stack) : (seq(ran(stack))))">
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ITEMS)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1" typref="4176992498" value="stack"/>
+<Nary_Pred op="&amp;" translate="list : NATURAL-{0} +-> ITEMS &amp; ((list) : (seq(ITEMS))) &amp; list : NATURAL-{0} +-> ran(list) &amp; ((list) : (seq(ran(list))))">
+<Exp_Comparison op=":" initialTag="((list) : (seq(ITEMS)))">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1" typref="4176992498" value="list"/>
 <Unary_Exp op="seq" typref="1570666257">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ran(stack))))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:1" typref="4176992498" value="stack"/>
+<Exp_Comparison op=":" initialTag="((list) : (seq(ran(list))))">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:1" typref="4176992498" value="list"/>
 <Unary_Exp op="seq" typref="1570666257">
 <Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:2:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:2:1:1" typref="4176992498" value="list"/>
 </Unary_Exp>
 </Unary_Exp>
 </Exp_Comparison>
@@ -65,7 +65,7 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op=":" initialTag="((list) : (seq(ITEMS)))" goalTag="Invariant is preserved">
 <EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:4:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:4:1:1:1" typref="4176992498"/>
 <Unary_Exp op="seq" typref="1570666257">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
@@ -73,14 +73,14 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="1">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ran(stack))))" goalTag="Invariant is preserved">
+<Exp_Comparison op=":" initialTag="((list) : (seq(ran(list))))" goalTag="Invariant is preserved">
 <EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:4:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:4:1:1:1" typref="4176992498"/>
 <Unary_Exp op="seq" typref="1570666257">
 <Unary_Exp op="ran" typref="4185748219">
@@ -90,6 +90,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="-">
@@ -111,7 +112,7 @@
 <Binary_Exp op="-" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:1" typref="4185748219" value="ITEMS"/>
 <Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:2:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:2:1" typref="4176992498" value="list"/>
 </Unary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -124,9 +125,9 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op=":" initialTag="((list) : (seq(ITEMS)))" goalTag="Invariant is preserved">
 <Binary_Exp op="&lt;-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:1:1" typref="4176992498">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:1" typref="4176992498" value="list"/>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:2" typref="1628806408" value="aa"/>
 </Binary_Exp>
 <Unary_Exp op="seq" typref="1570666257">
@@ -135,22 +136,22 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="1">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ran(stack))))" goalTag="Invariant is preserved">
+<Exp_Comparison op=":" initialTag="((list) : (seq(ran(list))))" goalTag="Invariant is preserved">
 <Binary_Exp op="&lt;-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:1:1" typref="4176992498">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:1" typref="4176992498" value="list"/>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:2" typref="1628806408" value="aa"/>
 </Binary_Exp>
 <Unary_Exp op="seq" typref="1570666257">
 <Unary_Exp op="ran" typref="4185748219">
 <Binary_Exp op="&lt;-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:1:1" typref="4176992498">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:1" typref="4176992498" value="list"/>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:3:1:2:1:2" typref="1628806408" value="aa"/>
 </Binary_Exp>
 </Unary_Exp>
@@ -158,6 +159,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="-">
@@ -176,7 +178,7 @@
 <Hypothesis>
 <Exp_Comparison op=">">
 <Unary_Exp op="size" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:2:1:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:2:1:1:1" typref="4176992498" value="list"/>
 </Unary_Exp>
 <Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:2:1:2" typref="2701647786" value="0"/>
 </Exp_Comparison>
@@ -189,9 +191,9 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op=":" initialTag="((list) : (seq(ITEMS)))" goalTag="Invariant is preserved">
 <Unary_Exp op="front" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:1:1" typref="4176992498">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:2:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:2:1:1" typref="4176992498" value="list"/>
 </Unary_Exp>
 <Unary_Exp op="seq" typref="1570666257">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
@@ -199,21 +201,150 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
-<Simple_Goal merge="1">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ran(stack))))" goalTag="Invariant is preserved">
+<Exp_Comparison op=":" initialTag="((list) : (seq(ran(list))))" goalTag="Invariant is preserved">
 <Unary_Exp op="front" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:1:1" typref="4176992498">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:2:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:2:1:1" typref="4176992498" value="list"/>
 </Unary_Exp>
 <Unary_Exp op="seq" typref="1570666257">
 <Unary_Exp op="ran" typref="4185748219">
 <Unary_Exp op="front" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:1:1" typref="4176992498">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:2:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:2:2:1:1" typref="4176992498" value="list"/>
+</Unary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>enqueue</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:1" typref="1628806408" value="aa"/>
+<Binary_Exp op="-" typref="4185748219">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2:1" typref="4185748219" value="ITEMS"/>
+<Unary_Exp op="ran" typref="4185748219">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2:2:1" typref="4176992498" value="list"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((list) : (seq(ITEMS)))" goalTag="Invariant is preserved">
+<Binary_Exp op="&lt;-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:1:1" typref="4176992498">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:2:1:1" typref="4176992498" value="list"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:2:1:2" typref="1628806408" value="aa"/>
+</Binary_Exp>
+<Unary_Exp op="seq" typref="1570666257">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((list) : (seq(ran(list))))" goalTag="Invariant is preserved">
+<Binary_Exp op="&lt;-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:1:1" typref="4176992498">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:2:1:1" typref="4176992498" value="list"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:2:1:2" typref="1628806408" value="aa"/>
+</Binary_Exp>
+<Unary_Exp op="seq" typref="1570666257">
+<Unary_Exp op="ran" typref="4185748219">
+<Binary_Exp op="&lt;-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:1:1" typref="4176992498">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:2:1:1" typref="4176992498" value="list"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:3:1:2:1:2" typref="1628806408" value="aa"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>dequeue</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=">">
+<Unary_Exp op="size" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:2:1:1:1" typref="4176992498" value="list"/>
+</Unary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:2:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((list) : (seq(ITEMS)))" goalTag="Invariant is preserved">
+<Unary_Exp op="tail" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:3:1:2:1:1" typref="4176992498">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:3:1:2:2:1:1" typref="4176992498" value="list"/>
+</Unary_Exp>
+<Unary_Exp op="seq" typref="1570666257">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((list) : (seq(ran(list))))" goalTag="Invariant is preserved">
+<Unary_Exp op="tail" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:3:1:2:1:1" typref="4176992498">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:3:1:2:2:1:1" typref="4176992498" value="list"/>
+</Unary_Exp>
+<Unary_Exp op="seq" typref="1570666257">
+<Unary_Exp op="ran" typref="4185748219">
+<Unary_Exp op="tail" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:2:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:3:1:2:1:1" typref="4176992498">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:3:1:2:2:1:1" typref="4176992498" value="list"/>
 </Unary_Exp>
 </Unary_Exp>
 </Unary_Exp>
@@ -246,8 +377,8 @@
 <Definition name="inext"/>
 <Definition name="seext"/>
 <Local_Hyp num="1">
-<Exp_Comparison op=":" initialTag="((stack) : (seq(ITEMS)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1" typref="4176992498" value="stack"/>
+<Exp_Comparison op=":" initialTag="((list) : (seq(ITEMS)))">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:1" typref="4176992498" value="list"/>
 <Unary_Exp op="seq" typref="1570666257">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
@@ -308,7 +439,7 @@
 <Binary_Exp op="-" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:1" typref="4185748219" value="ITEMS"/>
 <Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:2:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:2:1" typref="4176992498" value="list"/>
 </Unary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -344,17 +475,104 @@
 <Hypothesis>
 <Exp_Comparison op=">">
 <Unary_Exp op="size" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:2:1:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:2:1:1:1" typref="4176992498" value="list"/>
 </Unary_Exp>
 <Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:2:1:2" typref="2701647786" value="0"/>
 </Exp_Comparison>
 </Hypothesis>
-<Simple_Goal merge="0">
+<Simple_Goal merge="">
 <Tag>Well definedness</Tag>
 <Goal>
 <Unary_Pred op="not">
 <Exp_Comparison op="=">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:1:2:1:1" typref="4176992498" value="stack"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:2:3:1:1:2:1:1" typref="4176992498" value="list"/>
+<EmptySet/>
+</Exp_Comparison>
+</Unary_Pred>
+</Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_enqueue</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_enqueue</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:1" typref="1628806408" value="aa"/>
+<Binary_Exp op="-" typref="4185748219">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2:1" typref="4185748219" value="ITEMS"/>
+<Unary_Exp op="ran" typref="4185748219">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2:2:1" typref="4176992498" value="list"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_dequeue</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_dequeue</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=">">
+<Unary_Exp op="size" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:2:1:1:1" typref="4176992498" value="list"/>
+</Unary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:2:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Hypothesis>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:4:3:1:1:2:1:1" typref="4176992498" value="list"/>
 <EmptySet/>
 </Exp_Comparison>
 </Unary_Pred>

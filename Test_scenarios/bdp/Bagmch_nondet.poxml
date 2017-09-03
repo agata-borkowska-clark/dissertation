@@ -98,7 +98,7 @@
 <Pred>
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:2" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Pred>
 <Then>
@@ -146,34 +146,29 @@
 <Definition name="seext"/>
 <Definition name="inv"/>
 <Definition name="ass"/>
-<Hypothesis>
-<Exp_Comparison op="/=">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1" typref="4185748219" value="content"/>
-<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2" typref="4185748219"/>
-</Exp_Comparison>
-</Hypothesis>
+<Hypothesis/>
 <Goal>
 <Sub_Calculus>
 <ANY_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1:1" typref="1628806408" value="aa"/>
 </Variables>
 <Pred>
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:2:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:2:1:2" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Pred>
 <Then>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:3:1:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:3:1:1:1" typref="4185748219" value="content"/>
 </Variables>
 <Values>
 <Binary_Exp op="-" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:3:1:2:1:1" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:3:1:2:1:1" typref="4185748219" value="content"/>
 <Nary_Exp op="{" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:3:1:2:1:2:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
@@ -469,7 +464,7 @@
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:2" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
@@ -498,12 +493,7 @@
 <Definition name="ass"/>
 <Goal>
 <Tag goalTag="Well definedness">
-<Nary_Pred op="&amp;">
-<Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
-</Nary_Pred>
 </Tag>
 </Goal>
 </Proof_Obligation>
@@ -520,18 +510,13 @@
 <Definition name="seext"/>
 <Definition name="inv"/>
 <Definition name="ass"/>
-<Hypothesis>
-<Exp_Comparison op="/=">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1" typref="4185748219" value="content"/>
-<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2" typref="4185748219"/>
-</Exp_Comparison>
-</Hypothesis>
+<Hypothesis/>
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
 <Quantified_Pred type="!">
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1:1" typref="1628806408" value="aa"/>
 </Variables>
 <Body>
 <Binary_Pred op="&amp;">
@@ -540,8 +525,8 @@
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:2:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:2:1:2" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">

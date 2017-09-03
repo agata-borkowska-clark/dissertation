@@ -1,6 +1,6 @@
-﻿THEORY User_Pass IS
+THEORY User_Pass IS
 Operation(Initialisation) & ff(0) & pr;
 Operation(additem) & ff(0) & pr;
-Operation(WellDefinedness_howmany) & ff(0) & pr;
-Operation(removeitem) & ff(0) & dd & pr & ah(content <: ITEMS) & pr & pr
+Operation(WellDefinedness_howmany) & ff(0) & pr
+
 END

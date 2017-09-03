@@ -10,11 +10,9 @@
 </Abstract_Variables>
 <Invariant>
 <Nary_Pred op='&amp;'>
-<Exp_Comparison op=':'>
+<Exp_Comparison op='&lt;:'>
 <Id value='content1' typref='4185748219'/>
-<Unary_Exp op='POW' typref='2852175944'>
 <Id value='ITEMS' typref='4185748219'/>
-</Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='content1' typref='4185748219'/>
@@ -22,11 +20,9 @@
 <Id value='content1' typref='4185748219'/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=':'>
+<Exp_Comparison op='&lt;:'>
 <Id value='content2' typref='4185748219'/>
-<Unary_Exp op='POW' typref='2852175944'>
 <Id value='ITEMS' typref='4185748219'/>
-</Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='content2' typref='4185748219'/>
@@ -34,14 +30,12 @@
 <Id value='content2' typref='4185748219'/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=':'>
+<Exp_Comparison op='&lt;:'>
 <Binary_Exp op='\/' typref='4185748219'>
 <Id value='content1' typref='4185748219'/>
 <Id value='content2' typref='4185748219'/>
 </Binary_Exp>
-<Unary_Exp op='POW' typref='2852175944'>
 <Id value='ITEMS' typref='4185748219'/>
-</Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
 </Invariant>

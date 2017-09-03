@@ -37,9 +37,9 @@ THEORY ListVariablesX IS
   External_Context_List_Variables(Machine(Queuemch_stack))==(?);
   Context_List_Variables(Machine(Queuemch_stack))==(?);
   Abstract_List_Variables(Machine(Queuemch_stack))==(?);
-  Local_List_Variables(Machine(Queuemch_stack))==(stack);
-  List_Variables(Machine(Queuemch_stack))==(stack);
-  External_List_Variables(Machine(Queuemch_stack))==(stack)
+  Local_List_Variables(Machine(Queuemch_stack))==(list);
+  List_Variables(Machine(Queuemch_stack))==(list);
+  External_List_Variables(Machine(Queuemch_stack))==(list)
 END
 &
 THEORY ListVisibleVariablesX IS
@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Queuemch_stack))==(btrue);
   Abstract_List_Invariant(Machine(Queuemch_stack))==(btrue);
   Context_List_Invariant(Machine(Queuemch_stack))==(btrue);
-  List_Invariant(Machine(Queuemch_stack))==(stack: seq(ITEMS) & stack: seq(ran(stack)))
+  List_Invariant(Machine(Queuemch_stack))==(list: seq(ITEMS) & list: seq(ran(list)))
 END
 &
 THEORY ListAssertionsX IS
@@ -76,9 +76,9 @@ THEORY ListExclusivityX IS
 END
 &
 THEORY ListInitialisationX IS
-  Expanded_List_Initialisation(Machine(Queuemch_stack))==(stack:=<>);
+  Expanded_List_Initialisation(Machine(Queuemch_stack))==(list:=<>);
   Context_List_Initialisation(Machine(Queuemch_stack))==(skip);
-  List_Initialisation(Machine(Queuemch_stack))==(stack:=<>)
+  List_Initialisation(Machine(Queuemch_stack))==(list:=<>)
 END
 &
 THEORY ListParametersX IS
@@ -93,37 +93,49 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Queuemch_stack))==(push,pop);
-  List_Operations(Machine(Queuemch_stack))==(push,pop)
+  Internal_List_Operations(Machine(Queuemch_stack))==(push,pop,enqueue,dequeue);
+  List_Operations(Machine(Queuemch_stack))==(push,pop,enqueue,dequeue)
 END
 &
 THEORY ListInputX IS
   List_Input(Machine(Queuemch_stack),push)==(aa);
-  List_Input(Machine(Queuemch_stack),pop)==(?)
+  List_Input(Machine(Queuemch_stack),pop)==(?);
+  List_Input(Machine(Queuemch_stack),enqueue)==(aa);
+  List_Input(Machine(Queuemch_stack),dequeue)==(?)
 END
 &
 THEORY ListOutputX IS
   List_Output(Machine(Queuemch_stack),push)==(?);
-  List_Output(Machine(Queuemch_stack),pop)==(aa)
+  List_Output(Machine(Queuemch_stack),pop)==(aa);
+  List_Output(Machine(Queuemch_stack),enqueue)==(?);
+  List_Output(Machine(Queuemch_stack),dequeue)==(aa)
 END
 &
 THEORY ListHeaderX IS
   List_Header(Machine(Queuemch_stack),push)==(push(aa));
-  List_Header(Machine(Queuemch_stack),pop)==(aa <-- pop)
+  List_Header(Machine(Queuemch_stack),pop)==(aa <-- pop);
+  List_Header(Machine(Queuemch_stack),enqueue)==(enqueue(aa));
+  List_Header(Machine(Queuemch_stack),dequeue)==(aa <-- dequeue)
 END
 &
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Queuemch_stack),push)==(aa: ITEMS-ran(stack));
-  List_Precondition(Machine(Queuemch_stack),pop)==(size(stack)>0)
+  List_Precondition(Machine(Queuemch_stack),push)==(aa: ITEMS-ran(list));
+  List_Precondition(Machine(Queuemch_stack),pop)==(size(list)>0);
+  List_Precondition(Machine(Queuemch_stack),enqueue)==(aa: ITEMS-ran(list));
+  List_Precondition(Machine(Queuemch_stack),dequeue)==(size(list)>0)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(Queuemch_stack),pop)==(size(stack)>0 | aa,stack:=last(stack),front(stack));
-  Expanded_List_Substitution(Machine(Queuemch_stack),push)==(aa: ITEMS-ran(stack) | stack:=stack<-aa);
-  List_Substitution(Machine(Queuemch_stack),push)==(stack:=stack<-aa);
-  List_Substitution(Machine(Queuemch_stack),pop)==(aa:=last(stack) || stack:=front(stack))
+  Expanded_List_Substitution(Machine(Queuemch_stack),dequeue)==(size(list)>0 | aa,list:=first(list),tail(list));
+  Expanded_List_Substitution(Machine(Queuemch_stack),enqueue)==(aa: ITEMS-ran(list) | list:=list<-aa);
+  Expanded_List_Substitution(Machine(Queuemch_stack),pop)==(size(list)>0 | aa,list:=last(list),front(list));
+  Expanded_List_Substitution(Machine(Queuemch_stack),push)==(aa: ITEMS-ran(list) | list:=list<-aa);
+  List_Substitution(Machine(Queuemch_stack),push)==(list:=list<-aa);
+  List_Substitution(Machine(Queuemch_stack),pop)==(aa:=last(list) || list:=front(list));
+  List_Substitution(Machine(Queuemch_stack),enqueue)==(list:=list<-aa);
+  List_Substitution(Machine(Queuemch_stack),dequeue)==(aa:=first(list) || list:=tail(list))
 END
 &
 THEORY ListConstantsX IS
@@ -164,11 +176,13 @@ THEORY ListSeenInfoX END
 &
 THEORY ListANYVarX IS
   List_ANY_Var(Machine(Queuemch_stack),push)==(?);
-  List_ANY_Var(Machine(Queuemch_stack),pop)==(?)
+  List_ANY_Var(Machine(Queuemch_stack),pop)==(?);
+  List_ANY_Var(Machine(Queuemch_stack),enqueue)==(?);
+  List_ANY_Var(Machine(Queuemch_stack),dequeue)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Queuemch_stack)) == (ITEMS | ? | stack | ? | push,pop | ? | ? | ? | Queuemch_stack);
+  List_Of_Ids(Machine(Queuemch_stack)) == (ITEMS | ? | list | ? | push,pop,enqueue,dequeue | ? | ? | ? | Queuemch_stack);
   List_Of_HiddenCst_Ids(Machine(Queuemch_stack)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Queuemch_stack)) == (?);
   List_Of_VisibleVar_Ids(Machine(Queuemch_stack)) == (? | ?);
@@ -180,11 +194,11 @@ THEORY SetsEnvX IS
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Machine(Queuemch_stack)) == (Type(stack) == Mvl(SetOf(btype(INTEGER,?,?)*atype(ITEMS,?,?))))
+  Variables(Machine(Queuemch_stack)) == (Type(list) == Mvl(SetOf(btype(INTEGER,?,?)*atype(ITEMS,?,?))))
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Queuemch_stack)) == (Type(pop) == Cst(atype(ITEMS,?,?),No_type);Type(push) == Cst(No_type,atype(ITEMS,?,?)))
+  Operations(Machine(Queuemch_stack)) == (Type(dequeue) == Cst(atype(ITEMS,?,?),No_type);Type(enqueue) == Cst(No_type,atype(ITEMS,?,?));Type(pop) == Cst(atype(ITEMS,?,?),No_type);Type(push) == Cst(No_type,atype(ITEMS,?,?)))
 END
 &
 THEORY TCIntRdX IS

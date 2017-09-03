@@ -35,7 +35,7 @@
 <Pred>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
-<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
 </Pred>
 <Then>
@@ -57,12 +57,6 @@
 </Body>
 </Operation>
 <Operation name='removeitem'>
-<Precondition>
-<Exp_Comparison op='/='>
-<Id value='content' typref='4185748219'/>
-<EmptySet typref='4185748219'/>
-</Exp_Comparison>
-</Precondition>
 <Body>
 <ANY_Sub>
 <Variables>
@@ -71,7 +65,7 @@
 <Pred>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
-<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
 </Pred>
 <Then>

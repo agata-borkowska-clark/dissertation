@@ -20,20 +20,12 @@
 <Define merge="=" name="ctx"/>
 <Define merge="=" name="seext"/>
 <Define merge="-" name="inv">
-<Nary_Pred op="&amp;" translate="((content) : (FIN(ITEMS))) &amp; ((content) : (FIN(ITEMS)))">
-<Exp_Comparison op=":" initialTag="((content) : (FIN(ITEMS)))" translate="((content) : (FIN(ITEMS)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
+<Exp_Comparison op=":" translate="((content) : (FIN(ITEMS)))">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1" initialTag="content" typref="4185748219" value="content"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((content) : (FIN(ITEMS)))" translate="((content) : (FIN(ITEMS)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:2:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:2:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
-</Exp_Comparison>
-</Nary_Pred>
 </Define>
 <Define merge="=" name="ass"/>
 <Define merge="=" name="lprp">
@@ -63,15 +55,15 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content) : (FIN(ITEMS)))" goalTag="Invariant is preserved">
-<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:4:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:4:1:1:1" typref="4185748219"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
+<Exp_Comparison op=":" goalTag="Invariant is preserved">
+<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:4:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:4:1:1:1" typref="4185748219"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="-">
@@ -101,20 +93,20 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content) : (FIN(ITEMS)))" goalTag="Invariant is preserved">
-<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:5:1:3:1:1:1" typref="4185748219">
+<Exp_Comparison op=":" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:5:1:3:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:5:1:3:1:2:1:1" typref="4185748219" value="content"/>
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:5:1:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="-">
@@ -144,20 +136,20 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content) : (FIN(ITEMS)))" goalTag="Invariant is preserved">
-<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:5:2:3:1:1:1" typref="4185748219">
+<Exp_Comparison op=":" goalTag="Invariant is preserved">
+<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:5:2:3:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:5:2:3:1:2:1:1" typref="4185748219" value="content"/>
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:5:2:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
+<Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="-">
@@ -259,14 +251,6 @@
 <Definition name="inprp"/>
 <Definition name="inext"/>
 <Definition name="seext"/>
-<Local_Hyp num="1">
-<Exp_Comparison op=":" initialTag="((content) : (FIN(ITEMS)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:1" typref="4185748219" value="content"/>
-<Unary_Exp op="FIN" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
-</Exp_Comparison>
-</Local_Hyp>
 </Proof_Obligation>
 <Proof_Obligation merge="-">
 <Tag>WellDefinednessAssertions</Tag>

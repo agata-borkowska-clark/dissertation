@@ -28,7 +28,7 @@ OPERATIONS
     END;
     
     /* removes aa from the bag (does nothing if aa not in the bag) */
-    removeitem(aa) =
+    removeitems(aa) =
     PRE
         aa : FIN(ITEMS)
     THEN

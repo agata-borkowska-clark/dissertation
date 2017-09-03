@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch_enum_more_pos))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch_enum_more_pos))==(btrue);
   Context_List_Invariant(Machine(Bagmch_enum_more_pos))==(btrue);
-  List_Invariant(Machine(Bagmch_enum_more_pos))==(content <: ITEMS & content: FIN(content))
+  List_Invariant(Machine(Bagmch_enum_more_pos))==(content: FIN(ITEMS) & card(content)<=2)
 END
 &
 THEORY ListAssertionsX IS
@@ -124,8 +124,8 @@ END
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Bagmch_enum_more_pos),additem)==(aa: ITEMS & content: FIN(ITEMS));
-  List_Precondition(Machine(Bagmch_enum_more_pos),removeitem)==(aa: ITEMS & content <: ITEMS);
+  List_Precondition(Machine(Bagmch_enum_more_pos),additem)==(aa: ITEMS & card(content)<2);
+  List_Precondition(Machine(Bagmch_enum_more_pos),removeitem)==(aa: ITEMS);
   List_Precondition(Machine(Bagmch_enum_more_pos),getcontents)==(content <: ITEMS);
   List_Precondition(Machine(Bagmch_enum_more_pos),howmany)==(content <: ITEMS);
   List_Precondition(Machine(Bagmch_enum_more_pos),isin)==(aa: ITEMS & content <: ITEMS)
@@ -135,8 +135,8 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Bagmch_enum_more_pos),isin)==(aa: ITEMS & content <: ITEMS | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
   Expanded_List_Substitution(Machine(Bagmch_enum_more_pos),howmany)==(content <: ITEMS | nn:=card(content));
   Expanded_List_Substitution(Machine(Bagmch_enum_more_pos),getcontents)==(content <: ITEMS | items:=content);
-  Expanded_List_Substitution(Machine(Bagmch_enum_more_pos),removeitem)==(aa: ITEMS & content <: ITEMS | content:=content-{aa});
-  Expanded_List_Substitution(Machine(Bagmch_enum_more_pos),additem)==(aa: ITEMS & content: FIN(ITEMS) | content:=content\/{aa});
+  Expanded_List_Substitution(Machine(Bagmch_enum_more_pos),removeitem)==(aa: ITEMS | content:=content-{aa});
+  Expanded_List_Substitution(Machine(Bagmch_enum_more_pos),additem)==(aa: ITEMS & card(content)<2 | content:=content\/{aa});
   List_Substitution(Machine(Bagmch_enum_more_pos),additem)==(content:=content\/{aa});
   List_Substitution(Machine(Bagmch_enum_more_pos),removeitem)==(content:=content-{aa});
   List_Substitution(Machine(Bagmch_enum_more_pos),getcontents)==(items:=content);

@@ -85,7 +85,7 @@
 <Local_Hyp num="2">
 <Exp_Comparison op=":">
 <Id suffix="" tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:2" typref="4185748219" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:1:1:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Local_Hyp>
 <Simple_Goal>
@@ -124,19 +124,14 @@
 <Definition name="seext"/>
 <Definition name="inv"/>
 <Definition name="ass"/>
-<Hypothesis>
-<Exp_Comparison op="/=">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1" typref="4185748219" value="content"/>
-<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2" typref="4185748219"/>
-</Exp_Comparison>
-</Hypothesis>
+<Hypothesis/>
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
 <Local_Hyp num="2">
 <Exp_Comparison op=":">
-<Id suffix="" tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:1:1" typref="1628806408" value="aa"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:2:1:2" typref="4185748219" value="content"/>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1:1" typref="1628806408" value="aa"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Local_Hyp>
 <Simple_Goal>
@@ -148,10 +143,10 @@
 <Ref_Hyp num="1"/>
 </Nary_Pred>
 <Exp_Comparison op=":" goalTag="Invariant is preserved">
-<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:3:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:3:1:1:1" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:3:1:2:1:1" typref="4185748219" value="content"/>
+<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:3:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:3:1:1:1" typref="4185748219">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:3:1:2:1:1" typref="4185748219" value="content"/>
 <Nary_Exp op="{" typref="4185748219">
-<Id suffix="" tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:3:1:2:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:2:1:1:1" typref="1628806408" value="aa"/>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:3:1:2:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
 <Unary_Exp op="FIN" initialTag="FIN(ITEMS)" typref="2852175944">
@@ -339,12 +334,7 @@
 <Definition name="seext"/>
 <Definition name="inv"/>
 <Definition name="ass"/>
-<Hypothesis>
-<Exp_Comparison op="/=">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:1" typref="4185748219" value="content"/>
-<EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_nondet.bxml:1:5:2:1:1:2" typref="4185748219"/>
-</Exp_Comparison>
-</Hypothesis>
+<Hypothesis/>
 </Proof_Obligation>
 <Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>

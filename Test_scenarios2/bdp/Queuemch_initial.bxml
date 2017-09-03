@@ -1,0 +1,140 @@
+<Machine name='Queuemch_initial' type='abstraction'>
+<Sets>
+<Set>
+<Id value='ITEMS' typref='4185748219'/>
+</Set>
+</Sets>
+<Abstract_Variables>
+<Id value='queue' typref='4176992498'/>
+</Abstract_Variables>
+<Invariant>
+<Exp_Comparison op=':'>
+<Id value='queue' typref='4176992498'/>
+<Unary_Exp op='iseq' typref='1570666257'>
+<Id value='ITEMS' typref='4185748219'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='queue' typref='4176992498'/>
+</Variables>
+<Values>
+<EmptySeq typref='691476402'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='enqueue'>
+<Input_Parameters>
+<Id value='aa' typref='1628806408'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='1628806408'/>
+<Binary_Exp op='-' typref='4185748219'>
+<Id value='ITEMS' typref='4185748219'/>
+<Unary_Exp op='ran' typref='4185748219'>
+<Id value='queue' typref='4176992498'/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='queue' typref='4176992498'/>
+</Variables>
+<Values>
+<Binary_Exp op='&lt;-' typref='4176992498'>
+<Id value='queue' typref='4176992498'/>
+<Id value='aa' typref='1628806408'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='dequeue'>
+<Output_Parameters>
+<Id value='aa' typref='1628806408'/>
+</Output_Parameters>
+<Precondition>
+<Exp_Comparison op='&gt;'>
+<Unary_Exp op='size' typref='2701647786'>
+<Id value='queue' typref='4176992498'/>
+</Unary_Exp>
+<Integer_Literal value='0' typref='2701647786'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='aa' typref='1628806408'/>
+</Variables>
+<Values>
+<Unary_Exp op='first' typref='1628806408'>
+<Id value='queue' typref='4176992498'/>
+</Unary_Exp>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='queue' typref='4176992498'/>
+</Variables>
+<Values>
+<Unary_Exp op='tail' typref='4176992498'>
+<Id value='queue' typref='4176992498'/>
+</Unary_Exp>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='4185748219'>
+<Unary_Exp op='POW'>
+<Id value='ITEMS'/>
+</Unary_Exp>
+</Type>
+<Type id='4176992498'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='ITEMS'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1570666257'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='ITEMS'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='691476402'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Id value='ITEMS'/>
+</Unary_Exp>
+</Unary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1628806408'>
+<Id value='ITEMS'/>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+</TypeInfos>
+
+</Machine>

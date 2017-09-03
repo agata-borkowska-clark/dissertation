@@ -8,26 +8,43 @@ MACHINE
 SETS
     ITEMS
 VARIABLES
-    stack
+    list
 INVARIANT
-    stack : seq(ITEMS) &
-    stack : seq(ran(stack)) // fixes well-defineness
+    list : seq(ITEMS) &
+    list : seq(ran(list)) // fixes well-defineness
 INITIALISATION
-    stack := <>
+    list := <>
 OPERATIONS
+    /* stack operations */
     push(aa) = 
     PRE
-        aa : ITEMS-ran(stack)
+        aa : ITEMS-ran(list)
     THEN
-        stack := stack <- aa
+        list := list <- aa
     END;
     
     aa <-- pop = 
     PRE
-        size(stack) > 0
+        size(list) > 0
     THEN
-        aa := last(stack) ||
-        stack := front(stack)
+        aa := last(list) ||
+        list := front(list)
+    END;
+
+    /* queue operations */
+    enqueue(aa) = 
+    PRE
+        aa : ITEMS-ran(list)
+    THEN
+        list := list <- aa
+    END;
+    
+    aa <-- dequeue = 
+    PRE
+        size(list) > 0
+    THEN
+        aa := first(list) ||
+        list := tail(list)
     END
 END
 

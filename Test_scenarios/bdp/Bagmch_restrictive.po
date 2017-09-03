@@ -1,0 +1,25 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(5) & WellDefinedness_howmany.1,(_f(12) => _f(13));
+_f(1) & _f(2) & _f(5) & _f(8) & removeitem.1,(_f(3) => _f(9));
+_f(1) & _f(2) & _f(5) & _f(6) & additem.1,(_f(3) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) => _f(4))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+"Invariant is preserved";
+(({}) : (FIN(ITEMS)));
+((content) : (FIN(ITEMS)));
+((aa) : ((ITEMS - content)));
+((((content) \/ ({aa}))) : (FIN(ITEMS)));
+((aa) : (content));
+(((content - {aa})) : (FIN(ITEMS)));
+((aa) : (ITEMS));
+not(((aa) : (content)));
+"Well definedness";
+((content) : (FIN(content)))
+END
+&
+THEORY EnumerateX
+END

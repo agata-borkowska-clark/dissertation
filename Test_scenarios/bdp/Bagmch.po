@@ -1,23 +1,21 @@
 THEORY ProofList IS
-_f(1) & _f(2) & _f(6) & WellDefinedness_howmany.1,(_f(13) => _f(14));
-_f(1) & _f(2) & _f(6) & _f(7) & removeitem.1,(_f(3) & _f(4) => _f(9));
-_f(1) & _f(2) & _f(6) & _f(7) & additem.1,(_f(3) & _f(4) => _f(8));
-_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+_f(1) & _f(2) & _f(5) & WellDefinedness_howmany.1,(_f(11) => _f(12));
+_f(1) & _f(2) & _f(5) & _f(6) & removeitem.1,(_f(3) => _f(8));
+_f(1) & _f(2) & _f(5) & _f(6) & additem.1,(_f(3) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) => _f(4))
 END
 &
 THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
 ITEMS: FIN(INTEGER) & not(ITEMS = {});
 "Invariant is preserved";
-"Check invariant ((content) : (FIN(ITEMS)))";
 (({}) : (FIN(ITEMS)));
-((content) : (FIN(ITEMS))) & ((content) : (FIN(ITEMS)));
+((content) : (FIN(ITEMS)));
 ((aa) : (ITEMS));
 ((((content) \/ ({aa}))) : (FIN(ITEMS)));
 (((content - {aa})) : (FIN(ITEMS)));
 ((aa) : (content));
 not(((aa) : (content)));
-((content) : (FIN(ITEMS)));
 "Well definedness";
 ((content) : (FIN(content)))
 END

@@ -93,13 +93,13 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Bagmch_setops))==(additems,removeitem,getcontents,howmany,isin);
-  List_Operations(Machine(Bagmch_setops))==(additems,removeitem,getcontents,howmany,isin)
+  Internal_List_Operations(Machine(Bagmch_setops))==(additems,removeitems,getcontents,howmany,isin);
+  List_Operations(Machine(Bagmch_setops))==(additems,removeitems,getcontents,howmany,isin)
 END
 &
 THEORY ListInputX IS
   List_Input(Machine(Bagmch_setops),additems)==(aa);
-  List_Input(Machine(Bagmch_setops),removeitem)==(aa);
+  List_Input(Machine(Bagmch_setops),removeitems)==(aa);
   List_Input(Machine(Bagmch_setops),getcontents)==(?);
   List_Input(Machine(Bagmch_setops),howmany)==(?);
   List_Input(Machine(Bagmch_setops),isin)==(aa)
@@ -107,7 +107,7 @@ END
 &
 THEORY ListOutputX IS
   List_Output(Machine(Bagmch_setops),additems)==(?);
-  List_Output(Machine(Bagmch_setops),removeitem)==(?);
+  List_Output(Machine(Bagmch_setops),removeitems)==(?);
   List_Output(Machine(Bagmch_setops),getcontents)==(items);
   List_Output(Machine(Bagmch_setops),howmany)==(nn);
   List_Output(Machine(Bagmch_setops),isin)==(check)
@@ -115,7 +115,7 @@ END
 &
 THEORY ListHeaderX IS
   List_Header(Machine(Bagmch_setops),additems)==(additems(aa));
-  List_Header(Machine(Bagmch_setops),removeitem)==(removeitem(aa));
+  List_Header(Machine(Bagmch_setops),removeitems)==(removeitems(aa));
   List_Header(Machine(Bagmch_setops),getcontents)==(items <-- getcontents);
   List_Header(Machine(Bagmch_setops),howmany)==(nn <-- howmany);
   List_Header(Machine(Bagmch_setops),isin)==(check <-- isin(aa))
@@ -125,7 +125,7 @@ THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
   List_Precondition(Machine(Bagmch_setops),additems)==(aa: FIN(ITEMS));
-  List_Precondition(Machine(Bagmch_setops),removeitem)==(aa: FIN(ITEMS));
+  List_Precondition(Machine(Bagmch_setops),removeitems)==(aa: FIN(ITEMS));
   List_Precondition(Machine(Bagmch_setops),getcontents)==(btrue);
   List_Precondition(Machine(Bagmch_setops),howmany)==(btrue);
   List_Precondition(Machine(Bagmch_setops),isin)==(aa: ITEMS)
@@ -135,10 +135,10 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Bagmch_setops),isin)==(aa: ITEMS | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
   Expanded_List_Substitution(Machine(Bagmch_setops),howmany)==(btrue | nn:=card(content));
   Expanded_List_Substitution(Machine(Bagmch_setops),getcontents)==(btrue | items:=content);
-  Expanded_List_Substitution(Machine(Bagmch_setops),removeitem)==(aa: FIN(ITEMS) | content:=content-aa);
+  Expanded_List_Substitution(Machine(Bagmch_setops),removeitems)==(aa: FIN(ITEMS) | content:=content-aa);
   Expanded_List_Substitution(Machine(Bagmch_setops),additems)==(aa: FIN(ITEMS) | content:=content\/aa);
   List_Substitution(Machine(Bagmch_setops),additems)==(content:=content\/aa);
-  List_Substitution(Machine(Bagmch_setops),removeitem)==(content:=content-aa);
+  List_Substitution(Machine(Bagmch_setops),removeitems)==(content:=content-aa);
   List_Substitution(Machine(Bagmch_setops),getcontents)==(items:=content);
   List_Substitution(Machine(Bagmch_setops),howmany)==(nn:=card(content));
   List_Substitution(Machine(Bagmch_setops),isin)==(IF aa: content THEN check:=TRUE ELSE check:=FALSE END)
@@ -182,14 +182,14 @@ THEORY ListSeenInfoX END
 &
 THEORY ListANYVarX IS
   List_ANY_Var(Machine(Bagmch_setops),additems)==(?);
-  List_ANY_Var(Machine(Bagmch_setops),removeitem)==(?);
+  List_ANY_Var(Machine(Bagmch_setops),removeitems)==(?);
   List_ANY_Var(Machine(Bagmch_setops),getcontents)==(?);
   List_ANY_Var(Machine(Bagmch_setops),howmany)==(?);
   List_ANY_Var(Machine(Bagmch_setops),isin)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Bagmch_setops)) == (ITEMS | ? | content | ? | additems,removeitem,getcontents,howmany,isin | ? | ? | ? | Bagmch_setops);
+  List_Of_Ids(Machine(Bagmch_setops)) == (ITEMS | ? | content | ? | additems,removeitems,getcontents,howmany,isin | ? | ? | ? | Bagmch_setops);
   List_Of_HiddenCst_Ids(Machine(Bagmch_setops)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Bagmch_setops)) == (?);
   List_Of_VisibleVar_Ids(Machine(Bagmch_setops)) == (? | ?);
@@ -205,7 +205,7 @@ THEORY VariablesEnvX IS
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Bagmch_setops)) == (Type(isin) == Cst(btype(BOOL,?,?),atype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(atype(ITEMS,?,?)),No_type);Type(removeitem) == Cst(No_type,SetOf(atype(ITEMS,?,?)));Type(additems) == Cst(No_type,SetOf(atype(ITEMS,?,?))));
+  Operations(Machine(Bagmch_setops)) == (Type(isin) == Cst(btype(BOOL,?,?),atype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(atype(ITEMS,?,?)),No_type);Type(removeitems) == Cst(No_type,SetOf(atype(ITEMS,?,?)));Type(additems) == Cst(No_type,SetOf(atype(ITEMS,?,?))));
   Observers(Machine(Bagmch_setops)) == (Type(isin) == Cst(btype(BOOL,?,?),atype(ITEMS,?,?));Type(howmany) == Cst(btype(INTEGER,?,?),No_type);Type(getcontents) == Cst(SetOf(atype(ITEMS,?,?)),No_type))
 END
 &

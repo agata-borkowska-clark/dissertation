@@ -15,7 +15,7 @@ END
 &
 THEORY MethodList IS
   pr;
-  dd & ah(content <: ITEMS & aa: content => aa: ITEMS) & pr & pr & ah(aa: ITEMS => ITEMS = ITEMS\/{aa}) & pr & pr & ah(aa: ITEMS) & pr & ah(content <: ITEMS) & pr & pr & pr & ah(aa: ITEMS) & pr & pr;
+  dd & pr & ah(content <: ITEMS) & pr & pr;
   pr;
   pr
 END

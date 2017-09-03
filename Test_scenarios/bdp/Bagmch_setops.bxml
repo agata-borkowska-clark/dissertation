@@ -58,7 +58,7 @@
 </Assignement_Sub>
 </Body>
 </Operation>
-<Operation name='removeitem'>
+<Operation name='removeitems'>
 <Input_Parameters>
 <Id value='aa' typref='4185748219'/>
 </Input_Parameters>

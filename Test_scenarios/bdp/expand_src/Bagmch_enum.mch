@@ -12,56 +12,36 @@ ABSTRACT_VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content <: ITEMS & // it's a subset of ITEMS
-    content : FIN ( content ) // FIX
-    //card(content) <= max_elem // it has at most max_elem elements
+    content : FIN ( ITEMS ) // it's a subset of ITEMS
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
     /* Adds item aa to the bag, if there's space for it*/
     additem ( aa ) =
     PRE
-        aa : ITEMS &
-        content <: ITEMS // FIX
+        aa : ITEMS
     THEN
-//        IF
-//            // only add item if we won't exceed the limit
-//            card(content) < max_elem
-//        THEN
-            content := content \/ { aa }
-//        END
+        content := content \/ { aa }
     END ;
 
     /* removes aa from the bag (does nothing if aa not in the bag) */
     removeitem ( aa ) =
     PRE
-        aa : ITEMS &
-        content <: ITEMS // FIX
+        aa : ITEMS
     THEN
         content := content - { aa }
     END ;
 
     /* getter for the content*/
-    items <-- getcontents =
-    PRE
-        content <: ITEMS // FIX
-    THEN
-        items := content
-    END ;
+    items <-- getcontents = items := content ;
 
     /* query how many items are in the bag */
-    nn <-- howmany =
-    PRE
-        content <: ITEMS // FIX
-    THEN
-        nn := card ( content )
-    END ;
+    nn <-- howmany = nn := card ( content ) ;
 
     /* checks if the item aa is in the bag */
     check <-- isin ( aa ) =
     PRE
-        aa : ITEMS &
-        content <: ITEMS // FIX
+        aa : ITEMS
     THEN
         IF
             aa : content

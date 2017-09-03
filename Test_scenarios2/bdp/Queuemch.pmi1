@@ -1,17 +1,17 @@
 ﻿THEORY BalanceX IS
-  Queuemch,7,0,0,4,0,0,0;
+  Queuemch,7,0,0,6,0,0,0;
   Initialisation,2,0,0,2,0,0,0;
   WellDefinedness_dequeue,1,0,0,1,0,0,0;
-  dequeue,2,0,0,1,0,0,0;
-  enqueue,2,0,0,0,0,0,0
+  dequeue,2,0,0,2,0,0,0;
+  enqueue,2,0,0,1,0,0,0
 END
 &
 THEORY ProofState IS
   Proved(0);
   Proved(0);
+  Proved(0);
   Unproved;
-  Unproved;
-  Unproved;
+  Proved(0);
   Proved(0);
   Proved(0)
 END
@@ -19,9 +19,9 @@ END
 THEORY MethodList IS
   pr;
   pr;
-  ?;
-  ?;
-  ?;
+  pr;
+  dd(1);
+  pr;
   pr;
   pr
 END
@@ -29,9 +29,9 @@ END
 THEORY PassList IS
   Force(0),?;
   Force(0),?;
+  Force(0),?;
   Force(0),(?;0;1);
-  Force(0),(?;0;1);
-  Force(0),(?;0;1);
+  Force(0),?;
   Force(0),?;
   Force(0),?
 END

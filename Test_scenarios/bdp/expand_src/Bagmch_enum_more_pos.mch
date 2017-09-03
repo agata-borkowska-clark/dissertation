@@ -9,40 +9,29 @@ MACHINE
 SETS
     // possible items we can put in the bag
     ITEMS = { FOO , BAR , BAZZ }
-//CONSTANTS
-//    // max number of items that fits in the bag
-//    max_elem
-//PROPERTIES
-//    max_elem = 2
+DEFINITIONS
+    max_elem == 2
 ABSTRACT_VARIABLES
     // contents of the bag
     content
 INVARIANT
-    content <: ITEMS & // it's a subset of ITEMS
-    content : FIN ( content ) // FIX
-//    card(content) <= max_elem // it has at most max_elem elements
+    content : FIN ( ITEMS ) & // it's a subset of ITEMS
+    card ( content ) <= max_elem // it has at most max_elem elements
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS
     /* Adds item aa to the bag, if there's space for it*/
     additem ( aa ) =
     PRE
-        aa : ITEMS &
-        content : FIN ( ITEMS ) // FIX
+        aa : ITEMS & card ( content ) < max_elem
     THEN
-//        IF
-//            // only add item if we won't exceed the limit
-//            card(content) < max_elem
-//        THEN
-            content := content \/ { aa }
-//        END
+        content := content \/ { aa }
     END ;
 
     /* removes aa from the bag (does nothing if aa not in the bag) */
     removeitem ( aa ) =
     PRE
-        aa : ITEMS &
-        content <: ITEMS // FIX
+        aa : ITEMS
     THEN
         content := content - { aa }
     END ;

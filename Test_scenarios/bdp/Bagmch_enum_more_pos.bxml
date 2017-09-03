@@ -14,15 +14,17 @@
 </Abstract_Variables>
 <Invariant>
 <Nary_Pred op='&amp;'>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='content' typref='4185748219'/>
 <Unary_Exp op='FIN' typref='2852175944'>
+<Id value='ITEMS' typref='4185748219'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
 <Id value='content' typref='4185748219'/>
 </Unary_Exp>
+<Integer_Literal value='2' typref='2701647786'/>
 </Exp_Comparison>
 </Nary_Pred>
 </Invariant>
@@ -47,11 +49,11 @@
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
-<Exp_Comparison op=':'>
+<Exp_Comparison op='&lt;'>
+<Unary_Exp op='card' typref='2701647786'>
 <Id value='content' typref='4185748219'/>
-<Unary_Exp op='FIN' typref='2852175944'>
-<Id value='ITEMS' typref='4185748219'/>
 </Unary_Exp>
+<Integer_Literal value='2' typref='2701647786'/>
 </Exp_Comparison>
 </Nary_Pred>
 </Precondition>
@@ -76,16 +78,10 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
-<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
-</Nary_Pred>
 </Precondition>
 <Body>
 <Assignement_Sub>
@@ -214,13 +210,13 @@
 </Unary_Exp>
 </Unary_Exp>
 </Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
 <Type id='3817003670'>
 <Unary_Exp op='POW'>
 <Generic_Type/>
 </Unary_Exp>
-</Type>
-<Type id='2701647786'>
-<Id value='INTEGER'/>
 </Type>
 <Type id='2043437594'>
 <Id value='BOOL'/>

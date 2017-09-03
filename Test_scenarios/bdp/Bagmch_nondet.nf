@@ -125,7 +125,7 @@ THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
   List_Precondition(Machine(Bagmch_nondet),additem)==(btrue);
-  List_Precondition(Machine(Bagmch_nondet),removeitem)==(content/={});
+  List_Precondition(Machine(Bagmch_nondet),removeitem)==(btrue);
   List_Precondition(Machine(Bagmch_nondet),getcontents)==(btrue);
   List_Precondition(Machine(Bagmch_nondet),howmany)==(btrue);
   List_Precondition(Machine(Bagmch_nondet),isin)==(aa: ITEMS)
@@ -135,10 +135,10 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Bagmch_nondet),isin)==(aa: ITEMS | aa: content ==> check:=TRUE [] not(aa: content) ==> check:=FALSE);
   Expanded_List_Substitution(Machine(Bagmch_nondet),howmany)==(btrue | nn:=card(content));
   Expanded_List_Substitution(Machine(Bagmch_nondet),getcontents)==(btrue | items:=content);
-  Expanded_List_Substitution(Machine(Bagmch_nondet),removeitem)==(content/={} | @aa.(aa: content ==> content:=content-{aa}));
-  Expanded_List_Substitution(Machine(Bagmch_nondet),additem)==(btrue | @aa.(aa: content ==> content:=content\/{aa}));
-  List_Substitution(Machine(Bagmch_nondet),additem)==(ANY aa WHERE aa: content THEN content:=content\/{aa} END);
-  List_Substitution(Machine(Bagmch_nondet),removeitem)==(ANY aa WHERE aa: content THEN content:=content-{aa} END);
+  Expanded_List_Substitution(Machine(Bagmch_nondet),removeitem)==(btrue | @aa.(aa: ITEMS ==> content:=content-{aa}));
+  Expanded_List_Substitution(Machine(Bagmch_nondet),additem)==(btrue | @aa.(aa: ITEMS ==> content:=content\/{aa}));
+  List_Substitution(Machine(Bagmch_nondet),additem)==(ANY aa WHERE aa: ITEMS THEN content:=content\/{aa} END);
+  List_Substitution(Machine(Bagmch_nondet),removeitem)==(ANY aa WHERE aa: ITEMS THEN content:=content-{aa} END);
   List_Substitution(Machine(Bagmch_nondet),getcontents)==(items:=content);
   List_Substitution(Machine(Bagmch_nondet),howmany)==(nn:=card(content));
   List_Substitution(Machine(Bagmch_nondet),isin)==(IF aa: content THEN check:=TRUE ELSE check:=FALSE END)

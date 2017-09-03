@@ -19,13 +19,11 @@
 </Define>
 <Define merge="=" name="ctx"/>
 <Define merge="=" name="seext"/>
-<Define merge="+" name="inv">
-<Nary_Pred op="&amp;" translate="((content1) : (POW(ITEMS))) &amp; ((content1) : (FIN(content1))) &amp; ((content2) : (POW(ITEMS))) &amp; ((content2) : (FIN(content2))) &amp; ((((content1) \/ (content2))) : (POW(ITEMS)))">
-<Exp_Comparison op=":" initialTag="((content1) : (POW(ITEMS)))">
+<Define merge="-" name="inv">
+<Nary_Pred op="&amp;" translate="content1 : POW( ITEMS) &amp; ((content1) : (FIN(content1))) &amp; content2 : POW( ITEMS) &amp; ((content2) : (FIN(content2))) &amp; ((content1) \/ (content2)) : POW( ITEMS)">
+<Exp_Comparison op="&lt;:" initialTag="content1 : POW( ITEMS)">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:1" typref="4185748219" value="content1"/>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content1) : (FIN(content1)))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:2:1" typref="4185748219" value="content1"/>
@@ -33,11 +31,9 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:2:2:1" typref="4185748219" value="content1"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((content2) : (POW(ITEMS)))">
+<Exp_Comparison op="&lt;:" initialTag="content2 : POW( ITEMS)">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:1" typref="4185748219" value="content2"/>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Exp_Comparison op=":" initialTag="((content2) : (FIN(content2)))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:4:1" typref="4185748219" value="content2"/>
@@ -45,14 +41,12 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:4:2:1" typref="4185748219" value="content2"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((((content1) \/ (content2))) : (POW(ITEMS)))" translate="((((content1) \/ (content2))) : (POW(ITEMS)))">
+<Exp_Comparison op="&lt;:" initialTag="((content1) \/ (content2)) : POW( ITEMS)">
 <Binary_Exp op="\/" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:1" typref="4185748219" value="content1"/>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:2" typref="4185748219" value="content2"/>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
@@ -79,19 +73,18 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content1) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="content1 : POW( ITEMS)" goalTag="Invariant is preserved">
 <EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:4:1:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:4:1:1:1:1" typref="4185748219"/>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
@@ -112,21 +105,19 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((((content1) \/ (content2))) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="((content1) \/ (content2)) : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" typref="4185748219">
 <EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:4:1:1:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:4:1:1:1:1" typref="4185748219"/>
 <EmptySet tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:4:1:2:2:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:2,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:4:1:2:1:1" typref="4185748219"/>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>additem1</Tag>
 <Tag>INVARIANT</Tag>
@@ -148,24 +139,23 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content1) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="content1 : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:1:3:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:1:3:1:2:1:1" typref="4185748219" value="content1"/>
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:1:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
@@ -196,7 +186,7 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((((content1) \/ (content2))) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="((content1) \/ (content2)) : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" typref="4185748219">
 <Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:1:3:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:1:3:1:2:1:1" typref="4185748219" value="content1"/>
@@ -206,16 +196,14 @@
 </Binary_Exp>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:2" typref="4185748219" value="content2"/>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>additem2</Tag>
 <Tag>INVARIANT</Tag>
@@ -237,24 +225,23 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content2) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="content2 : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:2:3:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:2:3:1:2:1:1" typref="4185748219" value="content2"/>
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:2:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
@@ -285,7 +272,7 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((((content1) \/ (content2))) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="((content1) \/ (content2)) : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:1" typref="4185748219" value="content1"/>
 <Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:2,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:2:3:1:1:1" typref="4185748219">
@@ -295,16 +282,14 @@
 </Nary_Exp>
 </Binary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>additemboth</Tag>
 <Tag>INVARIANT</Tag>
@@ -326,24 +311,23 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content1) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="content1 : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:3:3:1:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:3:3:1:1:2:1:1" typref="4185748219" value="content1" fixed="false"/>
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:3:3:1:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
@@ -369,24 +353,23 @@
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
-<Simple_Goal merge="2">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content2) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="content2 : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:3:3:1:2:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:3:3:1:2:2:1:1" typref="4185748219" value="content2"/>
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:3:3:1:2:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="3">
 <Tag>Invariant is preserved</Tag>
@@ -417,7 +400,7 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((((content1) \/ (content2))) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="((content1) \/ (content2)) : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" typref="4185748219">
 <Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:3:3:1:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:3:3:1:1:2:1:1" typref="4185748219" value="content1" fixed="false"/>
@@ -432,16 +415,14 @@
 </Nary_Exp>
 </Binary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>removeitem1</Tag>
 <Tag>INVARIANT</Tag>
@@ -463,24 +444,23 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content1) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="content1 : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:4:3:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:4:3:1:2:1:1" typref="4185748219" value="content1"/>
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:4:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
@@ -511,7 +491,7 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((((content1) \/ (content2))) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="((content1) \/ (content2)) : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" typref="4185748219">
 <Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:4:3:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:4:3:1:2:1:1" typref="4185748219" value="content1"/>
@@ -521,16 +501,14 @@
 </Binary_Exp>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:2" typref="4185748219" value="content2"/>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>removeitem2</Tag>
 <Tag>INVARIANT</Tag>
@@ -552,24 +530,23 @@
 <Local_Hyp num="1">
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
-<Simple_Goal merge="0">
+<Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((content2) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="content2 : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:1,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:5:3:1:1:1" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:5:3:1:2:1:1" typref="4185748219" value="content2"/>
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:5:3:1:2:1:2:1" typref="1628806408" value="aa"/>
 </Nary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="1">
 <Tag>Invariant is preserved</Tag>
@@ -600,7 +577,7 @@
 <Goal>
 <Binary_Pred op="=>">
 <Ref_Hyp num="1"/>
-<Exp_Comparison op=":" initialTag="((((content1) \/ (content2))) : (POW(ITEMS)))" goalTag="Invariant is preserved">
+<Exp_Comparison op="&lt;:" initialTag="((content1) \/ (content2)) : POW( ITEMS)" goalTag="Invariant is preserved">
 <Binary_Exp op="\/" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:1" typref="4185748219" value="content1"/>
 <Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:1:2,D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:5:5:3:1:1:1" typref="4185748219">
@@ -610,16 +587,14 @@
 </Nary_Exp>
 </Binary_Exp>
 </Binary_Exp>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:5:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -637,7 +612,7 @@
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -655,7 +630,7 @@
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>isin</Tag>
 <Tag>INVARIANT</Tag>
@@ -739,11 +714,9 @@
 </Exp_Comparison>
 </Local_Hyp>
 <Local_Hyp num="2">
-<Exp_Comparison op=":" initialTag="((content2) : (POW(ITEMS)))">
+<Exp_Comparison op="&lt;:" initialTag="content2 : POW( ITEMS)">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:1" typref="4185748219" value="content2"/>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:3:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Local_Hyp>
 <Local_Hyp num="3">
@@ -755,15 +728,13 @@
 </Exp_Comparison>
 </Local_Hyp>
 <Local_Hyp num="4">
-<Exp_Comparison op=":" initialTag="((content1) : (POW(ITEMS)))">
+<Exp_Comparison op="&lt;:" initialTag="content1 : POW( ITEMS)">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:1" typref="4185748219" value="content1"/>
-<Unary_Exp op="POW" typref="2852175944">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
-</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios\bdp\Bagmch_2sets.bxml:1:3:1:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Tag>WellDefinednessAssertions</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -784,7 +755,7 @@
 <Definition name="inext"/>
 <Definition name="seext"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_additem1</Tag>
 <Tag>INVARIANT</Tag>
@@ -798,7 +769,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_additem1</Tag>
 <Tag>INVARIANT</Tag>
@@ -818,7 +789,7 @@
 </Exp_Comparison>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_additem2</Tag>
 <Tag>INVARIANT</Tag>
@@ -832,7 +803,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_additem2</Tag>
 <Tag>INVARIANT</Tag>
@@ -852,7 +823,7 @@
 </Exp_Comparison>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_additemboth</Tag>
 <Tag>INVARIANT</Tag>
@@ -866,7 +837,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_additemboth</Tag>
 <Tag>INVARIANT</Tag>
@@ -886,7 +857,7 @@
 </Exp_Comparison>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_removeitem1</Tag>
 <Tag>INVARIANT</Tag>
@@ -900,7 +871,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_removeitem1</Tag>
 <Tag>INVARIANT</Tag>
@@ -920,7 +891,7 @@
 </Exp_Comparison>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_removeitem2</Tag>
 <Tag>INVARIANT</Tag>
@@ -934,7 +905,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_removeitem2</Tag>
 <Tag>INVARIANT</Tag>
@@ -954,7 +925,7 @@
 </Exp_Comparison>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -968,7 +939,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_getcontents</Tag>
 <Tag>INVARIANT</Tag>
@@ -983,7 +954,7 @@
 <Definition name="ass"/>
 <Hypothesis/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -997,7 +968,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_howmany</Tag>
 <Tag>INVARIANT</Tag>
@@ -1012,7 +983,7 @@
 <Definition name="ass"/>
 <Hypothesis/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_isin</Tag>
 <Tag>INVARIANT</Tag>
@@ -1026,7 +997,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="+">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_isin</Tag>
 <Tag>INVARIANT</Tag>

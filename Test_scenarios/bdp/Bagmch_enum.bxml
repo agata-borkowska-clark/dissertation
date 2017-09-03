@@ -13,18 +13,12 @@
 <Id value='content' typref='4185748219'/>
 </Abstract_Variables>
 <Invariant>
-<Nary_Pred op='&amp;'>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='content' typref='4185748219'/>
 <Unary_Exp op='FIN' typref='2852175944'>
-<Id value='content' typref='4185748219'/>
+<Id value='ITEMS' typref='4185748219'/>
 </Unary_Exp>
 </Exp_Comparison>
-</Nary_Pred>
 </Invariant>
 <Initialisation>
 <Assignement_Sub>
@@ -42,16 +36,10 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
-<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
-</Nary_Pred>
 </Precondition>
 <Body>
 <Assignement_Sub>
@@ -74,16 +62,10 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
-<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
-</Nary_Pred>
 </Precondition>
 <Body>
 <Assignement_Sub>
@@ -105,12 +87,6 @@
 <Output_Parameters>
 <Id value='items' typref='4185748219'/>
 </Output_Parameters>
-<Precondition>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
-</Precondition>
 <Body>
 <Assignement_Sub>
 <Variables>
@@ -126,12 +102,6 @@
 <Output_Parameters>
 <Id value='nn' typref='2701647786'/>
 </Output_Parameters>
-<Precondition>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
-</Precondition>
 <Body>
 <Assignement_Sub>
 <Variables>
@@ -153,16 +123,10 @@
 <Id value='aa' typref='1628806408'/>
 </Input_Parameters>
 <Precondition>
-<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
 <Id value='ITEMS' typref='4185748219'/>
 </Exp_Comparison>
-<Exp_Comparison op='&lt;:'>
-<Id value='content' typref='4185748219'/>
-<Id value='ITEMS' typref='4185748219'/>
-</Exp_Comparison>
-</Nary_Pred>
 </Precondition>
 <Body>
 <If_Sub elseif='no'>

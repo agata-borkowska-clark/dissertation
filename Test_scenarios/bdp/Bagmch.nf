@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Bagmch))==(btrue);
   Abstract_List_Invariant(Machine(Bagmch))==(btrue);
   Context_List_Invariant(Machine(Bagmch))==(btrue);
-  List_Invariant(Machine(Bagmch))==(content: FIN(ITEMS) & content: FIN(ITEMS))
+  List_Invariant(Machine(Bagmch))==(content: FIN(ITEMS))
 END
 &
 THEORY ListAssertionsX IS

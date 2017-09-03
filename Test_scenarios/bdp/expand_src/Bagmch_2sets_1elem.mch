@@ -3,6 +3,9 @@
  * UID: 1690550
  * Creation date: 29/08/2017
  */
+
+ /* Like in Bagmch_2sets, we maintain two bags simultaneously, 
+ and explore variations of the Initialisation.*/
 MACHINE
     Bagmch_2sets_1elem
 SETS
@@ -12,11 +15,11 @@ ABSTRACT_VARIABLES
     // contents of the bag
     content1 , content2
 INVARIANT
-    content1 : POW ( ITEMS ) &
+    content1 <: ITEMS &
     content1 : FIN ( content1 ) &
-    content2 : POW ( ITEMS ) &
+    content2 <: ITEMS &
     content2 : FIN ( content2 ) &
-    content1 \/ content2 : POW ( ITEMS )
+    content1 \/ content2 <: ITEMS
 INITIALISATION
     ANY
         xx

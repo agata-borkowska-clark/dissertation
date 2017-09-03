@@ -23,23 +23,19 @@ OPERATIONS
     ANY
         aa
     WHERE
-        aa : content
+        aa : ITEMS
     THEN
         content := content \/ { aa }
     END ;
 
     /* removes aa from the bag (does nothing if aa not in the bag) */
     removeitem =
-    PRE
-        content /= {}
+    ANY
+        aa
+    WHERE
+        aa : ITEMS
     THEN
-        ANY
-            aa
-        WHERE
-            aa : content
-        THEN
-            content := content - { aa }
-        END
+        content := content - { aa }
     END ;
 
     /* getter for the content*/

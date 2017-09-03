@@ -14,6 +14,9 @@
         <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_2sets_1elem" suffix="mch" user="Agata">
             <component name="Bagmch_2sets_1elem" type="specification" />
         </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_2sets_2elem" suffix="mch" user="Agata">
+            <component name="Bagmch_2sets_2elem" type="specification" />
+        </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_constant_set" suffix="mch" user="Agata">
             <component name="Bagmch_constant_set" type="specification" />
         </component_file>
@@ -73,6 +76,9 @@
         </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_relation" suffix="mch" user="Agata">
             <component name="Bagmch_relation" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_restrictive" suffix="mch" user="Agata">
+            <component name="Bagmch_restrictive" type="specification" />
         </component_file>
         <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_setops" suffix="mch" user="Agata">
             <component name="Bagmch_setops" type="specification" />

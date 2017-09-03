@@ -1,28 +1,28 @@
 ﻿THEORY BalanceX IS
-  Bagmch_nondet,4,1,0,3,0,0,0;
+  Bagmch_nondet,4,0,0,4,0,0,0;
   Initialisation,1,0,0,1,0,0,0;
   WellDefinedness_howmany,1,0,0,1,0,0,0;
   additem,1,0,0,1,0,0,0;
-  removeitem,1,1,0,0,0,0,0
+  removeitem,1,0,0,1,0,0,0
 END
 &
 THEORY ProofState IS
   Proved(0);
-  Proved(Util);
+  Proved(0);
   Proved(0);
   Proved(0)
 END
 &
 THEORY MethodList IS
   pr;
-  dd & pr & ah(content <: ITEMS) & pr & pr;
+  pr;
   pr;
   pr
 END
 &
 THEORY PassList IS
   Force(0),?;
-  Force(0),(?;0);
+  Force(0),?;
   Force(0),?;
   Force(0),?
 END

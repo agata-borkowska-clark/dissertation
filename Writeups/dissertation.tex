@@ -450,11 +450,48 @@
 	INVARIANT
 		content <: ITEMS
 	\end{lstlisting}
-	This machine generates the same four proof obligations as the reference machine, however the last one remains undischarged by the automated prover and correctly points the user to a problem in the abstract machine. 
-	
+	This machine generates the same four proof obligations as the reference machine, however the last one remains undischarged by the automated prover and correctly points the user to a problem in the abstract machine.
+
 	\subsubsection{Bagmch\_pre} shows a workaround the well-defineness proof obligation in the previous example. It results in one fewer proof obligation than the reference \emph{Bagmch}, as putting the goal of the well-defineness proof obligation in the pre-condition of the related operation prevents the proof obligation from being generated.
 	
-	While it is a way to avoid dealing with a potentially tricky proof obligation, it only postpones the problem, as preconditions will have to be further specified at the later stages of development. Hence, it may be good enough if the aim is simply to formalize a specification, but this solution will have disadvantages if the abstract machine is intended to be refined all the way to the implementation level.
+	While it is a way to avoid dealing with a potentially tricky proof obligation, it only postpones the problem, as preconditions will have to be further specified at the later stages of development. Hence, it may be good enough if the aim is simply to formalize a specification, but this solution will have disadvantages if the abstract machine is intended to be refined all the way to the implementation level. 
+	
+	\subsubsection{Bagmch\_restrictive} uses more restrictive preconditions on the operations to add or remove an item. In the former case, the precondition is now \texttt{aa : ITEMS-content}. In the case of the remove item operation, it is \texttt{aa : content}. Note that by the nature of the behaviour of the operations is unspecified at this stage, when the precondition does not hold - it is something that will be done at the later stages of development. Hence as long as the preconditions hold, these operations will always change the value of the \texttt{content} variable.
+	
+	This machine results in the same four proof obligations being generated, but now one of them is not discharged automatically. It is the proof obligations regarding the remove item operation, with the goal '\texttt{content-\{aa\}: FIN(ITEMS)}'. Since it is established in the Invariant that \texttt{content} is a subset of \texttt{ITEMS}, the proof obligation is rather trivial. 
+	
+	There are a couple workarounds to discharge it automatically, however they may not be considered relevant, since they repeat the information already included in the Invariant. Firstly, the condition which is known to be accepted automatically can be added as a conjunct, i.e. the precondition clause of the operation may be turned into '\texttt{aa : content \& aa : ITEMS}'. This addition is redundant, since the Invariant states that \texttt{content} is a subset of \texttt{ITEMS}, but it guides the automatic prover along. This suffices to discharge the proof obligation with the automatic prover, however it also requires the prior knowledge or at least an inclination of what might work.
+	
+	The second option is to add the clause '\texttt{content <: ITEMS}' to the precondition - we know that it will hold, since the Invariant contains the even more restrictive expression '\texttt{content :  FIN(ITEMS)}'. Adding the third option, the conjunct taken from the Invariant, verbatim, does not result in an automatic demonstration of this proof obligation. This behaviour will be later discussed in \emph{Bagmch\_long\_inv}
+	
+	We take this opportunity to ease into using the interactive prover. Following the advice from the \emph{Interactive Prover User Manual}, we run the deduction command (\texttt{dd}), and then attempt to get the automated prover to move the proof along further with the \texttt{pr} command. The resultant proof tree is:
+	
+	\begin{lstlisting}
+	--------------------
+	"Invariant is preserved" 
+=> 
+	content-{aa}: FIN(ITEMS) 
+	--------------------
+	content-{aa}: FIN(ITEMS) 
+	--------------------
+	content <: ITEMS\/{aa} 
+	\end{lstlisting}
+	
+	The automated prover does not progress further, however this goal is quite trivial, since $\texttt{content} \subseteq \texttt{ITEMS}$ implies that $\texttt{content} \subseteq \texttt{ITEMS} \cup \{\texttt{aa}\}$, and this hypothesis is included indirectly in the Invariant. Thus we can add it with the add hypothesis command: '\texttt{ah(content <: ITEMS)}', and finish the task with the automated prover. 
+	
+	This suffices to discharge the proof obligation and the above process gets recorded in the \emph{Bagmch\_restrictive.pmm} file, which contains user passes in the interactive prover and component-specific user rules. It can be accessed through the interactive prover and now includes the following as part of the \texttt{User\_Pass} theory:
+	
+	\begin{lstlisting}
+Operation(removeitem) & ff(0) & dd & pr 
+& ah(content <: ITEMS) & pr & pr
+	\end{lstlisting}
+	Where \texttt{ff(0)} denotes automatic proof with force parameter equal to 0 - i.e. with the shortest timeout, the default being 10 seconds, since in a simple scenario like this the prover is not expected to process proof obligations for long. 
+	
+	\subsubsection{Bagmch\_nondet} is a variation on the \emph{Bagmch} which illustrates how else the specification may be understood. In this machine, the operations to add or remove an item choose the item nondeterministically from the set of \texttt{ITEMS}, rather than accepting a parameter. Nondeterminism is a useful feature at this stage of development, as it helps the user focus on one thing at a time, for example on the action of the operation, rather than the values which are or are not accepted by it.
+
+	The behaviour of this machine is identical to that of the reference machine, with exactly the same four proof obligations being generated and discharged automatically. 
+	
+	Analogously we can restrict the operation to pick the items from the smaller sets as in the preconditions in \emph{Bagmch\_restrictive}. Note that this conditions are now included not in the \texttt{PRE} section of the operation, but inside the \texttt{ANY} statement. The behaviour is the same as that of \emph{Bagmch\_restrictive}, with the same user pass required to discharge the fourth proof obligation.
 	
 	\subsubsection{Bagmch\_params} differs from the reference machine in the way the set of \texttt{ITEMS} is included in it. \emph{Bagmch} is given the set of \texttt{ITEMS} as a deferred set, which is required to be explicitly defined at a later stage of the development. Here, it is given as a set-valued parameter, which must be instantiated any time the machine is used.\cite{b-method} However at the stage of abstract machine which is not used by any other machine, it does not make a difference in the prover.
 	
@@ -561,7 +598,7 @@ Operation(WellDefinedness_howmany) &
 ff(0) & pr & ah(items : FIN(items)) &
 ar(userInFINXY) & pr & ar(userInFINXY)
 	\end{lstlisting}
-	Where \texttt{ff(0)} denotes automatic proof with force parameter equal to 0 - i.e. with the shortest timeout, the default being 10 seconds, since in a simple scenario like this the prover is not expected to process proof obligations for long. The command \texttt{pr} is simply a call to the automatic prover, and \texttt{ar(<theory name>)} is applying the user-created rule as before. Adding a hypothesis means that, if the goal is $G$, the current hypotheses are $h_1, ..., h_n$, and the new one $P$, then the prover will first attempt to demonstrate $P$ under the hypotheses $h_1, ..., h_n$, and then prove $G$ under the hypotheses $h_1, ...,h_n, P$.\cite{PO reference}  Thus the additional hypothesis has to be demonstrated first, which is the reason for applying the added rule twice. 
+	Where \texttt{ff(0)} denotes automatic proof with force parameter equal to 0, which was done automatically already, the command \texttt{pr} is simply a call to the automatic prover, and \texttt{ar(<theory name>)} is applying the user-created rule as before. Adding a hypothesis means that, if the goal is $G$, the current hypotheses are $h_1, ..., h_n$, and the new one $P$, then the prover will first attempt to demonstrate $P$ under the hypotheses $h_1, ..., h_n$, and then prove $G$ under the hypotheses $h_1, ...,h_n, P$.\cite{PO reference}  Thus the additional hypothesis has to be demonstrated first, which is the reason for applying the added rule twice. 
 	
 	This is a clear inconvenience when a proof requires a longer sequence of sets to have a certain property proven one by one. Fortunately, user passes as the one listed above can be added to the component's \emph{.pmm} file and called to perform the sequence of commands with a single input from the user, as described in Chapter 5 of the \emph{Proof Obligations Reference Manual}.
 	
@@ -692,15 +729,19 @@ DEFINITIONS
 	
 	\begin{lstlisting}
 	INVARIANT
-		content1 : POW(ITEMS) &
+		content1 <: ITEMS &
 		content1 : FIN(content1) &
-		content2 : POW(ITEMS) &
+		content2 <:ITEMS &
 		content2 : FIN(content2) &
-		content1 \/ content2 : POW(ITEMS)
+		content1 \/ content2 <:ITEMS
 	\end{lstlisting}
 	The longer, more explicit Invariant was chosen to avoid having to deal with proof obligations related to well-defineness, and focus on those concerning the preservation of the Invariant.
 	
-	The two sets are initialised to the same value, the empty set. That is, the Initialisation clause contains only the parallel assignment: '\texttt{content1 := \{\} || content2 := \{\}}'.
+	The two sets are initialised to the same value, the empty set. That is, the Initialisation clause contains only the parallel assignment: 
+	\begin{lstlisting}
+	INITIALISATION
+		content1 := {} || content2 := {}
+	\end{lstlisting}
 	
 	Each one of the sets has their own copy of the familiar operations to add and remove items. Additionally there is an operation changing both variables simultaneously, to compare the number of proof obligations it generates next to the former ones. The operation is as follows:
 	
@@ -722,19 +763,33 @@ DEFINITIONS
 		\item \verb|{}: FIN({}) |
 		\item \verb|{}\/{} <: ITEMS|
 	\end{itemize}
-	The proof obligations did not get duplicated for each of the two sets, which was not in line with our expectations. In fact neither of those three proof obligations refers directly to one variable or the other.
+	The proof obligations did not get duplicated for each of the two sets, which was not in line with our expectations. In fact neither of those three proof obligations refers directly to one variable or the other. 
 	
+	We will explore this further in the next machine:
 	
-	Then: non det assignment, different values
-	Conclusion: Invariant POs reduced if same values for same requirements
+	\subsubsection{Bagmch\_2sets\_1elem} differs from the previous machine by the Initialisation clause. Instead of starting with an empty set for each of the two variables, the variables are initialised to the same value - a singleton set, containing a nondeterministically chosen element. 
 	
+	It turns out to be still simple enough for the prover to generate only three proof obligations for the Initialisation preserving the Invariant, as seen in the previous example.
 	
-	Nondeterministic:
-	if remove from ITEMS, it works, if from content:
+	It is not the case in the following variant:
 	
-\verb|Operation(removeitem) & ff(0) & dd & pr & ah(content <: ITEMS) & pr & pr|
+	\subsubsection{Bagmch\_2sets\_2elem} nondeterministically picks two elements, \texttt{xx} and \texttt{yy} of the set of \texttt{ITEMS}, and in the Initialisation it assigns the singleton set \texttt{\{xx\}} to \texttt{content1} and \texttt{\{yy\}} to \texttt{content2}. Note that the two chosen items may or may not be the same one. 
+	
+	Now we observe five proof obligations generated for the Initialisation clause preserving the Invariant - one for each conjunct in the Invariant, since the initial values for the two variables may now differ.
+	
+	We conclude that the automated prover optimizes enough to not repeat the exactly same chunk of work twice, for example when two conjuncts of the Invariant are identical or when two assignments would generate exactly the same goals in proof obligations. However its ability to optimise does not go as far as to notice for example that the behaviour of a singleton subset of \texttt{ITEMS} will be the same in our examples, regardless of its actual value. That is not unexpected, and the software should be commended for not over-optimising, but still having some basic optimisation built in.
+	
+	\subsubsection{Bagmch\_setops} briefly explores if operations taking finite subsets of \texttt{ITEMS} as parameters instead of a single element of that set, make any difference to the proof process. This change does not appear to have any impact on the proof process, as compared to the reference \emph{Bagmch}.
+	
+	\subsubsection{Bagmch\_enum} strays from the set of \texttt{ITEMS} being deferred, as can be seen in all previous machines. Instead, it is defined explicitly as an enumerated set with three elements. It is a copy of the reference \emph{Bagmch}, the only difference being the definition of the set of \texttt{ITEMS}. The operations all remain the same.
+	
+	The reason for this change is to explore the behaviour of enumerated sets as they are implemented in the Atelier B. The user manuals do not elaborate on the topic, noting only that "Every enumerated set is dfined as the set comprising all of its elements, and the
+	elements are distinct two by two"\cite{PO reference}.
+	
+	This time we see eight proof obligations, and only two of them are discharged automatically. They are the single proof obligation generated for the Invariant, with the goal \texttt{\{\}: FIN(ITEMS)}, and the one concerned with the well-defineness of the expression involving cardinality in the operation 'howmany'. Its goal is: \texttt{content: FIN(content)}.
+	
+	\subsubsection{Bagmch\_enum\_more\_pos}
 
-	Disjuncts in Invariant
 	\subsection{Summary}
 	
 	\section{Queue, stack, and lists}
@@ -749,6 +804,11 @@ DEFINITIONS
 		\item doubly linked list
 	\end{itemize}
 	
+	These machines will make use of the functions and sequences as built into the B language, and will deliberately have more intricate relations between variables, and more complicated operations.
+	
+	Since they deal with data structures which we have not explored yet, we decided to use this opportunity to test how well our method of reducing the number of undischarged proof obligations works without prior knowledge and practice with the expressions involved. 
+	
+	To this end we keep two copies of each of the four machines listed above. The files marked with \emph{\_initial} show what the machines started as and how they changed thanks to the suggestions given by the interactive prover.
 	
 	\subsection{Summary}
 	On one hand B method is fairly well suited for this task, due to it containing concise notation for relations, functions, and sequences. Thus implementing the structures themselves was straightforward. 
