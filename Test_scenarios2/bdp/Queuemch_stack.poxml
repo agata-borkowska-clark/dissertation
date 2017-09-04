@@ -111,12 +111,7 @@
 <Hypothesis>
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:1" typref="1628806408" value="aa"/>
-<Binary_Exp op="-" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:1" typref="4185748219" value="ITEMS"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:2:1" typref="4176992498" value="list"/>
-</Unary_Exp>
-</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>
@@ -245,12 +240,7 @@
 <Hypothesis>
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:1" typref="1628806408" value="aa"/>
-<Binary_Exp op="-" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2:1" typref="4185748219" value="ITEMS"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2:2:1" typref="4176992498" value="list"/>
-</Unary_Exp>
-</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>
@@ -475,10 +465,7 @@
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
 </Binary_Pred>
 </Nary_Pred>
 </Tag>
@@ -500,12 +487,7 @@
 <Hypothesis>
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:1" typref="1628806408" value="aa"/>
-<Binary_Exp op="-" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:1" typref="4185748219" value="ITEMS"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2:2:1" typref="4176992498" value="list"/>
-</Unary_Exp>
-</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>
@@ -646,10 +628,7 @@
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
 </Binary_Pred>
 </Nary_Pred>
 </Tag>
@@ -671,12 +650,7 @@
 <Hypothesis>
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:1" typref="1628806408" value="aa"/>
-<Binary_Exp op="-" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2:1" typref="4185748219" value="ITEMS"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2:2:1" typref="4176992498" value="list"/>
-</Unary_Exp>
-</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_stack.bxml:1:5:3:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 </Hypothesis>
 <Goal>

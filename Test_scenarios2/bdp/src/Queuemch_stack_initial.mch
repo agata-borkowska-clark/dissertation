@@ -10,14 +10,14 @@ SETS
 ABSTRACT_VARIABLES
     list
 INVARIANT
-    list : iseq ( ITEMS )
+    list : seq ( ITEMS )
 INITIALISATION
     list := <>
 OPERATIONS
     /* stack operations */
     push ( aa ) =
     PRE
-        aa : ITEMS - ran ( list )
+        aa : ITEMS
     THEN
         list := list <- aa
     END ;
@@ -32,7 +32,7 @@ OPERATIONS
     /* queue operations */
     enqueue ( aa ) =
     PRE
-        aa : ITEMS - ran ( list )
+        aa : ITEMS
     THEN
         list := list <- aa
     END ;

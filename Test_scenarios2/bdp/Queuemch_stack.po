@@ -22,7 +22,7 @@ ITEMS: FIN(INTEGER) & not(ITEMS = {});
 "Check invariant ((list) : (seq(ran(list))))";
 (({}) : (seq(ran({}))));
 list : NATURAL-{0} +-> ITEMS & ((list) : (seq(ITEMS))) & list : NATURAL-{0} +-> ran(list) & ((list) : (seq(ran(list))));
-((aa) : ((ITEMS - ran(list))));
+((aa) : (ITEMS));
 ((((list) <- (aa))) : (seq(ITEMS)));
 ((((list) <- (aa))) : (seq(ran(((list) <- (aa))))));
 (0 +1 <= size(list));

@@ -2,7 +2,7 @@
 Operation(Initialisation) & ff(0) & pr;
 Operation(additem) & ff(0) & pr;
 Operation(removeitem) & ff(0) & pr;
-Operation(WellDefinedness_howmany) & ff(0) & pr & ar(userInFINXY)
+Operation(WellDefinedness_howmany) & ff(0) & dd & pr & ar(userInFINXY)
 END &
 THEORY userInFINXY IS
     band(binhyp(b: FIN(b)), 

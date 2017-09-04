@@ -43,12 +43,7 @@
 <Precondition>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
-<Binary_Exp op='-' typref='4185748219'>
 <Id value='ITEMS' typref='4185748219'/>
-<Unary_Exp op='ran' typref='4185748219'>
-<Id value='list' typref='4176992498'/>
-</Unary_Exp>
-</Binary_Exp>
 </Exp_Comparison>
 </Precondition>
 <Body>
@@ -109,12 +104,7 @@
 <Precondition>
 <Exp_Comparison op=':'>
 <Id value='aa' typref='1628806408'/>
-<Binary_Exp op='-' typref='4185748219'>
 <Id value='ITEMS' typref='4185748219'/>
-<Unary_Exp op='ran' typref='4185748219'>
-<Id value='list' typref='4176992498'/>
-</Unary_Exp>
-</Binary_Exp>
 </Exp_Comparison>
 </Precondition>
 <Body>

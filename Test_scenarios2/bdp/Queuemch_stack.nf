@@ -121,17 +121,17 @@ END
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Queuemch_stack),push)==(aa: ITEMS-ran(list));
+  List_Precondition(Machine(Queuemch_stack),push)==(aa: ITEMS);
   List_Precondition(Machine(Queuemch_stack),pop)==(size(list)>0);
-  List_Precondition(Machine(Queuemch_stack),enqueue)==(aa: ITEMS-ran(list));
+  List_Precondition(Machine(Queuemch_stack),enqueue)==(aa: ITEMS);
   List_Precondition(Machine(Queuemch_stack),dequeue)==(size(list)>0)
 END
 &
 THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Queuemch_stack),dequeue)==(size(list)>0 | aa,list:=first(list),tail(list));
-  Expanded_List_Substitution(Machine(Queuemch_stack),enqueue)==(aa: ITEMS-ran(list) | list:=list<-aa);
+  Expanded_List_Substitution(Machine(Queuemch_stack),enqueue)==(aa: ITEMS | list:=list<-aa);
   Expanded_List_Substitution(Machine(Queuemch_stack),pop)==(size(list)>0 | aa,list:=last(list),front(list));
-  Expanded_List_Substitution(Machine(Queuemch_stack),push)==(aa: ITEMS-ran(list) | list:=list<-aa);
+  Expanded_List_Substitution(Machine(Queuemch_stack),push)==(aa: ITEMS | list:=list<-aa);
   List_Substitution(Machine(Queuemch_stack),push)==(list:=list<-aa);
   List_Substitution(Machine(Queuemch_stack),pop)==(aa:=last(list) || list:=front(list));
   List_Substitution(Machine(Queuemch_stack),enqueue)==(list:=list<-aa);

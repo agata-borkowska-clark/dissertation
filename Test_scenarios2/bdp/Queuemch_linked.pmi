@@ -1,0 +1,132 @@
+﻿THEORY BalanceX IS
+  Queuemch_linked,35,9,0,16,0,0,0;
+  Initialisation,5,5,0,0,0,0,0;
+  WellDefinedness_append,1,1,0,0,0,0,0;
+  WellDefinedness_getelem,1,0,0,1,0,0,0;
+  WellDefinedness_remove,6,0,0,5,0,0,0;
+  WellDefinedness_remove2,10,1,0,8,0,0,0;
+  append,4,2,0,1,0,0,0;
+  remove,4,0,0,0,0,0,0;
+  remove2,4,0,0,1,0,0,0
+END
+&
+THEORY ProofState IS
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(Util);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Proved(Util);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Proved(Util);
+  Unproved;
+  Proved(0);
+  Proved(Util);
+  Proved(Util);
+  Proved(Util);
+  Proved(Util);
+  Proved(Util);
+  Proved(Util)
+END
+&
+THEORY MethodList IS
+  pr;
+  pr;
+  pr;
+  pr;
+  dd & pr & pp(rp.1);
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  ?;
+  pr;
+  dd & pr & pp(rp.1);
+  pr;
+  dd & pr & pp(rp.1) & pr;
+  dd & pr;
+  ?;
+  ?;
+  ?;
+  ?;
+  dd & pr;
+  dd & pr & pp(rp.1) & pr;
+  dd & pr & ah(ii: {ii}\/ran(content)) & pr & pp(rp.1) & pr & pr & pp(rp.1) & pr;
+  pr;
+  dd & pr & pp(rp.1) & pr;
+  dd & pr;
+  dd & pr & pp(rp.0);
+  dd & pr & pp(rp.0) & pp(rp.1) & pp(rp.0) & pr & pp(rp.0);
+  dd & pr & pp(rp.0);
+  dd & pr & pp(rp.1) & pp(rp.1)
+END
+&
+THEORY PassList IS
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0)
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "V4.0-53996")
+END

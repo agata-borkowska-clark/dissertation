@@ -1,16 +1,24 @@
 ﻿THEORY BalanceX IS
-  Queuemch_stack,7,0,0,6,0,0,0;
+  Queuemch_stack,12,2,0,10,0,0,0;
   Initialisation,2,0,0,2,0,0,0;
+  WellDefinedness_dequeue,1,0,0,1,0,0,0;
   WellDefinedness_pop,1,0,0,1,0,0,0;
+  dequeue,2,0,0,2,0,0,0;
+  enqueue,2,1,0,1,0,0,0;
   pop,2,0,0,2,0,0,0;
-  push,2,0,0,1,0,0,0
+  push,2,1,0,1,0,0,0
 END
 &
 THEORY ProofState IS
   Proved(0);
   Proved(0);
   Proved(0);
-  Unproved;
+  Proved(0);
+  Proved(Util);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(Util);
   Proved(0);
   Proved(0);
   Proved(0)
@@ -20,13 +28,23 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
-  ?;
+  pr;
+  pr & pp(rp.1) & pp(rp.1);
+  pr;
+  pr;
+  pr;
+  pr & pp(rp.1) & pp(rp.1);
   pr;
   pr;
   pr
 END
 &
 THEORY PassList IS
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
   Force(0),?;
   Force(0),?;
   Force(0),?;

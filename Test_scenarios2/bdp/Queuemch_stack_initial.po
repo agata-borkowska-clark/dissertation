@@ -18,13 +18,13 @@ THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
 ITEMS: FIN(INTEGER) & not(ITEMS = {});
 "Invariant is preserved";
-(({}) : (iseq(ITEMS)));
-list : seq(ITEMS) & list : NATURAL-{0} +-> ITEMS & list ~ : ITEMS +-> NATURAL-{0} & ((list) : (iseq(ITEMS)));
-((aa) : ((ITEMS - ran(list))));
-((((list) <- (aa))) : (iseq(ITEMS)));
+(({}) : (seq(ITEMS)));
+list : NATURAL-{0} +-> ITEMS & ((list) : (seq(ITEMS)));
+((aa) : (ITEMS));
+((((list) <- (aa))) : (seq(ITEMS)));
 (0 +1 <= size(list));
-((front(list)) : (iseq(ITEMS)));
-((tail(list)) : (iseq(ITEMS)));
+((front(list)) : (seq(ITEMS)));
+((tail(list)) : (seq(ITEMS)));
 "Well definedness";
 ((list) : (seq(ran(list))));
 not(((list) = ({})))

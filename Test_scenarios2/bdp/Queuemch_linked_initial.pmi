@@ -1,0 +1,123 @@
+﻿THEORY BalanceX IS
+  Queuemch_linked_initial,32,0,0,15,0,0,0;
+  Initialisation,3,0,0,0,0,0,0;
+  WellDefinedness_append,2,0,0,0,0,0,0;
+  WellDefinedness_getelem,1,0,0,1,0,0,0;
+  WellDefinedness_remove,6,0,0,5,0,0,0;
+  WellDefinedness_remove2,11,0,0,8,0,0,0;
+  append,3,0,0,1,0,0,0;
+  remove,3,0,0,0,0,0,0;
+  remove2,3,0,0,0,0,0,0
+END
+&
+THEORY ProofState IS
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Proved(0);
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved
+END
+&
+THEORY MethodList IS
+  pr;
+  pr;
+  pr;
+  pr;
+  ?;
+  ?;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  ?;
+  pr;
+  ?;
+  ?;
+  ?;
+  ?;
+  ?;
+  ?;
+  ?;
+  ?;
+  ?;
+  pr;
+  ?;
+  ?;
+  ?;
+  ?
+END
+&
+THEORY PassList IS
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0)
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "V4.0-53996")
+END

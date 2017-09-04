@@ -14,7 +14,7 @@ THEORY ProofState IS
 END
 &
 THEORY MethodList IS
-  pr & ar(userInFINXY);
+  dd & pr & ar(userInFINXY);
   pr;
   pr;
   pr

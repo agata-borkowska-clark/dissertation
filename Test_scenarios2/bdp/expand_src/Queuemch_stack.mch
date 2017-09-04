@@ -1,7 +1,7 @@
-﻿/* Queuemch_stack
+﻿/* Queuemch_stack_initial
  * Author: Agata Borkowska
  * UID: 1690550
- * Creation date: 02/09/2017
+ * Creation date: 03/09/2017
  */
 MACHINE
     Queuemch_stack
@@ -11,14 +11,14 @@ ABSTRACT_VARIABLES
     list
 INVARIANT
     list : seq ( ITEMS ) &
-    list : seq ( ran ( list ) ) // fixes well-defineness
+    list : seq ( ran ( list ) )
 INITIALISATION
     list := []
 OPERATIONS
     /* stack operations */
     push ( aa ) =
     PRE
-        aa : ITEMS - ran ( list )
+        aa : ITEMS
     THEN
         list := list <- aa
     END ;
@@ -30,11 +30,10 @@ OPERATIONS
         aa := last ( list ) ||
         list := front ( list )
     END ;
-
     /* queue operations */
     enqueue ( aa ) =
     PRE
-        aa : ITEMS - ran ( list )
+        aa : ITEMS
     THEN
         list := list <- aa
     END ;

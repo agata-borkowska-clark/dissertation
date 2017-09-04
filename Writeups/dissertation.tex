@@ -13,6 +13,7 @@
 % Set listings to use small monospaced font.
 \lstset{basicstyle=\small\ttfamily,tabsize=4}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \ifCLASSOPTIONcompsoc
 % IEEE Computer Society needs nocompress option
 % requires cite.sty v4.0 or later (November 2003)
@@ -126,6 +127,8 @@
 	With the proof obligations generated, the user may begin the process of discharging them. Atelier B includes two provers which can achieve this. Firstly, the Automatic Prover should be used to demonstrate as many proof obligations as possible without the user's input.
 	
 	If that is not sufficient, the user may employ the Interactive Prover. In it, they may view the undischarged proof obligations and guide the proof process along, for example by suggesting intermediate steps of the proof. The Interactive Prover also allows users to search through the proof rule base included in the software, as well as enables users to write their own proof rules.
+	
+	Finally it is worth mentioning that the Atelier B provers' work by rule inference, and for a proof to succeed, the rules have to be ordered correctly for all the goals to be demonstrated. It has its limitations, and one attempt to mitigate them is to employ the predicate prover, included in the Interactive Prover's for the user to call. The predicate prover transforms the proof into quantified statements and attempts proof by contradiction.\cite{Prover guide}
 	
 	
 	
@@ -322,9 +325,9 @@
 	\end{figure}
 	We refine the last step listed above as follows. After undischarged POs are discovered, each one should be considered in turn to see if it points to an error. It can be done by simple inspection, relying on common sense, and does not have to be a lengthy process. The aim of this is to spot typical human errors. 
 	
-	If the user is still convinced that the proof obligations remain undischarged due to the limitations of the automatic prover rather than the error in the formalisation, they may proceed to use the interactive prover. Using the interactive prover often requires rewriting of many expressions in various ways, due to the way the software normalises them. Such operations necessarily involve closer inspection of said expressions, and may be very helpful in spotting further errors or ambiguity in the formalisation.
+	If the user is still convinced that the proof obligations remain undischarged due to the limitations of the automatic prover rather than the error in the formalisation, they may proceed to use the interactive prover. Using the interactive prover often leads to rewriting of many expressions in various ways, due to the way the software normalises them. Such operations necessarily involve closer inspection of said expressions, and may be very helpful in spotting further errors or ambiguity in the formalisation.
 	
-	Work with the interactive prover in our experience often results in code which is less readable and user-friendly, but easier to understand by the automatic prover, as it is more in line with how it normalises expressions. Thus at this stage we translate our initial formalisation into something that results in fewer undischarged proof obligations. The goals of the proof obligations, as shown in the interactive prover, often hint at how the expressions can be rephrased or what conjuncts can be added in the code. 
+	Work with the interactive prover in our experience often results in code which is less readable and user-friendly, but easier to understand by the automatic prover, as it is more in line with how it normalises expressions. Thus at this stage we translate our initial formalisation into something that results in fewer undischarged proof obligations. The goals of the proof obligations, as shown in the interactive prover, often hint at how the expressions can be rephrased or what conjuncts can be added in the code. Additionally, the predicate prover can be applied at this stage.
 	
 	Finally, if there are still undischarged proof obligations despite any attempts to rephrase the problematic expressions in the abstract machine, the user may consider writing their own rules to add to the proof rule base. This alone is a process which requires great care, as any user-written rule which is not thoroughly verified will invalidate the whole proof process. 
 	
@@ -408,7 +411,7 @@
 	edge [bend left]  (a12)
 	edge [bend left]  (a23)
 	edge [bend left]  (a13);
-	\end{tikzpicture};
+	\end{tikzpicture}
 	\caption{The result of the add and remove item operations on the bag machine with the set of \texttt{ITEMS} being $\{a_1, a_2, a_3\}$. Each of the labels of the form '$\pm a_i$' refers to both edges connecting the corresponding nodes.}
 	\end{figure*}
 	\subsection{Discussion of the specification}
@@ -425,7 +428,7 @@
 	At the level of abstract machines, it is permitted to use set comprehension and other operations and properties of sets, according to the Zermelo-Fraenkel set theory. The B language offers abbreviations of some more common expressions, such as domain or range restrictions. Another thing for us to explore is how using these shorthand expressions rather than writing them out fully affects the proof process.
 
 	\subsection{Variants of the Bag Machine}
-	There are various ways of expressing the requirements given in the specification as an abstract machine. The following files are contained in the \emph{Test\_scenarios} archive for reference of the reader. We begin by having \texttt{ITEMS} as a deferred set - a set which will be defined at some later point of the development process, and \texttt{content} as simply a subset of \texttt{ITEMS}, then inspect different ways of including the set of \texttt{ITEMS} in the machine, then we focus on the relation between the two sets as expressed in the Invariant clause. We then move onto different ways of expressing the set of \texttt{ITEMS}, for example as an enumerated set or one of a basic type. We finally explore various ways of describing the content of the bag, such as using sequences or relations. The reason for this order of tasks is to begin with the most intuitive implementation of the specification, before discussing less obvious changes to it.
+	There are various ways of expressing the requirements given in the specification as an abstract machine. The following files are contained in the \emph{Test\_scenarios} archive to be referenced by the reader. We begin by having \texttt{ITEMS} as a deferred set - a set which will be defined at some later point of the development process, and \texttt{content} as simply a subset of \texttt{ITEMS}, then inspect different ways of including the set of \texttt{ITEMS} in the machine, then we focus on the relation between the two sets as expressed in the Invariant clause. We then move onto different ways of expressing the set of \texttt{ITEMS}, for example as an enumerated set or one of a basic type. We finally explore various ways of describing the content of the bag, such as using sequences or relations. The reason for this order of tasks is to begin with the most intuitive implementation of the specification, before discussing less obvious changes to it.
 	
 	\subsubsection{Bagmch} is the reference machine which we take to be the core of this scenario. It implements exactly the specification without imposing any non-required conditions, such as the limit on the number of items in the bag. At the same time it includes one condition not explicitly mentioned in the specification, namely:
 	\begin{lstlisting}
@@ -455,17 +458,23 @@
 	\end{lstlisting}
 	This machine generates the same four proof obligations as the reference machine, however the last one remains undischarged by the automated prover and correctly points the user to a problem in the abstract machine.
 
-	\subsubsection{Bagmch\_pre} shows a workaround the well-defineness proof obligation in the previous example. It results in one fewer proof obligation than the reference \emph{Bagmch}, as putting the goal of the well-defineness proof obligation in the pre-condition of the related operation prevents the proof obligation from being generated.
+	\subsubsection{Bagmch\_pre} shows a workaround the well-defineness proof obligation in the previous example, by adding the goal of the proof obligation to the precondition of the operation rather than the Invariant. It results in one fewer proof obligation than the reference \emph{Bagmch}, as putting the goal of the well-defineness proof obligation in the pre-condition of the related operation prevents the proof obligation from being generated.
 	
 	While it is a way to avoid dealing with a potentially tricky proof obligation, it only postpones the problem, as preconditions will have to be further specified at the later stages of development. Hence, it may be good enough if the aim is simply to formalize a specification, but this solution will have disadvantages if the abstract machine is intended to be refined all the way to the implementation level. 
 	
 	\subsubsection{Bagmch\_restrictive} uses more restrictive preconditions on the operations to add or remove an item. In the former case, the precondition is now \texttt{aa : ITEMS-content}. In the case of the remove item operation, it is \texttt{aa : content}. Note that by the nature of the behaviour of the operations is unspecified at this stage, when the precondition does not hold - it is something that will be done at the later stages of development. Hence as long as the preconditions hold, these operations will always change the value of the \texttt{content} variable.
-	
+		\begin{figure*}
+		\centering
+		\includegraphics[scale=0.5]{bagmch_restrictive_ip.png}
+		\caption{The result of the user pass on the undemonstrated proof obligation in  \emph{Bagmch\_restrictive}.}
+		
+	\end{figure*}
 	This machine results in the same four proof obligations being generated, but now one of them is not discharged automatically. It is the proof obligations regarding the remove item operation, with the goal '\texttt{content-\{aa\}: FIN(ITEMS)}'. Since it is established in the Invariant that \texttt{content} is a subset of \texttt{ITEMS}, the proof obligation is rather trivial. 
 	
 	There are a couple workarounds to discharge it automatically, however they may not be considered relevant, since they repeat the information already included in the Invariant. Firstly, the condition which is known to be accepted automatically can be added as a conjunct, i.e. the precondition clause of the operation may be turned into '\texttt{aa : content \& aa : ITEMS}'. This addition is redundant, since the Invariant states that \texttt{content} is a subset of \texttt{ITEMS}, but it guides the automatic prover along. This suffices to discharge the proof obligation with the automatic prover, however it also requires the prior knowledge or at least an inclination of what might work.
 	
 	The second option is to add the clause '\texttt{content <: ITEMS}' to the precondition - we know that it will hold, since the Invariant contains the even more restrictive expression '\texttt{content :  FIN(ITEMS)}'. Adding the third option, the conjunct taken from the Invariant, verbatim, does not result in an automatic demonstration of this proof obligation. This behaviour will be later discussed in \emph{Bagmch\_long\_inv}
+
 	
 	We take this opportunity to ease into using the interactive prover. Following the advice from the \emph{Interactive Prover User Manual}, we run the deduction command (\texttt{dd}), and then attempt to get the automated prover to move the proof along further with the \texttt{pr} command. The resultant proof tree is:
 	
@@ -490,6 +499,8 @@ Operation(removeitem) & ff(0) & dd & pr
 	\end{lstlisting}
 	Where \texttt{ff(0)} denotes automatic proof with force parameter equal to 0 - i.e. with the shortest timeout, the default being 10 seconds, since in a simple scenario like this the prover is not expected to process proof obligations for long. 
 	
+	Figure 3 shows what performing the user pass looks like in the prover.
+	
 	\subsubsection{Bagmch\_nondet} is a variation on the \emph{Bagmch} which illustrates how else the specification may be understood. In this machine, the operations to add or remove an item choose the item nondeterministically from the set of \texttt{ITEMS}, rather than accepting a parameter. Nondeterminism is a useful feature at this stage of development, as it helps the user focus on one thing at a time, for example on the action of the operation, rather than the values which are or are not accepted by it.
 
 	The behaviour of this machine is identical to that of the reference machine, with exactly the same four proof obligations being generated and discharged automatically. 
@@ -512,7 +523,7 @@ Operation(removeitem) & ff(0) & dd & pr
 		content : FIN(content) 
 	\end{lstlisting}
 	
-	This time there are six proof obligations generated, all discharged automatically, and they are concerned only with the Invariant being preserved. There is a proof obligation for each clause of the Invariant, for each one of the initialisation and the two operation affecting the content of the bag. 
+	This time there are six proof obligations generated, all discharged automatically, and they are concerned only with the Invariant being preserved. There is a proof obligation for each clause of the Invariant, one for the Initialisation and one for each of the two operations affecting the content of the bag. 
 	
 	Firstly, comparing the proof obligation related to the first clause of the Invariant, we see that it is not as simple as the one in \emph{Bagmch\_unbounded}. For example in the Initialisation we see:
 	
@@ -549,13 +560,13 @@ Operation(removeitem) & ff(0) & dd & pr
 	
 	We conclude that these two ways of expressing the relation '\texttt{content} is a finite subset of \texttt{ITEMS}', while equivalent in theory, will affect the performance and the time taken to complete computations by the prover in different ways. One will result in more proof obligations being generated, however they will be of a simpler nature and discharged automatically, which is faster than discharging even a single proof obligation manually, such as the well-defineness one in the latter case. We recognize that it is something that may be noticeable at large-scale projects, while in a small scenario the overhead will severely affect any measurements of performance, and therefore we have no means of exploring it further in this work, but we highlight it as something users should be aware of.
 	
-	[CHECK - trace sysdoes tem]It is regrettable that the prover not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
+	It is regrettable that the prover not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
 	       
 	\subsubsection{Bagmch\_finite\_items} is an attempt to impose finiteness earlier on, on the set of \texttt{ITEMS}. We do it by adding the expression '$\texttt{ITEMS} \in \texttt{FIN(ITEMS)}$' to the Properties clause. Otherwise the machine is identical to \emph{Bagmch\_unbounded}. We rely on the fact that any subset of a finite set is necessarily finite. Appendix B contains a proof of this claim.
 	
 	We see the same four proof obligations as in \emph{Bagmch\_unbounded}, and again the one regarding well-defineness is not discharged automatically. We can of course add the clause '$\texttt{content} \in \texttt{FIN(content)}$' or otherwise explicitly impose the finiteness property on the contents of the bag, but it should not be necessary. The machine is correct, and as the aforementioned proof suggests, it can be verified manually.
 	
-	Thus we move on to the next stage in our process, as described in the Methodology section. The interactive prover allows users to search rules by the goal, as well as browse the file containing the integrated proof rule base. However none of the rules contains the goal required. No other manipulation in the interactive prover leads to discharging the proof obligation either.
+	Thus we move on to the next stage in our process, as described in the Methodology section. The interactive prover allows users to search rules by the goal, as well as browse the file containing the integrated proof rule base. However none of the rules contains the goal required. No other manipulation in the interactive prover, nor the application of the predicate prover leads to discharging the proof obligation either.
 	
 	The claim 'a subset of a finite set is finite' can be expressed as a B rule as follows:
 		
@@ -573,6 +584,12 @@ Operation(removeitem) & ff(0) & dd & pr
 	This rule can be added to the \emph{.pmm} file for this component, so that it is not visible during other proofs, or to the Patch Prover, which contains user-added rules available to all components in a project. Either way it has to be then called explicitly in the interactive prover, with the command to apply rule '\texttt{ar(<theory name>)}', to discharge the obligations with this goal. The project archive contains the \emph{Bagmch\_finite\_items.pmm} file with this rule to illustrate how it works. 
 	
 	An alternative to including this rule in the PatchProver or the \emph{.pmm} file is to add the goal of the proof obligation to the Invariant, as can be seen in \emph{Bagmch\_long\_inv}. This is a safer alternative, because it will certainly not permit incorrect statements to be accepted by the prover, although it may restrict the number of legal states of the machine. At the same time it leads to more proof obligations and it can be considered the user performing part of the proof manually.
+	
+	To use this rule in the prover, the user has to make a call to the 'apply rule' command: '\texttt{(ar(userInFINXY))}'. This discharges the proof obligation, and the user pass is saved as follows:
+\begin{lstlisting}
+Operation(WellDefinedness_howmany) & 
+ff(0) & dd & pr & ar(userInFINXY)
+	\end{lstlisting}
 	
 	\subsubsection{Bagmch\_constant\_set} is very similar to the previous machines. This time the superset of \texttt{content} is a set described in the Constants clause, with the following properties:
 	
@@ -678,7 +695,7 @@ INVARIANT
 	card(content) <= max_elem + 1 &
 	card(content) <= max_elem
 	\end{lstlisting}
-	Firstly note that the third, fourth, fifth, and sixth clauses are redundant - it is sufficient that the last clause holds for these four to also hold. At the same time it is a very simple way of creating any given number of Invariant clauses. Also, observe that we have used the more explicit way of describing the type and finiteness of \texttt{content} - as a separate clause for each of those requirement, as seen in \emph{Bagmch\_long\_inv}. This way we avoid the well-defineness proof obligations.
+	Firstly note that the third, fourth, fifth, and sixth clauses are redundant - it is sufficient that the last clause holds for these four to also hold. At the same time it is a very simple way of creating an arbitrary number of Invariant clauses. Also, observe that we have used the more explicit way of describing the type and finiteness of \texttt{content} - as a separate clause for each of those requirement, as seen in \emph{Bagmch\_long\_inv}. This way we avoid the well-defineness proof obligations.
 	
 	There are 21 proof obligations generated in this case - 7 for each of the two operations affecting \texttt{content} and 7 more for the Initialisation. The Initialisation and the operation to add an item have all their proof obligations discharged automatically. Surprisingly, out of the five cardinality-related proof obligations for the operation to remove an item, only the simplest on, namely the one regarding the clause \texttt{card(content) <= max\_elem}, gets discharged automatically. The other ones require user input in the interactive prover. 
 	
@@ -726,7 +743,11 @@ DEFINITIONS
 	
 	Finally we have tried including the same conjunct twice in the Invariant, and only then we have noticed that the redundancy is acted upon by the software - the prover does not list the same conjunct twice. 
 	
-	We move on to discuss the number of proof obligation generated in relation to the number of clauses in the Invariant. Recall that the machine has two operations which change the \texttt{content} variable. Each one of them and the Initialisation generates one proof obligation for each clause in the Invariant. With the Invariant as given above, it comes to three sets of seven proof obligations. Adding clauses following the pattern '\texttt{card(content) <= max\_elem + n}' and checking the number of generated proof obligations demonstrates the following correlation: the number of proof obligations regarding the preservation of the Invariant is equal to the number of operations affecting the state of the machine plus one for the Initialisation multiplied by the number of clauses in the Invariant. However at this point all the clauses are related to the single variable affected by the operations. We will see if having clauses concerning other variables, unaffected by these operations, changes the pattern, in \emph{Bagmch\_2sets}.
+	We move on to discuss the number of proof obligation generated in relation to the number of clauses in the Invariant. Recall that the machine has two operations which change the \texttt{content} variable. Each one of them and the Initialisation generates one proof obligation for each clause in the Invariant. With the Invariant as given above, it comes to three sets of seven proof obligations. 
+	
+	Adding clauses following the pattern '\texttt{card(content) <= max\_elem + n}' and checking the number of generated proof obligations gives rise toto the following observation about the number of proof obligations concerned with the preservation of the invariant. The number of proof obligations is equal to the number of operations affecting the state of the machine multiplied by the number of conjuncts in the Invariant. We will inspect the proof obligations generated for the Initialisation later.	
+	
+	Note that at this point all the clauses are related to the single variable affected by the operations. We will see if having clauses concerning other variables, unaffected by these operations, changes the pattern in \emph{Bagmch\_2sets}.
 	
 	\subsubsection{Bagmch\_2sets} allows us to further investigate the relation between the number of proof obligations and clauses in the Invariant. This machine maintains two subsets of \texttt{ITEMS}, called \texttt{content1} and \texttt{content2}. They act exactly like the \texttt{content} set did in the previous machine. We thus have two conjuncts involving each of the variables in turn, and for the sake of observing all factors, we add an additional (redundant) conjunct involving both variables, so the Invariant now becomes:
 	
@@ -868,41 +889,41 @@ aa: ITEMS &
 	This machine gives an idea of what to expect when dealing with functions, although it is very simplistic and not problematic at all. We hope that even this insight will be useful in working on the second set of machines.
 	
 	\subsection{Summary}
-
+\begin{figure*}
+	\centering
+	\includegraphics[scale=0.8]{bagmchs.png}
+	\caption{Machines which arose from the Bag scenario, as presented in the software}
+\end{figure*}
 	
 \begin{table}[h]
 	\centering
-	\begin{tabular}
-		{|c|c|m{1cm}|m{1.7cm}|}
-		\hline
-		Section & Machine & Number of POs & POs requiring user action  \\ 
-		\hline 
-		 1. & Bagmch & 4 & 0  \\ 
-		 3. & Bagmch\_pre & 3 & 0 \\ 
-		 4. & Bagmch\_restrictive & 4 & 1 \\ 
-		 5. & Bagmch\_nondet & 4 & 0 \\ 
-		 5. & Bagmch\_nondet\_restrictive & 4 & 1 \\ 
-		 6. & Bagmch\_params & 4 & 0 \\ 
-		 7. & Bagmch\_long\_inv & 6 & 0 \\ 
-		 8. & Bagmch\_finite\_items & 4 & 1 \\ 
-		 9. & Bagmch\_constant\_set & 4 & 1 \\
-		10. & Bagmch\_constant\_set2 & 4 & 1 \\
-		11. & Bagmch\_limited & 9 & 0 \\
-		12. & Bagmch\_limited\_params & 9 & 0 \\
-		14. & Bagmch\_redundant & 21 & 4 \\
-		14. & Bagmch\_redundant2 & 21 & 0 \\
-		14. & Bagmch\_redundant3 & 30 & 0 \\
-		14. & Bagmch\_redundant\_reverse & 21 & 4 \\
-		14. & Bagmch\_redundant\_reverse2 & 30 & 0 \\
-		15. & Bagmch\_2sets & 20 & 0 \\
-		16. & Bagmch\_2sets\_1elem & 20 & 0 \\
-		17. & Bagmch\_2sets\_2elem & 22 & 0 \\
-		18. & Bagmch\_setops & 6 & 0 \\
-		19. & Bagmch\_enum & 8 & 6 \\
-		20. & Bagmch\_relation & 13 & 1 \\
-		\hline 
-
-	\end{tabular}
+\begin{tabular}{@{}rlrr@{}}
+	\toprule
+	\multicolumn{1}{l}{Section} & Machine                     & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}Number \\ of POs\end{tabular}} & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}POs requiring\\ user action\end{tabular}} \\ \midrule
+	1                           & Bagmch                      & 4                                                                            & 0                                                                                       \\
+	3                           & Bagmch\_pre                 & 3                                                                            & 0                                                                                       \\
+	4                           & Bagmch\_restrictive         & 4                                                                            & 1                                                                                       \\
+	5                           & Bagmch\_nondet              & 4                                                                            & 0                                                                                       \\
+	6                           & Bagmch\_nondet\_restrictive & 4                                                                            & 1                                                                                       \\
+	6                           & Bagmch\_params              & 4                                                                            & 0                                                                                       \\
+	7                           & Bagmch\_long inv            & 6                                                                            & 0                                                                                       \\
+	8                           & Bagmch\_finite items        & 4                                                                            & 1                                                                                       \\
+	9                           & Bagmch\_constant set        & 4                                                                            & 1                                                                                       \\
+	10                          & Bagmch\_constant set2       & 4                                                                            & 1                                                                                       \\
+	11                          & Bagmch\_limited             & 9                                                                            & 0                                                                                       \\
+	12                          & Bagmch\_limited\_params     & 9                                                                            & 0                                                                                       \\
+	14                          & Bagmch\_redundant           & 21                                                                           & 4                                                                                       \\
+	14                          & Bagmch\_redundant2          & 21                                                                           & 0                                                                                       \\
+	14                          & Bagmch\_redundant3          & 30                                                                           & 0                                                                                       \\
+	14                          & Bagmch\_redundant\_reverse  & 21                                                                           & 4                                                                                       \\
+	14                          & Bagmch\_redundant\_reverse2 & 30                                                                           & 0                                                                                       \\
+	15                          & Bagmch\_2sets               & 20                                                                           & 0                                                                                       \\
+	16                          & Bagmch\_2sets\_1elem        & 20                                                                           & 0                                                                                       \\
+	17                          & Bagmch\_2sets\_2elem        & 22                                                                           & 0                                                                                       \\
+	18                          & Bagmch\_setops              & 6                                                                            & 0                                                                                       \\
+	19                          & Bagmch\_enum                & 8                                                                            & 6                                                                                       \\
+	20                          & Bagmch\_relation            & 13                                                                           & 1                                                                                       \\ \bottomrule
+\end{tabular}
 			
 	\caption{List of machines which arose from the Bagmch scenario}
 \end{table}
@@ -912,19 +933,19 @@ aa: ITEMS &
 	
 	\begin{table}[h]
 		\centering
-		\begin{tabular}
-			{|c|c|m{1cm}|m{1.7cm}|}
-			\hline
-			Section & Machine & Number of POs & Undischarged POs \\ 
-			\hline 
-			 2. & Bagmch\_unbounded & 4 & 1  \\ 
-			13. & Bagmch\_wrong\_order & 10 & 1\\ 
-			\hline 
-			
-		\end{tabular}
+\begin{tabular}{@{}rlrr@{}}
+	\toprule
+	\multicolumn{1}{l}{Section} & Machine                     & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}Number \\ of POs\end{tabular}} & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}POs requiring\\ user action\end{tabular}} \\ \midrule
+	2 & Bagmch\_unbounded & 4 & 1  \\
+	13 & Bagmch\_wrong\_order & 10 & 1 \\
+	\bottomrule
+\end{tabular}
 		
 		\caption{List of machines which contain deliberate, illustrative errors}
 	\end{table}
+
+	Figure 4 shows the machines listed above as they would appear in the software.
+
 	\section{Queue, stack, and lists}
 	\subsection{Overview and motivation}
 	There are many data structures, which cannot be forced into the Bag machine scenario, and trying to do so would be overly contrived and lack clarity. We also stray from the idea of using an abstraction like the Bag, in order to make the reasoning simpler. Instead, we present a collection of machines which do not conform to a specific scenario, but instead focus on typical data structures in computer science in general.
@@ -943,9 +964,38 @@ aa: ITEMS &
 	
 	Since they deal with data structures which we have not explored yet, we decided to use this opportunity to test how well our method of reducing the number of undischarged proof obligations works without prior knowledge and practice with the expressions involved. 
 	
-	To this end we keep two copies of each of the six machines listed above. The files marked with \emph{\_initial} show what the machines started as and how they changed thanks to the suggestions given by the interactive prover.
+	To this end we keep two copies of each of the machines listed above. The files marked with \emph{\_initial} show what the machines started as and how they changed thanks to the suggestions given by the interactive prover.
 	
 	\subsection{Data structures machines}
+	\subsubsection{Queuemch\_stack} 
+	
+	Stacks and queues can both be implemented using a sequence, and differ only by the operations performed on it - the signature ones being \textit{push} and \textit{pop} for stack and then \textit{enqueue} and \textit{dequeue} for queue. Thus to avoid unnecessary repetition, these two data structures are implemented in a single machine. The machine contains a single variable called \texttt{list}, the type of which is a sequence of \texttt{ITEMS}. Then the four operations listed above are performed on it.
+	
+	A sequence in B language is realised as a function from some set of consecutive integers, with the least one being 1, if the subset is not empty, to a subset of some elements of a given type. In this case, a sequence is therefore a function $f:\{1,2,...,n\} \rightarrow \texttt{ITEMS}$, for some $n \in \mathbb{N}$.
+
+	\emph{Queuemch\_stack\_initial} shows the first attempt at formalising the data structure, before the interactive prover was used and any alterations were made to the code. 13 proof obligations are generated, and only seven of them are discharged automatically.
+	
+	We first observe the six the undischarged proof obligations are of the well-defineness variety. The goal of each of them is '\texttt{list: seq(ran(list))}'. It asks the user to demonstrate that the variable is a sequence of the elements it contains. Since it is still in line with the desired functionality of the machine, this expression is therefore added as another conjunct in the Invariant, which makes the number of the undischarged proof obligations go down to 2, with the new total being 12. This time only two well-definess proof obligations are generated and get demonstrated by the automated prover. 
+	
+	Each of the four operations now has two proof obligations generated, instead of one, and the Initialisation gives rise two another two. In each pair is one proof obligation for each conjunct in the Invariant, confirming the pattern observed in the previous section.
+	
+	The two remaining proof obligations are for the \textit{push} and \textit{enqueue} operations, and they have the goal: '\texttt{list<-aa: seq(ran(list<-aa))}'. Running the automated prover on it gives the subgoal: '\verb|list: seq({aa}\/ran(list))|'. Since sequences are not necessarily surjective, this statement can be easily seen to be correct, as $ran(\texttt{list}) \subseteq \{\texttt{aa}\} \cup ran(\texttt{list})$, and so $\texttt{list} \in seq(\{\texttt{aa}\} \cup ran(\texttt{list}))$.
+	
+	None of the hypothesis we thought of adding made any difference. Before we resort to adding user rules, we can try the predicate prover. The predicate prover on its own is not sufficient, but running the predicate prover with first level hypothesis - since the hypothesis is needed to demonstrate the goal - succeeds, and the proof obligation is demonstrated.
+	
+	The user pass now contains the following record:
+	\begin{lstlisting}
+Operation(push) & ff(0) & dd & pr & 
+pp(rp.1) & pr;
+Operation(enqueue) & ff(0) & dd & 
+pr & pp(rp.1) & pr
+	\end{lstlisting}
+	
+	And all 12 proof obligations are discharged.
+	
+	\subsubsection{Queuemch\_linked}
+	
+	
 	
 	\subsection{Summary}
 	On one hand B method is fairly well suited for this task, due to it containing concise notation for relations, functions, and sequences. Thus implementing the structures themselves was straightforward. 
@@ -991,7 +1041,7 @@ aa: ITEMS &
 	
 	[CITE MISSING MOD RULES]
 	
-	Putting this together with the information contained in the various user manuals, we conclude that writing user rules may be required in circumstances involving moduli or sequences or sets - where one might want to user recursion, which is not available in the abstract machines, or when separate rules would have to be written for many similar cases. At this point it is simpler from the developers' point of view to let the user write specifically the rules they need, than try to anticipate all possible use cases. Thus we highlight those two areas as ones that may need additional rules.
+	Putting this together with the information contained in the various user manuals, we conclude that writing user rules may be required in circumstances involving moduli or sequences of sets - where one might want to user recursion, which is not available in the abstract machines, or when separate rules would have to be written for many similar cases. At this point it is simpler from the developers' point of view to let the user write specifically the rules they need, than try to anticipate all possible use cases. Thus we highlight those two areas as ones that may need additional rules.
 	
 	At the same time we observe that simple structures such as sets rarely need it, and most cases where one might think that an additional rule is necessary, can be circumvented.
 	\section{Evaluation and future outlook}

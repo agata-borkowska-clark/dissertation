@@ -1,15 +1,17 @@
 ﻿THEORY BalanceX IS
-  Queuemch_double_initial,35,0,0,17,0,0,0;
+  Queuemch_double_initial,36,0,0,18,0,0,0;
   AssertionLemmas,2,0,0,0,0,0,0;
   Initialisation,4,0,0,0,0,0,0;
   WellDefinednessAssertions,8,0,0,8,0,0,0;
   WellDefinedness_append,3,0,0,2,0,0,0;
+  WellDefinedness_getelem,1,0,0,1,0,0,0;
   WellDefinedness_remove,6,0,0,6,0,0,0;
   append,6,0,0,1,0,0,0;
   remove,6,0,0,0,0,0,0
 END
 &
 THEORY ProofState IS
+  Proved(0);
   Proved(0);
   Proved(0);
   Proved(0);
@@ -56,6 +58,7 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
+  pr;
   ?;
   pr;
   pr;
@@ -86,6 +89,7 @@ THEORY MethodList IS
 END
 &
 THEORY PassList IS
+  Force(0),?;
   Force(0),?;
   Force(0),?;
   Force(0),?;

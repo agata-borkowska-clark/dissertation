@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Queuemch_stack_initial))==(btrue);
   Abstract_List_Invariant(Machine(Queuemch_stack_initial))==(btrue);
   Context_List_Invariant(Machine(Queuemch_stack_initial))==(btrue);
-  List_Invariant(Machine(Queuemch_stack_initial))==(list: iseq(ITEMS))
+  List_Invariant(Machine(Queuemch_stack_initial))==(list: seq(ITEMS))
 END
 &
 THEORY ListAssertionsX IS
@@ -121,17 +121,17 @@ END
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Queuemch_stack_initial),push)==(aa: ITEMS-ran(list));
+  List_Precondition(Machine(Queuemch_stack_initial),push)==(aa: ITEMS);
   List_Precondition(Machine(Queuemch_stack_initial),pop)==(size(list)>0);
-  List_Precondition(Machine(Queuemch_stack_initial),enqueue)==(aa: ITEMS-ran(list));
+  List_Precondition(Machine(Queuemch_stack_initial),enqueue)==(aa: ITEMS);
   List_Precondition(Machine(Queuemch_stack_initial),dequeue)==(size(list)>0)
 END
 &
 THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Queuemch_stack_initial),dequeue)==(size(list)>0 | aa,list:=first(list),tail(list));
-  Expanded_List_Substitution(Machine(Queuemch_stack_initial),enqueue)==(aa: ITEMS-ran(list) | list:=list<-aa);
+  Expanded_List_Substitution(Machine(Queuemch_stack_initial),enqueue)==(aa: ITEMS | list:=list<-aa);
   Expanded_List_Substitution(Machine(Queuemch_stack_initial),pop)==(size(list)>0 | aa,list:=last(list),front(list));
-  Expanded_List_Substitution(Machine(Queuemch_stack_initial),push)==(aa: ITEMS-ran(list) | list:=list<-aa);
+  Expanded_List_Substitution(Machine(Queuemch_stack_initial),push)==(aa: ITEMS | list:=list<-aa);
   List_Substitution(Machine(Queuemch_stack_initial),push)==(list:=list<-aa);
   List_Substitution(Machine(Queuemch_stack_initial),pop)==(aa:=last(list) || list:=front(list));
   List_Substitution(Machine(Queuemch_stack_initial),enqueue)==(list:=list<-aa);

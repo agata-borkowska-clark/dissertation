@@ -23,9 +23,6 @@
         <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_constant_set2" suffix="mch" user="Agata">
             <component name="Bagmch_constant_set2" type="specification" />
         </component_file>
-        <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_detailed" suffix="mch" user="Agata">
-            <component name="Bagmch_detailed" type="specification" />
-        </component_file>
         <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_enum" suffix="mch" user="Agata">
             <component name="Bagmch_enum" type="specification" />
         </component_file>
@@ -46,12 +43,6 @@
         </component_file>
         <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_nondet_restrictive" suffix="mch" user="Agata">
             <component name="Bagmch_nondet_restrictive" type="specification" />
-        </component_file>
-        <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_numbers" suffix="mch" user="Agata">
-            <component name="Bagmch_numbers" type="specification" />
-        </component_file>
-        <component_file path="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios" name="Bagmch_numbers_2" suffix="mch" user="Agata">
-            <component name="Bagmch_numbers_2" type="specification" />
         </component_file>
         <component_file path="D:/Non-game stuff/CS notes/Dissertation/Test_scenarios" name="Bagmch_params" suffix="mch" user="Agata">
             <component name="Bagmch_params" type="specification" />
