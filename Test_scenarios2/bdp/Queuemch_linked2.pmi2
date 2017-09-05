@@ -1,15 +1,14 @@
 ﻿THEORY BalanceX IS
-  Queuemch_linked,43,12,0,24,0,0,0;
-  Initialisation,5,4,0,1,0,0,0;
-  WellDefinednessInvariant,2,0,0,2,0,0,0;
+  Queuemch_linked2,43,9,0,24,0,0,0;
+  Initialisation,6,4,0,2,0,0,0;
   WellDefinedness_Precondition_remove,2,1,0,1,0,0,0;
   WellDefinedness_append,2,1,0,1,0,0,0;
   WellDefinedness_getelem,1,0,0,1,0,0,0;
-  WellDefinedness_remove,6,0,0,6,0,0,0;
-  WellDefinedness_remove2,10,0,0,10,0,0,0;
-  append,5,5,0,0,0,0,0;
-  remove,5,0,0,1,0,0,0;
-  remove2,5,1,0,1,0,0,0
+  WellDefinedness_remove,5,0,0,5,0,0,0;
+  WellDefinedness_remove2,9,0,0,9,0,0,0;
+  append,6,3,0,1,0,0,0;
+  remove,6,0,0,2,0,0,0;
+  remove2,6,0,0,2,0,0,0
 END
 &
 THEORY ProofState IS
@@ -29,33 +28,33 @@ THEORY ProofState IS
   Proved(0);
   Proved(0);
   Proved(0);
-  Proved(0);
-  Proved(0);
   Proved(Util);
   Proved(0);
-  Proved(Util);
-  Proved(0);
-  Proved(0);
-  Unproved;
-  Proved(0);
-  Unproved;
   Proved(Util);
   Unproved;
   Unproved;
   Proved(0);
   Unproved;
   Unproved;
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(Util);
   Unproved;
   Proved(Util);
+  Unproved;
   Proved(Util);
-  Proved(Util);
-  Proved(Util);
+  Proved(0);
   Proved(Util);
   Proved(0);
   Proved(Util);
   Proved(Util);
   Proved(Util);
-  Proved(Util)
+  Proved(0)
 END
 &
 THEORY MethodList IS
@@ -75,33 +74,33 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
-  pr;
-  pr;
   dd & pr & pp(rp.1);
   pr;
   dd & pr & pp(rp.1);
-  pr;
-  pr;
-  ?;
-  pr;
-  pr;
-  dd & pr & ah(nn>=1) & pp(rp.1) & pr & pp(rp.1);
   ?;
   ?;
   pr;
   ?;
-  dd & pr;
   ?;
-  dd & pr & pp(rp.1);
+  pr;
+  ?;
+  ?;
+  pr;
+  ?;
+  ?;
+  pr;
   dd & pr & pp(rp.1) & pr;
-  dd & pr & pp(rp.1) & pr & pp(rp.1) & pr & pp(rp.1) & pr & pr & pp(rp.1) & pr;
+  ?;
+  dd & pr & pp(rp.1) & pr;
+  ?;
   dd & pr & pp(rp.1);
-  dd & pr & pp(rp.1) & pp(rp.0);
+  pr;
+  dd & pr & pp(rp.1) & pr;
   pr;
   dd & pr & pp(rp.0);
-  dd & pr & pp(rp.0) & pp(rp.1) & pr & pp(rp.0) & pr & pp(rp.0) & pr & pp(rp.0) & pr & pp(rp.0);
+  dd & pr & pp(rp.0) & pp(rp.0) & pp(rp.0) & pp(rp.0);
   dd & pr & pp(rp.0);
-  dd & pr & pp(rp.1) & pr
+  pr
 END
 &
 THEORY PassList IS
@@ -121,23 +120,21 @@ THEORY PassList IS
   Force(0),?;
   Force(0),?;
   Force(0),?;
-  Force(0),?;
-  Force(0),?;
   Force(0),(?;0);
   Force(0),?;
-  Force(0),(?;0);
-  Force(0),?;
-  Force(0),?;
-  Force(0),(?;0);
-  Force(0),?;
-  Force(0),(?;0);
   Force(0),(?;0);
   Force(0),(?;0);
   Force(0),(?;0);
   Force(0),?;
   Force(0),(?;0);
   Force(0),(?;0);
+  Force(0),?;
   Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),?;
   Force(0),(?;0);
   Force(0),(?;0);
   Force(0),(?;0);
@@ -145,9 +142,11 @@ THEORY PassList IS
   Force(0),(?;0);
   Force(0),?;
   Force(0),(?;0);
+  Force(0),?;
   Force(0),(?;0);
   Force(0),(?;0);
-  Force(0),(?;0)
+  Force(0),(?;0);
+  Force(0),?
 END
 &
 THEORY ManForms 

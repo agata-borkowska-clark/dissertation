@@ -10,21 +10,23 @@ MACHINE
 SETS
     ITEMS
 ABSTRACT_VARIABLES
-    anchor , content , next
+    content , next
 INVARIANT
     content : iseq ( ITEMS ) &
-    anchor : elem & // dummy element considered to be the start of the list
-    next :  elem -->> elem & // it's surjective (cycling through elements)
-    content : seq ( ran ( content ) )
+    not ( content = [] ) &
+    next :  elem >->> elem & // it's surjective (cycling through elements)
+    content : seq ( ran ( content ) ) &
+//    next~: dom(next~) >-> ran(next~) &
+    next ( last ( content ) ) = first ( content )
 DEFINITIONS
-    elem == ran ( content )
+    elem == ran ( content ) ;
+    anchor == content ( 1 ) // dummy element considered to be the start of the list
 INITIALISATION
     ANY
         item
     WHERE
         item : ITEMS // pick any item as the anchor
     THEN
-        anchor := item ||
         content := [ item ] || // single-item sequence
         next := { item |-> item }
     END
@@ -35,7 +37,7 @@ OPERATIONS
         ii : ITEMS - elem
     THEN
         content := content <- ii ||
-        next := next <+ { ii |-> anchor , last ( content ) |-> ii }
+        next := { last ( content ) } <<| next \/ { ii |-> anchor , last ( content ) |-> ii }
     END ;
 
     /* remove a specified item*/
@@ -43,7 +45,7 @@ OPERATIONS
     PRE
         ii : elem - { anchor } & size ( content ) > 1
     THEN
-        next := { ii } <<| next <+ { next ~ ( ii ) |-> next ( ii ) } ||
+        next := { ii , next ~ ( ii ) } <<| next \/ { next ~ ( ii ) |-> next ( ii ) } ||
         LET
             xx
         BE
@@ -56,10 +58,12 @@ OPERATIONS
     /* remove the item in position nn */
     remove2 ( nn ) =
     PRE
-        nn : dom ( content ) - { 1 } // don't remove the anchor
-         & size ( content ) > 1
+        nn : NAT // needed to define paramter type
+        & nn > 1 // don't remove the anchor
+        & nn <= size ( content ) // nn is in the domain of content
+        & size ( content ) > 1
     THEN
-        next := { content ( nn ) } <<| next <+ { next ~ ( content ( nn ) ) |-> next ( content ( nn ) ) } ||
+        next := { content ( nn ) , next ~ ( content ( nn ) ) } <<| next \/ { next ~ ( content ( nn ) ) |-> next ( content ( nn ) ) } ||
         content := ( content /|\ ( nn - 1 ) ) ^ ( content \|/ nn )
     END ;
 

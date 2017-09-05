@@ -37,9 +37,9 @@ THEORY ListVariablesX IS
   External_Context_List_Variables(Machine(Queuemch_linked))==(?);
   Context_List_Variables(Machine(Queuemch_linked))==(?);
   Abstract_List_Variables(Machine(Queuemch_linked))==(?);
-  Local_List_Variables(Machine(Queuemch_linked))==(next,content,anchor);
-  List_Variables(Machine(Queuemch_linked))==(next,content,anchor);
-  External_List_Variables(Machine(Queuemch_linked))==(next,content,anchor)
+  Local_List_Variables(Machine(Queuemch_linked))==(next,content);
+  List_Variables(Machine(Queuemch_linked))==(next,content);
+  External_List_Variables(Machine(Queuemch_linked))==(next,content)
 END
 &
 THEORY ListVisibleVariablesX IS
@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Queuemch_linked))==(btrue);
   Abstract_List_Invariant(Machine(Queuemch_linked))==(btrue);
   Context_List_Invariant(Machine(Queuemch_linked))==(btrue);
-  List_Invariant(Machine(Queuemch_linked))==(content: iseq(ITEMS) & anchor: ran(content) & next: ran(content) -->> ran(content) & content: seq(ran(content)))
+  List_Invariant(Machine(Queuemch_linked))==(content: iseq(ITEMS) & not(content = <>) & next: ran(content) >->> ran(content) & content: seq(ran(content)) & next(last(content)) = first(content))
 END
 &
 THEORY ListAssertionsX IS
@@ -76,9 +76,9 @@ THEORY ListExclusivityX IS
 END
 &
 THEORY ListInitialisationX IS
-  Expanded_List_Initialisation(Machine(Queuemch_linked))==(@item.(item: ITEMS ==> anchor,content,next:=item,[item],{item|->item}));
+  Expanded_List_Initialisation(Machine(Queuemch_linked))==(@item.(item: ITEMS ==> content,next:=[item],{item|->item}));
   Context_List_Initialisation(Machine(Queuemch_linked))==(skip);
-  List_Initialisation(Machine(Queuemch_linked))==(ANY item WHERE item: ITEMS THEN anchor:=item || content:=[item] || next:={item|->item} END)
+  List_Initialisation(Machine(Queuemch_linked))==(ANY item WHERE item: ITEMS THEN content:=[item] || next:={item|->item} END)
 END
 &
 THEORY ListParametersX IS
@@ -125,8 +125,8 @@ THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
   List_Precondition(Machine(Queuemch_linked),append)==(ii: ITEMS-ran(content));
-  List_Precondition(Machine(Queuemch_linked),remove)==(ii: ran(content)-{anchor} & size(content)>1);
-  List_Precondition(Machine(Queuemch_linked),remove2)==(nn: dom(content)-{1} & size(content)>1);
+  List_Precondition(Machine(Queuemch_linked),remove)==(ii: ran(content)-{content(1)} & size(content)>1);
+  List_Precondition(Machine(Queuemch_linked),remove2)==(nn: NAT & nn>1 & nn<=size(content) & size(content)>1);
   List_Precondition(Machine(Queuemch_linked),getindexof)==(aa: ITEMS);
   List_Precondition(Machine(Queuemch_linked),getelem)==(ii: dom(content))
 END
@@ -134,12 +134,12 @@ END
 THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Queuemch_linked),getelem)==(ii: dom(content) | aa:=content(ii));
   Expanded_List_Substitution(Machine(Queuemch_linked),getindexof)==(aa: ITEMS | aa: ran(content) ==> ii:=content~(aa) [] not(aa: ran(content)) ==> ii:=0);
-  Expanded_List_Substitution(Machine(Queuemch_linked),remove2)==(nn: dom(content)-{1} & size(content)>1 | next,content:={content(nn)}<<|next<+{next~(content(nn))|->next(content(nn))},content/|\nn-1^(content\|/nn));
-  Expanded_List_Substitution(Machine(Queuemch_linked),remove)==(ii: ran(content)-{anchor} & size(content)>1 | next:={ii}<<|next<+{next~(ii)|->next(ii)} || @xx.(xx = content~(ii) ==> content:=content/|\xx-1^(content\|/xx)));
-  Expanded_List_Substitution(Machine(Queuemch_linked),append)==(ii: ITEMS-ran(content) | content,next:=content<-ii,next<+{ii|->anchor,last(content)|->ii});
-  List_Substitution(Machine(Queuemch_linked),append)==(content:=content<-ii || next:=next<+{ii|->anchor,last(content)|->ii});
-  List_Substitution(Machine(Queuemch_linked),remove)==(next:={ii}<<|next<+{next~(ii)|->next(ii)} || LET xx BE xx = content~(ii) IN content:=content/|\xx-1^(content\|/xx) END);
-  List_Substitution(Machine(Queuemch_linked),remove2)==(next:={content(nn)}<<|next<+{next~(content(nn))|->next(content(nn))} || content:=content/|\nn-1^(content\|/nn));
+  Expanded_List_Substitution(Machine(Queuemch_linked),remove2)==(nn: NAT & nn>1 & nn<=size(content) & size(content)>1 | next,content:={content(nn),next~(content(nn))}<<|next\/{next~(content(nn))|->next(content(nn))},content/|\nn-1^(content\|/nn));
+  Expanded_List_Substitution(Machine(Queuemch_linked),remove)==(ii: ran(content)-{content(1)} & size(content)>1 | next:={ii,next~(ii)}<<|next\/{next~(ii)|->next(ii)} || @xx.(xx = content~(ii) ==> content:=content/|\xx-1^(content\|/xx)));
+  Expanded_List_Substitution(Machine(Queuemch_linked),append)==(ii: ITEMS-ran(content) | content,next:=content<-ii,{last(content)}<<|next\/{ii|->content(1),last(content)|->ii});
+  List_Substitution(Machine(Queuemch_linked),append)==(content:=content<-ii || next:={last(content)}<<|next\/{ii|->content(1),last(content)|->ii});
+  List_Substitution(Machine(Queuemch_linked),remove)==(next:={ii,next~(ii)}<<|next\/{next~(ii)|->next(ii)} || LET xx BE xx = content~(ii) IN content:=content/|\xx-1^(content\|/xx) END);
+  List_Substitution(Machine(Queuemch_linked),remove2)==(next:={content(nn),next~(content(nn))}<<|next\/{next~(content(nn))|->next(content(nn))} || content:=content/|\nn-1^(content\|/nn));
   List_Substitution(Machine(Queuemch_linked),getindexof)==(IF aa: ran(content) THEN ii:=content~(aa) ELSE ii:=0 END);
   List_Substitution(Machine(Queuemch_linked),getelem)==(aa:=content(ii))
 END
@@ -190,7 +190,7 @@ THEORY ListANYVarX IS
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Queuemch_linked)) == (ITEMS | ? | next,content,anchor | ? | append,remove,remove2,getindexof,getelem | ? | ? | ? | Queuemch_linked);
+  List_Of_Ids(Machine(Queuemch_linked)) == (ITEMS | ? | next,content | ? | append,remove,remove2,getindexof,getelem | ? | ? | ? | Queuemch_linked);
   List_Of_HiddenCst_Ids(Machine(Queuemch_linked)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Queuemch_linked)) == (?);
   List_Of_VisibleVar_Ids(Machine(Queuemch_linked)) == (? | ?);
@@ -202,7 +202,7 @@ THEORY SetsEnvX IS
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Machine(Queuemch_linked)) == (Type(next) == Mvl(SetOf(atype(ITEMS,?,?)*atype(ITEMS,?,?)));Type(content) == Mvl(SetOf(btype(INTEGER,?,?)*atype(ITEMS,?,?)));Type(anchor) == Mvl(atype(ITEMS,?,?)))
+  Variables(Machine(Queuemch_linked)) == (Type(next) == Mvl(SetOf(atype(ITEMS,?,?)*atype(ITEMS,?,?)));Type(content) == Mvl(SetOf(btype(INTEGER,?,?)*atype(ITEMS,?,?))))
 END
 &
 THEORY OperationsEnvX IS

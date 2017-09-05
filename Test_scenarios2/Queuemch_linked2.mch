@@ -6,18 +6,19 @@
  
  /*Implementation of a linked list */
 MACHINE
-    Queuemch_linked
+    Queuemch_linked2
 SETS
     ITEMS
 VARIABLES
     content, next
 INVARIANT
-    content : iseq(ITEMS) &
+    content : seq(ITEMS) &
     not(content = <>) & 
-    next :  elem >->> elem & // it's surjective (cycling through elements)
+    next :  elem -->> elem & // it's surjective (cycling through elements)
     content: seq(ran(content)) &
-//    next~: dom(next~) >-> ran(next~) &
-    next(last(content)) = first(content)
+    next~: dom(next~) +-> ran(next~)&
+    next(last(content)) = first(content) &
+    content~ : ITEMS +-> NATURAL-{0}
 DEFINITIONS
     elem == ran(content);
     anchor == content(1) // dummy element considered to be the start of the list
@@ -37,7 +38,7 @@ OPERATIONS
         ii : ITEMS-elem
     THEN
         content := content <- ii ||
-        next := {last(content)} <<| next \/ {ii|->anchor, last(content)|-> ii}
+        next := next <+ {ii|->anchor, last(content)|-> ii}
     END;
     
     /* remove a specified item*/
@@ -45,7 +46,7 @@ OPERATIONS
     PRE
         ii : elem-{anchor} & size(content) > 1
     THEN
-        next := {ii, next~(ii)} <<| next \/ {next~(ii)|->next(ii)} ||
+        next := {ii} <<| next <+ {next~(ii)|->next(ii)} ||
         LET
             xx 
         BE 
@@ -63,7 +64,7 @@ OPERATIONS
         & nn <= size(content) // nn is in the domain of content
         & size(content) > 1
     THEN
-        next := {content(nn), next~(content(nn))} <<| next \/ {next~(content(nn))|->next(content(nn))} ||
+        next := {content(nn)} <<| next <+ {next~(content(nn))|->next(content(nn))} ||
         content := (content/|\(nn-1))^(content\|/nn)
     END;
     

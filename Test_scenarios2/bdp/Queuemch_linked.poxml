@@ -27,15 +27,15 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((anchor) : (ran(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1" typref="1628806408" value="anchor"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:2:1" typref="4176992498" value="content"/>
-</Unary_Exp>
+<Unary_Pred op="not" initialTag="not(((content) = ({})))">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:2" typref="1847249677"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) --&gt;&gt; (ran(content)))))">
+</Unary_Pred>
+<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) &gt;-&gt;&gt; (ran(content)))))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:1" typref="2645979924" value="next"/>
-<Binary_Exp op="--&gt;&gt;" typref="3121083887">
+<Binary_Exp op="&gt;-&gt;&gt;" typref="3121083887">
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
@@ -50,6 +50,17 @@
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="(((next )(last(content))) = (first(content)))">
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+<Unary_Exp op="first" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -91,31 +102,23 @@
 <Nary_Sub op="||">
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:1:1:1" typref="1628806408" value="anchor"/>
-</Variables>
-<Values>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:1:2:1" typref="1628806408" value="item"/>
-</Values>
-</Simple_Assignement_Sub>
-<Simple_Assignement_Sub>
-<Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:1:1:1" typref="4176992498" value="content"/>
 </Variables>
 <Values>
 <Nary_Exp op="[" typref="4176992498">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:2:2:1:1" typref="1628806408" value="item"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:1:2:1:1" typref="1628806408" value="item"/>
 </Nary_Exp>
 </Values>
 </Simple_Assignement_Sub>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:3:1:1" typref="2645979924" value="next"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:2:1:1" typref="2645979924" value="next"/>
 </Variables>
 <Values>
 <Nary_Exp op="{" typref="2645979924">
 <Binary_Exp op="|-&gt;" typref="701415471">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:3:2:1:1:1" typref="1628806408" value="item"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:3:2:1:1:2" typref="1628806408" value="item"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:2:2:1:1:1" typref="1628806408" value="item"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:3:1:2:2:1:1:2" typref="1628806408" value="item"/>
 </Binary_Exp>
 </Nary_Exp>
 </Values>
@@ -135,15 +138,15 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((anchor) : (ran(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1" typref="1628806408" value="anchor"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:2:1" typref="4176992498" value="content"/>
-</Unary_Exp>
+<Unary_Pred op="not" initialTag="not(((content) = ({})))">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:2" typref="1847249677"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) --&gt;&gt; (ran(content)))))">
+</Unary_Pred>
+<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) &gt;-&gt;&gt; (ran(content)))))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:1" typref="2645979924" value="next"/>
-<Binary_Exp op="--&gt;&gt;" typref="3121083887">
+<Binary_Exp op="&gt;-&gt;&gt;" typref="3121083887">
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
@@ -158,6 +161,17 @@
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="(((next )(last(content))) = (first(content)))">
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+<Unary_Exp op="first" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -210,12 +224,22 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:1:1" typref="2645979924" value="next"/>
 </Variables>
 <Values>
-<Binary_Exp op="&lt;+" typref="2645979924">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:1" typref="2645979924" value="next"/>
+<Binary_Exp op="\/" typref="2645979924">
+<Binary_Exp op="&lt;&lt;|" typref="2645979924">
+<Nary_Exp op="{" typref="4185748219">
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:1:1:1:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Nary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:1:2" typref="2645979924" value="next"/>
+</Binary_Exp>
 <Nary_Exp op="{" typref="2645979924">
 <Binary_Exp op="|-&gt;" typref="701415471">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:1" typref="1628806408" value="ii"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:2" typref="1628806408" value="anchor"/>
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:2:1" typref="4176992498" value="content"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:2:2" typref="2701647786" value="1"/>
+</Binary_Exp>
 </Binary_Exp>
 <Binary_Exp op="|-&gt;" typref="701415471">
 <Unary_Exp op="last" typref="1628806408">
@@ -239,15 +263,15 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((anchor) : (ran(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1" typref="1628806408" value="anchor"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:2:1" typref="4176992498" value="content"/>
-</Unary_Exp>
+<Unary_Pred op="not" initialTag="not(((content) = ({})))">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:2" typref="1847249677"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) --&gt;&gt; (ran(content)))))">
+</Unary_Pred>
+<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) &gt;-&gt;&gt; (ran(content)))))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:1" typref="2645979924" value="next"/>
-<Binary_Exp op="--&gt;&gt;" typref="3121083887">
+<Binary_Exp op="&gt;-&gt;&gt;" typref="3121083887">
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
@@ -262,6 +286,17 @@
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="(((next )(last(content))) = (first(content)))">
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+<Unary_Exp op="first" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -293,7 +328,10 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 <Nary_Exp op="{" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1" typref="1628806408" value="anchor"/>
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:1" typref="4176992498" value="content"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
 </Nary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -313,10 +351,16 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:1:1" typref="2645979924" value="next"/>
 </Variables>
 <Values>
-<Binary_Exp op="&lt;+" typref="2645979924">
+<Binary_Exp op="\/" typref="2645979924">
 <Binary_Exp op="&lt;&lt;|" typref="2645979924">
 <Nary_Exp op="{" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:1:1" typref="1628806408" value="ii"/>
+<Binary_Exp op="(" typref="1628806408">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:1:2:2" typref="1628806408" value="ii"/>
+</Binary_Exp>
 </Nary_Exp>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:2" typref="2645979924" value="next"/>
 </Binary_Exp>
@@ -386,15 +430,15 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((anchor) : (ran(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1" typref="1628806408" value="anchor"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:2:1" typref="4176992498" value="content"/>
-</Unary_Exp>
+<Unary_Pred op="not" initialTag="not(((content) = ({})))">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:2" typref="1847249677"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) --&gt;&gt; (ran(content)))))">
+</Unary_Pred>
+<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) &gt;-&gt;&gt; (ran(content)))))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:1" typref="2645979924" value="next"/>
-<Binary_Exp op="--&gt;&gt;" typref="3121083887">
+<Binary_Exp op="&gt;-&gt;&gt;" typref="3121083887">
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
@@ -409,6 +453,17 @@
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="(((next )(last(content))) = (first(content)))">
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+<Unary_Exp op="first" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -435,20 +490,23 @@
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:1" typref="2701647786" value="nn"/>
-<Binary_Exp op="-" typref="3603043417">
-<Unary_Exp op="dom" typref="3603043417">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2:1:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+<Exp_Comparison op="&gt;">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:1" typref="2701647786" value="nn"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:2" typref="2701647786" value="1"/>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:3:1" typref="2701647786" value="nn"/>
+<Unary_Exp op="size" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:3:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
-<Nary_Exp op="{" typref="3603043417">
-<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2:2:1" typref="2701647786" value="1"/>
-</Nary_Exp>
-</Binary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op="&gt;">
 <Unary_Exp op="size" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:1:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:4:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
-<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:2" typref="2701647786" value="1"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:4:2" typref="2701647786" value="1"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -460,12 +518,21 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:1:1" typref="2645979924" value="next"/>
 </Variables>
 <Values>
-<Binary_Exp op="&lt;+" typref="2645979924">
+<Binary_Exp op="\/" typref="2645979924">
 <Binary_Exp op="&lt;&lt;|" typref="2645979924">
 <Nary_Exp op="{" typref="4185748219">
 <Binary_Exp op="(" typref="1628806408">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:1:1" typref="4176992498" value="content"/>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:1:2" typref="2701647786" value="nn"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="1628806408">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:2" typref="2701647786" value="nn"/>
+</Binary_Exp>
 </Binary_Exp>
 </Nary_Exp>
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:2" typref="2645979924" value="next"/>
@@ -525,15 +592,15 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((anchor) : (ran(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1" typref="1628806408" value="anchor"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:2:1" typref="4176992498" value="content"/>
-</Unary_Exp>
+<Unary_Pred op="not" initialTag="not(((content) = ({})))">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:2" typref="1847249677"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) --&gt;&gt; (ran(content)))))">
+</Unary_Pred>
+<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) &gt;-&gt;&gt; (ran(content)))))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:1" typref="2645979924" value="next"/>
-<Binary_Exp op="--&gt;&gt;" typref="3121083887">
+<Binary_Exp op="&gt;-&gt;&gt;" typref="3121083887">
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
@@ -548,6 +615,17 @@
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="(((next )(last(content))) = (first(content)))">
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+<Unary_Exp op="first" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -624,15 +702,15 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((anchor) : (ran(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1" typref="1628806408" value="anchor"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:2:1" typref="4176992498" value="content"/>
-</Unary_Exp>
+<Unary_Pred op="not" initialTag="not(((content) = ({})))">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:2" typref="1847249677"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) --&gt;&gt; (ran(content)))))">
+</Unary_Pred>
+<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) &gt;-&gt;&gt; (ran(content)))))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:1" typref="2645979924" value="next"/>
-<Binary_Exp op="--&gt;&gt;" typref="3121083887">
+<Binary_Exp op="&gt;-&gt;&gt;" typref="3121083887">
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
@@ -647,6 +725,17 @@
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="(((next )(last(content))) = (first(content)))">
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+<Unary_Exp op="first" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -701,15 +790,15 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:1:2:1" typref="4185748219" value="ITEMS"/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((anchor) : (ran(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1" typref="1628806408" value="anchor"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:2:1" typref="4176992498" value="content"/>
-</Unary_Exp>
+<Unary_Pred op="not" initialTag="not(((content) = ({})))">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:2" typref="1847249677"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) --&gt;&gt; (ran(content)))))">
+</Unary_Pred>
+<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) &gt;-&gt;&gt; (ran(content)))))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:1" typref="2645979924" value="next"/>
-<Binary_Exp op="--&gt;&gt;" typref="3121083887">
+<Binary_Exp op="&gt;-&gt;&gt;" typref="3121083887">
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
@@ -724,6 +813,17 @@
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="(((next )(last(content))) = (first(content)))">
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+<Unary_Exp op="first" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -787,12 +887,12 @@
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
-<Exp_Comparison op=":" initialTag="((anchor) : (ran(content)))">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1" typref="1628806408" value="anchor"/>
-<Unary_Exp op="ran" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:2:1" typref="4176992498" value="content"/>
-</Unary_Exp>
+<Unary_Pred op="not" initialTag="not(((content) = ({})))">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:1" typref="4176992498" value="content"/>
+<EmptySeq tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:2:1:2" typref="1847249677"/>
 </Exp_Comparison>
+</Unary_Pred>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
@@ -802,9 +902,9 @@
 </Binary_Pred>
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
-<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) --&gt;&gt; (ran(content)))))">
+<Exp_Comparison op=":" initialTag="((next) : (((ran(content)) &gt;-&gt;&gt; (ran(content)))))">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:1" typref="2645979924" value="next"/>
-<Binary_Exp op="--&gt;&gt;" typref="3121083887">
+<Binary_Exp op="&gt;-&gt;&gt;" typref="3121083887">
 <Unary_Exp op="ran" typref="4185748219">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:3:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
@@ -817,6 +917,76 @@
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((content) : (seq(ran(content))))">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:1" typref="4176992498" value="content"/>
+<Unary_Exp op="seq" typref="1570666257">
+<Unary_Exp op="ran" typref="4185748219">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:4:2:1:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+<Unary_Exp op="seq">
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+<EmptySet/>
+</Exp_Comparison>
+</Unary_Pred>
+</Binary_Pred>
+<Exp_Comparison op=":">
+<Unary_Exp op="last" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
+<Unary_Exp op="seq">
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:3:1:5:2:1" typref="4176992498" value="content"/>
+<EmptySet/>
+</Exp_Comparison>
+</Unary_Pred>
+</Binary_Pred>
+</Binary_Pred>
+</Nary_Pred>
 </Binary_Pred>
 </Nary_Pred>
 </Binary_Pred>
@@ -872,8 +1042,6 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:4:1:2:1:2" typref="4185748219" value="ITEMS"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
-<Nary_Pred op="&amp;"/>
-<Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
@@ -959,10 +1127,49 @@
 </Nary_Pred>
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
-<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:1:1:1:1" typref="4176992498" value="content"/>
+<Unary_Exp op="seq">
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:1:1:1:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:1:1:1:1" typref="4176992498" value="content"/>
+<EmptySet/>
+</Exp_Comparison>
+</Unary_Pred>
+</Binary_Pred>
 <Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:2:2" typref="2701647786" value="1"/>
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:2:1" typref="4176992498" value="content"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:1:3:1:2:2:1:2:1:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
 </Binary_Pred>
 <Binary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
@@ -1011,7 +1218,27 @@
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:2" typref="2701647786" value="1"/>
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:1" typref="4176992498" value="content"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
 </Binary_Pred>
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
@@ -1022,7 +1249,10 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 <Nary_Exp op="{" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1" typref="1628806408" value="anchor"/>
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:1" typref="4176992498" value="content"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
 </Nary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -1070,7 +1300,10 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 <Nary_Exp op="{" typref="4185748219">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1" typref="1628806408" value="anchor"/>
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:1" typref="4176992498" value="content"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:2:1:1:2:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
 </Nary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -1090,6 +1323,35 @@
 <Binary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:1:2:2" typref="1628806408" value="ii"/>
+<Unary_Exp op="dom">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:2:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 <Binary_Pred op="&amp;">
@@ -1303,37 +1565,63 @@
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
-<Nary_Pred op="&amp;"/>
-</Binary_Pred>
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:1" typref="2701647786" value="nn"/>
-<Binary_Exp op="-" typref="3603043417">
-<Unary_Exp op="dom" typref="3603043417">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2:1:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="&gt;">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:1" typref="2701647786" value="nn"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:2" typref="2701647786" value="1"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:3:2:1" typref="4176992498" value="content"/>
+<Unary_Exp op="seq">
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:3:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
-<Nary_Exp op="{" typref="3603043417">
-<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2:2:1" typref="2701647786" value="1"/>
-</Nary_Exp>
-</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="&lt;=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:3:1" typref="2701647786" value="nn"/>
+<Unary_Exp op="size" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:3:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Exp_Comparison op=":">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:1:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:4:1:1" typref="4176992498" value="content"/>
 <Unary_Exp op="seq">
 <Unary_Exp op="ran">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:1:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:4:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
 <Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
 </Binary_Pred>
 </Nary_Pred>
 </Binary_Pred>
@@ -1359,20 +1647,23 @@
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:1" typref="2701647786" value="nn"/>
-<Binary_Exp op="-" typref="3603043417">
-<Unary_Exp op="dom" typref="3603043417">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2:1:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+<Exp_Comparison op="&gt;">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:1" typref="2701647786" value="nn"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:2" typref="2701647786" value="1"/>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:3:1" typref="2701647786" value="nn"/>
+<Unary_Exp op="size" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:3:2:1" typref="4176992498" value="content"/>
 </Unary_Exp>
-<Nary_Exp op="{" typref="3603043417">
-<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:1:2:2:1" typref="2701647786" value="1"/>
-</Nary_Exp>
-</Binary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op="&gt;">
 <Unary_Exp op="size" typref="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:1:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:4:1:1" typref="4176992498" value="content"/>
 </Unary_Exp>
-<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:2:2" typref="2701647786" value="1"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:2:1:4:2" typref="2701647786" value="1"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -1400,6 +1691,58 @@
 </Unary_Exp>
 <Unary_Exp op="ran">
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:1:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:2" typref="2701647786" value="nn"/>
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:1" typref="4176992498" value="content"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:1" typref="4176992498" value="content"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Binary_Exp op="(" typref="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:1" typref="4176992498" value="content"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:2:2" typref="2701647786" value="nn"/>
+</Binary_Exp>
+<Unary_Exp op="dom">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Unary_Exp op="~" typref="2645979924">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:5:3:3:1:1:2:1:1:1:2:1:1" typref="2645979924" value="next"/>
+</Unary_Exp>
 </Unary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -1783,22 +2126,19 @@
 <Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:1:1:1" value="ITEMS"/>
 </Unary_Exp>
 </Type>
-<Type id="1628806408">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:2:1" value="ITEMS"/>
-</Type>
 <Type id="4176992498">
 <Unary_Exp op="POW">
 <Binary_Exp op="*">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:3:1:1:1" value="INTEGER"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:3:1:1:2" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:2:1:1:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:2:1:1:2" value="ITEMS"/>
 </Binary_Exp>
 </Unary_Exp>
 </Type>
 <Type id="2645979924">
 <Unary_Exp op="POW">
 <Binary_Exp op="*">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:4:1:1:1" value="ITEMS"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:4:1:1:2" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:3:1:1:1" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:3:1:1:2" value="ITEMS"/>
 </Binary_Exp>
 </Unary_Exp>
 </Type>
@@ -1806,10 +2146,18 @@
 <Unary_Exp op="POW">
 <Unary_Exp op="POW">
 <Binary_Exp op="*">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:5:1:1:1:1" value="INTEGER"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:5:1:1:1:2" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:4:1:1:1:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:4:1:1:1:2" value="ITEMS"/>
 </Binary_Exp>
 </Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="1847249677">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:5:1:1:1" value="INTEGER"/>
+<Generic_Type tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:5:1:1:2"/>
+</Binary_Exp>
 </Unary_Exp>
 </Type>
 <Type id="3121083887">
@@ -1822,26 +2170,29 @@
 </Unary_Exp>
 </Unary_Exp>
 </Type>
+<Type id="1628806408">
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:7:1" value="ITEMS"/>
+</Type>
 <Type id="701415471">
 <Binary_Exp op="*">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:7:1:1" value="ITEMS"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:7:1:2" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:8:1:1" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:8:1:2" value="ITEMS"/>
 </Binary_Exp>
 </Type>
 <Type id="2701647786">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:8:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:9:1" value="INTEGER"/>
 </Type>
 <Type id="301403634">
 <Unary_Exp op="POW">
 <Binary_Exp op="*">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:9:1:1:1" value="ITEMS"/>
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:9:1:1:2" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:10:1:1:1" value="ITEMS"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:10:1:1:2" value="INTEGER"/>
 </Binary_Exp>
 </Unary_Exp>
 </Type>
 <Type id="3603043417">
 <Unary_Exp op="POW">
-<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:10:1:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Dissertation\Test_scenarios2\bdp\Queuemch_linked.bxml:1:6:11:1:1" value="INTEGER"/>
 </Unary_Exp>
 </Type>
 </TypeInfos>

@@ -995,13 +995,45 @@ pr & pp(rp.1) & pr
 	
 	\subsubsection{Queuemch\_linked}
 	
+	This is an implementation of a linked list, where the content of the list is stored in a B language's sequence, and there is an additional function called \texttt{next} to maintain pointers. To disambiguate it and to add another layer of complexity, we will consider an injective linked list, where each element can appear only once.
 	
+	We use a dummy element, which we call \texttt{anchor} to indicate the beginning of the list. It will point to the first element of the list, and the last element will point to it - thus making the \texttt{next} function a bijection.
+	
+	The operations to remove an item - whether by the item or by its position in the list - are a little more tricky. We cannot simply remove a maplet related to the element, as the resultant mapping will not be a sequence, since the integers in the domain will not be consecutive.
+	
+	The initial version of this machine can be found in the file \emph{Queuemch\_linked\_initial} and generates 32 proof obligations, 17 of which are not discharged.
+	
+	We begin by looking at the well-defineness proof obligations. We notice that two have the goal '\texttt{content: seq(ran(content))}' which was seen in the previous machine. Adding it to the Invariant however does not gain us much. There are now 34 proof obligations generated, and still 17 which are not demonstrated automatically.
+	
+	Most of the remaining well-defineness-related proof obligations can be discharged with the use of predicate prover. Afterwards the only two which are left, have the goal '\texttt{next~: dom(next~) +-> ran(next~)}. We can again add it to the Invariant, and that helps with discharging all of the well-defininess proof obligations, however more are generated for the operations. There are now 16 left to be discharged, all related to the preservation of the Invariant. Note that with each addition to the Invariant, the total number has risen.
+	
+	All of the proof obligations resulting from the Initialisation can be easily discharged with the interactive prover (especially with the predicate prover command), since they are simple type checks. We shall not elaborate on this due to its simplicity.
+	
+	We further notice that a few proof obligation arising from the Invariant clauses involving the \texttt{anchor} element. Upon further inspection of the Invariant, we deem having \texttt{anchor} as a variable to be unnecessary - it is a dummy element, which is never changed. Thus we re-write this part of the Invariant to remove any mentions of this variable, and instead include the clause that \texttt{content} is a non-empty sequence. We add '\texttt{anchor == content(1)} to the Definitions clause.
+	
+	After an inspection of the proof obligations regarding the \texttt{next} function, we notice that there is a key clause missing from the Invariant. We have not specified that the last element of the list should point to the anchor, i.e. the first element. Additionally, it is now worth noting that this function is specifically a bijection. Given the nice properties of bijections, we can also remove the conjunct regarding its inverse. Thus the inspection of the proof obligations allowed us to fine-tune the abstract machine to express the specification better. With this change, all of the proof obligations arising from the operation to append an item discharge with the predicate prover. Note that the calls to it may now take a while.
+	
+	Next, we deal with the proof obligations generated from the operation to append an item. The ones regarding the domain overriding of the \texttt{next} function, cannot be discharged easily. Thus we rephrase it to make it more explicit that it is still a bijection, turning \texttt{next := next <+ \{ii|->anchor, last(content)|-> ii}\} into \texttt{next := {last(content)} <<| next }\verb|\|\texttt{/ \{ii|->anchor, last(content)|-> ii\}}. As we have found out during the work on the Bag machines, set union is easy to reason about. Indeed it seems that now the predicate prover can deal with the two problematic proof obligations, and with its help, all of the proof obligations for appending an item get demonstrated. We make an analogous change to the operations to remove an item.
+	
+	Finally we observe that the operations to remove an item, be it by index or by specifying the item to remove, generate quite a few undischarged proof obligations. First come those involving sequence concatenation. It is an in-built operation, which is not described in the manuals in detail, so we can only speculate as to its internal workings. The goal of the related proof obligations is:
+	\texttt{(content/|}\verb|\| \texttt{xx-1}\verb|^|\texttt{(content}\verb|\|\texttt{|/xx): iseq(ITEMS)}. We have not found a suitable hypothesis to add, to discharge it. 
+	
+	Similarly, contrary to our expectations, the proof obligation arising from the condition that \texttt{content} is never an empty sequence, does not get discharged easily. We have not found a way to discharge it for the first version of the operation to remove an item, where the item is given as a parameter. For the second operation to remove an item, with its index as a parameter, the proof obligation was demonstrated after adding the hypothesis that the paramter is greater than 1. It is already specified in the preconditions of this operation, yet the preconditions apparently did not have any effect. Thus, running the command '\texttt{ah(nn>=1)}' followed by the predicate prover, sufficed to discharge this proof obligation, as if the prover needed a reminder of the preconditions.
+	
+	The remaining proof obligations are concerned with the \texttt{next} operation, and perform transformations on the range and domain of  The change we have made earlier, to the \texttt{next} function, had no effect on how successful the predicate prover was. In either case the two proof obligations for each operation remain undischarged.They generate multiple subgoals, concerned with the various properties of the bijection.
+		
+	In the end, we have ended up with 43 proof obligations in total, and only seven not demonstrated. While the increase in number may be worrying, it is worth noting that there are now much fewer well-defineness proof obligations, and furthermore it was necessary to add more clauses to the Invariant, as it was lacking in the first attempt to formalize the specification.
+	
+	We have found the predicate prover to be an immense help here, and used it much more than in the Bag machines. It should be highlighted that calls to it sometimes take a while to process, and the prover may run out of time. User's machine's memory is also a limiting factor of how effective it can be.
 	
 	\subsection{Summary}
-	On one hand B method is fairly well suited for this task, due to it containing concise notation for relations, functions, and sequences. Thus implementing the structures themselves was straightforward. 
+	On one hand B method is fairly well suited for this task, due to it containing concise notation for relations, functions, and sequences. Thus implementing the structures themselves was straightforward and it was easy to express them in the B language.
 	
-	On the other implementing the standard operations on those data structures, such as traversing a list, required more effort, because the B method at the abstract machine level does not permit recursion or loops, and hence we cannot for example traverse a list to find the $n^{th}$ element in it.
+	On the other, implementing the standard operations on those data structures required more effort, because the B method at the abstract machine level does not permit recursion or loops, and hence we cannot for example traverse a list to find the $n^{th}$ element in it.
 
+	This work has given us an insight into the internal complexity of how functions and sequences are implemented.
+
+	Implementing some operations, such as traversing a list, was impossible, due to the lack of loops and temporal logic. B language is simply not suited for exercises like this.
 
 	\section{Results}
 	\subsection{Summary of the work done}
@@ -1019,11 +1051,13 @@ pr & pp(rp.1) & pr
 	
 	\subsubsection{Equivalence of expressions}
 	
-	Ordering of the Invariant
+	First thing that should be mentioned here is that conjuncts in the Invariant are not commutative, unlike in standard logic notation or even the B theory. Especially when it comes to the well-defineness conditions, they must be mentioned before the expressions which require them.
 	
-	Proof obligations in card(aa) - finiteness implied - vs xx = 4 - type implied
+	Secondly, the software normalizes expressions internally, and its preferred way of expressing a concept can be deduced from the goals of the proof obligations.  
 	
-	Sequences of sets
+	Well-definess proof obligations in our experience are the main source of pointers towards errors in the formalisation of the specification. We advise to inspect them first. 
+	
+	Finally writing out an expression in a more verbose way may also be helpful - either by pointing out user errors or by saving the prover some time, which otherwise would be spent on internally rewriting the expressions. Since even while working on small example like ours, the prover tended to run out of time or memory while running on a personal computer, we would advise not to dismiss this warning too quickly. This point has been mentioned by Conchon and Iguernlala as well\cite{San Juan metro}.
 	
 	\subsection{Additional rules}
 	Even though at the very onset of this project we have anticipated the necessity to add multiple rules to ensure a smooth proof process, we have found that none of them have been truly mandatory. All of the situations where one might be tempted to write an additional rule could be circumvented by slight rephrasing of the machine, as outlined in the previous part of this section.
@@ -1044,6 +1078,8 @@ pr & pp(rp.1) & pr
 	Putting this together with the information contained in the various user manuals, we conclude that writing user rules may be required in circumstances involving moduli or sequences of sets - where one might want to user recursion, which is not available in the abstract machines, or when separate rules would have to be written for many similar cases. At this point it is simpler from the developers' point of view to let the user write specifically the rules they need, than try to anticipate all possible use cases. Thus we highlight those two areas as ones that may need additional rules.
 	
 	At the same time we observe that simple structures such as sets rarely need it, and most cases where one might think that an additional rule is necessary, can be circumvented.
+	
+	
 	\section{Evaluation and future outlook}
 	As was discussed earlier, the scope of this project was limited. It was in part by the time constraints, which were independent of our decisions, but also we have chosen to restrict it, in order to stay focused and truly explore in depth the behaviour of the software in the chosen situations, rather than attempt too much and let our observations be cursory.
 	

@@ -1,22 +1,18 @@
 ﻿THEORY User_Pass IS
 Operation(Initialisation) & ff(0) & pr;
+Operation(append) & ff(0) & pr;
 Operation(remove) & ff(0) & pr;
 Operation(remove2) & ff(0) & pr;
-Operation(WellDefinednessInvariant) & ff(0) & pr;
 Operation(WellDefinedness_append) & ff(0) & pr;
 Operation(WellDefinedness_Precondition_remove) & ff(0) & pr;
 Operation(WellDefinedness_remove) & ff(0) & pr;
 Operation(WellDefinedness_remove2) & ff(0) & pr;
 Operation(WellDefinedness_getelem) & ff(0) & pr;
 Operation(Initialisation) & ff(0) & dd & pr & pp(rp.0);
-Operation(append) & ff(0) & dd & pr & pp(rp.1) & pp(rp.0);
+Operation(Initialisation) & ff(0) & dd & pr & pp(rp.0) & pp(rp.0) & pp(rp.0) & pp(rp.0);
 Operation(append) & ff(0) & dd & pr & pp(rp.1);
-Operation(remove) & ff(0) & dd & pr;
 Operation(WellDefinedness_append) & ff(0) & dd & pr & pp(rp.1);
 Operation(WellDefinedness_Precondition_remove) & ff(0) & dd & pr & pp(rp.1);
 Operation(Initialisation) & ff(0) & dd & pr & pp(rp.1) & pr;
-Operation(append) & ff(0) & dd & pr & pp(rp.1) & pr;
-Operation(remove2) & ff(0) & dd & pr & ah(nn>=1) & pp(rp.1) & pr & pp(rp.1);
-Operation(Initialisation) & ff(0) & dd & pr & pp(rp.0) & pp(rp.1) & pr & pp(rp.0) & pr & pp(rp.0) & pr & pp(rp.0) & pr & pp(rp.0);
-Operation(append) & ff(0) & dd & pr & pp(rp.1) & pr & pp(rp.1) & pr & pp(rp.1) & pr & pr & pp(rp.1) & pr
+Operation(append) & ff(0) & dd & pr & pp(rp.1) & pr
 END 
