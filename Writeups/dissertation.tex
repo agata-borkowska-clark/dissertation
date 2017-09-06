@@ -23,28 +23,27 @@
 % normal IEEE
 \usepackage{cite}
 \fi
-
+\setcounter{tocdepth}{2}
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 
 \begin{document}
 	\title{Exploring the limitations of the Atelier B automated prover}
 	
-	\author{Agata~Borkowska,~UID: 1690550,~\IEEEmembership{MSc in Computer Science,~University of Warwick}% <-this % stops a space
-		\protect\\
-		\thanks{}}
-	
+	\author{Agata~Borkowska,~UID: 1690550,~\IEEEmembership{MSc in Computer Science,~University of Warwick}\\Supervisor: Jane Sinclair}
 	% The paper headers
-	
+
 	\markboth{}%
 	{ \MakeLowercase{\textit{}}: }
 	
 	\IEEEcompsoctitleabstractindextext{%
 		\begin{abstract}
 			%\boldmath
-			Atelier B is a tool for formal software development through refinement, using the B method. It incorporates an automated and an interactive prover, which has been recognized as the most thorough prover for B set theory, and has been used as a basis for many others. Nevertheless it has multiple shortcomings. Various approaches have been suggested and taken to improve its performance, including extensions to the proof rule base, plug-ins and third-party software. 
+			Atelier B is a tool for formal software development through refinement, using the B method. It incorporates an automated and an interactive prover, which has been recognized as the most thorough prover for B theory. It aided with numerous industrial projects and has been used as a basis for many other tools. Nevertheless it has multiple shortcomings. Various approaches have been suggested and taken to improve its performance, including extensions to the proof rule base, plug-ins and third-party software. 
 			
-			In this work we strive to establish the limitations of the prover without such additions, and discover at which point they become necessary. The secondary goal is to provide new users with practical guidelines on how to understand the feedback given by the provers and how to reduce the number of proof obligations which are not demonstrated automatically, since manually discharging them is the most time-consuming part of the proof process\cite{survey}.
+			At the same time researchers and engineers who are new to formal methods, often struggle to even get familiar with the tool on its own, as its output may lack clarity at times and overall be not very user-friendly. Thus they get discouraged quickly, and lose interest in formal methods.
+			
+			In this work we strive to provide new users with practical guidelines on how to understand the feedback given by the Atelier B provers and how to reduce the number of proof obligations which are not demonstrated automatically, since manually discharging them is the most time-consuming part of the proof process\cite{survey}. The secondary goal isto establish the limitations of the prover without such additions, and discover at which point they become necessary.  
 	\end{abstract}
 	\begin{IEEEkeywords}
 		B method, formal verification, specification, abstract machine, proof, system development
@@ -85,12 +84,35 @@
 	% creates the second title. It will be ignored for other modes.
 	\IEEEpeerreviewmaketitle
 	
-	
-	
+	\tableofcontents
+	\clearpage
 	\section{Introduction}
-	\IEEEPARstart{T}{he} aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is primarily, but not exclusively used in safety-critical areas, where testing may not feasible or may be very costly. As such, it is of interest not just to academics, but to people working in the industry as well. 
+	\IEEEPARstart{T}{he} aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is primarily, but not exclusively used in safety-critical areas, where thorough testing may not feasible or may be very costly. It also aids with writing consistent documentation and guiding the development process. As such, it is of interest not just to academics, but to people working in industry as well. 
 	
+	However in our colleagues' and our own experience, the tools used for this purpose sometimes have rather scant documentation and are generally not user-friendly. The error messages they output are difficult to understand, rarely point the user at what to do next. There is not much of a community developed around this area, which would welcome beginners who often need pointers that may seem obvious to anyone more experienced.
+	
+	When a new user, who is just learning how to apply formal methods, has to struggle with both understanding the theory and the intricacies of the tools, they may easily get discouraged. This project is aimed exactly at new users who are at loss and do not know how to interpret the behaviour of the tools. We aim to give them guidelines on how to approach proofs, as well as warnings about certain behaviours which may not be in line with standard logic or set theory.
+	
+	We believe that popularizing the interest in formal methods will help diminish their reputation of being inaccessible and requiring long and expensive training, before they can be applied in industry. Seeing as others have also begun to notice that such statements no longer hold\cite{amazon}, we approach the topic with hope that this trend will continue in the years to come.
+	
+	We choose to work with the B method, which has been developed over 20 years ago by J.-R. Abrial. Since then it has become a significant element in safety assurance, especially in the railway industry. Furthermore, we chose Atelier B software, developed by ClearSy Ltd., as the most widely accredited, although far from perfect. It has contributed to multiple industrial projects, as well as being used for teaching formal methods at university level. Thus our work may be of interest to both engineers and academics.
 
+	\subsection{Project Structure}% Tell the reader a little about the project. (Ideally, just go through the ToC and write a little prose on each entry)
+	
+	\subsection{The B method}
+	The B method is based on logic and set theory, and at least some prior knowledge of these two areas is very helpful when starting to work with it. However we will still go over basic concepts and definitions, as well as define notation used throughout this project, to avoid ambiguities.
+	
+	The development process in the B method begins with formalising a given specification as an abstract machine, using the B language. This stage will be the focus of our work. The abstract machine can be viewed as a state machine. Its state is described by the values of the variables, and it is taken from one state to another by operations which change those values. 
+	
+	It has to be stressed that at this stage, there is no notion of sequencing or temporal logic. An operation performs all its actions simultaneously, in parallel. For the same reason, loops cannot exist in an abstract machine, and recursion or an operation making a call to another one, is not permitted. On the other hand, there are many features which help with expressing a specification with clarity. At the abstract machine stage, a user can employ set comprehension, summation, and similar operations. All of them are easy to express in the B syntax.
+	
+	Another feature available there is nondeterminism. It is not considered erroneous to ask for any random element of a set to be assigned to a variable. However, at the later stages of the development, the level of nondeterminism must decrease, until it is completely removed when the model is ready to be implemented.
+	
+	One might ask why nondeterminism should be used at all, if it is only going to be erased. It allows the user to focus on other details, and not be distracted by the specifics at a given moment. It makes it easier to inspect other behaviours of the machine, while the user does not care what value some of the variables have. Overall, it serves to narrow down the user's concerns.
+	
+	Once the abstract machine has been written, the user ascertains that the specification has been formalised correctly, and proceeds with the development. The next stage is to refine the abstract machine step by step, to reduce nondeterminism, and to turn set operations into ones which programmers are more familiar with. Moving from one step to another, requires the user to verify that all properties of the machine, as defined at the very beginning, are preserved.
+	
+	The whole process ends at the implementation stage, where all data structures and the values of the variables are concrete. Sets are now replaced with arrays, and loops can be used. Additionally, the user can include standard library machines in the project. From this point, code can be generated, to some extent automatically.
 	
 	\subsection{Structure of an abstract machine}
 	In the B language, using Atelier B syntax, an abstract machine usually has the following clauses, in order:
@@ -128,9 +150,7 @@
 	
 	If that is not sufficient, the user may employ the Interactive Prover. In it, they may view the undischarged proof obligations and guide the proof process along, for example by suggesting intermediate steps of the proof. The Interactive Prover also allows users to search through the proof rule base included in the software, as well as enables users to write their own proof rules.
 	
-	Finally it is worth mentioning that the Atelier B provers' work by rule inference, and for a proof to succeed, the rules have to be ordered correctly for all the goals to be demonstrated. It has its limitations, and one attempt to mitigate them is to employ the predicate prover, included in the Interactive Prover's for the user to call. The predicate prover transforms the proof into quantified statements and attempts proof by contradiction.\cite{Prover guide}
-	
-	
+	Finally it is worth mentioning that the Atelier B provers' work by rule inference, and for a proof to succeed, the rules have to be ordered correctly for all the goals to be demonstrated. It has its limitations, and one attempt to mitigate them is to employ the predicate prover, included in the Interactive Prover's for the user to call. The predicate prover transforms the proof into quantified statements and attempts proof by contradiction.	
 	
 	\section{Definitions and Conventions}
 	
@@ -192,7 +212,9 @@
 	Furthermore, file names will be written in italic. In the case of Atelier B machine files, the extensions will be omitted. The files will be named according to the following pattern: \emph{[name of the reference machine]\_[abbreviated description of the variation]}. Machine clause names will be written with the first letter upper case, unless they are part of a code snippet.
 	
 	\section{Literature review}
-	The first text to be mentioned in this section has to be Sekerinski's book entitled \emph{Program Development by Refinement: Case Studies Using the B Method}\cite{Sekerinski}. It is a textbook containing a fair introduction to the B method and practical exercises, with various example machines written out and analysed. It served as a key inspiration for this project, and the methods employed in this work follows closely the idea of inspecting a machine in order to gain deeper understanding of the B method. The examples included in this book revolve around implementations of standard data structures and algorithms, such as operations on linked lists, heaps, and trees. Unfortunately, just as so many other positions, this book focuses heavily on refinement and implementation, while not paying as close attention to abstract machines.
+	The first text to be mentioned in this section has to be Sekerinski's book entitled \emph{Program Development by Refinement: Case Studies Using the B Method}\cite{Sekerinski}. It is a textbook containing a fair introduction to the B method and practical exercises, with various example machines written out and analysed. It served as a key inspiration for this project, and the methods employed in our work follows closely the idea of inspecting a machine in order to gain deeper understanding of the B method. The examples included in this book revolve around implementations of standard data structures and algorithms, such as operations on linked lists, heaps, and trees. Unfortunately, just as so many other positions, this book focuses heavily on refinement and implementation, while not paying as close attention to abstract machines. Nevertheless it illustrates how thorough explanations of a few chosen examples can be helpful to people learning the B method.
+	
+	
 	
 	\subsection{Industrial examples}
 	Although this work is aimed at students and researchers, it is necessary to put it into perspective of how formal methods can be used in industry. Looking at the applications of formal methods will serve to demonstrate that this work indeed serves a purpose and that there are users who may want to refer to the discoveries done in this project in order to facilitate their work.
@@ -343,7 +365,7 @@
 	
 	It is important to observe that in large-scale industry projects which apply the B method, the constructs are kept simple and straightforward to avoid obfuscation. Thus in the sections below, dedicated to the chosen scenarios, the examples created were ordered by complexity. The later ones, for example in the case of the Bag Machine those involving non-deterministic assignment, were analysed to compare the number of proof obligations generated next to their simpler variants.
 	
-	\section{The Bag Machine - various approaches to describing sets and collections}
+	\section{The Bag Machine}
 	\subsection{Specification}
 	Given a set of items, we want to describe a bag containing some of them. Initially, the bag is empty. We can perform the following operations on the bag:
 	\begin{itemize}
@@ -1073,8 +1095,6 @@ pr & pp(rp.1) & pr
 	\end{lstlisting}
 	It can be found in the \emph{Bagmch\_finite\_items.pmm} file included in the project archive.
 	
-	[CITE MISSING MOD RULES]
-	
 	Putting this together with the information contained in the various user manuals, we conclude that writing user rules may be required in circumstances involving moduli or sequences of sets - where one might want to user recursion, which is not available in the abstract machines, or when separate rules would have to be written for many similar cases. At this point it is simpler from the developers' point of view to let the user write specifically the rules they need, than try to anticipate all possible use cases. Thus we highlight those two areas as ones that may need additional rules.
 	
 	At the same time we observe that simple structures such as sets rarely need it, and most cases where one might think that an additional rule is necessary, can be circumvented.
@@ -1083,7 +1103,15 @@ pr & pp(rp.1) & pr
 	\section{Evaluation and future outlook}
 	As was discussed earlier, the scope of this project was limited. It was in part by the time constraints, which were independent of our decisions, but also we have chosen to restrict it, in order to stay focused and truly explore in depth the behaviour of the software in the chosen situations, rather than attempt too much and let our observations be cursory.
 	
-	We have focused mainly on the static part of the machine, and how variations to it affect proof obligations concerning the preservation of the Invariant. We have considered some variations of the basic operations, but 
+	We have focused mainly on the static part of the machine, and how variations to it affect proof obligations concerning the preservation of the Invariant. We have considered some variations of the basic operations, but mostly we have kept them constant, while exploring different ways of rephrasing the Invariant, and defining the variables.
+	
+	The project aims have evolved as we ourselves gained deeper understanding of the B method and its implementation in Atelier B. It was an initial goal of this project to create a collection of proof rules which simplify the verification process in the automated prover. This collection was meant to include especially the rules that were found to be needed for the proofs of various scenarios. However as the work has progressed, we have found that it was not necessary to create additional rules, and instead any obstacle could be circumvented with a deeper understanding of the inner workings of the prover.
+	
+	We have narrowed down the scope throughout the project, to focus on set theory specifically, rather than for example functions and relations or structuring of machines. The initial scope was much more ambitious, but we did not realise that even a fraction of it will lead to so many questions which we considered worth investigating.
+	
+	It is regrettable that we did not manage to obtain a larger model written in pure B method, to inspect how it behaves, and to use it as a benchmark. On the other hand, we would have little time for it, and knowing the scale of such models, where the count of proof obligations exceeds 1000, it would deserve more attention and work than we could afford.
+	
+	Another setback was the impossibility to contact ClearSy to consult the list of known bugs in Atelier B software and get any feedback on our findings. Multiple attempts have been made at the onset of the project, however we did not get a reply. In a way it is also a valuable lesson, as it put us in a position, in which most beginners will find themselves. However, we would have been very interested to hear from them, both as the developers of the Atelier B software, and as a group of engineers with far superior experience to ours, who have used it in multiple industrial projects.
 	
 	\subsection{Possible continuations}
 	There are multiple ways in which this work can be taken further. Firstly, we have not covered all clauses, and made scarce use of Definitions and did not explore Assertions much. In the former case, there was little need for it. In the case of Assertions, we struggled to find a simple scenario where this clause may be applicable. Similarly, there is a lot to explore in the area of structuring and refinement.
@@ -1094,10 +1122,6 @@ pr & pp(rp.1) & pr
 	
 	\section{Concluding Remarks}
 
-	It was an initial goal of this project, to create a collection of proof rules which simplify the verification process in the automated prover. This collection was meant to include especially the rules that were found to be needed for the proofs of various scenarios. However as the work has progressed, we have found that it was not necessary to create additional rules, and instead any obstacle could be circumvented with a deeper understanding of the inner workings of the prover.
-	
-	Instead we 
-	
 	We have taken care to observe even the seemingly obvious and predictable behaviour of the software to decide how well-implemented and compliant with the manuals as well as the theoretical B method it is. It turned out to be worthwhile and some of the observed patterns were surprising to us.
 
 	
@@ -1107,7 +1131,31 @@ pr & pp(rp.1) & pr
 	\IEEEPARstart{}{} 
 	\pagebreak
 
-	
+	\section*{Bibliography}
+	\begin{itemize}
+		\item 
+		S.~Schneider, \emph{The B-Method: an Introduction}, Basinstoke, Palgrave, 2001
+		
+		\item
+		J.-R. Abrial, \emph{The B-book: assigning programs to meanings}, Cambridge, Cambridge Univ. Press, 1996
+		
+		\item
+		\emph{Atelier B User Manual}, v.~4.0, ClearSy Sys.~Eng., Aix-en-Provence, France
+		
+		\item
+		\emph{B Language Reference Manual}, v.~1.8.7, ClearSy Sys.~Eng., Aix-en-Provence, France
+		
+		\item
+		\emph{Proof Obligations Reference Manual}, v.~3.7, ClearSy Sys.~Eng., Aix-en-Provence, France
+		
+		\item
+		\emph{Interactive Prover User Manual}, v.~3.7, ClearSy Sys.~Eng., Aix-en-Provence, France
+		
+		\item
+		\emph{Redaction guide for mathematical rules} v.~1.1, ClearSy Sys.Ęng., Aix-en-Provence, France, accessible: \url{http://www.atelierb.eu/wp-content/uploads/sites/3/manuels/guide-de-redaction-de-regles-mathematiques-fr.pdf}\\
+		Translated by D.~D\'{e}harbe, accessible: 
+		\url{http://www.math.pku.edu.cn/teachers/qiuzy/fm_B/Atelier_B/Writing_mathematical_rules.pdf}
+	\end{itemize}
 	\begin{thebibliography}{2}
 		\bibitem{survey}
 		S.~Conchon and M.~ Iguernlala, "Increasing Proofs Automation Rate of Atelier-B Thanks to Alt-Ergo" in \emph{Proc.~1st Int.~Conf.~Reliability, Safety and Security of Railway Systems}. Paris, France, 2016, pp.~243-253
@@ -1181,28 +1229,7 @@ pr & pp(rp.1) & pr
 		\bibitem{Cargo culting}
 		N. Bezroukov, "Cargo Cult Programming" in \emph{Softpanorama} [Online],  Open Source Software Education Society. Retrieved 21 August 2017. Available: \url{http://www.softpanorama.org/Skeptics/cargo_cult_programming.shtml}
 		
-		\bibitem{b-method}
-		S.~Schneider, \emph{The B-Method: an Introduction}, Basinstoke, Palgrave, 2001
-		
-		\bibitem{b-book}
-		J.-R. Abrial, \emph{The B-book: assigning programs to meanings}, Cambridge, Cambridge Univ. Press, 1996
-		
-		\bibitem{user manual}
-		\emph{Atelier B User Manual}, v.~4.0, ClearSy Sys.~Eng., Aix-en-Provence, France
-		
-		\bibitem{b reference}
-		\emph{B Language Reference Manual}, v.~1.8.7, ClearSy Sys.~Eng., Aix-en-Provence, France
-		
-		\bibitem{PO reference}
-		\emph{Proof Obligations Reference Manual}, v.~3.7, ClearSy Sys.~Eng., Aix-en-Provence, France
-		
-		\bibitem{Prover guide}
-		\emph{Interactive Prover User Manual}, v.~3.7, ClearSy Sys.~Eng., Aix-en-Provence, France
-		
-		\bibitem{Redacting rules}
-		\emph{Redaction guide for mathematical rules} v.~1.1, ClearSy Sys.Ęng., Aix-en-Provence, France, accessible: \url{http://www.atelierb.eu/wp-content/uploads/sites/3/manuels/guide-de-redaction-de-regles-mathematiques-fr.pdf}\\
-		Translated by D.~D\'{e}harbe, accessible: 
-		\url{http://www.math.pku.edu.cn/teachers/qiuzy/fm_B/Atelier_B/Writing_mathematical_rules.pdf}
+	
 		
 
 		
@@ -1269,7 +1296,7 @@ OPERATIONS
 END
 \end{lstlisting}
 \pagebreak
-\section{'A subset of a finite set is finite' - Proof}
+\section{'Any subset of a finite set is finite' - Proof}
 Let $A$ and $B$ be sets, with $A \subseteq B$ and $B$ finite. Let us define $[n]$ to be the set of all elements of $\mathbb{N}$ less than $n$, i.e.~$[n] = \{0,1,...,n-1\}$.
 
 Since $B$ is finite, by the definition of finiteness there is $n \in \mathbb{N}$ such that there exists a bijection between $B$ and $[n]$. Hence it suffices to prove that any subset of $[n]$ for $n \in \mathbb{N}$ is finite. We proceed by induction.
