@@ -1,4 +1,4 @@
-\documentclass[11pt,journal]{IEEEtran}
+\documentclass[12pt,journal,duplex]{IEEEtran}
 %\usepackage{hyperref}
 %\usepackage[breaklinks]{hyperref}
 \usepackage{tikz}
@@ -37,6 +37,8 @@
 	{ \MakeLowercase{\textit{}}: }
 	
 	\IEEEcompsoctitleabstractindextext{%
+		\cleardoublepage
+		\onecolumn
 		\begin{abstract}
 			%\boldmath
 			Atelier B is a tool for formal software development through refinement, using the B method. It incorporates an automated and an interactive prover, which has been recognized as the most thorough prover for B theory. It aided with numerous industrial projects and has been used as a basis for many other tools. Nevertheless it has multiple shortcomings. Various approaches have been suggested and taken to improve its performance, including extensions to the proof rule base, plug-ins and third-party software. 
@@ -83,9 +85,10 @@
 	% For peerreview papers, this IEEEtran command inserts a page break and
 	% creates the second title. It will be ignored for other modes.
 	\IEEEpeerreviewmaketitle
-	
+	\clearpage
 	\tableofcontents
 	\clearpage
+	\twocolumn
 	\section{Introduction}
 	\IEEEPARstart{T}{he} aim of formal specification and verification is to ensure the correctness of software. While overall less popular than quality assurance through testing, it is primarily, but not exclusively used in safety-critical areas, where thorough testing may not feasible or may be very costly. It also aids with writing consistent documentation and guiding the development process. As such, it is of interest not just to academics, but to people working in industry as well. 
 	
@@ -97,7 +100,20 @@
 	
 	We choose to work with the B method, which has been developed over 20 years ago by J.-R. Abrial. Since then it has become a significant element in safety assurance, especially in the railway industry. Furthermore, we chose Atelier B software, developed by ClearSy Ltd., as the most widely accredited, although far from perfect. It has contributed to multiple industrial projects, as well as being used for teaching formal methods at university level. Thus our work may be of interest to both engineers and academics.
 
-	\subsection{Project Structure}% Tell the reader a little about the project. (Ideally, just go through the ToC and write a little prose on each entry)
+	\subsection{Project Structure}
+	We shall begin this work with a quick overview of the B method and Atelier B, the tool which we will be working with. 
+	
+	Then we will review related literature, focusing on positions which offer a review of the software from the point of view of the users, as well as industrial examples, to demonstrate the relevance of this work.
+	
+	With this firm rooting, we then further refine and decide on the scope of the project, since our work is limited by time constraints independent from us.
+	
+	We then proceed with the technical background of our work. We briefly list definitions and notational conventions which we will use throughout this document, and then describe the methodology used in our work.
+	
+	The key part of the project follows, with the description of the work done on the Bag scenario. We use it to discover useful patterns in the prover and fine-tune our methods.
+	
+	We then test our findings against a different, more complicated scenario, to see how much we have learnt.
+	
+	Finally we summarise our results and evaluate the work done.
 	
 	\subsection{The B method}
 	The B method is based on logic and set theory, and at least some prior knowledge of these two areas is very helpful when starting to work with it. However we will still go over basic concepts and definitions, as well as define notation used throughout this project, to avoid ambiguities.
@@ -152,65 +168,7 @@
 	
 	Finally it is worth mentioning that the Atelier B provers' work by rule inference, and for a proof to succeed, the rules have to be ordered correctly for all the goals to be demonstrated. It has its limitations, and one attempt to mitigate them is to employ the predicate prover, included in the Interactive Prover's for the user to call. The predicate prover transforms the proof into quantified statements and attempts proof by contradiction.	
 	
-	\section{Definitions and Conventions}
-	
-	\subsection{Definitions and notations}
-	Care shall be taken to use unambiguous notation and terms. We begin with a brief summary of the logic notation, comparing it to the B syntax, which comprises of ASCII characters or approximations thereof. We first give the unicode symbol which will be used when discussing logical expressions in this writeup, followed by the ASCII equivalent written in a monotype font, as it can be seen in code snippets. 
-	\begin{itemize}
-		\item AND is denoted by $\wedge$ or \texttt{\&}
-		\item OR is denoted by $\vee$ or \texttt{or}
-		\item the existential quantifier is $\exists$ or \texttt{\#}
-		\item the universal quantifier is $\forall$ or \texttt{!}
-		\item the negation is denoted by $\neg$ or \texttt{not(x)}
-	\end{itemize}
-	This list includes only the most commonly seen symbols, some of which may not be intuitive to some users. Other symbols will be defined if or when they are needed.
-	
-	Since the B method is heavily based on Zermelo-Fraenkel set theory, it is worth recalling key concepts and definitions from this area.\cite{Goldrei}
-	
-	Firstly, a \textbf{set} is a collection of distinct objects, which we will call \textbf{elements}. We say that $a$ is an element of a set $x$ or that it belongs to the set $x$. Set membership is a binary relation denoted with the symbol '$\in$' or with '\texttt{:}' in the B syntax.
-	
-	By the Axiom of Extensionality, two sets are equal if and only if they have the same elements. Hence, in set axiomatic set theory $\{x\} = \{x, x\}$ - for each element of the first set is in the second, and each $x$ in the second set is in the first one. The B method also recognizes this equality\cite{b-method}. 
-	
-	Note that a set can be an element of another set, however a set must not belong to itself - i.e. there does not exist a set $x$ such that $x \in x$. This is known as Russell's Paradox.
-	
-	By the Null Set Axiom, there exists a set having no elements - i.e. the \textbf{empty set}. It is denoted $\varnothing$ or \texttt{\{\}} in the B syntax. The empty set is unique.
-	
-	A \textbf{subset} $y$ of a set $x$ is a set such that each element of $y$ is also in $x$, but not necessarily the other way round. It is denoted $y \subseteq x$ or \texttt{y <: x} in the B syntax. Note that the empty set is a subset of every set, and that every set is a subset of itself.
-	
-	The \textbf{powerset} of a set $x$, denoted $\mathbb{P}(x)$ or \texttt{POW(x)} in the B syntax is the set containing all subsets of the set $x$. For example if $x = \{a,b\}$, then $\mathbb{P}(x) = \{\varnothing, \{a\}, \{b\}, \{a,b\}\}$. Thus the expression $y \subseteq x$ is semantically equivalent to $y \in \mathbb{P}(x)$. 
-	
-	The \textbf{union} of sets $x$ and $y$ is defined as the set of elements which belong to either $x$ or $y$, i.e. $x \cup y = \{z| z \in x \vee z \in y\}$ and in the B syntax it is written as \verb|x\/y|. The \textbf{intersection} of sets $x$ and $y$ is defined to be the set of all elements which belong to both $x$ and $y$, i.e. $x \cap y = \{z | z \in x \wedge z \in y \}$, which in the B syntax is \verb|x/\y|.
 
-	
-	Natural numbers will be often seen in this project. Firstly, and a little informally, the set of natural numbers, denoted $\mathbb{N}$ or \texttt{NAT} in the B syntax, is the set $\{0,1,2, ...\}$. The B syntax also has an abbreviation for the natural numbers excluding 0, i.e. \texttt{NAT1} shall be used to mean $\mathbb{N}-\{0\}$.
-	
-	The natural numbers give the first discrepancy between the B method and the mathematical theories which it is based on, which we encounter throughout this work. Formally, in axiomatic set theory, the natural numbers are defined as follows:
-	
-	Let $x^+$ denote the successor set of the set $x$, which is $x^+ = x \cup {x}$. Then $\mathbb{N}$ is the smallest (with respect to the number of elements) set such that $\varnothing \in \mathbb{N}$ and if $x \in \mathbb{N}$ then $x^+ \in \mathbb{N}$.
-	
-	For simplicity, it is often defined that $\varnothing = 0$, $1 = \{\varnothing \}$, $2 = \{\varnothing , \{\varnothing\} \} = \{0,1\}$, and so on. In set theory, every element of the natural numbers is a set itself. This is not the case in B, and an attempt to talk about an element of an $n \in \mathbb{N}$ gives a type error in Atelier B during static analysis.
-	
-	To make the distinction clear between integers and sets of integers as defined above, we will use the notation $[n]$ for some $n \in \mathbb{N}$ to indicate the set of all integers smaller than $n$, which is: $[n] = \{0,1, ...,n-1\}$. The B syntax has an abbreviation for it, and $[n]$ can be denoted as \texttt{0..n-1}. More generally, this B notation means a segment of natural numbers - for $m, n \in \mathbb{N}$, \texttt{m..n} $= \{x | x \in \mathbb{N} \wedge m \leq x \wedge x \leq n\}$
-	
-	A \textbf{Cartesian product} of two sets $X$ and $Y$ is the set of all pairs $\{(a,b) | a \in X \wedge b \in Y  \}$. It is denoted $X \times Y$ or \texttt{x*y}. The pairs, also called \textbf{maplets} are written as \texttt{a~|->~b} in the B syntax. They are the elements of relations, functions, and sequences in the B language, and while we will not go into the details of the notation here.
-	
-	With the help of those definitions we can finally define a finite set. A \textbf{finite} set is a set $x$ such that there exists a bijection between $x$ and $[n]$ for some $n \in \mathbb{N}$.  The B syntax also provides an abbreviation for the set of all finite subsets of a set $x$. \texttt{FIN(x)} is hence defined to be $\{y| y \in \mathbb{P}(x) \wedge y \text{ is finite} \}$.
-	
-	Then the \textbf{cardinality} of $x$ is the number of elements in $x$, in this case $n$, and is denoted $|x|$ or \texttt{card(x)} in the B syntax. Note that in the B language, the expression \texttt{card(x)} is well-defined only for finite sets.
-	
-	\subsection{Naming Conventions}
-	Throughout this work we will keep to the following naming conventions.
-	
-	Variables and constants in the B language are named according to the following rules:
-	\begin{itemize}
-		\item names of sets, including deferred sets and those given as machine parameters, are written in all capitals. In this text, they will also be written in a monotype font, for example \texttt{ITEMS}.
-		\item scalar constants' names shall be written in lower case, in a monotype font, for example \texttt{max\_elem}.
-		\item names of variables shall be written in lower case, in a monotype font, and must be at least two characters in length, for example \texttt{aa}.
-	\end{itemize}
-	Single-character variable names are not allowed in the B-syntax, and so we will avoid them in all contexts. They are reserved for wildcards in user-written proof rules.
-	
-	Furthermore, file names will be written in italic. In the case of Atelier B machine files, the extensions will be omitted. The files will be named according to the following pattern: \emph{[name of the reference machine]\_[abbreviated description of the variation]}. Machine clause names will be written with the first letter upper case, unless they are part of a code snippet.
-	
 	\section{Literature review}
 	The first text to be mentioned in this section has to be Sekerinski's book entitled \emph{Program Development by Refinement: Case Studies Using the B Method}\cite{Sekerinski}. It is a textbook containing a fair introduction to the B method and practical exercises, with various example machines written out and analysed. It served as a key inspiration for this project, and the methods employed in our work follows closely the idea of inspecting a machine in order to gain deeper understanding of the B method. The examples included in this book revolve around implementations of standard data structures and algorithms, such as operations on linked lists, heaps, and trees. Unfortunately, just as so many other positions, this book focuses heavily on refinement and implementation, while not paying as close attention to abstract machines. Nevertheless it illustrates how thorough explanations of a few chosen examples can be helpful to people learning the B method.
 	
@@ -243,7 +201,9 @@
 	Since this work is meant to aid new users of Atelier B, it was interesting and worthwhile to look at what others consider to be shortcomings of the software. Even the engineers of ClearSy themselves have noted that their documentation was lacking and additional documents were necessary for their collaborators from RATP to fully understand their deliverables\cite{screen doors}. Leuschel \emph{et al.} have openly admitted that they found the feedback provided by the prover to be unhelpful with locating the problem\cite{San Juan metro}. Their experience is in line with our own and that of our colleagues.
 
 	\section{Project overview}
-	\subsection{The aims of the project}
+	\subsection{The aims of the project}	
+	Having considered the existing literature, we are in a good position to define what are our goals for this work and what we hope to get out of it.
+	
 	The key aim of this project is to discover the limitations of the Atelier B software. In the previous section, we have mentioned some plugins and extensions to the Atelier B software, which were created in order to improve the functionality. They highlight what other users have found lacking in Atelier B and what they have considered in need of improvement. However none of them demonstrate what can be achieved with the original software alone. Hence we strive to assess at what point Atelier B alone becomes insufficient, and the extensions are necessary to successfully verify a project. 
 		
 	We intend to explore various ways of expressing a specification in the B language, paying attention to how seemingly equivalent expressions result in different proof obligations being generated by the automated prover, and follow it up by seeking an explanation of the differences using the information contained in the source texts. 
@@ -258,15 +218,15 @@
 	
 	An extension to this aim is answering the question: at what point is it necessary to add user-created rules in order to facilitate the proofs in the automated prover? It needs to be stressed that adding user-created rules is not advised unless it is absolutely necessary - and every manual as well as the works discussing methods of validating such rules stress this point. The rules then have to be thoroughly verified by means other than Atelier B software, to ensure that they are in fact correct. An error in an added rule would invalidate the entire proof process. Hence we will strive to circumvent obstacles by all means other than adding proof rules, before resorting to it. We hope to gather such advice and guidelines and make it accessible to others, so that they may be dissuaded from unnecessarily adding proof rules in their work. It is possible that adding proof rules to the Atelier B's rule base may be avoided entirely in the scenarios we have chosen, as they are by no means exhaustive; otherwise we will present the rules and their proofs for the use of others who wish to study the B-method.
 
-	The observations arising from our work can be separated into two groups. Firstly there will be points highlighting the intricacies of the B method, which can be reasoned about and explained easily using source texts, primarily Abrial's \emph{The B-book}\cite{b-book} and Schneider's \emph{The B-Method}\cite{b-method}. 
+	The observations arising from our work can be separated into two groups. Firstly there will be points highlighting the intricacies of the B method, which can be reasoned about and explained easily using source texts, primarily Abrial's \emph{The B-book} and Schneider's \emph{The B-Method}. 
 	
 	Secondly, there will be disparities between the B method and its implementation in the Atelier B software. Not all of them can be classified as bugs, and some are clearly conscious choices which diverge from the pure theory of the B method. The manuals provided with the software will aid us with comparing the implementation to the theory. They are:
 	
 	\begin{itemize}
-		\item \emph{Atelier B 4.0 User Manual}\cite{user manual}
-		\item \emph{B Language Reference Manual}\cite{b reference}
-		\item \emph{Proof Obligation Manual}\cite{PO reference}
-		\item \emph{Interactive Prover Reference Manual}\cite{Prover guide}
+		\item \emph{Atelier B 4.0 User Manual}
+		\item \emph{B Language Reference Manual}
+		\item \emph{Proof Obligation Manual}
+		\item \emph{Interactive Prover Reference Manual}
 	\end{itemize}
 	
 	\subsection{The scope of the project}
@@ -279,7 +239,64 @@
 	We shall approach this project from an academic rather than industrial point of view, focusing on smaller yet more illustrative examples. The main reason for it is to limit the number of factors affecting the number of generated proof obligations and be able to control them more precisely. An industrial-scale project with hundreds of proof obligations would be rather unwieldy for our purposes. Secondly a person new to formal development and the B-method is more likely to be able to follow clear, exemplar scenarios. 
 	
 	Nevertheless we hope that not only students and researchers will find our work helpful. Being able to minimise the number of proof obligations to be manually discharged has the potential to reduce the time required to complete any project. The constructs and expressions we discuss are the same ones as those used in industry. In fact, we found that the more complex structures in the B language, such as sequences, are rarely used in large-scale projects, as exemplified by the rail station model created by Reichl \textit{et al.}\cite{station model}.
-
+	\section{Definitions and Conventions}
+	
+	\subsection{Definitions and notations}
+	Care shall be taken to use unambiguous notation and terms. We begin with a brief summary of the logic notation, comparing it to the B syntax, which comprises of ASCII characters or approximations thereof. We first give the unicode symbol which will be used when discussing logical expressions in this writeup, followed by the ASCII equivalent written in a monotype font, as it can be seen in code snippets. 
+	\begin{itemize}
+		\item AND is denoted by $\wedge$ or \texttt{\&}
+		\item OR is denoted by $\vee$ or \texttt{or}
+		\item the existential quantifier is $\exists$ or \texttt{\#}
+		\item the universal quantifier is $\forall$ or \texttt{!}
+		\item the negation is denoted by $\neg$ or \texttt{not(x)}
+	\end{itemize}
+	This list includes only the most commonly seen symbols, some of which may not be intuitive to some users. Other symbols will be defined if or when they are needed.
+	
+	Since the B method is heavily based on Zermelo-Fraenkel set theory, it is worth recalling key concepts and definitions from this area.\cite{Goldrei}
+	
+	Firstly, a \textbf{set} is a collection of distinct objects, which we will call \textbf{elements}. We say that $a$ is an element of a set $x$ or that it belongs to the set $x$. Set membership is a binary relation denoted with the symbol '$\in$' or with '\texttt{:}' in the B syntax.
+	
+	By the Axiom of Extensionality, two sets are equal if and only if they have the same elements. Hence, in set axiomatic set theory $\{x\} = \{x, x\}$ - for each element of the first set is in the second, and each $x$ in the second set is in the first one. The B method also recognizes this equality\cite{b-method}. 
+	
+	Note that a set can be an element of another set, however a set must not belong to itself - i.e. there does not exist a set $x$ such that $x \in x$. This is known as Russell's Paradox.
+	
+	By the Null Set Axiom, there exists a set having no elements - i.e. the \textbf{empty set}. It is denoted $\varnothing$ or \texttt{\{\}} in the B syntax. The empty set is unique.
+	
+	A \textbf{subset} $y$ of a set $x$ is a set such that each element of $y$ is also in $x$, but not necessarily the other way round. It is denoted $y \subseteq x$ or \texttt{y <: x} in the B syntax. Note that the empty set is a subset of every set, and that every set is a subset of itself.
+	
+	The \textbf{powerset} of a set $x$, denoted $\mathbb{P}(x)$ or \texttt{POW(x)} in the B syntax is the set containing all subsets of the set $x$. For example if $x = \{a,b\}$, then $\mathbb{P}(x) = \{\varnothing, \{a\}, \{b\}, \{a,b\}\}$. Thus the expression $y \subseteq x$ is semantically equivalent to $y \in \mathbb{P}(x)$. 
+	
+	The \textbf{union} of sets $x$ and $y$ is defined as the set of elements which belong to either $x$ or $y$, i.e. $x \cup y = \{z| z \in x \vee z \in y\}$ and in the B syntax it is written as \verb|x\/y|. The \textbf{intersection} of sets $x$ and $y$ is defined to be the set of all elements which belong to both $x$ and $y$, i.e. $x \cap y = \{z | z \in x \wedge z \in y \}$, which in the B syntax is \verb|x/\y|.
+	
+	
+	Natural numbers will be often seen in this project. Firstly, and a little informally, the set of natural numbers, denoted $\mathbb{N}$ or \texttt{NAT} in the B syntax, is the set $\{0,1,2, ...\}$. The B syntax also has an abbreviation for the natural numbers excluding 0, i.e. \texttt{NAT1} shall be used to mean $\mathbb{N}-\{0\}$.
+	
+	The natural numbers give the first discrepancy between the B method and the mathematical theories which it is based on, which we encounter throughout this work. Formally, in axiomatic set theory, the natural numbers are defined as follows:
+	
+	Let $x^+$ denote the successor set of the set $x$, which is $x^+ = x \cup {x}$. Then $\mathbb{N}$ is the smallest (with respect to the number of elements) set such that $\varnothing \in \mathbb{N}$ and if $x \in \mathbb{N}$ then $x^+ \in \mathbb{N}$.
+	
+	For simplicity, it is often defined that $\varnothing = 0$, $1 = \{\varnothing \}$, $2 = \{\varnothing , \{\varnothing\} \} = \{0,1\}$, and so on. In set theory, every element of the natural numbers is a set itself. This is not the case in B, and an attempt to talk about an element of an $n \in \mathbb{N}$ gives a type error in Atelier B during static analysis.
+	
+	To make the distinction clear between integers and sets of integers as defined above, we will use the notation $[n]$ for some $n \in \mathbb{N}$ to indicate the set of all integers smaller than $n$, which is: $[n] = \{0,1, ...,n-1\}$. The B syntax has an abbreviation for it, and $[n]$ can be denoted as \texttt{0..n-1}. More generally, this B notation means a segment of natural numbers - for $m, n \in \mathbb{N}$, \texttt{m..n} $= \{x | x \in \mathbb{N} \wedge m \leq x \wedge x \leq n\}$
+	
+	A \textbf{Cartesian product} of two sets $X$ and $Y$ is the set of all pairs $\{(a,b) | a \in X \wedge b \in Y  \}$. It is denoted $X \times Y$ or \texttt{x*y}. The pairs, also called \textbf{maplets} are written as \texttt{a~|->~b} in the B syntax. They are the elements of relations, functions, and sequences in the B language, and while we will not go into the details of the notation here.
+	
+	With the help of those definitions we can finally define a finite set. A \textbf{finite} set is a set $x$ such that there exists a bijection between $x$ and $[n]$ for some $n \in \mathbb{N}$.  The B syntax also provides an abbreviation for the set of all finite subsets of a set $x$. \texttt{FIN(x)} is hence defined to be $\{y| y \in \mathbb{P}(x) \wedge y \text{ is finite} \}$.
+	
+	Then the \textbf{cardinality} of $x$ is the number of elements in $x$, in this case $n$, and is denoted $|x|$ or \texttt{card(x)} in the B syntax. Note that in the B language, the expression \texttt{card(x)} is well-defined only for finite sets.
+	
+	\subsection{Naming Conventions}
+	Throughout this work we will keep to the following naming conventions.
+	
+	Variables and constants in the B language are named according to the following rules:
+	\begin{itemize}
+		\item names of sets, including deferred sets and those given as machine parameters, are written in all capitals. In this text, they will also be written in a monotype font, for example \texttt{ITEMS}.
+		\item scalar constants' names shall be written in lower case, in a monotype font, for example \texttt{max\_elem}.
+		\item names of variables shall be written in lower case, in a monotype font, and must be at least two characters in length, for example \texttt{aa}.
+	\end{itemize}
+	Single-character variable names are not allowed in the B-syntax, and so we will avoid them in all contexts. They are reserved for wildcards in user-written proof rules.
+	
+	Furthermore, file names will be written in italic. In the case of Atelier B machine files, the extensions will be omitted. The files will be named according to the following pattern: \emph{[name of the reference machine]\_[abbreviated description of the variation]}. Machine clause names will be written with the first letter upper case, unless they are part of a code snippet.
 
 	\section{Methodology}
 	\subsection{Overview}
@@ -919,7 +936,7 @@ aa: ITEMS &
 	
 \begin{table}[h]
 	\centering
-\begin{tabular}{@{}rlrr@{}}
+\begin{tabular}{@{}rlcc@{}}
 	\toprule
 	\multicolumn{1}{l}{Section} & Machine                     & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}Number \\ of POs\end{tabular}} & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}POs requiring\\ user action\end{tabular}} \\ \midrule
 	1                           & Bagmch                      & 4                                                                            & 0                                                                                       \\
@@ -1108,6 +1125,8 @@ pr & pp(rp.1) & pr
 	The project aims have evolved as we ourselves gained deeper understanding of the B method and its implementation in Atelier B. It was an initial goal of this project to create a collection of proof rules which simplify the verification process in the automated prover. This collection was meant to include especially the rules that were found to be needed for the proofs of various scenarios. However as the work has progressed, we have found that it was not necessary to create additional rules, and instead any obstacle could be circumvented with a deeper understanding of the inner workings of the prover.
 	
 	We have narrowed down the scope throughout the project, to focus on set theory specifically, rather than for example functions and relations or structuring of machines. The initial scope was much more ambitious, but we did not realise that even a fraction of it will lead to so many questions which we considered worth investigating.
+	
+	The progress was not steady throughout the project, however this has been expected, and the initial schedule included a lighter workload for the examination period in June. Although the pace did not pick up immediately afterwards, it has been made up for easily.
 	
 	It is regrettable that we did not manage to obtain a larger model written in pure B method, to inspect how it behaves, and to use it as a benchmark. On the other hand, we would have little time for it, and knowing the scale of such models, where the count of proof obligations exceeds 1000, it would deserve more attention and work than we could afford.
 	
