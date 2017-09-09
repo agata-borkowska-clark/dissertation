@@ -3,6 +3,8 @@
  * UID: 1690550
  * Creation date: 18/02/2017
  */
+ 
+ /*Like Bagmch, except the deferred set is now given as a parameter. */
 MACHINE
     Bagmch_params(ITEMS)
 VARIABLES

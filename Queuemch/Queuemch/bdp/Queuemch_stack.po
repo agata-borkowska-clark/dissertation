@@ -1,0 +1,40 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & _f(12) & WellDefinedness_dequeue.1,(_f(19) => _f(20));
+_f(1) & _f(2) & _f(8) & _f(12) & WellDefinedness_pop.1,(_f(19) => _f(20));
+_f(1) & _f(2) & _f(8) & _f(12) & dequeue.2,(_f(3) & _f(6) => _f(16));
+_f(1) & _f(2) & _f(8) & _f(12) & dequeue.1,(_f(3) & _f(4) => _f(15));
+_f(1) & _f(2) & _f(8) & _f(9) & enqueue.2,(_f(3) & _f(6) => _f(11));
+_f(1) & _f(2) & _f(8) & _f(9) & enqueue.1,(_f(3) & _f(4) => _f(10));
+_f(1) & _f(2) & _f(8) & _f(12) & pop.2,(_f(3) & _f(6) => _f(14));
+_f(1) & _f(2) & _f(8) & _f(12) & pop.1,(_f(3) & _f(4) => _f(13));
+_f(1) & _f(2) & _f(8) & _f(9) & push.2,(_f(3) & _f(6) => _f(11));
+_f(1) & _f(2) & _f(8) & _f(9) & push.1,(_f(3) & _f(4) => _f(10));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+"Invariant is preserved";
+"Check invariant ((list) : (seq(ITEMS)))";
+(({}) : (seq(ITEMS)));
+"Check invariant ((list) : (seq(ran(list))))";
+(({}) : (seq(ran({}))));
+list : NATURAL-{0} +-> ITEMS & ((list) : (seq(ITEMS))) & list : NATURAL-{0} +-> ran(list) & ((list) : (seq(ran(list))));
+((aa) : (ITEMS));
+((((list) <- (aa))) : (seq(ITEMS)));
+((((list) <- (aa))) : (seq(ran(((list) <- (aa))))));
+(0 +1 <= size(list));
+((front(list)) : (seq(ITEMS)));
+((front(list)) : (seq(ran(front(list)))));
+((tail(list)) : (seq(ITEMS)));
+((tail(list)) : (seq(ran(tail(list)))));
+list : NATURAL-{0} +-> ITEMS;
+((list) : (seq(ITEMS)));
+"Well definedness";
+not(((list) = ({})))
+END
+&
+THEORY EnumerateX
+END

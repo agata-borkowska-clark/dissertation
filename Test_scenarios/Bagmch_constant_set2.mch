@@ -3,6 +3,9 @@
  * UID: 1690550
  * Creation date: 21/08/2017
  */
+ 
+  /* Elements in the Bag come from a set defined in the Constants clause
+     Finiteness defined in a different place (on ITEMS) */
 MACHINE
     Bagmch_constant_set2
 SETS
@@ -21,7 +24,6 @@ INVARIANT
     content <: items // it's a subset of ITEMS
     //content : FIN(content) &
     // Note: items is a finite set, so any subset of it is necessarily finite.
-    // Yet we still need 'content : FIN(content)' to discharge all the POs
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS

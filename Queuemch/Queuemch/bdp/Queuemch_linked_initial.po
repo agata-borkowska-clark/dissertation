@@ -1,0 +1,90 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(11) & _f(28) & WellDefinedness_getelem.1,(_f(34) => _f(44));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.11,(_f(34) => _f(50));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.10,(_f(34) => _f(49));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.9,(_f(34) => _f(48));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.8,(_f(34) => _f(47));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.7,(_f(34) => _f(35));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.6,(_f(34) => _f(40));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.5,(_f(34) => _f(46));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.4,(_f(34) => _f(38));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.3,(_f(34) => _f(45));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.2,(_f(34) => _f(44));
+_f(1) & _f(2) & _f(11) & _f(21) & WellDefinedness_remove2.1,(_f(34) => _f(43));
+_f(1) & _f(2) & _f(11) & _f(16) & WellDefinedness_remove.6,(_f(34) => _f(42));
+_f(1) & _f(2) & _f(11) & _f(16) & WellDefinedness_remove.5,(_f(34) => _f(41));
+_f(1) & _f(2) & _f(11) & _f(16) & WellDefinedness_remove.4,(_f(34) => _f(40));
+_f(1) & _f(2) & _f(11) & _f(16) & WellDefinedness_remove.3,(_f(34) => _f(39));
+_f(1) & _f(2) & _f(11) & _f(16) & WellDefinedness_remove.2,(_f(34) => _f(38));
+_f(1) & _f(2) & _f(11) & _f(16) & WellDefinedness_remove.1,(_f(34) => _f(37));
+_f(1) & _f(2) & _f(11) & _f(12) & WellDefinedness_append.2,(_f(34) => _f(36));
+_f(1) & _f(2) & _f(11) & _f(12) & WellDefinedness_append.1,(_f(34) => _f(35));
+_f(1) & _f(2) & _f(11) & _f(21) & remove2.3,(_f(4) & _f(9) => _f(24));
+_f(1) & _f(2) & _f(11) & _f(21) & remove2.2,(_f(4) & _f(7) => _f(23));
+_f(1) & _f(2) & _f(11) & _f(21) & remove2.1,(_f(4) & _f(5) => _f(22));
+_f(1) & _f(2) & _f(11) & _f(16) & remove.3,(_f(17) & _f(4) & _f(9) => _f(20));
+_f(1) & _f(2) & _f(11) & _f(16) & remove.2,(_f(17) & _f(4) & _f(7) => _f(19));
+_f(1) & _f(2) & _f(11) & _f(16) & remove.1,(_f(17) & _f(4) & _f(5) => _f(18));
+_f(1) & _f(2) & _f(11) & _f(12) & append.3,(_f(4) & _f(9) => _f(15));
+_f(1) & _f(2) & _f(11) & _f(12) & append.2,(_f(4) & _f(7) => _f(14));
+_f(1) & _f(2) & _f(11) & _f(12) & append.1,(_f(4) & _f(5) => _f(13));
+_f(1) & _f(2) & Initialisation.3,(_f(3) & _f(4) & _f(9) => _f(10));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(4) & _f(7) => _f(8));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) & _f(5) => _f(6))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+((item) : (ITEMS));
+"Invariant is preserved";
+"Check invariant ((content) : (iseq(ITEMS)))";
+(([item]) : (iseq(ITEMS)));
+"Check invariant ((anchor) : (ran(content)))";
+((item) : (ran([item])));
+"Check invariant ((next) : (((ran(content)) -->> (ran(content)))))";
+(({((item) |-> (item))}) : (((ran([item])) -->> (ran([item])))));
+content : seq(ITEMS) & content : NATURAL-{0} +-> ITEMS & content ~ : ITEMS +-> NATURAL-{0} & ((content) : (iseq(ITEMS))) & ((anchor) : (ran(content))) & next : ran(content) +-> ran(content) & next : ran(content) --> ran(content) & next : ran(content) +->> ran(content) & dom(next) = ran(content) & ran(next) = ran(content) & ((next) : (((ran(content)) -->> (ran(content)))));
+((ii) : ((ITEMS - ran(content))));
+((((content) <- (ii))) : (iseq(ITEMS)));
+((anchor) : (ran(((content) <- (ii)))));
+((((next) <+ ({((ii) |-> (anchor))}\/{((last(content)) |-> (ii))}))) : (((ran(((content) <- (ii)))) -->> (ran(((content) <- (ii)))))));
+((ii) : ((ran(content) - {anchor})));
+((xx) = (((content)~ )(ii)));
+((((((content) /|\ ((xx - 1)))) ^ (((content) \|/ (xx))))) : (iseq(ITEMS)));
+((anchor) : (ran(((((content) /|\ ((xx - 1)))) ^ (((content) \|/ (xx)))))));
+(((((({ii}) <<| (next))) <+ ({((((next)~ )(ii)) |-> ((next )(ii)))}))) : (((ran(((((content) /|\ ((xx - 1)))) ^ (((content) \|/ (xx)))))) -->> (ran(((((content) /|\ ((xx - 1)))) ^ (((content) \|/ (xx)))))))));
+((nn) : ((dom(content) - {1})));
+((((((content) /|\ ((nn - 1)))) ^ (((content) \|/ (nn))))) : (iseq(ITEMS)));
+((anchor) : (ran(((((content) /|\ ((nn - 1)))) ^ (((content) \|/ (nn)))))));
+(((((({(content )(nn)}) <<| (next))) <+ ({((((next)~ )((content )(nn))) |-> ((next )((content )(nn))))}))) : (((ran(((((content) /|\ ((nn - 1)))) ^ (((content) \|/ (nn)))))) -->> (ran(((((content) /|\ ((nn - 1)))) ^ (((content) \|/ (nn)))))))));
+((aa) : (ITEMS));
+((aa) : (ran(content)));
+not(((aa) : (ran(content))));
+((ii) : (dom(content)));
+((anchor) : (ran(content)));
+content : seq(ITEMS);
+content : NATURAL-{0} +-> ITEMS;
+content ~ : ITEMS +-> NATURAL-{0};
+((content) : (iseq(ITEMS)));
+"Well definedness";
+((content) : (seq(ran(content))));
+not(((content) = ({})));
+((ii) : (dom((next)~)));
+(((next)~) : (((dom((next)~)) +-> (ran((next)~)))));
+((ii) : (dom(next)));
+((next) : (((dom(next)) +-> (ran(next)))));
+((ii) : (dom((content)~)));
+(((content)~) : (((dom((content)~)) +-> (ran((content)~)))));
+((nn) : (dom(content)));
+((content) : (((dom(content)) +-> (ran(content)))));
+(((content )(nn)) : (dom((next)~)));
+(((content )(nn)) : (dom(next)));
+(((nn - 1)) : (((0) .. (size(content)))));
+((nn) : (((0) .. (size(content)))));
+((((content) /|\ ((nn - 1)))) : (seq(ran(((content) /|\ ((nn - 1)))))));
+((((content) \|/ (nn))) : (seq(ran(((content) \|/ (nn))))))
+END
+&
+THEORY EnumerateX
+END

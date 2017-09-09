@@ -3,10 +3,10 @@
  * UID: 1690550
  * Creation date: 02/08/2017
  *
- * Like Bagmch, with an additional detail: imposing a limit on cardinality
+ * Like Bagmch, with an additional detail: imposing a limit on cardinality.
+ * This time through a parameter.
  */
  
-/* The simplest version of the bag example */
 MACHINE
     Bagmch_limited_params(max_elem)
 CONSTRAINTS

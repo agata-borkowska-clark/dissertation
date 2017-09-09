@@ -1,0 +1,7 @@
+digraph {
+Queuemch_linked [ label=" Queuemch_linked " shape= box ]
+Queuemch_linked_initial [ label=" Queuemch_linked_initial " shape= box ]
+Queuemch_stack [ label=" Queuemch_stack " shape= box ]
+Queuemch_stack_initial [ label=" Queuemch_stack_initial " shape= box ]
+
+}

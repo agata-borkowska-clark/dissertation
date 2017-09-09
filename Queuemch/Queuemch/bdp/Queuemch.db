@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<db_xml>
+    <atelierb version="3_7_ubuntu-cvs" />
+    <project decomp_dir="D:\Non-game stuff\CS notes\Dissertation\Queuemch\Queuemch\bdp\expand_src" old_decomp_dir="D:\Non-game stuff\CS notes\Dissertation\Queuemch\Queuemch\bdp\src">
+        <!-- Definition directory list -->
+        <!-- Component file list -->
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Queuemch/Queuemch" name="Queuemch_linked" suffix="mch" user="Agata">
+            <component name="Queuemch_linked" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Queuemch/Queuemch" name="Queuemch_linked_initial" suffix="mch" user="Agata">
+            <component name="Queuemch_linked_initial" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Queuemch/Queuemch" name="Queuemch_stack" suffix="mch" user="Agata">
+            <component name="Queuemch_stack" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Dissertation/Queuemch/Queuemch" name="Queuemch_stack_initial" suffix="mch" user="Agata">
+            <component name="Queuemch_stack_initial" type="specification" />
+        </component_file>
+    </project>
+</db_xml>

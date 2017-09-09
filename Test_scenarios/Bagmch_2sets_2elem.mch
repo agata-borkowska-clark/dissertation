@@ -3,6 +3,9 @@
  * UID: 1690550
  * Creation date: 03/09/2017
  */
+ 
+  /* Like in Bagmch_2sets, we maintain two bags simultaneously, 
+ and explore variations of the Initialisation.*/
 MACHINE
     Bagmch_2sets_2elem
 SETS

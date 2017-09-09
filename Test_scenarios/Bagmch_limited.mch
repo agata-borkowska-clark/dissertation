@@ -6,7 +6,6 @@
  * Like Bagmch, with an additional detail: imposing a limit on cardinality
  */
  
-/* The simplest version of the bag example */
 MACHINE
     Bagmch_limited
 SETS

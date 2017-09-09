@@ -19,7 +19,7 @@ INVARIANT
     content1 : FIN(content1) &
     content2 <: ITEMS &
     content2 : FIN(content2) &
-    content1 \/ content2 <: ITEMS
+    content1 \/ content2 <: ITEMS // redundant, deliberate
 INITIALISATION
     ANY
         xx

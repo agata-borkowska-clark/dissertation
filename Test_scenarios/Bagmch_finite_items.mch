@@ -3,6 +3,8 @@
  * UID: 1690550
  * Creation date: 11/04/2017
  */
+ 
+ /* ITEMS is now a finite set already, and hence so is content */
 MACHINE
     Bagmch_finite_items
 SETS
@@ -15,7 +17,6 @@ VARIABLES
 INVARIANT
     content <: ITEMS // it's a subset of ITEMS
     // Note: ITEMS is a finite set, so any subset of it is necessarily finite.
-    // Yet we still need 'content : FIN(content)' to discharge all the POs
 INITIALISATION
     content := {} // we start with an empty bag
 OPERATIONS

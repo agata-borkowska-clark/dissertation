@@ -1,0 +1,11 @@
+﻿THEORY User_Pass IS
+Operation(Initialisation) & ff(0) & pr;
+Operation(push) & ff(0) & pr;
+Operation(pop) & ff(0) & pr;
+Operation(enqueue) & ff(0) & pr;
+Operation(dequeue) & ff(0) & pr;
+Operation(WellDefinedness_pop) & ff(0) & pr;
+Operation(WellDefinedness_dequeue) & ff(0) & pr;
+Operation(push) & ff(0) & dd & pr & pp(rp.1) & pr;
+Operation(enqueue) & ff(0) & dd & pr & pp(rp.1) & pr
+END 
