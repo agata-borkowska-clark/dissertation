@@ -2,38 +2,38 @@
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-A}}Project Structure}{5}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-B}}The B method}{5}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-C}}Structure of an abstract machine}{6}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-D}}Atelier B Provers}{7}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-D}}Atelier B Provers}{6}
 \contentsline {section}{\numberline {II}Literature review}{7}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Teaching of formal methods}{7}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Industrial examples}{8}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Extensions to B and Atelier B}{9}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Shortcomings of Atelier B}{9}
-\contentsline {section}{\numberline {III}Project overview}{10}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}The aims of the project}{10}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Extensions to Atelier B}{9}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Shortcomings of Atelier B}{10}
+\contentsline {section}{\numberline {III}Project overview}{11}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}The aims of the project}{11}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}The scope of the project}{11}
 \contentsline {section}{\numberline {IV}Definitions and Conventions}{12}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Definitions and notations}{12}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Naming Conventions}{13}
 \contentsline {section}{\numberline {V}Methodology}{13}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Overview}{13}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}The proof process}{13}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}The proof process}{14}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Choice of scenarios}{15}
 \contentsline {section}{\numberline {VI}The Bag Machine}{15}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-A}}Specification}{15}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-B}}Visualisation}{15}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-C}}Discussion of the specification}{15}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-B}}Visualisation}{16}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-C}}Discussion of the specification}{16}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}}Variants of the Bag Machine}{17}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}1}Bagmch}{17}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}2}Bagmch\_unbounded}{17}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}3}Bagmch\_pre}{17}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}2}Bagmch\_unbounded}{18}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}3}Bagmch\_pre}{18}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}4}Bagmch\_restrictive}{18}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}5}Bagmch\_nondet}{18}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}5}Bagmch\_nondet}{19}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}6}Bagmch\_params}{19}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}7}Bagmch\_long\_inv}{19}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}7}Bagmch\_long\_inv}{20}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}8}Bagmch\_finite\_items}{20}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}9}Bagmch\_constant\_set}{21}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}10}Bagmch\_constant\_set2}{21}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}11}Bagmch\_limited}{21}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}11}Bagmch\_limited}{22}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}12}Bagmch\_limited\_params}{22}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}13}Bagmch\_wrong\_order}{22}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}14}Bagmch\_redundant...}{23}
@@ -52,10 +52,6 @@
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VII-C}}Summary}{31}
 \contentsline {section}{\numberline {VIII}Results}{31}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-A}}Summary of the work done}{31}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-A}1}}{32}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-A}2}}{32}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-A}3}}{32}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-A}4}}{32}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}}Findings and observations}{32}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}1}Number and type of proof obligations}{32}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}2}Equivalence of expressions}{32}
@@ -64,6 +60,6 @@
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IX-A}}Possible continuations}{33}
 \contentsline {section}{\numberline {X}Concluding Remarks}{34}
 \contentsline {section}{\numberline {XI}Acknowledgements}{34}
-\contentsline {section}{References}{35}
+\contentsline {section}{References}{34}
 \contentsline {section}{Appendix\nobreakspace A: The reference Bag machine}{36}
 \contentsline {section}{Appendix\nobreakspace B: 'Any subset of a finite set is finite' - Proof}{37}
