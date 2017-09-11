@@ -17,7 +17,7 @@
 \contentsline {section}{\numberline {V}Methodology}{13}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Overview}{13}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}The proof process}{14}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Choice of scenarios}{15}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Choice of scenarios}{14}
 \contentsline {section}{\numberline {VI}The Bag Machine}{15}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-A}}Specification}{15}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-B}}Visualisation}{15}
@@ -27,13 +27,13 @@
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}2}Bagmch\_unbounded}{17}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}3}Bagmch\_pre}{18}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}4}Bagmch\_restrictive}{18}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}5}Bagmch\_nondet}{18}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}5}Bagmch\_nondet}{19}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}6}Bagmch\_params}{19}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}7}Bagmch\_long\_inv}{19}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}7}Bagmch\_long\_inv}{20}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}8}Bagmch\_finite\_items}{20}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}9}Bagmch\_constant\_set}{21}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}10}Bagmch\_constant\_set2}{21}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}11}Bagmch\_limited}{22}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}11}Bagmch\_limited}{21}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}12}Bagmch\_limited\_params}{22}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}13}Bagmch\_wrong\_order}{22}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}14}Bagmch\_redundant...}{23}
@@ -48,17 +48,17 @@
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VII-A}}Overview and motivation}{28}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VII-B}}Data structures machines}{28}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VII-B}1}Queuemch\_stack}{28}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VII-B}2}Queuemch\_linked}{30}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VII-B}2}Queuemch\_linked}{29}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VII-C}}Summary}{31}
 \contentsline {section}{\numberline {VIII}Results}{31}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-A}}Summary of the work done}{31}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}}Findings and observations}{32}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}1}Number and type of proof obligations}{32}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}}Findings and observations}{31}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}1}Number and type of proof obligations}{31}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}2}Equivalence of expressions}{32}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-C}}Additional rules}{32}
-\contentsline {section}{\numberline {IX}Evaluation and future outlook}{33}
+\contentsline {section}{\numberline {IX}Evaluation and future outlook}{32}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IX-A}}Possible continuations}{33}
-\contentsline {section}{\numberline {X}Concluding Remarks}{34}
+\contentsline {section}{\numberline {X}Concluding Remarks}{33}
 \contentsline {section}{\numberline {XI}Acknowledgements}{34}
 \contentsline {section}{References}{34}
 \contentsline {section}{Appendix\nobreakspace A: The reference Bag machine}{36}

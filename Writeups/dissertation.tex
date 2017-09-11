@@ -48,7 +48,7 @@
 			In this work we strive to provide new users with practical guidelines on how to understand the feedback given by the Atelier B provers and how to reduce the number of proof obligations which are not demonstrated automatically, since manually discharging them is the most time-consuming part of the proof process\cite{survey}. The secondary goal isto establish the limitations of the prover without such additions, and discover at which point they become necessary.
 	\end{abstract}
 	\begin{IEEEkeywords}
-		B method, formal verification, specification, abstract machine, proof, system development
+		abstract machine, Atelier B, B method, formal verification, proof, specification, system development
 	\end{IEEEkeywords}}
 	% IEEEtran.cls defaults to using nonbold math in the Abstract.
 	% This preserves the distinction between vectors and scalars. However,
@@ -96,9 +96,9 @@
 
 	When a new user, who is just learning how to apply formal methods, has to struggle with both understanding the theory and the intricacies of the tools, they may easily get discouraged. This project is aimed exactly at those users who are at loss and do not know how to interpret the behaviour of the tools. We aim to give them guidelines on how to approach proofs, as well as warnings about certain behaviours which may not be in line with standard logic or set theory.
 
-	We believe popularizing the interest in formal methods will help diminish their reputation of being inaccessible and requiring long and expensive training. Seeing as others have also begun to notice such statements no longer hold\cite{amazon}, we approach the topic with hope that this trend will continue in the years to come.
+	We believe that popularizing the interest in formal methods will help diminish their reputation of being inaccessible and requiring long and expensive training. Seeing as others have also begun to notice such statements no longer hold\cite{amazon}, we approach the topic with hope that this trend will continue in the years to come.
 
-	We choose to work with the B method, which has been developed over 20 years ago by J.-R. Abrial. Since then it has become a significant element in safety assurance, especially in the railway industry. We chose Atelier B software, developed by ClearSy Ltd., as the most widely accredited, although far from perfect. It has contributed to multiple industrial projects, as well as being used for teaching formal methods at university level. Thus our work may be of interest to both engineers and academics.
+	We choose to work with the B method, which has been developed over 20 years ago by J.-R. Abrial. Since then it has become a significant element in safety assurance, especially in the railway industry. We chose Atelier B software, developed by ClearSy Systems Engineering, as the most widely accredited, although far from perfect. It has contributed to multiple industrial projects, as well as being used for teaching formal methods at university level. Thus our work may be of interest to both engineers and academics.
 
 	\subsection{Project Structure}
 	We shall begin this work with a quick overview of the B method and Atelier B, the tool which we will be working with.
@@ -118,7 +118,7 @@
 
 	The development process in the B method begins with formalising a specification as an abstract machine, using the B language. This stage will be the focus of our work. The abstract machine can be viewed as a state machine. Its state is described by the values of the variables, and it is taken from one state to another by operations which change those values.
 
-	It has to be stressed at this stage, there is no notion of sequencing or temporal logic. An operation performs all its actions in parallel. For the same reason, loops cannot exist in an abstract machine, and recursion or an operation making a call to another one, is not permitted. On the other hand, there are many features which help with expressing a specification with clarity. A user can employ set comprehension, summation, lambda notation, and similar constructs. All of them are easy to express in the B syntax.
+	It has to be stressed at this stage, that there is no notion of sequencing or temporal logic. An operation performs all its actions in parallel. For the same reason, loops cannot exist in an abstract machine, and recursion or an operation making a call to another one, is not permitted. On the other hand, there are many features which help with expressing a specification with clarity. A user can employ set comprehension, summation, lambda notation, and similar constructs. All of them are easy to express in the B syntax.
 
 	Another feature available there is nondeterminism. It is not considered erroneous to ask for any random element of a set to be assigned to a variable. The level of nondeterminism must decrease as the development progresses, until it is completely removed when the model is ready to be implemented.
 
@@ -156,9 +156,9 @@
 	Static analysis takes place while the user is writing the code, and serves to indicate primarily syntax or type errors. If there are such errors, the software will refuse to attempt any form of proof on the machine.
 
 
-	Once the machine is free from these errors, the user may proceed to generate proof obligations. They are statements which should be demonstrated to hold, or discharged. Otherwise the machine is likely to be incorrect. A proof obligation may be demonstrated to hold using the tools included in Atelier B or other software, but it may not be disproved. The problem is known to be undecidable\cite{sipser}. Therefore, an undischarged proof obligation does not necessarily point to a mistake in the machine, but is possibly a result of a shortcoming of the prover tool.
+	Once the machine is free from these errors, the user may proceed to generate proof obligations. They are statements which should be demonstrated to hold, or discharged. Otherwise the machine is likely to be incorrect. A proof obligation may be demonstrated to hold using the tools included in Atelier B or other software, but it may not be disproved, since this problem is undecidable\cite{sipser}. Therefore, an undischarged proof obligation does not necessarily point to a mistake in the machine, but is possibly a result of a shortcoming of the prover tool.
 
-	Proof obligations which we will encounter can be divided into types. Most proof obligations will be concerned with preservation of the Invariant by the Initialisation and the Operations which change the variables. An undemonstrated proof obligation of this type indicates that performing an operation may result in the machine entering an invalid state.
+	Proof obligations which we will encounter can be divided into two types. Most proof obligations will be concerned with preservation of the Invariant by the Initialisation and the Operations which change the variables. An undemonstrated proof obligation of this type indicates that performing an operation may result in the machine entering an invalid state.
 
 	The second kind of proof obligations check the well-defineness properties of certain expressions. A proof obligation of this kind which is impossible to discharge indicates that the user has likely not been specific enough when defining variables and their properties. For example, the expression $max(\varnothing)$ is erroneous, because there is no greatest element in the empty set, so the user needs to ensure that it is called only for non-empty sets. Similarly in the B language, for a set $A$, the expression $card(A)$ makes sense if and only if $A$ is finite. The well-defineness conditions for all such expressions can be found in the \emph{B Language Reference Manual}.
 
@@ -175,7 +175,7 @@
 	
 	The first text to be mentioned in this section must be Sekerinski's book entitled \emph{Program Development by Refinement: Case Studies Using the B Method}\cite{Sekerinski}. It is a textbook containing an introduction to the B method and practical exercises, with various example machines written out and analysed. It served as a key inspiration for this project, and the methods employed in our work follows closely the idea of inspecting a machine in order to gain deeper understanding of the B method. The examples included in this book revolve around implementations of standard data structures and algorithms, such as operations on linked lists, heaps, and trees. Unfortunately, just as so many other positions, this book focuses heavily on refinement and implementation, while not paying as close attention to abstract machines. Nevertheless it illustrates how thorough explanations of a few chosen examples can be helpful to people learning the B method. 
 	
-	However as approachable as it may make the B method, it does not consider the lack of interest in formal methods by the students. We would like to first consider what issues students see with this subject and what discourages them from taking it.
+	However, as approachable as it may make the B method, it does not consider students' lack of interest in formal methods. We would like to first consider what issues students see with this subject and what discourages them from taking it.
 	
 	The B method is often used to teach formal methods at university level. Catano and Rueda have described their experience with it at Pontificia Universidad Javeriana. Their course has also used Atelier B, and their students have attributed their difficulties with the prover to its "black-box feel" and lack of insight into its internal working.\cite{teaching}
 
@@ -184,7 +184,7 @@
 
 
 	\subsection{Industrial examples}
-	Although this work is aimed at students and researchers, it is necessary to put it into perspective of how formal methods can be used in industry. Looking at the applications of formal methods will serve to demonstrate this work indeed serves a purpose and there are users who may want to refer to the discoveries in this project in order to facilitate their work. Additionally, industrial examples may demonstrate the relevance and applicability of formal methods to students.
+	Although this work is aimed at students and researchers, it is necessary to put it into perspective of how formal methods can be used in industry. Looking at the applications of formal methods will serve to demonstrate that this work indeed serves a purpose and there are users who may want to refer to the discoveries in this project in order to facilitate their work. Additionally, industrial examples may demonstrate the relevance and applicability of formal methods to students.
 
 	As mentioned in the Introduction, formal methods are primarily used in safety-critical areas, where testing is difficult or insufficient as an evidence of the correctness of the software, while failure can result in injury or loss of life.
 
@@ -192,47 +192,49 @@
 
 	Another popular area for using formal methods is security, be it in protocol design specifically\cite{security} or their applications, for example in secure communication\cite{security2}.
 
-	Other industrial examples of formal methods in use include Amazon Web Services, which use highly complex systems\cite{amazon}. The engineers there have observed human intuition is prone to errors and formal methods help find subtle bugs, which can be easily overlooked by other means of checking the correctness of the software. They use TLA+, a formal specification language developed by Lamport\cite{TLA}. The Amazon Web Services engineers also acknowledge formal methods in industry have the reputation for requiring long and expensive training before they can be used with confidence; however, they have found this to be false. This may be specific to the method they have chosen, but nevertheless it is encouraging that people are questioning such opinions, and are open to trying out this approach.
+	Other industrial examples of formal methods in use include Amazon Web Services, which use highly complex systems\cite{amazon}. The engineers there have observed that human intuition is prone to errors and formal methods help find subtle bugs, which can be easily overlooked by other means of checking the correctness of the software. They use TLA+, a formal specification language developed by Lamport\cite{TLA}. The Amazon Web Services engineers also acknowledge that formal methods in industry have the reputation for requiring long and expensive training before they can be used with confidence; however, they have found this to be false. This may be specific to the method they have chosen, but nevertheless it is encouraging that people are questioning such opinions, and are open to trying out this approach.
 
-	In particular, the B method is popular in the railway industry. Their use is supported by standards and regulations which describe the requirements for software controlling signalling, communication and processing\cite{railway standard}.
+	In particular, the B method is popular in the railway industry. Its use is supported by standards and regulations which describe the requirements for software controlling signalling, communication and processing\cite{railway standard}.
 
-	A prime example of an application of the B-method is the project launched by Siemens Transportation System in collaboration with ClearSy, to develop a driverless, automated shuttle for the Charles de Gaulle Airport\cite{airport shuttle}. It has operated since 2005 and is highly reliable. Specifically the B method was used as a high-level language, because of it being well-suited for proving properties. They have used Atelier B automated and interactive provers in their work, and found that out of over 43000 proof obligations, 97\% were discharged automatically. The remaining proof obligations required the use of the interactive prover. They managed to discharge on average 15 proof obligations in a day, and at this scale it was still a time-consuming task.
+	A prime example of an application of the B method is the project launched by Siemens Transportation System in collaboration with ClearSy, to develop a driverless, automated shuttle for the Charles de Gaulle Airport\cite{airport shuttle}. It has operated since 2005 and is highly reliable. More specifically,  the B method was used as a high-level language, because of it being well-suited for proving properties. They have used Atelier B automated and interactive provers in their work, and found that out of over 43000 proof obligations, 97\% were discharged automatically. The remaining proof obligations required the use of the interactive prover. They managed to discharge on average 15 proof obligations in a day, and at this scale it was still a time-consuming task.
 
 	ClearSy has also participated in other, smaller projects. One of them is the development of the software controlling screen doors on the platforms, to make sure that they open simultaneously with the train doors after it stops. The project was carried out in collaboration with R\'{e}gie Autonome des Transports Parisiens (RATP). It was considered successful and after eight months of operation and controlling over 96000 train stops they did not find any faults\cite{screen doors}.
 
-	Less directly applicable, although interesting is the effort of Reichl \textit{et al.} to model a train station in Event-B, using the Rodin tool\cite{station model}. The software which could be built from this model would route trains and control signalling between tracks and intersections, so that collisions are avoided and a train efficiently progresses towards its destination. The aim of this work is to demonstrate what can be achieved in terms of modelling complex interlocking systems with Event-B, and the limitations of such models. The key observation was that all stations are different and require careful changes to the model, the source code for which is available online. Furthermore the authors observe that the tool they have used is not yet industry-ready, and there are some promising alternatives under development. This was a large-scale model and the authors may have set the bar too high, given the currently available tools. As we have seen before, direct applications of B method or Event-B tend to focus on smaller systems, such as automated doors on a platform.
+	Less directly applicable, although interesting is the effort of Reichl \textit{et al.} to model a train station in Event-B, using the Rodin tool\cite{station model}. Event-B is an evolution of the B language, designed with a simpler notation in mind.\cite{event-b} The software which could be built from this model would route trains and control signalling between tracks and intersections, so that collisions are avoided and a train efficiently progresses towards its destination. The aim of this work is to demonstrate what can be achieved in terms of modelling complex interlocking systems with Event-B, and the limitations of such models. The key observation was that all stations are different and require careful changes to the model, the source code for which is available online. Furthermore the authors observe that the tool they have used is not yet industry-ready, and there are some promising alternatives under development. This was a large-scale model and the authors may have set the bar too high, given the currently available tools. As we have seen before, direct applications of B method or Event-B tend to focus on smaller systems, such as automated doors on a platform.
 
-	This selection of examples suffices to prove that formal methods are still applicable and are of interest not just to academics, and shows the scale of such models. Overall they also had a high proportion of proof obligations discharged automatically. Reichl \emph{et al.} have achieved a similar proportion of proved POs to Badeau and Amelot - 97.6\% of their POs were discharged  by the prover. This number seems to be quite consistent. Bernard \emph{et al.} in their B model of GSM 11-11 smart cards had 377 proof obligations generated, and all but one of them were discharged automatically (the last one requiring the interactive prover)\cite{GSM}. Mentr\'{e} \emph{et al.} also got over 90\% of POs discharged by the prover in their use of pure Atelier B for benchmarking.\cite{discharging} 	Unfortunately, in neither of these papers it is stated if any measures were taken during the writing of the specification, to make the proof process easier.
+	This selection of examples suffices to prove that formal methods are still applicable and are of interest not just to academics, and shows the scale of such models. Overall they also had a high proportion of proof obligations discharged automatically. Reichl \emph{et al.} have achieved a similar proportion of proved statements to Badeau and Amelot - 97.6\% of their proof obligations were discharged  by the prover. This number seems to be quite consistent. Bernard \emph{et al.} in their B model of GSM 11-11 smart cards had 377 proof obligations generated, and all but one of them were discharged automatically (the last one requiring the interactive prover)\cite{GSM}. Mentr\'{e} \emph{et al.} also got over 90\% of proof obligations discharged by the prover in their use of pure Atelier B for benchmarking.\cite{discharging} 	Unfortunately, in neither of these papers it is stated if any measures were taken during the writing of the specification, to make the proof process easier.
 
 	The scale of these projects is infeasible to simulate in this work; however, they give us a good idea of the time cost racked up by proof obligations which are not discharged automatically. Conchon and Iguernlala consider decreasing the number of undemonstrated proof obligations to be a good way of reducing the cost of the whole project\cite{survey}, and indeed the figures given by Badeau and Amelot support this claim. 30\% of the time they have spent on working on the abstract model was devoted to proof\cite{airport shuttle}.
 
-	Since this work is meant to aid new users of Atelier B, it was interesting and worthwhile to look at what others consider to be shortcomings of the software. Even the engineers of ClearSy themselves have noted that their documentation was lacking and additional documents were necessary for their collaborators from RATP to fully understand their deliverables\cite{screen doors}. Leuschel \emph{et al.} have openly admitted that they found the feedback provided by the prover to be unhelpful with locating the problem\cite{San Juan metro}. Their experience is in line with our own and that of our colleagues.
 
 	\subsection{Extensions to Atelier B}
 	
-	The currently predominant approach to improving the power of the interactive prover in Atelier B is using SMT solvers. Satisfiability Modulo Theories are a generalised form of SAT, taking into account some underpinning theory for the formulae.  These results to generally undecidable problems being much simpler in a particular scenario.\cite{SMT handbook} SAT itself, the Boolean Satisfiability Problem is one of the first problems to be NP-Complete. It is the problem of determining whether for a given logical formula in the  conjunctive normal form there exists an assignment of variables (to either true or false) for which the whole formula evaluates to true. Modern SAT solvers use heuristic methods which are sufficient in most practical use cases\cite{SAT}.
+	The currently predominant approach to improving the power of the interactive prover in Atelier B is using SMT solvers. Satisfiability Modulo Theories are a generalised form of SAT, taking into account some underpinning theory for the formulae.  These results in generally undecidable problems being much simpler in a particular scenario.\cite{SMT handbook} SAT itself, the Boolean Satisfiability Problem is one of the first problems to be NP-Complete. It is the problem of determining whether for a given logical formula in the  conjunctive normal form there exists an assignment of variables (to either true or false) for which the whole formula evaluates to true. Modern SAT solvers use heuristic methods which are sufficient in most practical use cases\cite{SAT}.
 	
-	D\'{e}harbe explains in detail how to use SMT to discharge proof obligations for B and Event-B, including those that are not limited to simple types and logic constructs. While his work focuses primarily on Event-B and Rodin, he speculates that it should be possible to apply his work to classical B and Atelier B in a very similar way.\cite{SMT} This is an avenue we would definitely want to explore in our project.
+	D\'{e}harbe explains in detail how to use SMT to discharge proof obligations for B and Event-B, including those that are not limited to simple types and logic constructs. While his work focuses primarily on Event-B and Rodin, he speculates that it should be possible to apply his work to classical B and Atelier B in a very similar way.\cite{SMT} 
 	
-	Multiple SMT solvers exist, the most popular one being Why3. D. Mentr\'{e} \emph{et al.} have developed a method to use them to discharge proof obligations that Atelier B cannot cope with. More specifically, they rigorously translate B proof obligations into Why3. It required modelling the B set theory in Why language. Unfortunately, their work is incomplete, and their are some questions about confidence in their embedding of B into Why3.
+	Multiple SMT solvers exist, the most popular one being Why3. D. Mentr\'{e} \emph{et al.} have developed a method to use them to discharge proof obligations that Atelier B cannot cope with. More specifically, they rigorously translate B proof obligations into Why3. It required modelling the B set theory in Why language. Unfortunately, their work is incomplete, and their are some questions about confidence in their embedding of B into Why3.\cite{discharging}
 	
-	Alt-Ergo is another solver, which has been used to discharge Atelier B's POs.\cite{Alt-Ergo} Alt-Ergo is an open source project by Conchon and Iguernlala. The focus of their work is efficiency and improvement of heuristics. Interestingly, they have discovered that an SMT solver on its own will not do better than the Atelier B's interactive prover. It required some tuning specifically for B method, after which there was a noticable improvement in performance.
+	Alt-Ergo is another solver, which has been used to discharge Atelier B's proof obligations.\cite{Alt-Ergo} Alt-Ergo is an open source project by Conchon and Iguernlala. The focus of their work is efficiency and improvement of heuristics. Interestingly, they have discovered that an SMT solver on its own will not do better than the Atelier B's interactive prover. It required some tuning specifically for B method, after which there was a noticable improvement in performance.
 	
 	Multiple plug-ins were created to help Atelier B provers with discharging proof obligations; however, they are small projects which do not go through as strict accreditation process as Atelier B itself. Their existence also highlights that the original prover leaves some to be desired. We do not want to use them in this work, because it is aimed at people new to the B method and we consider it to be too much of a complication of the proof process overall, to work with additional software.\cite{BEval}\cite{BWare}
 	
-	Although these extensions may more user-friendly design and functionality, are not yet up to industry standards, while Atelier B has been certified. On top of that, all of them rely on Atelier B. These projects advocate using Atelier B for the first pass of type checking and discharging proof obligations.Therefore we will focus on this tool only.
+	Although these extensions may have more user-friendly design and functionality, they are not yet up to industry standards, while Atelier B has been certified. On top of that, all of them rely on Atelier B. These projects advocate using Atelier B for the first pass of type checking and discharging proof obligations. Therefore we will focus on this tool only.
 	
-	One program we intend to use is ProB, software designed to animate Atelier B models by simulating the operations on the machine with the values of the users' choosing. We have found it very helpful while learning to formalize specification correctly and checking for simple human errors.\cite{proB}
+	One program we intend to use however, is ProB. It is software designed to animate Atelier B models by simulating the operations on the machine with the values of the users' choosing. We have found it very helpful while learning to formalize specification correctly and checking for simple human errors.\cite{proB}
 	
 	Another form of extensions to Atelier B is expanding its proof rule base. Adding proof rules requires a thorough verification of them by the user, and is generally discouraged. However it may be unavoidable. Even more importantly one might ask why we trust the rules provided by Atelier B, and how can we be certain that the rules are correct. Atelier B itself has some support for verifying proof rules, however it is very limited, and can be applied just to simple rewrite rules. It also brings us back to the question of confidence in the software itself.
 	
-	There are multiple automated theorem provers and proof assistants, not made specifically for the B-method, that can be used to prove rules in B. One of the more common ones is Coq. It has been developed over 20 years ago, and have been used to formalize B semantics since then\cite{Coq and PVS}. There was also an attempt by Chartier to formally validate B using Isabelle/HOL\cite{Isabelle}. The aim of this work was to verify methods of automatically generated proof obligations and check their consistency. The Zenon theorem prover has been developed more recently with first order logic in mind\cite{Zenon}. It uses truth trees, which make it much easier to add rules outside the core collection, such as is often required in B, and to check that the proof is correct. It generates proofs that can be then analysed by Coq.
+	There are multiple automated theorem provers and proof assistants, not made specifically for the B method, that can be used to prove rules in B. One of the more common ones is Coq. It has been developed over 20 years ago, and have been used to formalize B semantics since then\cite{Coq and PVS}. There was also an attempt by Chartier to formally validate B using Isabelle/HOL\cite{Isabelle}. The aim of this work was to verify methods of automatically generated proof obligations and check their consistency. The Zenon theorem prover has been developed more recently with first order logic in mind\cite{Zenon}. It uses truth trees, which make it much easier to add rules outside the core collection, such as is often required in B, and to check that the proof is correct. It generates proofs that can be then analysed by Coq.
 	
 	It should also be pointed out that the Atelier B Maintenance edition includes a tool for validating mathematical rules. Unfortunately we are unable to gain access to it. It is not a great loss however, as in this project we will focus on other aspects of the tool as well as the proof rule base, and additionally there are almost no references to the tool that assess its usefulness.
 	
 	\subsection{Shortcomings of Atelier B}
+	
+	
+	Since this work is meant to aid new users of Atelier B, it was interesting and worthwhile to look at what others consider to be shortcomings of the software. Even the engineers of ClearSy themselves have noted that their documentation was lacking and additional documents were necessary for their collaborators from RATP to fully understand their deliverables\cite{screen doors}.
 
-	As mentioned before, Leuschel \emph{et al.} were critical about Atelier B, and it is worth looking closely at the issues they have raised. Their main problem with the tool and the focus of their paper was lack of optimisation. They also noted that in the case of undischarged POs, it was ``difficult to find out why the proof has failed''. It is also supported by Catano and Rueda, whose students disliked not knowing what is happening internally in the prover and why certain statements are generated. The issues mentioned above are generic and in line with our own experience.
+	Leuschel \emph{et al.} were critical about Atelier B, and it is worth looking closely at the issues they have raised. Their main problem with the tool and the focus of their paper was lack of optimisation. They also noted that in the case of undischarged POs, it was ``difficult to find out why the proof has failed''. It is also supported by Catano and Rueda, whose students disliked not knowing what is happening internally in the prover and why certain statements are generated. The issues mentioned above are generic and in line with our own experience.
 
 	Another issue is mentioned by Medeiros and D\'{e}harbe\cite{BEval}. They point out that Atelier B is falling behind the developments made by researchers in the area of automated theorem proving. It is unsurprising, as the tool's development process is slow due to the need for certification of every update, without which it could not be used in an industrial setting.
 
@@ -248,7 +250,7 @@
 
 	We hope to provide the new users with an explanation for the most commonly encountered proof obligations which are not automatically discharged, and persistent patterns among them. Both understanding the information given by the automated prover and avoiding undischarged proof obligations in the first place is of interest.
 
-	An extension to this aim is answering the question: at what point is it necessary to add user-created rules in order to facilitate the proofs in the automated prover? It needs to be stressed that adding user-created rules is not advised unless it is absolutely necessary - and every manual as well as the works discussing methods of validating such rules accentuate this point. The rules must be thoroughly verified by means of other software or manual proof to ensure that they are sound. An error in an added rule would invalidate the entire proof process. Hence we will strive to circumvent obstacles by means other than adding proof rules, before resorting to it. We hope to gather such advice and guidelines and make it accessible to others, so that they may be dissuaded from unnecessarily adding proof rules in their work. It is possible that it may be avoided entirely in the scenarios we have chosen, as they are by no means exhaustive; otherwise we will present the rules and their proofs for the use of others who wish to study the B-method.
+	An extension to this aim is answering the question: at what point is it necessary to add user-created rules in order to facilitate the proofs in the automated prover? It needs to be stressed that adding user-created rules is not advised unless it is absolutely necessary - and every manual as well as the works discussing methods of validating such rules accentuate this point. The rules must be thoroughly verified by means of other software or manual proof to ensure that they are sound. An error in an added rule would invalidate the entire proof process. Hence we will strive to circumvent obstacles by means other than adding proof rules, before resorting to it. We hope to gather such advice and guidelines and make it accessible to others, so that they may be dissuaded from unnecessarily adding proof rules in their work. It is possible that it may be avoided entirely in the scenarios we have chosen, as they are by no means exhaustive; otherwise we will present the rules and their proofs for the use of others who wish to study the B method.
 	
 	A secondary aim of this project is to discover the limitations of Atelier B. In the previous section, we have mentioned some plugins and extensions to the software, which were created in order to improve the functionality. They highlight what other users have found lacking in Atelier B and what they have considered in need of improvement. However none of them demonstrate what can be achieved with the original software alone. Hence we strive to assess at what point Atelier B alone becomes insufficient, and the extensions are necessary to successfully verify a project.
 
@@ -264,19 +266,21 @@
 	Additionally, we will be using Abrial's \emph{The B-book} and Schneider's \emph{The B-Method} as the key source texts describing the B theory.
 
 	\subsection{The scope of the project}
-	This work focused on abstract machines - they are the first step towards a formally verified implementation of a specification, thus making them the foundation of any project developed using the B method. An implication of this choice is focusing on set-related structures, including relations which are understood as sets of maplets, and operations such as set comprehension, union, and intersection. These abstract constructs are not allowed in the later stages of the development, where all data structures have to be concrete, and operations deterministic. We will also not discuss proof obligations related to loops, since those arise in the implementation stage and are not permitted in the abstract machine. Similarly, we will not analyse proof obligations related to structuring of machines. We wish to focus on a narrower scope and thoroughly explore it, rather than spread our resources too thinly and overlook some details.
+	This work focuses on abstract machines - they are the first step towards a formally verified implementation of a specification, thus making them the foundation of any project developed using the B method. An implication of this choice is focusing on set-related structures, including relations which are understood as sets of maplets, and operations such as set comprehension, union, and intersection. These abstract constructs are not allowed in the later stages of the development, where all data structures have to be concrete, and operations deterministic. We will not analyse the process of refinement.
+	
+	We will also not discuss proof obligations related to loops, since those arise in the implementation stage and are not permitted in the abstract machine. Similarly, we will not analyse proof obligations related to structuring of machines. We wish to focus on a narrower scope and thoroughly explore it, rather than spread our resources too thinly and overlook some details.
 
-	Another reason for this choice is the distinct lack of literature focusing on this stage of development, in comparison to the refinement and implementation stages. At the same time researchers, including Badeau and Camelot, recognize that the time spent on verifying the abstract model is worthwhile, since it serves to proof that the model conforms to the safety requirements\cite{airport shuttle}. The latter stages undeniably generate more proof obligations, since on top of the proof obligations which can appear in the abstract machines, we need to consider those related to connection between a refinement machine and the machine being refined.
+	Another reason for this choice is the distinct lack of literature focusing on this stage of development, in comparison to the refinement and implementation stages. At the same time researchers, including Badeau and Camelot, recognize that the time spent on verifying the abstract model is worthwhile, since it serves to proof that the model conforms to the requirements\cite{airport shuttle}. The latter stages undeniably generate more proof obligations, since on top of the proof obligations which can appear in the abstract machines, we need to consider those related to connection between a refinement machine and the machine being refined.
 
 	Similarly, as can be seen in the literature review, there has been significant amount of work done on verifying user-created proof rules, despite commonly seen advice to use this option as a last resort to prove correctness. We have found little discussion on how to avoid writing user's own proof rules.
 
-	We shall approach this project from an academic rather than industrial point of view, focusing on smaller yet more illustrative examples. The main reason for it is to limit the number of factors affecting the number of generated proof obligations and be able to control them more precisely. An industrial-scale project with hundreds of proof obligations would be unwieldy for our purposes. Secondly a person new to formal development and the B-method is more likely to be able to follow clear, exemplar scenarios.
+	We shall approach this project from an academic rather than industrial point of view, focusing on smaller yet more illustrative examples. The main reason for it is to limit the number of factors affecting the number of generated proof obligations and be able to control them more precisely. An industrial-scale project with hundreds of proof obligations would be unwieldy for our purposes. Secondly a person new to formal development and the B method is more likely to be able to follow clear, exemplar scenarios.
 
 	Nevertheless we hope that not only students and researchers will find our work helpful. Being able to minimise the number of proof obligations to be manually discharged has the potential to reduce the time required to complete any project. The constructs and expressions we discuss are the same ones as those used in industry. In fact, we found that the more complex structures in the B language, such as sequences, are rarely used in large-scale projects, as exemplified by the rail station model created by Reichl \textit{et al.}\cite{station model}.
 	\section{Definitions and Conventions}
 
 	\subsection{Definitions and notations}
-	We begin with a brief summary of the logic notation, comparing it to the B syntax, which comprises of ASCII characters or approximations thereof. We first give the symbol which will be used when discussing logical expressions in this writeup, followed by the ASCII equivalent written in a monotype font, as it can be seen in code snippets.
+	We begin with a brief summary of the logic notation, comparing it to the B syntax, which comprises of ASCII characters. We first give the symbol which will be used when discussing logical expressions in this writeup, followed by the ASCII equivalent written in a monotype font, as it can be seen in code snippets.
 	\begin{itemize}
 		\item AND is denoted by $\wedge$ or \texttt{\&}
 		\item OR is denoted by $\vee$ or \texttt{or}
@@ -302,13 +306,13 @@
 
 	The natural numbers give the first discrepancy between the B method and the mathematical theories which it is based on, which we encounter throughout this work. Formally, in axiomatic set theory, the natural numbers are defined as follows:
 
-	Let $x^+$ denote the successor set of the set $x$, which is $x^+ = x \cup {x}$. Then $\mathbb{N}$ is the smallest (with respect to the number of elements) set such that $\varnothing \in \mathbb{N}$ and if $x \in \mathbb{N}$ then $x^+ \in \mathbb{N}$.
+	Let $x^+$ denote the successor set of the set $x$, which is $x^+ = x \cup \{x\}$. Then $\mathbb{N}$ is the smallest (with respect to the number of elements) set such that $\varnothing \in \mathbb{N}$ and if $x \in \mathbb{N}$ then $x^+ \in \mathbb{N}$.
 
 	For simplicity, it is often defined that $\varnothing = 0$, $1 = \{\varnothing \}$, $2 = \{\varnothing , \{\varnothing\} \} = \{0,1\}$, and so on. In set theory, every element of the natural numbers is a set itself. This is not the case in B, and an attempt to talk about an element of an $n \in \mathbb{N}$ gives a type error in Atelier B during static analysis.
 
-	To make the distinction clear between integers and sets of integers as defined above, we will use the notation $[n]$ for some $n \in \mathbb{N}$ to indicate the set of all integers smaller than $n$, which is: $[n] = \{0,1, ...,n-1\}$. The B syntax has an abbreviation for it, and $[n]$ can be denoted as \texttt{0..n-1}. More generally, this B notation means a segment of natural numbers - for $m, n \in \mathbb{N}, \texttt{m..n} = \{x | x \in \mathbb{N} \wedge m \leq x \wedge x \leq n\}$
+	To make the distinction clear between integers and sets of integers as defined above, we will use the notation $[n]$ for some $n \in \mathbb{N}$ to indicate the set of all integers smaller than $n$, which is: $[n] = \{0,1, ...,n~-~1\}$. The B syntax has an abbreviation for it, and $[n]$ can be denoted as \texttt{0..n-1}. More generally, this B notation means a segment of natural numbers - for $m, n \in \mathbb{N}, \texttt{m..n} = \{x | x \in \mathbb{N} \wedge m \leq x \wedge x \leq n\}$
 
-	A \textbf{Cartesian product} of two sets $X$ and $Y$ is the set of all pairs $\{(a,b) | a \in X \wedge b \in Y  \}$. It is denoted $X \times Y$ or \texttt{x*y}. The pairs, also called \textbf{maplets} are written as \texttt{a~|->~b} in the B syntax. They are the elements of relations, functions, and sequences in the B language.
+	A \textbf{Cartesian product} of two sets $X$ and $Y$ is the set of all pairs $\{(a,b) | a \in X \wedge b \in Y  \}$. It is denoted $X \times Y$ or \texttt{x*y}. The pairs, also called \textbf{maplets} are written as \texttt{a~|->~b} in the B syntax. They are the elements of relations, functions, and sequences in the B language. The \textbf{inverse} of a function is denoted \texttt{function}$\sim$ in the B syntax.
 
 	With the help of those definitions we can finally define a finite set. A \textbf{finite} set is a set $x$ such that there exists a bijection between $x$ and $[n]$ for some $n \in \mathbb{N}$.  The B syntax also provides an abbreviation for the set of all finite subsets of a set $x$. \texttt{FIN(x)} is hence defined to be $\{y| y \in \mathbb{P}(x) \wedge y \text{ is finite} \}$.
 
@@ -329,7 +333,7 @@
 
 	\section{Methodology}
 	\subsection{Overview}
-	We will focus on the B method created by Abrial, as it is implemented in the Atelier B, which was developed by ClearSy Ltd. The software is available on ClearSy's website. The version of Atelier B which we will be using, is 4.2.1.
+	We will focus on the B method created by Abrial, as it is implemented in the Atelier B, which was developed by ClearSy. The software is available on ClearSy's website. The version of Atelier B which we will be using, is 4.2.1.
 
     To begin our work, we consider a simple scenario to start us off. We choose scenarios that can be easily expanded and extended, but also which might serve as an example or an exercise for those who are beginning their work with the B method and Atelier B.
 
@@ -349,7 +353,7 @@
 		\item if not all proof obligations are demonstrated automatically, check that they are true and indeed should be demonstrated. If they are not, the machine is erroneous.
 	\end{enumerate}
 
-	It then encourages the users to write the implementation, and if undischarged proof obligations remain after that, only then the users are told to use the Interactive Prover. We acknowledge this advice, however the steps listed above are nevertheless generic, and in particular the users are not advised on how to establish whether an undischarged proof obligation is beyond the capabilities of the Automatic Prover or simply false. It should be accentuated that often undischarged proof obligations do not immediately appear false. From our experience, this is in particular true for the well-defineness conditions, which are defined in the \emph{B Language Reference Manual}\cite{b reference}. Hence, we intend to use the Interactive Prover at the abstract machine stage of the development in order to assess this.
+	It then encourages the users to write the implementation, and if undischarged proof obligations remain after that, only then the users are told to use the Interactive Prover. We acknowledge this advice, however the steps listed above are nevertheless generic, and in particular the users are not advised on how to establish whether an undischarged proof obligation is beyond the capabilities of the Automatic Prover or simply false. It should be accentuated that often undischarged proof obligations do not immediately appear false. From our experience, this is in particular true for the well-defineness conditions, which are defined in the \emph{B Language Reference Manual}. Hence, we intend to use the Interactive Prover at the abstract machine stage of the development in order to assess this.
 
 	\tikzstyle{decision} = [diamond, draw,
 	text width=6em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -358,7 +362,18 @@
 	\tikzstyle{line} = [draw, -latex']
 	\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
 	minimum height=1.5em]
-	\begin{figure}
+
+	We refine the last step listed above as follows. After undischarged proof obligations are discovered, each one should be considered in turn to see if it points to an error. It can be done by simple inspection, relying on common sense, and does not have to be a lengthy process. The aim is to spot typical human errors.
+
+	If the user is still convinced that the proof obligations remain undischarged due to the limitations of the automatic prover rather than the error in the formalisation, they may proceed to use the interactive prover. Using the interactive prover causes the expressions in the definition of the machine to be normalised. Such operations necessarily involve closer inspection of said expressions, and may be helpful in spotting further errors or ambiguity in the formalisation.
+
+	Work with the interactive prover in our experience often results in code which is less readable and user-friendly, but easier to understand by the automatic prover, as it is more in line with how it normalises expressions. Thus at this stage we translate our initial formalisation into something that results in fewer undischarged proof obligations. The goals of the proof obligations, as shown in the interactive prover, often hint at how the expressions can be rephrased or what conjuncts can be added in the code. Additionally, the predicate prover can be applied at this stage.
+
+	Finally, if there are still undischarged proof obligations despite any attempts to rephrase the problematic expressions in the abstract machine, the user may consider writing their own rules to add to the proof rule base. This alone is a process which requires great care, as any user-written rule which is not thoroughly verified will invalidate the whole proof process.
+
+	The above refinement of the process, with the focus on deciding whether proof obligations are undischarged because of errors in the abstract machine or due to the limitations of the prover, is illustrated in Figure 1.
+	
+		\begin{figure}
 		\centering
 		\begin{tikzpicture}[node distance = 2.5cm, auto,transform shape,scale=0.75]
 		% Place nodes
@@ -374,7 +389,7 @@
 		\node [decision, below of=decide2, node distance=4cm] (sanity2) {Do they point to errors?};
 		\node [block, below of=sanity2, node distance=3cm] (rules) {Use user rules};
 		\node [below of=rules, node distance=2cm] (blank2) {};
-
+		
 		% Draw edges
 		\path [line] (spec) -- (am);
 		\path [line] (am) -- (gen);
@@ -393,24 +408,15 @@
 		\end{tikzpicture}
 		\caption{The proof process for an abstract machine}
 	\end{figure}
-	We refine the last step listed above as follows. After undischarged POs are discovered, each one should be considered in turn to see if it points to an error. It can be done by simple inspection, relying on common sense, and does not have to be a lengthy process. The aim is to spot typical human errors.
-
-	If the user is still convinced that the proof obligations remain undischarged due to the limitations of the automatic prover rather than the error in the formalisation, they may proceed to use the interactive prover. Using the interactive prover causes the expressions in the definition of the machine to be normalised. Such operations necessarily involve closer inspection of said expressions, and may be helpful in spotting further errors or ambiguity in the formalisation.
-
-	Work with the interactive prover in our experience often results in code which is less readable and user-friendly, but easier to understand by the automatic prover, as it is more in line with how it normalises expressions. Thus at this stage we translate our initial formalisation into something that results in fewer undischarged proof obligations. The goals of the proof obligations, as shown in the interactive prover, often hint at how the expressions can be rephrased or what conjuncts can be added in the code. Additionally, the predicate prover can be applied at this stage.
-
-	Finally, if there are still undischarged proof obligations despite any attempts to rephrase the problematic expressions in the abstract machine, the user may consider writing their own rules to add to the proof rule base. This alone is a process which requires great care, as any user-written rule which is not thoroughly verified will invalidate the whole proof process.
-
-	The above refinement of the process, with the focus on deciding whether proof obligations are undischarged because of errors in the abstract machine or due to the limitations of the prover, is illustrated in Figure 1.
 
 	We take on a slightly informal approach, to demonstrate an intuition behind the proof process employing the interactive prover.
 
 	\subsection{Choice of scenarios}
-	This work has focused on two generic scenarios and explored various ways of fulfilling a specification for each of them. The first scenario is exploring various ways of implementing a set and the operations on it. The second scenario can be more precisely called a collection of formalisations of various common data structures into the B-language, and includes objects such as stack, queue, or linked list.
+	This work has focused on two generic scenarios and explored various ways of fulfilling a specification for each of them. The first scenario is exploring various ways of implementing a set and the operations on it. The second scenario can be more precisely called a collection of formalisations of various common data structures into the B language, and includes objects such as stack, queue, or linked list.
 
 	The specification for the Bag scenario was kept deliberately imprecise for two reasons. Firstly, it allowed for an in-depth exploration of the theme. More precise specification would narrow down the options significantly, limiting our findings. Secondly in an industry setting it is not unheard of to have specification documents which leave details up to interpretation or are open-ended.
 
-	After exhausting the ways each expressing the specification in the B-method, we created a few more machines, which illustrate other variations on the theme, although they diverge further from the original intentions. They served to analyse constructs which are more particular or less suited to the chosen scenarios, but nevertheless not unheard of.
+	After exhausting the ways each expressing the specification in the B method, we created a few more machines, which illustrate other variations on the theme, although they diverge further from the original intentions. They served to analyse constructs which are more particular or less suited to the chosen scenarios, but nevertheless not unheard of.
 
 	It is important to observe that in large-scale industry projects which apply the B method, the constructs are kept simple and straightforward to avoid obfuscation. Thus in the sections below, dedicated to the chosen scenarios, the examples created were ordered by complexity. The later ones, for example in the case of the Bag Machine those involving a relation, were analysed to compare the number of proof obligations generated next to their simpler variants.
 
@@ -499,9 +505,9 @@
 	At the level of abstract machines, it is permitted to use set comprehension and other operations and properties of sets, according to the Zermelo-Fraenkel set theory. The B language offers abbreviations of some more common expressions, such as domain or range restrictions. Another thing for us to explore is how using these shorthand expressions rather than writing them out fully affects the proof process.
 
 	\subsection{Variants of the Bag Machine}
-	The following files are contained in the \emph{Test\_scenarios} archive to be referenced by the reader. We begin by having \texttt{ITEMS} as a deferred set - a set which will be defined at some later point of the development process, and \texttt{content} as simply a subset of \texttt{ITEMS}, then inspect different ways of including the set of \texttt{ITEMS} in the machine, then we focus on the relation between the two sets as expressed in the Invariant clause. We then move onto different ways of expressing the set of \texttt{ITEMS}, for example as an enumerated set or one of a basic type. We finally explore various ways of describing the content of the bag, such as using sequences or relations. The reason for this order of tasks is to begin with the most intuitive implementation of the specification, before discussing less obvious changes.
+	The following files are contained in the \emph{Bagmch.arc} archive to be referenced by the reader. We begin by having \texttt{ITEMS} as a deferred set, and \texttt{content} as simply a subset of \texttt{ITEMS}, then inspect different ways of including the set of \texttt{ITEMS} in the machine, then we focus on the relation between the two sets as expressed in the Invariant clause. We then move onto different ways of expressing the set of \texttt{ITEMS}, for example as an enumerated set or one of a basic type. We finally explore various ways of describing the content of the bag, such as using sequences or relations. The reason for this order of tasks is to begin with the most intuitive implementation of the specification, before discussing less obvious changes.
 
-	All of these machines and prover files can be found in \emph{Bagmch.arc} archive. To restore it, right-click on the workspace listed on the left-hand-side of Atelier B and choose the `restore' project option. Then direct the wizard to the archive file. For more information please refer to \emph{Atelier B User Manual} section 4.2.5.
+	All of these machines and prover files can be found in \emph{Bagmch.arc} archive. To restore it, right-click on the workspace listed on the left-hand-side of Atelier B and choose the `restore project' option. Then direct the wizard to the archive file. For more information please refer to \emph{Atelier B User Manual} section 4.2.5.
 
 	\subsubsection{Bagmch} is the reference machine which we take to be the core of this scenario. It implements exactly the specification without imposing any non-required conditions, such as the limit on the number of items in the bag. At the same time it includes one condition not explicitly mentioned in the specification, namely:
 \begin{lstlisting}
@@ -509,7 +515,7 @@ INVARIANT
 	content : FIN(ITEMS)
 \end{lstlisting}
 
-	The specification requires only that $\texttt{content} \subseteq \texttt{ITEMS}$, however, in any implementation it is infeasible to have truly infinite sets, thus the software considers them to be erroneous. In the \emph{B Language Reference Manual}\cite{b reference} the set of natural numbers are defined as: ${\texttt{NAT}  = 0 .. \texttt{MAXINT}}$, where \texttt{MAXINT} can be specified for each project, although it is usually understood to be $2^{31}-1$. This definition is not supported by the \emph{B-book}, thus demonstrating a discrepancy between the theory of the B-method and its implementation in Atelier B. Nevertheless, it is reasonable for practical purposes.
+	The specification requires only that $\texttt{content} \subseteq \texttt{ITEMS}$, however, in any implementation it is infeasible to have truly infinite sets, thus the software considers them to be erroneous. In the \emph{B Language Reference Manual} the set of natural numbers are defined as: ${\texttt{NAT}  = 0 .. \texttt{MAXINT}}$, where \texttt{MAXINT} can be specified for each project, although it is usually understood to be $2^{31}-1$. This definition is not supported by the \emph{B-book}, thus demonstrating a discrepancy between the theory of the B method and its implementation in Atelier B. Nevertheless, it is reasonable for practical purposes.
 
 	This machine generates four proof obligations, all of which are discharged automatically. The first three check the Invariant is preserved in the Initialisation and by the operations to add and remove items - the only three actions affecting the state of the bag. The last one is as follows:
 
@@ -519,9 +525,9 @@ INVARIANT
 	content: FIN(content)
 \end{lstlisting}
 
-	It is concerned with the well-defineness of the operation \texttt{howmany}, which returns the number of items in the bag. The well-defineness proof obligations arise when an expression is used which requires certain conditions to be met in order to be well-defined. In this case, \texttt{card(content)} is well-defined only if \texttt{content} is a finite set. The well-definess conditions for all such expressions can be found in \emph{B Language Reference Manual}\cite{b reference}. The following machine illustrates the proof obligations generated when the well-definess conditions are not met.
+	It is concerned with the well-defineness of the operation \texttt{howmany}, which returns the number of items in the bag. The well-defineness proof obligations arise when an expression is used which requires certain conditions to be met in order to be well-defined. In this case, \texttt{card(content)} is well-defined only if \texttt{content} is a finite set. The following machine illustrates the proof obligations generated when the well-definess conditions are not met.
 
-	This machine is shown in Appendix A for ease of access.
+	\emph{Bagmch} is shown in Appendix A for ease of access.
 
 	\subsubsection{Bagmch\_unbounded} illustrates the necessity to impose finiteness on the set of items contained in the bag. The sole difference between this and the reference Bag Machine is the statement:
 
@@ -533,23 +539,23 @@ INVARIANT
 
 	\subsubsection{Bagmch\_pre} shows a workaround for the well-defineness proof obligation in the previous example, by adding the goal of the proof obligation to the precondition of the operation rather than the Invariant. It results in one fewer proof obligation than the reference \emph{Bagmch}, as putting the goal of the well-defineness proof obligation in the pre-condition of the related operation prevents the proof obligation from being generated.
 
-	 This may be good enough if the aim is simply to formalize a specification, but this solution will have disadvantages if the abstract machine is intended to be refined all the way to the implementation level as the preconditions will have to be further specified during later stages of development.
+	 This may be good enough if the aim is simply to formalize a specification, but this solution will have disadvantages. If the abstract machine is intended to be refined all the way to the implementation level as the preconditions will have to be further specified during later stages of development.
 
-	\subsubsection{Bagmch\_restrictive} uses more restrictive preconditions on the operations to add or remove an item. In the former case, the precondition is now \texttt{aa : ITEMS-content}. In the case of the remove item operation, it is \texttt{aa : content}. The nature of the behaviour of the operations is unspecified when the precondition does not hold -- this must be dealt with at a later stage of development. As long as the preconditions hold, these operations will always change the value of the \texttt{content} variable.
+	\subsubsection{Bagmch\_restrictive} uses more restrictive preconditions on the operations to add or remove an item. In the former case, the precondition is now \texttt{aa~:~ITEMS-content}. In the case of the remove item operation, it is \texttt{aa : content}. The nature of the behaviour of the operations is unspecified when the precondition does not hold -- this must be dealt with at a later stage of development. As long as the preconditions hold, these operations will always change the value of the \texttt{content} variable.
 		\begin{figure*}
 		\centering
 		\includegraphics[scale=0.5]{bagmch_restrictive_ip.png}
 		\caption{The result of the user pass on the undemonstrated proof obligation in  \emph{Bagmch\_restrictive}.}
 
 	\end{figure*}
-	This machine results in the same four proof obligations being generated, but now one of them is not discharged automatically. It is the proof obligation regarding the remove item operation, with the goal '\texttt{content-\{aa\}: FIN(ITEMS)}'. Since it is established in the Invariant that \texttt{content} is a subset of \texttt{ITEMS}, the proof obligation is trivial.
+	This machine results in the same four proof obligations being generated, but now one of them is not discharged automatically. It is the proof obligation regarding the remove item operation, with the goal `\texttt{content-\{aa\}: FIN(ITEMS)}'. Since it is established in the Invariant that \texttt{content} is a subset of \texttt{ITEMS}, the proof obligation is trivial.
 
-	There are a couple workarounds to discharge it automatically, however they may not be considered relevant, since they repeat the information already included in the Invariant. Firstly, the condition which is known to be accepted automatically can be added as a conjunct, i.e. the precondition clause of the operation may be turned into '\texttt{aa : content \& aa : ITEMS}'. This addition is redundant, since the Invariant states that \texttt{content} is a subset of \texttt{ITEMS}, but it guides the automatic prover along. This suffices to discharge the proof obligation with the automatic prover, however it also requires the prior knowledge or at least an inclination of what might work.
+	There are a couple workarounds to discharge it automatically, however they may not be considered relevant, since they repeat the information already included in the Invariant. Firstly, the condition which is known to be accepted automatically can be added as a conjunct, i.e. the precondition clause of the operation may be turned into `\texttt{aa : content \& aa : ITEMS}'. This addition is redundant, since the Invariant states that \texttt{content} is a subset of \texttt{ITEMS}, but it guides the automatic prover along. This suffices to discharge the proof obligation with the automatic prover, however it also requires the prior knowledge or at least an inclination of what might work.
 
-	The second option is to add the clause '\texttt{content <: ITEMS}' to the precondition - we know it will hold, since the Invariant contains the even more restrictive expression '\texttt{content :  FIN(ITEMS)}'. Adding the third option, the conjunct taken from the Invariant, verbatim, does not result in an automatic demonstration of this proof obligation. This behaviour will be later discussed in \emph{Bagmch\_long\_inv}
+	The second option is to add the clause `\texttt{content <: ITEMS}' to the precondition - we know it will hold, since the Invariant contains the even more restrictive expression `\texttt{content :  FIN(ITEMS)}'. Adding the third option, the conjunct taken from the Invariant, verbatim, does not result in an automatic demonstration of this proof obligation. This behaviour will be later discussed in \emph{Bagmch\_long\_inv}
 
 
-	Following the advice from the \emph{Interactive Prover User Manual}, we run the deduction command (\texttt{dd}), and then attempt to get the automated prover to move the proof along further with the \texttt{pr} command. The resultant proof tree is:
+	To discharge this proof obligation with the automated prover, we follow the advice from the \emph{Interactive Prover User Manual}, and run the deduction command (\texttt{dd}), and then attempt to get the automated prover to move the proof along further with the \texttt{pr} command. The resultant proof tree is:
 
 \begin{lstlisting}
 	--------------------
@@ -562,7 +568,10 @@ INVARIANT
 	content <: ITEMS\/{aa}
 \end{lstlisting}
 
-	The automated prover does not progress further, however this goal is trivial, since $\texttt{content} \subseteq \texttt{ITEMS}$ implies $\texttt{content} \subseteq \texttt{ITEMS} \cup \{\texttt{aa}\}$, and this hypothesis is included indirectly in the Invariant. Thus we can add it with the add hypothesis command: '\texttt{ah(content <: ITEMS)}', and finish the task with the automated prover.
+	The automated prover does not progress further, however this goal is trivial, since $\texttt{content} \subseteq \texttt{ITEMS}$ implies $\texttt{content} \subseteq \texttt{ITEMS} \cup \{\texttt{aa}\}$, and this hypothesis is included indirectly in the Invariant. Thus we can add it with the add hypothesis command: 
+	`\texttt{ah(content <: ITEMS)}', and finish the task with the automated prover.
+	
+	Adding a hypothesis means that, if the goal is $G$, the current hypotheses are $h_1, ..., h_n$, and the new one $P$, then the prover will first attempt to demonstrate $P$ under the hypotheses $h_1, ..., h_n$, and then prove $G$ under the hypotheses $h_1, ...,h_n, P$.  Thus, the additional hypothesis has to be demonstrated first, which is the reason for applying the added rule twice.
 
 	This suffices to discharge the proof obligation and the above process gets recorded in the \emph{Bagmch\_restrictive.pmm} file, which contains user passes in the interactive prover and component-specific user rules. It can be accessed through the interactive prover and now includes the following as part of the \texttt{User\_Pass} theory:
 
@@ -580,7 +589,7 @@ Operation(removeitem) & ff(0) & dd & pr
 
 	Analogously, we can restrict the operation to pick the items from the smaller sets as in the preconditions in \emph{Bagmch\_restrictive}. Note that this conditions are now included not in the \texttt{PRE} section of the operation, but inside the \texttt{ANY} statement. The behaviour is the same as \emph{Bagmch\_restrictive}, with the same user pass required to discharge the fourth proof obligation.
 
-	\subsubsection{Bagmch\_params} differs from the reference machine in the way the set of \texttt{ITEMS} is included. \emph{Bagmch} is given the set of \texttt{ITEMS} as a deferred set, which is required to be explicitly defined at a later stage of the development. Here, it is given as a set-valued parameter, which must be instantiated any time the machine is used.\cite{b-method} When the abstract machine which is not used by any other machine, it does not make a difference in the prover.
+	\subsubsection{Bagmch\_params} differs from the reference machine in the way the set of \texttt{ITEMS} is included. \emph{Bagmch} is given the set of \texttt{ITEMS} as a deferred set, which is required to be explicitly defined at a later stage of the development. Here, it is given as a set-valued parameter, which must be instantiated any time the machine is used, according to Schneider. When the abstract machine is not used by any other machine, it does not make a difference in the prover.
 
 	Similar behaviour can be observed later in the machines \emph{Bagmch\_limited} and \emph{Bagmch\_limited\_params}, with a scalar-valued parameter.
 
@@ -592,7 +601,7 @@ Operation(removeitem) & ff(0) & dd & pr
 
 \begin{lstlisting}
 INVARIANT
- content : POW(ITEMS) &
+	content : POW(ITEMS) &
 	content : FIN(content)
 \end{lstlisting}
 
@@ -612,7 +621,7 @@ INVARIANT
 "Invariant is preserved" => {} <: ITEMS
 	\end{lstlisting}
 
-	It strongly suggests the notation $a \subseteq b$ is preferable to $a \in \mathbb{P}(b)$, for any two sets $a$ and $b$. While the result is still the same, the former seems to require less work from the prover, since fewer clauses are generated. Thus especially for large projects may save some computation time.
+	It strongly suggests the notation $a \subseteq b$ is preferable to $a \in \mathbb{P}(b)$, for any two sets $a$ and $b$. While the result is still the same, the former seems to require less work from the prover, since fewer hypotheses are generated. Thus especially for large projects it may save some computation time.
 
 	Next we compare the proof obligations regarding finiteness of \texttt{content}. The one generated now are of the form:
 
@@ -631,13 +640,13 @@ INVARIANT
 
 	This change in expression does not appear to make a difference for the proof obligations regarding the Invariant being preserved. However, the key distinction between this machine and the reference is there is now no proof obligation concerning the well-defineness of the expression \texttt{card(content)}. In this case, by adding the goal of a proof obligation regarding well-defineness, as it was seen before, to the Invariant, we have avoided the proof obligation altogether. A similar behaviour will be observed in later examples.
 
-	We conclude these two ways of expressing the relation '\texttt{content} is a finite subset of \texttt{ITEMS}', while equivalent in theory, will affect the performance and the time taken to complete computations by the prover in different ways. One will result in more proof obligations being generated, however they will be of a simpler nature and discharged automatically, which is faster than discharging even a single proof obligation manually, such as the well-defineness one in the latter case. We recognize it is something that may be noticeable in large-scale projects, while in a small scenario the overhead will severely affect any measurements of performance, and therefore we have no means of exploring it further in this work, but we highlight it as something users should be aware of.
+	We conclude these two ways of expressing the relation `\texttt{content} is a finite subset of \texttt{ITEMS}', while equivalent in theory, will affect the performance and the time taken to complete computations by the prover in different ways. One will result in more proof obligations being generated, however they will be of a simpler nature and discharged automatically, which is faster than discharging even a single proof obligation manually, such as the well-defineness one in the latter case. We recognize it is something that may be noticeable in large-scale projects, while in a small scenario the overhead will severely affect any measurements of performance, and therefore we have no means of exploring it further in this work, but we highlight it as something users should be aware of.
 
 	It is regrettable that the prover does not allow us to inspect the proof rules applied when proof obligations are automatically discharged, leaving us with speculations about its inner workings.
 
 	\subsubsection{Bagmch\_finite\_items} is an attempt to impose finiteness earlier on, on the set of \texttt{ITEMS}. We do it by adding the expression '$\texttt{ITEMS} \in \texttt{FIN(ITEMS)}$' to the Properties clause. Otherwise the machine is identical to \emph{Bagmch\_unbounded}. We rely on the fact that any subset of a finite set is necessarily finite. Appendix B contains a proof of this claim.
 
-	We see the same four proof obligations as in \emph{Bagmch\_unbounded}, and again the one regarding well-defineness is not discharged automatically. We can of course add the clause '$\texttt{content} \in \texttt{FIN(content)}$' or otherwise explicitly impose the finiteness property on the contents of the bag, but it should not be necessary. The machine is correct, and as the aforementioned proof suggests, it can be verified manually.
+	We see the same four proof obligations as in \emph{Bagmch\_unbounded}, and again the one regarding well-defineness is not discharged automatically. We can of course add the clause '$\texttt{content} \in \texttt{FIN(content)}$' or otherwise explicitly impose the finiteness property on the contents of the bag, but it should not be necessary. The machine is correct, and as the aforementioned proof shows, it can be verified manually.
 
 	Thus we move on to the next stage in our process, as described in the Methodology section. The interactive prover allows users to search rules by the goal, as well as browse the file containing the integrated proof rule base. Unfortunately, none of the rules contains the goal required. No other manipulation in the interactive prover, nor the application of the predicate prover leads to discharging the proof obligation either.
 
@@ -652,13 +661,11 @@ THEORY userInFINXY IS
 END
 \end{lstlisting}
 
-	The notation means that the conjuncts (AND) of the two hypotheses: 'b is a finite set' and '$a \subseteq b$' implies the goal, that $a$ is a finite set.
+	The notation means that the conjuncts (AND) of the two hypotheses: `$b$ is a finite set' and `$a \subseteq b$' implies the goal, that $a$ is a finite set.
 
-	This rule can be added to the \emph{.pmm} file for this component, so it is not visible during other proofs, or to the Patch Prover, which contains user-added rules available to all components in a project. Either way it must then be called explicitly in the interactive prover, with the command to apply rule '\texttt{ar(<theory name>)}', to discharge the obligations with this goal. The project archive contains the \emph{Bagmch\_finite\_items.pmm} file with this rule to illustrate how it works.
+	This rule can be added to the \emph{.pmm} file for this component, so it is not visible during other proofs, or to the Patch Prover, which contains user-added rules available to all components in a project. Either way it must then be called explicitly in the interactive prover. The project archive contains the \emph{Bagmch\_finite\_items.pmm} file with this rule to illustrate how it works.
 
-	An alternative to including this rule in the PatchProver or the \emph{.pmm} file is to add the goal of the proof obligation to the Invariant, as can be seen in \emph{Bagmch\_long\_inv}. This is a safer alternative, because it will certainly not permit incorrect statements to be accepted by the prover, although it may restrict the number of legal states of the machine. At the same time it leads to more proof obligations and it can be considered the user performing part of the proof manually.
-
-	To use this rule in the prover, the user has to make a call to the 'apply rule' command: '\texttt{(ar(userInFINXY))}'. This discharges the proof obligation, and the user pass is saved as follows:
+	To use this rule in the prover, the user has to make a call to the 'apply rule' command: `\texttt{(ar(userInFINXY))}'. This discharges the proof obligation, and the user pass is saved as follows:
 \begin{lstlisting}
 Operation(WellDefinedness_howmany) &
 ff(0) & dd & pr & ar(userInFINXY)
@@ -691,12 +698,12 @@ Operation(WellDefinedness_howmany) &
 ff(0) & pr & ah(items : FIN(items)) &
 ar(userInFINXY) & pr & ar(userInFINXY)
 	\end{lstlisting}
-	Where \texttt{ff(0)} denotes automatic proof with force parameter equal to 0, which was done automatically already, the command \texttt{pr} is simply a call to the automatic prover, and \texttt{ar(<theory name>)} is applying the user-created rule as before. Adding a hypothesis means that, if the goal is $G$, the current hypotheses are $h_1, ..., h_n$, and the new one $P$, then the prover will first attempt to demonstrate $P$ under the hypotheses $h_1, ..., h_n$, and then prove $G$ under the hypotheses $h_1, ...,h_n, P$.\cite{PO reference}  Thus, the additional hypothesis has to be demonstrated first, which is the reason for applying the added rule twice.
+	Where \texttt{ff(0)} denotes automatic proof with force parameter equal to 0, which was done automatically already, the command \texttt{pr} is simply a call to the automatic prover, and \texttt{ar(<theory name>)} is applying the user-created rule as before. 
 
 	This is a clear inconvenience when a proof requires a longer sequence of sets to have a certain property proven one by one. Fortunately, user passes as the one listed above can be added to the component's \emph{.pmm} file and called to perform the sequence of commands with a single input from the user, as described in Chapter 5 of the \emph{Proof Obligations Reference Manual}.
 
 
-	\subsubsection{Bagmch\_limited} imposes a limit on the number of items that can be included in the bag at once. We define this limit as \texttt{max\_elem} in the \texttt{CONSTANTS} clause of the static part of the machine and give its type in the \texttt{PROPERTIES} clause:
+	\subsubsection{Bagmch\_limited} imposes a limit on the number of items that can be included in the bag at once. We define this limit as \texttt{max\_elem} in the Constants clause of the static part of the machine and give its type in the Properties clause:
 
 \begin{lstlisting}
 CONSTANTS
@@ -705,19 +712,19 @@ PROPERTIES
 	max_elem : NAT
 \end{lstlisting}
 
-	Here, we explicitly restrict \texttt{max\_elem} to be non-negative. Changing this expression to '$\texttt{max\_elem} \in \mathbb{Z}$' results in an unprovable proof obligation in the Initialisation, the goal of which is $card(\{\}) \leq \texttt{max\_elem}$ for all possible values of \texttt{max\_elem}. It clearly does not hold for negative values of the constant, hence it is limited to natural numbers.
+	Here, we explicitly restrict \texttt{max\_elem} to be non-negative. Changing this expression to `$\texttt{max\_elem} \in \mathbb{Z}$' results in an unprovable proof obligation in the Initialisation, the goal of which is $card(\{\}) \leq \texttt{max\_elem}$ for all possible values of \texttt{max\_elem}. It clearly does not hold for negative values of the constant, hence it is limited to natural numbers.
 
-	Furthermore, there is no difference between defining just the type of \texttt{max\_elem} or its value, forgoing the type declaration, i.e. having only the clause '\texttt{max\_elem} $= x$' for some chosen $x \in \mathbb{N}$ in the Properties clause. The type of it is defined implicitly and it does not affect the proof process.
+	Furthermore, there is no difference between defining just the type of \texttt{max\_elem} or its value, forgoing the type declaration, i.e. having only the clause `\texttt{max\_elem} $= x$' for some chosen $x \in \mathbb{N}$ in the Properties clause. The type of it is defined implicitly and it does not affect the proof process. 
 
 	This restriction impacts the \texttt{additem} operation, as we now need to check that adding an item to the bag will not exceed the limit. It can be done in the preconditions section of the operation, as is shown in the example included in the archive, or in an if-else statement. We found these ways to be equivalent for our purposes, as they do not generate different proof obligations. It is worth noting that they will impact the refinement stages of the development. We have elected to stick to the former, since it is less restricting for potential refinement.
 
-	There are nine proof obligations generated. The initialisation and each of the operations to add and remove items results in two: one being a type check, the other making sure the cardinality of \texttt{content} does not exceed \texttt{max\_elem}. The last three proof obligations are concerned with the well-definess of the expression \texttt{card(content)} in the invariant and the operation \texttt{additem} and \texttt{howmany}, that is anywhere where the expression appears.
+	There are nine proof obligations generated. The initialisation and each of the operations to add and remove items results in two: one being a type check, the other making sure the cardinality of \texttt{content} does not exceed \texttt{max\_elem}. The last three proof obligations are concerned with the well-definess of the expression \texttt{card(content)} in the invariant and the operations \texttt{additem} and \texttt{howmany}, that is anywhere where the expression appears.
 
 	If the expression $\texttt{content} \in \texttt{FIN(ITEMS)}$ is replaced with $\texttt{content} \subseteq \texttt{ITEMS} \wedge \texttt{content} \in \texttt{FIN(content)}$ there are again nine proof obligations. However, this time there are three proof obligations for each of the Initialisation and the adding and removing operations - one proof obligation for each clause of the Invariant. At the same time the well-defineness proof obligations are not generated. This is in line with the observations regarding \emph{Bagmch\_long\_inv}.
 
 	\subsubsection{Bagmch\_limited\_params} differs from the previous version by passing \texttt{max\_elem} as a scalar-valued parameter instead. The software requires defining at least the type of \texttt{max\_elem} in the Constraints clause, while the Constants and Properties clauses can now be removed. As in the case of \emph{Bagmch\_params} with a set-valued parameter, it does not affect the proof process.
 
-	\subsubsection{Bagmch\_wrong\_order} is of particular interest, as it highlights a discrepancy between the theory of the B-method and its implementation in Atelier B. The Invariant clause contains a series of conjuncts which, by the rules of logic, are commutative. However, they are not as such in the software.
+	\subsubsection{Bagmch\_wrong\_order} is of particular interest, as it highlights a discrepancy between the theory of the B method and its implementation in Atelier B. The Invariant clause contains a series of conjuncts which, by the rules of logic, are commutative. However, they are not such in the software.
 
 	Firstly, recall that in the \emph{Bagmch\_long\_inv}, the Invariant was as follows:
 
@@ -749,7 +756,7 @@ INVARIANT
 
 	It does not get discharged by any means available to the user within the interactive prover.
 
-	Based on these observations we reach the conclusion that the conjuncts in the Invariant are applied sequentially, in the order in which they are written. It is similar to the Assertion clause, which is defined to be checked sequentially in the B method. It is also understandable from the implementation point of view, since checking all permutations of the conjuncts would be computationally hard.
+	Based on these observations we reach the conclusion that the conjuncts in the Invariant are applied sequentially, in the order in which they are written. It is similar to the Assertions clause, which is defined to be checked sequentially in the B method. It is also understandable from the implementation point of view, since checking all permutations of the conjuncts would be computationally hard.
 
 	\subsubsection{Bagmch\_redundant...} are five machines with redundant clauses in the Invariant, written in a different order or in a slightly different manner, but essentially nigh identical. Note that it is a bad practice to do something like this intentionally, however, as this work is aimed at people beginning their work with the B method, it is expected that a similar mistake, albeit a less obvious one, can happen.
 
@@ -768,11 +775,11 @@ INVARIANT
 	card(content) <= max_elem + 1 &
 	card(content) <= max_elem
 	\end{lstlisting}
-	Firstly note that the third, fourth, fifth, and sixth clauses are redundant - it is sufficient that the last clause holds for these four to also hold. At the same time it is a simple way of creating an arbitrary number of Invariant clauses. Also, observe that we have used the more explicit way of describing the type and finiteness of \texttt{content} - as a separate clause for each of those requirement, as seen in \emph{Bagmch\_long\_inv}. This way we avoid the well-defineness proof obligations.
+	Firstly note that the third, fourth, fifth, and sixth conjuncts are redundant - it is sufficient that the last conjunct holds for these four to also hold. At the same time it is a simple way of creating an arbitrary number of cpnjuncts in the Invariant. Also, observe that we have used the more explicit way of describing the type and finiteness of \texttt{content} - as a separate clause for each of those requirement, as seen in \emph{Bagmch\_long\_inv}. This way we avoid the well-defineness proof obligations.
 
 	There are 21 proof obligations generated in this case - 7 for each of the two operations affecting \texttt{content} and 7 more for the Initialisation. The Initialisation and the operation to add an item have all their proof obligations discharged automatically. Surprisingly, out of the five cardinality-related proof obligations for the operation to remove an item, only the simplest on, namely the one regarding the clause \texttt{card(content) <= max\_elem}, gets discharged automatically. The other ones require user input in the interactive prover.
 
-	They can still be discharged without creating additional rules. For each one of them, the same steps work, since their structure is identical. Each one has two goals - one for the case when the item the operation is removing is an element of \texttt{content}, the other when it is not. Their initial goal is of the same form as the simple proof obligation:
+	They can still be discharged without creating additional rules. For each one of them, the same steps work, since their structure is identical. Each one has two subgoals - one for the case when the item the operation is removing is an element of \texttt{content}, the other when it is not. Their initial goal is of the same form as the simple proof obligation:
 	\begin{lstlisting}
 card(content-{aa})<=max_elem+1
 	\end{lstlisting}
@@ -785,7 +792,7 @@ card(content-{aa})<=max_elem+1
 	\begin{lstlisting}
 ah(0<=max_elem-card(content-{aa}))
 	\end{lstlisting}
-	Where `ah' stands for the 'add hypothesis' command. We then prove this additional hypothesis with `prove' and the goal turns into:
+	Where `ah' stands for the `add hypothesis' command. We then prove this additional hypothesis with `prove' and the goal turns into:
 	\begin{lstlisting}
 0<=max_elem-card(content-{aa})
 => 0<=1+max_elem-card(content-{aa})
@@ -810,15 +817,15 @@ pr & pr & pr
 DEFINITIONS
 	max_elem == 3
 	\end{lstlisting}
-	It is equivalent to defining \texttt{max\_elem} as a constant in the Constants clause and giving it a value in the Properties clause. This method is advised by the \emph{Interactive Prover User Manual}\cite{Prover guide}, which claims that it prevents the prover from performing avoidable replacements. \emph{Bagmch\_redundant3} differs by replacing the expressions '\texttt{max\_elem + n}' by concrete natural numbers. In both cases all of the proof obligations are discharged automatically.
+	It is equivalent to defining \texttt{max\_elem} as a constant in the Constants clause and giving it a value in the Properties clause. This method is advised by the \emph{Interactive Prover User Manual}, which claims that it prevents the prover from performing avoidable replacements. \emph{Bagmch\_redundant3} differs by replacing the expressions `\texttt{max\_elem + n}' by concrete natural numbers. In both cases all of the proof obligations are discharged automatically.
 
-	Given the previous findings about the conjuncts in the Invariant not being commutative, we have also explored ordering the clauses from the most to the least restrictive - i.e. reversing the order of the conjuncts from the Invariant shown above. We found that it did not change the outcome in this case. In \emph{Bagmch\_redundant\_reverse} \texttt{max\_elem : NAT} is used just like in \emph{Bagmch\_redundant} and the same proof obligations are generated and not discharged. In \emph{Bagmch\_redundant\_reverse2} we use numerical values instead of a constant in each conjunct, and all proof obligations are observed to discharge automatically.
+	Given the previous findings about the conjuncts in the Invariant not being commutative, we have also explored ordering the clauses from the most to the least restrictive - i.e. reversing the order of the conjuncts from the Invariant shown above. We found that it did not change the outcome in this case. In \emph{Bagmch\_redundant\_reverse} \texttt{max\_elem~:~NAT} is used just like in \emph{Bagmch\_redundant} and the same proof obligations are generated and not discharged. In \emph{Bagmch\_redundant\_reverse2} we use numerical values instead of a constant in each conjunct, and all proof obligations are observed to discharge automatically.
 
 	Finally we have tried including the same conjunct twice in the Invariant, and only then we have noticed that the redundancy is acted upon by the software - the prover does not list the same conjunct twice.
 
 	We move on to discuss the number of proof obligation generated in relation to the number of clauses in the Invariant. Recall that the machine has two operations which change the \texttt{content} variable. Each one of them and the Initialisation generates one proof obligation for each clause in the Invariant. With the Invariant as given above, it comes to three sets of seven proof obligations.
 
-	Adding clauses following the pattern '\texttt{card(content) <= max\_elem + n}' and checking the number of generated proof obligations gives rise toto the following observation about the number of proof obligations concerned with the preservation of the invariant. The number of proof obligations is equal to the number of operations affecting the state of the machine multiplied by the number of conjuncts in the Invariant. We will inspect the proof obligations generated for the Initialisation later.
+	Adding clauses following the pattern `\texttt{card(content) <= max\_elem + n}' and checking the number of generated proof obligations gives rise toto the following observation about the number of proof obligations concerned with the preservation of the invariant. The number of proof obligations is equal to the number of operations affecting the state of the machine multiplied by the number of conjuncts in the Invariant. We will inspect the proof obligations generated for the Initialisation later.
 
 	Note that at this point all the clauses are related to the single variable affected by the operations. We will see if having clauses concerning other variables, unaffected by these operations, changes the pattern in \emph{Bagmch\_2sets}.
 
@@ -852,7 +859,7 @@ THEN
 END;
 \end{lstlisting}
 
-	As can be expected, each of the operations generate a proof obligation for each conjunct of the Invariant which involves a variable affected by the operation. That is, the operation \texttt{additem1}, which adds an element to \texttt{content1} gives three proof obligations - for the first, third and fifth conjuncts, but not the ones involving \texttt{content2}. The operation adding an item to both sets results in five proof obligations, one for each of the conjuncts.
+	As can be expected, each of the operations generate a proof obligation for each conjunct of the Invariant which involves a variable affected by the operation. That is, the operation \texttt{additem1}, which adds an element to \texttt{content1} gives three proof obligations - for the first, second and fifth conjuncts, but not the ones involving solely \texttt{content2}. The operation adding an item to both sets results in five proof obligations, one for each of the conjuncts.
 
 	The proof obligations arising from the Initialisation are much more puzzling. There is only three of them, with the following goals:
 \begin{itemize}
@@ -880,12 +887,11 @@ END;
 
 	\subsubsection{Bagmch\_enum} strays from the set of \texttt{ITEMS} being deferred, as can be seen in all previous machines. Instead, it is defined explicitly as an enumerated set with three elements, namely \texttt{ITEMS = \{FOO, BAR, BAZZ\}}. It is a copy of the reference \emph{Bagmch}, the only difference being the definition of the set of \texttt{ITEMS}. The operations all remain the same as before.
 
-	The reason for this change is to explore the behaviour of enumerated sets as they are implemented in the Atelier B. The user manuals do not elaborate on the topic, noting only that ``Every enumerated set is dfined as the set comprising all of its elements, and the
-	elements are distinct two by two''\cite{PO reference}.
+	The reason for this change is to explore the behaviour of enumerated sets as they are implemented in the Atelier B. The user manuals do not elaborate on the topic.
 
-	This time we see eight proof obligations, and only two of them are discharged automatically. They are the single proof obligation generated for the Invariant, with the goal \texttt{\{\}: FIN(ITEMS)}, and the one concerned with the well-defineness of the expression involving cardinality in the operation `howmany'. Its goal is: \texttt{content: FIN(content)}.
+	This time we see eight proof obligations, and only two of them are discharged automatically. They are the single proof obligation generated for the Invariant, with the goal `\texttt{\{\}: FIN(ITEMS)}', and the one concerned with the well-defineness of the expression involving cardinality in the operation `howmany'. Its goal is: `\texttt{content: FIN(content)}'.
 
-	The other six come from the operations. The three operations that do not affect the value of the variable \texttt{content} result in four proof obligations - one for each of `getcontent' and `howmany' operations, and two for `isin', the latter caused by the if-else statement. All of those four proof obligations have the goal '\texttt{content: FIN(ITEMS)}', which is the exact expression present in the Invariant, which defines the type of the variable \texttt{content}. The operations to add or remove item result in proof obligations with goals '\verb|content\/{aa}: FIN(ITEMS)|' and '\verb|content-{aa}: FIN(ITEMS)|' respectively.
+	The other six come from the operations. The three operations that do not affect the value of the variable \texttt{content} result in four proof obligations - one for each of `getcontent' and `howmany' operations, and two for `isin', the latter caused by the if-else statement. All of those four proof obligations have the goal `\texttt{content: FIN(ITEMS)}', which is the exact expression present in the Invariant, which defines the type of the variable \texttt{content}. The operations to add or remove item result in proof obligations with goals '\verb|content\/{aa}: FIN(ITEMS)|' and '\verb|content-{aa}: FIN(ITEMS)|' respectively.
 
 	Tackling any of those proof obligations with the prover provides significant insight into the internal implementation of the enumerated set. The prover generates the following subgoals:
 
@@ -895,19 +901,19 @@ END;
 		\item \verb|max(dom(content))<=3|
 		\item \verb|ran(content)<:{ITEMS.enum}|
 	\end{itemize}
-	Thus the goals to confirm the type of a variable which we know to be a subset of an enumerates set given earlier, show that the enumerated set is realised as a relation from a finite subset of the natural numbers to '\texttt{ITEMS.enum}', which we assume to mean the elements we specified as members of the enumerated set's definition. More specifically, it is a bijection from the set $\{1,2,3\}$ to \texttt{ITEMS.enum} $= \{FOO, BAR, BAZZ\}$.
+	Thus the goals to confirm the type of a variable which we know to be a subset of an enumerates set given earlier, show that the enumerated set is realised as a relation from a finite subset of the natural numbers to `\texttt{ITEMS.enum}', which we assume to mean the elements we specified as members of the enumerated set's definition. More specifically, it is a bijection from the set $\{1,2,3\}$ to \texttt{ITEMS.enum} $= \{FOO, BAR, BAZZ\}$.
 
-	Our previous attempts to reduce the number of undemonstrated proof obligations suggest adding the goal of the proof obligation to the Invariant, in order to specify the properties of the machine further, in a way more susceptible to the automatic proof. However, the initial goal, namely '\texttt{content: FIN(ITEMS)}' is already present in the Invariant.
+	Our previous attempts to reduce the number of undemonstrated proof obligations suggest adding the goal of the proof obligation to the Invariant, in order to specify the properties of the machine further, in a way more susceptible to the automatic proof. However, the initial goal, namely `\texttt{content: FIN(ITEMS)}' is already present in the Invariant.
 
-	An attempt to add the four subgoals listed lead to another observation: the expression '\texttt{ITEMS.enum}' is unrecognized and fails at the stage of static analysis.
+	An attempt to add the four subgoals listed lead to another observation: the expression `\texttt{ITEMS.enum}' is unrecognized and fails at the stage of static analysis.
 
 	A certain way to remove these proof obligations from the list of the undischarged ones is to add their goals as a precondition in each operation. We generally do not advise jumping to this solution easily, but seeing as the goals of the proof obligations are correct due to the type definition of \texttt{content}, and that the prover appears to be stumbling over something that in the reference machine was trivially demonstrated, we opt for it. We did not find an explanation for this frustrating behaviour of the software.
 
-	Thus, we add '\texttt{content: FIN(ITEMS)}' as a precondition to each operation, since we are interested only in the states of the machine in which this expression is true. Then we re-generate the proof obligations and run the automated prover again. The four proof obligations related to the operations not affecting the value of the variable \texttt{content} disappear entirely. The remaining four are analogous to the ones in the reference \emph{Bagmch} and are discharged by the automated prover.
+	Thus, we add `\texttt{content: FIN(ITEMS)}' as a precondition to each operation, since we are interested only in the states of the machine in which this expression is true. Then we re-generate the proof obligations and run the automated prover again. The four proof obligations related to the operations not affecting the value of the variable \texttt{content} disappear entirely. The remaining four are analogous to the ones in the reference \emph{Bagmch} and are discharged by the automated prover.
 
 	It is a crude workaround, and one might ask what benefits it gives. Removing proof obligations from the list of the undischarged ones allows the user to focus on other ones, and not be distracted by ones which were analysed and deemed to hold earlier. In fact, the use of preconditions in general is justified by wanting to separate concerns and focus on one thing at a time. Thus this method may be readily applied by users who want to concentrate on more meaningful proof obligations, and is a valid tactic in their situation.
 
-	\subsubsection{Bagmch\_relation} explores the possibilities given by the in-built notation and operations on relations and functions in the B language. This time the bag can contain multiple copies of an item. The content of the bag is realised as a partial function from \texttt{ITEMS} to positive integers. Recall that while in set theory functions are realised as sets of ordered pairs, which in this case means subset of $\texttt{ITEMS} \times \texttt{NAT1}$, in the B language they are sets of maplets, each one expressed as '\texttt{aa|->nn}' for some $\texttt{aa} \in \texttt{ITEMS}$ and some $\texttt{nn} \in \texttt{NAT1}$.
+	\subsubsection{Bagmch\_relation} explores the possibilities given by the in-built notation and operations on relations and functions in the B language. This time the bag can contain multiple copies of an item. The content of the bag is realised as a partial function from \texttt{ITEMS} to positive integers. Recall that while in set theory functions are realised as sets of ordered pairs, which in this case means subset of $\texttt{ITEMS} \times \texttt{NAT1}$, in the B language they are sets of maplets, each one expressed as `\texttt{aa|->nn}' for some $\texttt{aa} \in \texttt{ITEMS}$ and some $\texttt{nn} \in \texttt{NAT1}$.
 
 	The Invariant now looks as follows:
 	\begin{lstlisting}
@@ -934,7 +940,7 @@ END;
 	\end{lstlisting}
 	One can observe the syntax for maplets mentioned earlier, for functional override, denoted \texttt{<+}, and finally that \texttt{content} is still essentially a set, although its elements are now of a different form.
 
-	Similarly the operation to remove an item is split into multiple cases. If there is more than one copy of the item in the bag, we decrease the count. If there is precisely one present, we remove the maplet '\texttt{aa|->1}' from the \texttt{content}. Finally, if there is none, the operation does nothing.
+	Similarly the operation to remove an item is split into multiple cases. If there is more than one copy of the item in the bag, we decrease the count. If there is precisely one present, we remove the maplet `\texttt{aa|->1}' from the \texttt{content}. Finally, if there is none, the operation does nothing.
 
 	Another operation which gets severely affected by this change to the definition of \texttt{content} is the operation returning the total number of items in the bag. At the abstract machine level, it is possible to use summation over a set. It is expressed as \verb=SIGMA(xx).(xx:dom(content)|content(xx))=.
 
@@ -942,9 +948,9 @@ END;
 
 	This machine has 13 proof obligations generated, and only one of them is not discharged automatically. This came as a pleasant surprise, and indicates that the structures used are still relatively simple, for example in comparison to the enumerated set.
 
-	The problematic proof obligation in fact points to an oversight in the initial abstract machine. Its goal is initially '\texttt{content<+\{aa|->content(aa)+1\}: ITEMS +-> NAT}' and the reason behind it may not be obvious at first, but running the automated prover on it narrows it down to: '\texttt{content(aa)<=2147483646}', the number being the value of the in-built \texttt{MAXINT} constant. Thus the prover is asking the user to make sure that the maximum implemented integer is not exceeded by adding an item.
+	The problematic proof obligation in fact points to an oversight in the initial abstract machine. Its goal is initially `\texttt{content<+\{aa|->content(aa)+1\}: ITEMS +-> NAT}' and the reason behind it may not be obvious at first, but running the automated prover on it narrows it down to: `\texttt{content(aa)<=2147483646}', the number being the value of the in-built \texttt{MAXINT} constant. Thus the prover is asking the user to make sure that the maximum implemented integer is not exceeded by adding an item.
 
-	Hence the behaviour of the operation to add an item has to be restricted in the case when the count of an item in the bag is increased. Adding simply '\texttt{content(aa) < MAXINT}' is not sufficient, since it assumes that \texttt{aa} is in the domain of \texttt{content}, and leads to further difficulties. On the other adding a precondition just to one branch of an if-else statement is impossible. Hence we opt for writing the preconditions of this operation as:
+	Hence the behaviour of the operation to add an item has to be restricted in the case when the count of an item in the bag is increased. Adding simply `\texttt{content(aa) < MAXINT}' is not sufficient, since it assumes that \texttt{aa} is in the domain of \texttt{content}, and leads to further difficulties. On the other adding a precondition just to one branch of an if-else statement is impossible. Hence we opt for writing the preconditions of this operation as:
 	\begin{lstlisting}
 aa: ITEMS &
 (aa: dom(content) => content(aa) < MAXINT)
@@ -957,7 +963,7 @@ aa: ITEMS &
 
 	We further inspect the proof obligations generated for the operation involving the summation. There are two of them, and both are concerned with well-defineness conditions. The lack of proof obligations regarding the preservation of the Invariant is not unexpected, since this operation does not change the state of the machine. The first proof obligation checks that the summation is carried over a finite set.
 
-	The second contains a goal similar to those seen in the other well-defineness proof obligations for this machine, namely '\texttt{content: dom(content) +-> ran(content)}. Although this time it involves set comprehension, that is '\texttt{\{~xx | xx: dom(content)\}}', the meaning is the same. It appears to be a simple type check, to ensure that the structure is understood correctly.
+	The second contains a goal similar to those seen in the other well-defineness proof obligations for this machine, namely `\texttt{content: dom(content) +-> ran(content)}'. Although this time it involves set comprehension, that is `\texttt{\{~xx | xx: dom(content)\}}', the meaning is the same. It appears to be a simple type check, to ensure that the structure is understood correctly.
 
 	This machine gives an idea of what to expect when dealing with functions, although it is simplistic. We hope that even this insight will be useful in working on the second set of machines.
 
@@ -998,7 +1004,7 @@ aa: ITEMS &
 \end{table}
 
 
-	The machines listed in Table 1 have been included in the attached archive containing the source code and user passes (where relevant). They are listed here for comparison, together with the number of proof obligations generated in the initial version of the machines, before the proof obligations were inspected in the interactive prover and before any changes were done to the code in order to decrease their numbers. Although in all examples we have managed to demonstrate all of them, in Table 1, we note which ones required the use of the interactive prover due to not all proof obligations being discharged automatically.
+	The machines listed in Table 1 have been included in the attached archive containing the source code and user passes (where relevant). They are listed here for comparison, together with the number of proof obligations generated and the number of them which required user action. In all examples we have managed to demonstrate all of them.
 
 	Two machines were omitted from this list, because they were deliberately left with undischarged proof obligations which point to errors. They are listed in Table 2.
 
@@ -1023,7 +1029,6 @@ aa: ITEMS &
 \end{figure*}
 
 
-\newpage
 	\section{Queue, stack, and lists}
 	\subsection{Overview and motivation}
 	There are many data structures, which cannot be forced into the Bag machine scenario, and trying to do so would be overly contrived and lack clarity. We also stray from the idea of using an abstraction like the Bag, in order to make the reasoning simpler. Instead, we present a collection of machines which do not conform to a specific scenario, but instead focus on typical data structures in computer science in general.
@@ -1050,11 +1055,11 @@ aa: ITEMS &
 
 	\emph{Queuemch\_stack\_initial} shows the first attempt at formalising the data structure, before the interactive prover was used and any alterations were made to the code. 13 proof obligations are generated, and only seven of them are discharged automatically.
 
-	We first observe the six the undischarged proof obligations are of the well-defineness variety. The goal of each of them is '\texttt{list: seq(ran(list))}'. It asks the user to demonstrate that the variable is a sequence of the elements it contains. Since it is still in line with the desired functionality of the machine, this expression is therefore added as another conjunct in the Invariant, which makes the number of the undischarged proof obligations go down to 2, with the new total being 12. This time only two well-definess proof obligations are generated and get demonstrated by the automated prover.
+	We first observe the six the undischarged proof obligations are of the well-defineness variety. The goal of each of them is `\texttt{list: seq(ran(list))}'. It asks the user to demonstrate that the variable is a sequence of the elements it contains. Since it is still in line with the desired functionality of the machine, this expression is therefore added as another conjunct in the Invariant, which makes the number of the undischarged proof obligations go down to 2, with the new total being 12. This time only two well-definess proof obligations are generated and get demonstrated by the automated prover.
 
-	Each of the four operations now has two proof obligations generated, instead of one, and the Initialisation gives rise two another two. In each pair is one proof obligation for each conjunct in the Invariant, confirming the pattern observed in the previous section.
+	Each of the four operations now has two proof obligations generated, instead of one, and the Initialisation gives rise two another two. In each pair there is one proof obligation for each conjunct in the Invariant, confirming the pattern observed in the previous section.
 
-	The two remaining proof obligations are for the \textit{push} and \textit{enqueue} operations, and they have the goal: '\texttt{list<-aa: seq(ran(list<-aa))}'. Running the automated prover on it gives the subgoal: '\verb|list: seq({aa}\/ran(list))|'. Since sequences are not necessarily surjective, this statement can be easily seen to be correct, as $ran(\texttt{list}) \subseteq \{\texttt{aa}\} \cup ran(\texttt{list})$, and so $\texttt{list} \in seq(\{\texttt{aa}\} \cup ran(\texttt{list}))$.
+	The two remaining proof obligations are for the \textit{push} and \textit{enqueue} operations, and they have the goal: `\texttt{list<-aa: seq(ran(list<-aa))}'. Running the automated prover on it gives the subgoal: `\verb|list: seq({aa}\/ran(list))|'. Since sequences are not necessarily surjective, this statement can be easily seen to be correct, as $ran(\texttt{list}) \subseteq \{\texttt{aa}\} \cup ran(\texttt{list})$, and so $\texttt{list} \in seq(\{\texttt{aa}\} \cup ran(\texttt{list}))$.
 
 	None of the hypothesis we thought of adding made any difference. Before we resort to adding user rules, we can try the predicate prover. The predicate prover on its own is not sufficient, but running the predicate prover with first level hypothesis - since the hypothesis is needed to demonstrate the goal - succeeds, and the proof obligation is demonstrated.
 
@@ -1078,22 +1083,22 @@ pr & pp(rp.1) & pr
 
 	The initial version of this machine can be found in the file \emph{Queuemch\_linked\_initial} and generates 32 proof obligations, 17 of which are not discharged.
 
-	We begin by looking at the well-defineness proof obligations. We notice that two have the goal '\texttt{content: seq(ran(content))}' which was seen in the previous machine. Adding it to the Invariant does not gain us much. There are now 34 proof obligations generated, and still 17 which are not demonstrated automatically.
+	We begin by looking at the well-defineness proof obligations. We notice that two have the goal `\texttt{content: seq(ran(content))}' which was seen in the previous machine. Adding it to the Invariant does not gain us much. There are now 34 proof obligations generated, and still 17 which are not demonstrated automatically.
 
-	Most of the remaining well-defineness-related proof obligations can be discharged with the use of predicate prover. Afterwards the only two which are left, have the goal '\texttt{next~: dom(next~) +-> ran(next~)}. We can again add it to the Invariant, and that helps with discharging all of the well-defininess proof obligations, however, more are generated for the operations. There are now 16 left to be discharged, all related to the preservation of the Invariant. Note that with each addition to the Invariant, the total number has risen.
+	Most of the remaining well-defineness-related proof obligations can be discharged with the use of predicate prover. Afterwards the only two which are left, have the goal `\texttt{next}$\sim$\texttt{: dom(next}$\sim$\texttt{) +-> ran(next}$\sim$\texttt{)}', regarding the inverse of \texttt{next}. We can again add it to the Invariant, and that helps with discharging all of the well-defininess proof obligations, however, more are generated for the operations. There are now 16 left to be discharged, all related to the preservation of the Invariant. Note that with each addition to the Invariant, the total number has risen.
 
 	All of the proof obligations resulting from the Initialisation can be easily discharged with the interactive prover (especially with the predicate prover command), since they are simple type checks. We shall not elaborate on this due to its simplicity.
 
-	We further notice that a few proof obligation arising from the Invariant clauses involving the \texttt{anchor} element. Upon further inspection of the Invariant, we deem having \texttt{anchor} as a variable to be unnecessary - it is a dummy element, which is never changed. Thus we re-write this part of the Invariant to remove any mentions of this variable, and instead include the clause that \texttt{content} is a non-empty sequence. We add '\texttt{anchor == content(1)} to the Definitions clause.
+	We further notice that a few proof obligation arising from the Invariant clauses involving the \texttt{anchor} element. Upon further inspection of the Invariant, we deem having \texttt{anchor} as a variable to be unnecessary - it is a dummy element, which is never changed. Thus we re-write this part of the Invariant to remove any mentions of this variable, and instead include the clause that \texttt{content} is a non-empty sequence. We add `\texttt{anchor == content(1)} to the Definitions clause.
 
-	After an inspection of the proof obligations regarding the \texttt{next} function, we notice that there is a key clause missing from the Invariant. We have not specified that the last element of the list should point to the anchor, i.e. the first element. Additionally, it is now worth noting that this function is specifically a bijection. Given the properties of bijections, we can also remove the conjunct regarding its inverse. Thus the inspection of the proof obligations allowed us to fine-tune the abstract machine to express the specification better. With this change, all of the proof obligations arising from the operation to append an item discharge with the predicate prover. Note that this may be a long operation.
+	After an inspection of the proof obligations regarding the \texttt{next} function, we notice that there is a key clause missing from the Invariant. We have not specified that the last element of the list should point to the anchor, i.e. the first element. Additionally, it is now worth noting that this function is specifically a bijection. Given the properties of bijections, we can also remove the conjunct regarding its inverse. Thus the inspection of the proof obligations allowed us to fine-tune the abstract machine to express the specification better. With this change, all of the proof obligations arising from the operation to append an item discharge with the predicate prover. Note that this may be a long operation, and the user may want to increase the operation time for the predicate prover in the Atelier B settings.
 
 	Next, we deal with the proof obligations generated from the operation to append an item. The ones regarding the domain overriding of the \texttt{next} function, cannot be discharged easily. Thus we rephrase it to make it more explicit that it is still a bijection, turning \texttt{next := next <+ \{ii|->anchor, last(content)|-> ii}\} into \texttt{next := {last(content)} <<| next }\verb|\|\texttt{/ \{ii|->anchor, last(content)|-> ii\}}. As we have found out during the work on the Bag machines, set union is easy to reason about. Indeed it seems that now the predicate prover can deal with the two problematic proof obligations, and with its help, all of the proof obligations for appending an item get demonstrated. We make an analogous change to the operations to remove an item.
 
-	Finally we observe that the operations to remove an item, be it by index or by specifying the item to remove, generate undischarged proof obligations. First come those involving sequence concatenation. It is an in-built operation, which is not described in the manuals in detail, so we can only speculate as to its internal workings. The goal of the related proof obligations is:
+	Finally we observe that the operations to remove an item, be it by index or by specifying the item to remove, generate undischarged proof obligations. First come those involving sequence concatenation. It is a built-in operation, which is not described in the manuals in detail, so we can only speculate as to its internal workings. The goal of the related proof obligations is:
 	\texttt{(content/|}\verb|\| \texttt{xx-1}\verb|^|\texttt{(content}\verb|\|\texttt{|/xx): iseq(ITEMS)}. We have not found a suitable hypothesis to add to discharge it.
 
-	Similarly, contrary to our expectations, the proof obligation arising from the condition that \texttt{content} is never an empty sequence, does not get discharged easily. We have not found a way to discharge it for the first version of the operation to remove an item, where the item is given as a parameter. For the second operation to remove an item, with its index as a parameter, the proof obligation was demonstrated after adding the hypothesis that the paramter is greater than 1. It is already specified in the preconditions of this operation, yet the preconditions apparently did not have any effect. Thus, running the command '\texttt{ah(nn>=1)}' followed by the predicate prover, sufficed to discharge this proof obligation, as if the prover needed a reminder of the preconditions.
+	Similarly, contrary to our expectations, the proof obligation arising from the condition that \texttt{content} is never an empty sequence, does not get discharged easily. We have not found a way to discharge it for the first version of the operation to remove an item, where the item is given as a parameter. For the second operation to remove an item, with its index as a parameter, the proof obligation was demonstrated after adding the hypothesis that the paramter is greater than 1. It is already specified in the preconditions of this operation, yet the preconditions apparently did not have any effect. Thus, running the command `\texttt{ah(nn>=1)}' followed by the predicate prover, sufficed to discharge this proof obligation, as if the prover needed a reminder of the preconditions.
 
 	The remaining proof obligations are concerned with the \texttt{next} operation, and perform transformations on the range and domain.  Our earlier change to the \texttt{next} function had no effect on the success of the predicate prover. In either case, the two proof obligations for each operation remain undischarged.  They generate multiple subgoals concerned with properties of the bijection.
 
@@ -1117,6 +1122,7 @@ pr & pp(rp.1) & pr
 
 	\caption{List of machines which were used to test the developed approach}
 \end{table}
+
 	On one hand, the B method is fairly well suited for this task, as it contains a concise notation for relations, functions, and sequences. Implementing the structures themselves was straightforward and easy to express in the B language.
 
 	On the other, implementing the standard operations on those data structures required more effort, because the B method at the abstract machine level does not permit recursion or loops, and hence we cannot, for example, traverse a list to find the $n^{th}$ element.
@@ -1133,7 +1139,7 @@ pr & pp(rp.1) & pr
 
 		\item Inspecting the well-defineness proof obligations helps to establish how the prover normalises certain expressions. The user may consider rewriting them as they appear in the interactive prover, to reduce the number of rewrite rules applied by the automated prover in the background.
 
-		\item The remaining proof obligations can be tackled with the predicate prover, although it should be noted that its operation requires certain amount of resources, and the prover may run out of time or memory. Sometimes repeated attempts can lead to a success.
+		\item The remaining proof obligations can be tackled with the predicate prover, although it should be noted that its operation requires certain amount of resources, and the prover may run out of time or memory. 
 
 		\item Another option is to add hypotheses to guide the prover along. The hypotheses should be provable from what is already known, so cannot include any large leaps. Then proving the goal from the hypotheses should be equally simple. Frequently, the added hypotheses are slight rephrasings of the Invariant or the preconditions of an operation, that will imply the goal of the proof obligation.
   \end{enumerate}
@@ -1161,18 +1167,18 @@ pr & pp(rp.1) & pr
 
 	The only rule that was written and verified, and which is considered to be of some potential use to new users, is the rule capturing the claim that every subset of a finite set is finite. The rule is:
 	\begin{lstlisting}
-	THEORY userInFINXY IS
-		band(binhyp(b: FIN(b)),
-		binhyp(a <: b))
-		=>
-		a: FIN(a)
-	END
+THEORY userInFINXY IS
+	band(binhyp(b: FIN(b)),
+	binhyp(a <: b))
+	=>
+	a: FIN(a)
+END
 	\end{lstlisting}
 	It can be found in the \emph{Bagmch\_finite\_items.pmm} file included in the project archive.
 
 	Putting this together with the information contained in the various user manuals, we conclude that writing user rules may be required in circumstances involving moduli or sequences of sets - where one might want to use recursion, which is not available in the abstract machines, or when separate rules would have to be written for many similar cases. At this point it is simpler from the developers' point of view to let the user write the rules they need, than try to anticipate all possible use cases. Thus, we highlight these areas as possibly needing additional rules.
 
-	At the same time we observe that simple structures such as sets rarely need it, and most cases where one might think that an additional rule is necessary, can be circumvented.
+	At the same time we observe that simple structures such as sets may not need it, and most cases where one might think that an additional rule is necessary, can be circumvented.
 
 
 	\section{Evaluation and future outlook}
@@ -1191,7 +1197,7 @@ pr & pp(rp.1) & pr
 	\subsection{Possible continuations}
 	There are multiple ways in which this work can be taken further. Firstly, we have not covered all clauses, and made scarce use of Definitions and did not explore Assertions much. In the former case, there was little need for it. In the case of Assertions, we struggled to find a simple scenario where this clause may be applicable. Similarly, there is a lot to explore in the area of structuring and refinement.
 
-	We we have focused on simpler data structures, which may be seen in an industrial setting, and we have kept the operations fairly straightforward, using basic transformations and avoiding overly complicated combinations of functions and relations. The examples of queues, stacks, and linked lists already suggest that functions, relations, and sequences result in a significant number of proof obligations, which may not be discharged automatically. It would be interesting to analyse them more closely, however time was a limitation in this respect.
+	We we have focused on simpler data structures, which may be seen in an industrial setting, and we have kept the operations fairly straightforward, using basic transformations and avoiding overly complicated combinations of functions and relations. The examples of queues, stacks, and linked lists already suggest that functions, relations, and sequences result in a significant number of proof obligations, which may not be discharged automatically. Two data structures in B language which we have not explored, are structs and trees. It would be interesting to analyse them more closely, however time was a limitation in this respect.
 
 	Finally we did not have access to industrial-scale models written in pure B method, and thus we could not properly measure how much the patterns we have noticed matter on a larger scale, and thus we were left with predictions and estimations. Indeed working through a purely functional and not necessarily an exemplary project in terms of style, would be a time consuming task on its own, and rewriting it according to our findings even more so.
 
@@ -1201,7 +1207,7 @@ pr & pp(rp.1) & pr
 
 	From non-commutativity of conjuncts to the patterns relating number of viariables, operations and clauses in the Invariant, to the number and type of proof obligations generated, we have gained a lot of insight into formal development of a system, using the B method and Atelier B.
 
-	We have described in detail how we have worked through both the Bag machine scenario used to fine-tune our methods, and the two data structure machines used to test their effectiveness. We hope that the Reader will be able to follow it with the help of the source code attached to this work.
+	We have described in detail how we have worked through both the Bag machine scenario used to fine-tune our methods, and the two data structure machines used to test their effectiveness. We hope that the reader will be able to follow it with the help of the source code attached to this work.
 
 	Finally we have described the intuition behind the approach, which we hope can be useful for those, who do not know where to begin tackling the undischarged proof obligations.
 
@@ -1241,7 +1247,10 @@ pr & pp(rp.1) & pr
 	\begin{thebibliography}{2}
 		\bibitem{survey}
 		S.~Conchon and M.~ Iguernlala, ``Increasing Proofs Automation Rate of Atelier-B Thanks to Alt-Ergo'' in \emph{Proc.~1st Int.~Conf.~Reliability, Safety and Security of Railway Systems}. Paris, France, 2016, pp.~243-253
-
+		
+		\bibitem{amazon}
+		C. Newcombe et al., ``How Amazon web services uses formal methods'' in \emph{Commun. of the ACM}, vol. 58, New York, 2015, pp. 66-73
+		
 		\bibitem{sipser}
 		M. Sipser, \emph{Introduction to the Theory of Computation}, 2\textsuperscript{nd} Ed., Boston, MA: Thomson, 2006
 
@@ -1282,9 +1291,6 @@ pr & pp(rp.1) & pr
 		\bibitem{security2}
 		C. Snook et al., ``Analysing Security Protocols Using Refinement in iUML-B'', \emph{Proc. of 9\textsuperscript{9t} Int. NASA Formal Methods Symp.}, Moffet Field, CA, 2017, pp. 84-98
 
-		\bibitem{amazon}
-		C. Newcombe et al., ``How Amazon web services uses formal methods'' in \emph{Commun. of the ACM}, vol. 58, New York, 2015, pp. 66-73
-
 		\bibitem{TLA}
 		L. Lamport, ``Specifying Concurrent Systems with TLA+'' in \emph{Calculational System Design}, Amsterdam, IOS Press, 1999, pp. 183-247
 
@@ -1297,6 +1303,13 @@ pr & pp(rp.1) & pr
 		\bibitem{screen doors}
 		T. Lecomte et al., ``Formal Methods in Safety-Critical Railway Systems'' in \emph{Proc. 10th Brazilian Symp.~Formal Methods}, Ouro Preto, Brasil 2007, pp.~26-30
 		
+		
+		\bibitem{station model}
+		K. Reichl et al., ``Using Formal Methods for Verification and Validation in Railway'' in \emph{Proc. 10th Int. Conf. Tests and Proofs}, Vienna, Austria, 2016, pp. 3-13
+		
+		\bibitem{event-b}
+		C. M\'{e}tayer et al., ``Event-B Language'',\emph{RODIN Project Deliverable D}, 2005
+		
 		\bibitem{GSM}
 		E. Bernard et al., ``Generation of test sequences from formal specifications: GSM 11-11 standard case study'' in \emph{Software: Practice and Experience}, vol.~34, Wiley, 2004, pp.~915-948
 		
@@ -1305,12 +1318,6 @@ pr & pp(rp.1) & pr
 		
 		\bibitem{San Juan metro}
 		M. Leuschel et al., ``Automated property verification for large scale B models with ProB'' in \emph{Proc. 2nd Int. Symp. Formal Methods}, Eindhoven, The Netherlands. 2009, pp.~708-723
-
-		\bibitem{station model}
-		K. Reichl et al., ``Using Formal Methods for Verification and Validation in Railway'' in \emph{Proc. 10th Int. Conf. Tests and Proofs}, Vienna, Austria, 2016, pp. 3-13
-
-		\bibitem{event-b}
-		C. M\'{e}tayer et al., ``Event-B Language'',\emph{RODIN Project Deliverable D}, 2005
 
 		\bibitem{SMT handbook}
 		C. Barrett et al., ``Satisfiability Modulo Theories'' in \emph{Frontiers in Artificial Intelligence and Applications}, vol. 185, IOS Press, 2009, pp. 825-885
